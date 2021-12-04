@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AsmarBackendApplication {
+public class AsmarApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AsmarBackendApplication.class, args);
+        SpringApplication.run(AsmarApplication.class, args);
     }
 
 }
