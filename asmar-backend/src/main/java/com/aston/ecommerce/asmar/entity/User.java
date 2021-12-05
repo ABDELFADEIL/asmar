@@ -3,9 +3,7 @@ package com.aston.ecommerce.asmar.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -50,6 +48,33 @@ public class User extends AbstractEntity {
     @NotEmpty
     private String connectionStatus;
 
+    @OneToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
+
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(name = "invoice_address")
+    private Address invoiceAddress;
+
+    public Address getInvoiceAddress() {
+        return invoiceAddress;
+    }
+
+    public void setInvoiceAddress(Address invoiceAddress) {
+        this.invoiceAddress = invoiceAddress;
+    }
+
+    @OneToOne(orphanRemoval = true)
+    @JoinColumn(name = "delivery_address")
+    private Address deliveryAddress;
+
+    public Address getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public void setDeliveryAddress(Address deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
+    }
 
     public User(String firstName, String lastName, String email, String password, String userName, Date registrationDate, String connectionStatus) {
         this.firstName = firstName;

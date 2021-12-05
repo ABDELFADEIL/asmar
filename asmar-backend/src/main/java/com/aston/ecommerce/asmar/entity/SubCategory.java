@@ -1,8 +1,6 @@
 package com.aston.ecommerce.asmar.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -14,6 +12,10 @@ public class SubCategory extends AbstractEntity{
     @NotNull
     @NotEmpty
     private String label;
+
+    @ManyToOne(targetEntity = Category.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 
     public SubCategory(String label) {
         this.label = label;

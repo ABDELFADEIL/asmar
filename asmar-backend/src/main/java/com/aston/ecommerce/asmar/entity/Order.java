@@ -1,8 +1,6 @@
 package com.aston.ecommerce.asmar.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -37,6 +35,13 @@ public class Order extends AbstractEntity{
     @NotEmpty
     private String total;
 
+    @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "payment_id", nullable = true)
+    private Payment payment;
 
     public Order(String deliveryStatut, Date orderDate, Date shippingDate, Long deliveryPrice, String total) {
         this.deliveryStatut = deliveryStatut;
