@@ -3,7 +3,6 @@ package com.aston.ecommerce.asmar.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -38,23 +37,20 @@ public class Product extends AbstractEntity{
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-/*
-
-    @Column(name="umlImages")
+    @Column(name="media_url")
     @NotNull
     @NotEmpty
-    private List<String> umlImages;
-*/
+    private String media;
 
-
-    public Product(String label, Long price, String description, String size, int quantity) {
+    public Product(String label, Long price, String description, String size, int quantity,String media) {
         this.label = label;
         this.price = price;
         this.description = description;
         this.size = size;
         this.quantity = quantity;
-  /*      this.umlImages = umlImages;*/
+        this.media = media;
     }
+
 
     public String getLabel() {
         return label;
@@ -96,11 +92,19 @@ public class Product extends AbstractEntity{
         this.quantity = quantity;
     }
 
-   /* public List<String> getUmlImages() {
-        return umlImages;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setUmlImages(List<String> umlImages) {
-        this.umlImages = umlImages;
-    }*/
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public String getMedia() {
+        return media;
+    }
+
+    public void setMedia(String media) {
+        this.media = media;
+    }
 }

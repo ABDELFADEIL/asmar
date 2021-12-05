@@ -18,8 +18,10 @@ public class Role extends AbstractEntity{
     @JoinColumn(name = "user_id", nullable = true)
     private User user;
 
-    public Role(String roleName) {
+
+    public Role(String roleName, User user) {
         this.roleName = roleName;
+        this.user = user;
     }
 
     public String getRoleName() {
@@ -28,5 +30,13 @@ public class Role extends AbstractEntity{
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

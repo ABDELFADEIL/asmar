@@ -56,27 +56,13 @@ public class User extends AbstractEntity {
     @JoinColumn(name = "invoice_address")
     private Address invoiceAddress;
 
-    public Address getInvoiceAddress() {
-        return invoiceAddress;
-    }
-
-    public void setInvoiceAddress(Address invoiceAddress) {
-        this.invoiceAddress = invoiceAddress;
-    }
-
     @OneToOne(orphanRemoval = true)
     @JoinColumn(name = "delivery_address")
     private Address deliveryAddress;
 
-    public Address getDeliveryAddress() {
-        return deliveryAddress;
-    }
 
-    public void setDeliveryAddress(Address deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
-
-    public User(String firstName, String lastName, String email, String password, String userName, Date registrationDate, String connectionStatus) {
+    public User(String firstName, String lastName, String email, String password, String userName, Date registrationDate,
+            String connectionStatus, Role role, Address invoiceAddress, Address deliveryAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -84,6 +70,9 @@ public class User extends AbstractEntity {
         this.userName = userName;
         this.registrationDate = registrationDate;
         this.connectionStatus = connectionStatus;
+        this.role = role;
+        this.invoiceAddress = invoiceAddress;
+        this.deliveryAddress = deliveryAddress;
     }
 
     public String getFirstName() {
@@ -140,5 +129,29 @@ public class User extends AbstractEntity {
 
     public void setConnectionStatus(String connectionStatus) {
         this.connectionStatus = connectionStatus;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Address getInvoiceAddress() {
+        return invoiceAddress;
+    }
+
+    public void setInvoiceAddress(Address invoiceAddress) {
+        this.invoiceAddress = invoiceAddress;
+    }
+
+    public Address getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public void setDeliveryAddress(Address deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
     }
 }

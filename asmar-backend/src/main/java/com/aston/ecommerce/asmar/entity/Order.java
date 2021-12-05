@@ -47,14 +47,18 @@ public class Order extends AbstractEntity{
     @JoinColumn(name = "shippingInfo_id", nullable = true)
     private ShippingInfo shippingInfo;
 
-    public Order(String deliveryStatut, Date orderDate, Date shippingDate, Long deliveryPrice, String total) {
+
+    public Order(String deliveryStatut, Date orderDate, Date shippingDate,
+                 Long deliveryPrice, String total, User user, Payment payment, ShippingInfo shippingInfo) {
         this.deliveryStatut = deliveryStatut;
         this.orderDate = orderDate;
         this.shippingDate = shippingDate;
         this.deliveryPrice = deliveryPrice;
         this.total = total;
+        this.user = user;
+        this.payment = payment;
+        this.shippingInfo = shippingInfo;
     }
-
 
     public String getDeliveryStatut() {
         return deliveryStatut;
@@ -96,4 +100,27 @@ public class Order extends AbstractEntity{
         this.total = total;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    public ShippingInfo getShippingInfo() {
+        return shippingInfo;
+    }
+
+    public void setShippingInfo(ShippingInfo shippingInfo) {
+        this.shippingInfo = shippingInfo;
+    }
 }

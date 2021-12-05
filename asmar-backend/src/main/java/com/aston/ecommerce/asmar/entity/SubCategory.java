@@ -17,8 +17,10 @@ public class SubCategory extends AbstractEntity{
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    public SubCategory(String label) {
+
+    public SubCategory(String label, Category category) {
         this.label = label;
+        this.category = category;
     }
 
     public String getLabel() {
@@ -27,5 +29,13 @@ public class SubCategory extends AbstractEntity{
 
     public void setLabel(String label) {
         this.label = label;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

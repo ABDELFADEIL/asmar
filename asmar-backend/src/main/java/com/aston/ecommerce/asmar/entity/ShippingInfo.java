@@ -28,10 +28,11 @@ public class ShippingInfo extends AbstractEntity{
     @JoinColumn(name = "order_id")
     private Order order;
 
-    public ShippingInfo(String shippingType, Long shippingCost, int shippingRegion) {
+    public ShippingInfo(String shippingType, Long shippingCost, int shippingRegion, Order order) {
         this.shippingType = shippingType;
         this.shippingCost = shippingCost;
         this.shippingRegion = shippingRegion;
+        this.order = order;
     }
 
     public String getShippingType() {
@@ -56,5 +57,13 @@ public class ShippingInfo extends AbstractEntity{
 
     public void setShippingRegion(int shippingRegion) {
         this.shippingRegion = shippingRegion;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

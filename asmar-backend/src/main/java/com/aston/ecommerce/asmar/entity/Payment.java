@@ -29,10 +29,11 @@ public class Payment extends AbstractEntity{
     private Order order;
 
 
-    public Payment(String type, Date paymentDate, String total) {
+    public Payment(String type, Date paymentDate, String total, Order order) {
         this.type = type;
         this.paymentDate = paymentDate;
         this.total = total;
+        this.order = order;
     }
 
     public String getType() {
@@ -57,5 +58,13 @@ public class Payment extends AbstractEntity{
 
     public void setTotal(String total) {
         this.total = total;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }
