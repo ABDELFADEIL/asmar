@@ -24,6 +24,9 @@ public class ShippingInfo extends AbstractEntity{
     @NotEmpty
     private int shippingRegion;
 
+    @OneToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     public ShippingInfo(String shippingType, Long shippingCost, int shippingRegion) {
         this.shippingType = shippingType;

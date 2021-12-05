@@ -43,6 +43,10 @@ public class Order extends AbstractEntity{
     @JoinColumn(name = "payment_id", nullable = true)
     private Payment payment;
 
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "shippingInfo_id", nullable = true)
+    private ShippingInfo shippingInfo;
+
     public Order(String deliveryStatut, Date orderDate, Date shippingDate, Long deliveryPrice, String total) {
         this.deliveryStatut = deliveryStatut;
         this.orderDate = orderDate;
