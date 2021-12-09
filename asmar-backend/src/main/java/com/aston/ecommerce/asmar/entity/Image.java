@@ -7,10 +7,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Role extends AbstractEntity{
+public class Image extends AbstractEntity{
 
-    @Column(name="role_name")
-    @NotNull
-    @NotEmpty
-    private String roleName;
+    private String url;
 }
