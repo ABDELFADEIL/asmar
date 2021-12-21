@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "shoppingCart")
+@Table(name = "shopping_cart")
 public class ShoppingCart extends AbstractEntity{
 
 
-    @OneToMany
+    @OneToMany(mappedBy = "shoppingCart")
     private List<CommandLine> commandLines;
 
     public List<CommandLine> getCommandLines() {

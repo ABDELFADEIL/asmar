@@ -28,13 +28,13 @@ public class Product extends AbstractEntity{
     private String usage;
     @Column(name="size")
     private String size;
-    @Column(name="disponible")
+    @Column(name="disponible", nullable = false)
     private boolean disponible;
     @Column(name="quantity")
     @NotNull
     @NotEmpty
     private long quantity;
-    @OneToMany
+    @OneToMany(mappedBy = "product")
     private List<Image> urlImages;
     @ManyToOne
     @JoinColumn(name="subCategoryId")

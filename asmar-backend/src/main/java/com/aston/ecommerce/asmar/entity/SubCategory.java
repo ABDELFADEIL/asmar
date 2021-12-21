@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = "subCategory")
+@Table(name = "sub_category")
 public class SubCategory extends AbstractEntity{
 
     @Column(name="label")
@@ -16,7 +16,7 @@ public class SubCategory extends AbstractEntity{
     @OneToMany(mappedBy = "subCategory")
     private List<Product> products;
     @ManyToOne
-    @JoinColumn(name="categoryId")
+    @JoinColumn(name="category_id")
     private Category category;
 
     public String getLabel() {

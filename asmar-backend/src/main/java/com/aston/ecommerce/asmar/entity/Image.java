@@ -1,20 +1,18 @@
 package com.aston.ecommerce.asmar.entity;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "image")
 public class Image extends AbstractEntity{
 
-    @Column(name="url")
+    @Column(name="url", nullable = false)
     private String url;
     @ManyToOne
-    @JoinColumn(name= "productId")
+    @JoinColumn(name= "product_id")
     private Product product;
 
 

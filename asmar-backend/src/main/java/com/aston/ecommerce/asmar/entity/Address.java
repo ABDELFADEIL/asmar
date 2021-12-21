@@ -26,7 +26,7 @@ public class Address extends AbstractEntity{
     @NotEmpty
     private String state;
 
-    @Column(name="postalPode")
+    @Column(name="postal_code")
     @NotNull
     @NotEmpty
     private String postalCode;
@@ -36,12 +36,12 @@ public class Address extends AbstractEntity{
     @NotEmpty
     private String country;
 
-    @Column(name="addInfos")
+    @Column(name="add_infos")
     @NotNull
     @NotEmpty
     private String addInfos;
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private User user;
 
     public String getStreet() {

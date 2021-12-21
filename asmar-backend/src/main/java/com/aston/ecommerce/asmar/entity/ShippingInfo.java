@@ -5,14 +5,14 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "shippingInfo")
+@Table(name = "shipping_info")
 public class ShippingInfo extends AbstractEntity{
 
-    @Column(name="shippingType")
+    @Column(name="shipping_type")
     @NotNull
     @NotEmpty
     private String shippingType;
-    @Column(name="shippingCost")
+    @Column(name="shipping_cost")
     @NotNull
     @NotEmpty
     private float shippingCost;

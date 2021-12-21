@@ -5,26 +5,22 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "commandLine")
+@Table(name = "command_line")
 public class CommandLine extends AbstractEntity{
 
-    @Column(name="quantity")
-    @NotNull
-    @NotEmpty
+    @Column(name="quantity", nullable = false)
     private int quantity;
-
-    @Column(name="price")
-    @NotNull
+    @Column(name="price", nullable = false)
     @NotEmpty
     private float price;
     @ManyToOne
-    @JoinColumn(name="productId")
+    @JoinColumn(name="product_id")
     private Product product;
     @ManyToOne
-    @JoinColumn(name="orderId")
+    @JoinColumn(name="order_id")
     private Order order;
     @ManyToOne
-    @JoinColumn(name="shoppingCartId")
+    @JoinColumn(name="shoppingCart_id")
     private ShoppingCart shoppingCart;
 
     public int getQuantity() {

@@ -13,7 +13,7 @@ public class Payment extends AbstractEntity{
     @NotNull
     @NotEmpty
     private String type;
-    @Column(name="paymentDate")
+    @Column(name="payment_date")
     @NotNull
     @NotEmpty
     private LocalDate paymentDate;

@@ -18,12 +18,12 @@ import java.util.Set;
 public class User extends AbstractEntity {
 
 
-    @Column(name="firstName")
+    @Column(name="first_name")
     @NotNull
     @NotEmpty
     private String firstName;
 
-    @Column(name="lastName")
+    @Column(name="last_name")
     @NotNull
     @NotEmpty
     private String lastName;
@@ -38,23 +38,25 @@ public class User extends AbstractEntity {
     @NotEmpty
     private String password;
 
-    @Column(name="userName")
+    @Column(name="username")
     @NotNull
     @NotEmpty
     private String userName;
 
-    @Column(name="registrationDate")
+    @Column(name="registration_date")
     @NotNull
     @NotEmpty
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime registrationDate;
 
-    @Column(name="connectionStatus")
-    @NotNull
-    @NotEmpty
+    @Column(name="connection_status", nullable = false)
     private boolean connectionStatus;
 
     @ManyToMany
+    @JoinTable(name = "user_roles",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id")}
+    )
     private List<Role> roles;
 
     public String getFirstName() {

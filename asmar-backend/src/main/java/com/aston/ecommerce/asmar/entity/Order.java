@@ -12,36 +12,28 @@ import java.util.List;
 public class Order extends AbstractEntity{
 
 
-    @Column(name="deliveryStatus")
+    @Column(name="delivery_status")
     @NotNull
     @NotEmpty
     private String deliveryStatus;
-    @Column(name="orderDate")
-    @NotNull
-    @NotEmpty
+    @Column(name="order_date", nullable = false)
     private LocalDate orderDate;
-    @Column(name="shippingDate")
-    @NotNull
-    @NotEmpty
+    @Column(name="shipping_date")
     private LocalDate shippingDate;
-    @Column(name="deliveryPrice")
-    @NotNull
-    @NotEmpty
+    @Column(name="delivery_price", nullable = false)
     private float deliveryPrice;
     @Column(name="total")
-    @NotNull
-    @NotEmpty
     private float total;
-    @OneToMany
+    @OneToMany(mappedBy = "order")
     private List<CommandLine> commandLineList;
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private User user;
     @ManyToOne
-    @JoinColumn(name ="addressId")
+    @JoinColumn(name ="address_id")
     private Address address;
     @ManyToOne
-    @JoinColumn(name ="paymentId")
+    @JoinColumn(name ="payment_id")
     private Payment payment;
 
 
