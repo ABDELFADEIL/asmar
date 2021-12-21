@@ -12,35 +12,108 @@ import java.util.List;
 public class Order extends AbstractEntity{
 
 
-    @Column(name="delivery_statut")
+    @Column(name="deliveryStatus")
     @NotNull
     @NotEmpty
-    private String deliveryStatut;
-
-    @Column(name="order_date")
+    private String deliveryStatus;
+    @Column(name="orderDate")
     @NotNull
     @NotEmpty
     private LocalDate orderDate;
-
-    @Column(name="shipping_date")
+    @Column(name="shippingDate")
     @NotNull
     @NotEmpty
     private LocalDate shippingDate;
-
-    @Column(name="delivery_price")
+    @Column(name="deliveryPrice")
     @NotNull
     @NotEmpty
-    private Long deliveryPrice;
-
+    private float deliveryPrice;
     @Column(name="total")
     @NotNull
     @NotEmpty
-    private String total;
+    private float total;
     @OneToMany
     private List<CommandLine> commandLineList;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "userId")
     private User user;
+    @ManyToOne
+    @JoinColumn(name ="addressId")
+    private Address address;
+    @ManyToOne
+    @JoinColumn(name ="paymentId")
+    private Payment payment;
 
 
+    public String getDeliveryStatus() {
+        return deliveryStatus;
+    }
+
+    public void setDeliveryStatus(String deliveryStatus) {
+        this.deliveryStatus = deliveryStatus;
+    }
+
+    public LocalDate getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(LocalDate orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public LocalDate getShippingDate() {
+        return shippingDate;
+    }
+
+    public void setShippingDate(LocalDate shippingDate) {
+        this.shippingDate = shippingDate;
+    }
+
+    public float getDeliveryPrice() {
+        return deliveryPrice;
+    }
+
+    public void setDeliveryPrice(float deliveryPrice) {
+        this.deliveryPrice = deliveryPrice;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+
+    public List<CommandLine> getCommandLineList() {
+        return commandLineList;
+    }
+
+    public void setCommandLineList(List<CommandLine> commandLineList) {
+        this.commandLineList = commandLineList;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
 }

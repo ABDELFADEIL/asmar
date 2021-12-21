@@ -13,18 +13,36 @@ public class Payment extends AbstractEntity{
     @NotNull
     @NotEmpty
     private String type;
-
-    @Column(name="payment_date")
+    @Column(name="paymentDate")
     @NotNull
     @NotEmpty
     private LocalDate paymentDate;
-
     @Column(name="total")
     @NotNull
     @NotEmpty
     private String total;
 
-    @OneToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public LocalDate getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setPaymentDate(LocalDate paymentDate) {
+        this.paymentDate = paymentDate;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
 }

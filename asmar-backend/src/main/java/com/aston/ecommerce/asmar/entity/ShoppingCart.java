@@ -1,16 +1,21 @@
 package com.aston.ecommerce.asmar.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "shopping_cart")
+@Table(name = "shoppingCart")
 public class ShoppingCart extends AbstractEntity{
 
-    private Integer userId;
-    @OneToMany
-    private List<CommandLine> commandLineList;
 
+    @OneToMany
+    private List<CommandLine> commandLines;
+
+    public List<CommandLine> getCommandLines() {
+        return commandLines;
+    }
+
+    public void setCommandLines(List<CommandLine> commandLines) {
+        this.commandLines = commandLines;
+    }
 }

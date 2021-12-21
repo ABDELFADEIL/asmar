@@ -18,12 +18,12 @@ import java.util.Set;
 public class User extends AbstractEntity {
 
 
-    @Column(name="first_name")
+    @Column(name="firstName")
     @NotNull
     @NotEmpty
     private String firstName;
 
-    @Column(name="last_name")
+    @Column(name="lastName")
     @NotNull
     @NotEmpty
     private String lastName;
@@ -38,21 +38,21 @@ public class User extends AbstractEntity {
     @NotEmpty
     private String password;
 
-    @Column(name="user_name")
+    @Column(name="userName")
     @NotNull
     @NotEmpty
     private String userName;
 
-    @Column(name="registration_date")
+    @Column(name="registrationDate")
     @NotNull
     @NotEmpty
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime registrationDate;
 
-    @Column(name="connection_status")
+    @Column(name="connectionStatus")
     @NotNull
     @NotEmpty
-    private String connectionStatus;
+    private boolean connectionStatus;
 
     @ManyToMany
     private List<Role> roles;
@@ -61,63 +61,65 @@ public class User extends AbstractEntity {
         return firstName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public LocalDateTime getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public String getConnectionStatus() {
-        return connectionStatus;
-    }
-
-
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public LocalDateTime getRegistrationDate() {
+        return registrationDate;
     }
 
     public void setRegistrationDate(LocalDateTime registrationDate) {
         this.registrationDate = registrationDate;
     }
 
-    public void setConnectionStatus(String connectionStatus) {
+    public boolean isConnectionStatus() {
+        return connectionStatus;
+    }
+
+    public void setConnectionStatus(boolean connectionStatus) {
         this.connectionStatus = connectionStatus;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
 
-
-
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 
     @Override
     public String toString() {

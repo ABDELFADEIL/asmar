@@ -5,25 +5,31 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "shipping_info")
+@Table(name = "shippingInfo")
 public class ShippingInfo extends AbstractEntity{
 
-    @Column(name="shipping_type")
+    @Column(name="shippingType")
     @NotNull
     @NotEmpty
     private String shippingType;
-
-    @Column(name="shipping_cost")
+    @Column(name="shippingCost")
     @NotNull
     @NotEmpty
-    private Long shippingCost;
+    private float shippingCost;
 
-    @Column(name="shipping_region")
-    @NotNull
-    @NotEmpty
-    private int shippingRegion;
+    public String getShippingType() {
+        return shippingType;
+    }
 
-    @OneToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+    public void setShippingType(String shippingType) {
+        this.shippingType = shippingType;
+    }
+
+    public float getShippingCost() {
+        return shippingCost;
+    }
+
+    public void setShippingCost(float shippingCost) {
+        this.shippingCost = shippingCost;
+    }
 }

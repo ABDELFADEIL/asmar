@@ -9,8 +9,16 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Role extends AbstractEntity{
 
-    @Column(name="role_name")
+    @Column(name="roleName")
     @NotNull
     @NotEmpty
     private String roleName;
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
 }
