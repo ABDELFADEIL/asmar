@@ -20,8 +20,9 @@ public class CommandLine extends AbstractEntity{
     @JoinColumn(name="order_id")
     private Order order;
     @ManyToOne
-    @JoinColumn(name="shoppingCart_id")
-    private ShoppingCart shoppingCart;
+    @JoinColumn(name="user_id")
+    private User user;
+
 
     public int getQuantity() {
         return quantity;
@@ -55,11 +56,11 @@ public class CommandLine extends AbstractEntity{
         this.order = order;
     }
 
-    public ShoppingCart getShoppingCart() {
-        return shoppingCart;
+    public User getUser() {
+        return user;
     }
 
-    public void setShoppingCart(ShoppingCart shoppingCart) {
-        this.shoppingCart = shoppingCart;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
