@@ -22,7 +22,9 @@ spring:
         use-sql-coments: false
         generate-statistics: false
     show-sql: true
-
+security:
+  basic:
+    enabled: false
 
 management:
   endpoints:
