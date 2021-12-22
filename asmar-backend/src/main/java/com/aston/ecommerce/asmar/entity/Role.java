@@ -11,9 +11,7 @@ import javax.validation.constraints.NotNull;
 @Table(name="role")
 public class Role extends AbstractEntity{
 
-    @Column(name="role_name")
-    @NotNull
-    @NotEmpty
+    @Column(name="role_name", nullable = false)
     private String roleName;
 
     public String getRoleName() {

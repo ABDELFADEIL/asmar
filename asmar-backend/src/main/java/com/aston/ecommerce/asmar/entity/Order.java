@@ -22,15 +22,15 @@ public class Order extends AbstractEntity{
     private LocalDate shippingDate;
     @Column(name="delivery_price", nullable = false)
     private float deliveryPrice;
-    @Column(name="total")
+    @Column(name="total", nullable = false)
     private float total;
     @OneToMany(mappedBy = "order")
     private List<CommandLine> commandLineList;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
     @ManyToOne
-    @JoinColumn(name ="address_id")
+    @JoinColumn(name ="address_id", nullable = false)
     private Address address;
     @ManyToOne
     @JoinColumn(name ="payment_id")

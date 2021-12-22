@@ -13,13 +13,9 @@ public class Payment extends AbstractEntity{
     @NotNull
     @NotEmpty
     private String type;
-    @Column(name="payment_date")
-    @NotNull
-    @NotEmpty
+    @Column(name="payment_date", nullable = false)
     private LocalDate paymentDate;
-    @Column(name="total")
-    @NotNull
-    @NotEmpty
+    @Column(name="total", nullable = false)
     private String total;
 
     public String getType() {

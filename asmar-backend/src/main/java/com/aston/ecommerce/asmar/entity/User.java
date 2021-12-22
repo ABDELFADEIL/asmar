@@ -18,34 +18,23 @@ import java.util.Set;
 public class User extends AbstractEntity {
 
 
-    @Column(name="first_name")
-    @NotNull
-    @NotEmpty
+    @Column(name="first_name", nullable = false)
     private String firstName;
 
     @Column(name="last_name")
-    @NotNull
-    @NotEmpty
     private String lastName;
 
-    @Column(name="email")
-    @NotNull
-    @NotEmpty
+    @Column(name="email", nullable = false)
     private String email;
 
-    @Column(name="password")
+    @Column(name="password", nullable = false)
     @JsonProperty(access = JsonProperty.Access.READ_WRITE)
-    @NotEmpty
     private String password;
 
-    @Column(name="username")
-    @NotNull
-    @NotEmpty
+    @Column(name="username", nullable = true)
     private String userName;
 
     @Column(name="registration_date")
-    @NotNull
-    @NotEmpty
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime registrationDate;
 

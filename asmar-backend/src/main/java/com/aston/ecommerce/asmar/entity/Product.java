@@ -10,34 +10,24 @@ import java.util.List;
 @Table(name = "product")
 public class Product extends AbstractEntity{
 
-    @Column(name="label")
-    @NotNull
-    @NotEmpty
+    @Column(name="label", nullable = false)
     private String label;
-    @Column(name="price")
-    @NotNull
-    @NotEmpty
+    @Column(name="price", nullable = false)
     private float price;
-    @Column(name="description")
-    @NotNull
-    @NotEmpty
+    @Column(name="description", nullable = false)
     private String description;
     @Column(name="usage_")
-    @NotNull
-    @NotEmpty
     private String usage;
     @Column(name="size")
     private String size;
     @Column(name="disponible", nullable = false)
     private boolean disponible;
     @Column(name="quantity")
-    @NotNull
-    @NotEmpty
     private long quantity;
     @OneToMany(mappedBy = "product")
     private List<Image> urlImages;
     @ManyToOne
-    @JoinColumn(name="subCategoryId")
+    @JoinColumn(name="subCategoryId", nullable = false)
     private SubCategory subCategory;
 
     public String getLabel() {

@@ -10,38 +10,32 @@ import javax.validation.constraints.NotNull;
 public class Address extends AbstractEntity{
 
 
-    @Column(name="street")
+    @Column(name="street", nullable = false)
     @NotNull
     @NotEmpty
     // 12 rue de Paris
     private String street;
 
-    @Column(name="city")
+    @Column(name="city", nullable = false)
     @NotNull
     @NotEmpty
     private String city;
 
-    @Column(name="state")
-    @NotNull
-    @NotEmpty
+    @Column(name="state", nullable = false)
     private String state;
 
-    @Column(name="postal_code")
-    @NotNull
-    @NotEmpty
+    @Column(name="postal_code", nullable = false)
     private String postalCode;
 
-    @Column(name="country")
-    @NotNull
-    @NotEmpty
+    @Column(name="country", nullable = false)
     private String country;
 
     @Column(name="add_infos")
-    @NotNull
-    @NotEmpty
     private String addInfos;
+    @Column(name="active")
+    private boolean active;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     public String getStreet() {

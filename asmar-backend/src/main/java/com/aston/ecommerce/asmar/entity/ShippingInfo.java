@@ -8,13 +8,9 @@ import javax.validation.constraints.NotNull;
 @Table(name = "shipping_info")
 public class ShippingInfo extends AbstractEntity{
 
-    @Column(name="shipping_type")
-    @NotNull
-    @NotEmpty
+    @Column(name="shipping_type", nullable = false)
     private String shippingType;
-    @Column(name="shipping_cost")
-    @NotNull
-    @NotEmpty
+    @Column(name="shipping_cost", nullable = false)
     private float shippingCost;
 
     public String getShippingType() {

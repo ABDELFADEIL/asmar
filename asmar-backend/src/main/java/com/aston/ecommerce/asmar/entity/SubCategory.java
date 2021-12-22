@@ -9,14 +9,12 @@ import java.util.List;
 @Table(name = "sub_category")
 public class SubCategory extends AbstractEntity{
 
-    @Column(name="label")
-    @NotNull
-    @NotEmpty
+    @Column(name="label", nullable = false)
     private String label;
     @OneToMany(mappedBy = "subCategory")
     private List<Product> products;
     @ManyToOne
-    @JoinColumn(name="category_id")
+    @JoinColumn(name="category_id", nullable = false)
     private Category category;
 
     public String getLabel() {
