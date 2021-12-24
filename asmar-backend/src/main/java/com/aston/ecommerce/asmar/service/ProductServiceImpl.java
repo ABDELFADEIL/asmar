@@ -1,7 +1,6 @@
 package com.aston.ecommerce.asmar.service;
 
 import com.aston.ecommerce.asmar.dao.ProductRepository;
-import com.aston.ecommerce.asmar.dto.ProductDetail;
 import com.aston.ecommerce.asmar.dto.ProductDto;
 import com.aston.ecommerce.asmar.entity.Image;
 import com.aston.ecommerce.asmar.entity.Product;
@@ -15,26 +14,23 @@ import java.util.List;
 @Service
 public class ProductServiceImpl implements ProductService{
 
-    @Autowired
+
     private ProductRepository productRepository;
 
-    @Override
-    public Page<Product> getProducts(int page, int size, String productLabel) {
-        return null;
+    public ProductServiceImpl(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
     @Override
-    public Product addProduct(ProductDetail productDetail) {
-        return null;
-    }
-
-    @Override
-    public Product getProductById(int id) {
-        return null;
+    public Product getProductById(Integer id) {
+        return productRepository.getById(id);
     }
 
     @Override
     public Page<ProductDto> getProductByLabelOrDescriptionPage() {
+        List<Product> products = productRepository.findAll();
+        List<ProductDto> productDtoList = mapperProductToProductDto(products);
+
         return null;
     }
 
@@ -59,11 +55,6 @@ public class ProductServiceImpl implements ProductService{
         }
 
     return productDtoList;
-    }
-
-    @Override
-    public ProductDetail getProductDetail(String label) {
-        return null;
     }
 
 }

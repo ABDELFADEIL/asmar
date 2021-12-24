@@ -1,7 +1,6 @@
 package com.aston.ecommerce.asmar.service;
 
 
-import com.aston.ecommerce.asmar.dto.ProductDetail;
 import com.aston.ecommerce.asmar.dto.ProductDto;
 import com.aston.ecommerce.asmar.entity.Product;
 
@@ -12,15 +11,10 @@ import java.util.List;
 
 public interface ProductService {
 
-    Page<Product> getProducts(int page, int size, String productLabel);
-
-    Product addProduct(ProductDetail productDetail);
-
-    Product getProductById(int id);
 
     Page<ProductDto> getProductByLabelOrDescriptionPage();
 
-    ProductDetail getProductDetail(String label);
+    Product getProductById(Integer id);
 
     List<ProductDto> mapperProductToProductDto(List<Product> products);
 
