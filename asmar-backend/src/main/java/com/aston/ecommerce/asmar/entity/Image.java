@@ -34,5 +34,11 @@ public class Image extends AbstractEntity{
         this.product = product;
     }
 
+    public boolean isPrincipal() {
+        return principal;
+    }
 
+    public void setPrincipal(boolean principal) {
+        this.principal = principal;
+    }
 }

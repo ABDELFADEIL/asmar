@@ -16,7 +16,13 @@ public class Product extends AbstractEntity{
     private float price;
     @Column(name="description", nullable = false)
     private String description;
-    @Column(name="usage_")
+    @Column(name="history")
+    private String history;
+    @Column(name="origin")
+    private String origin;
+    @Column(name="composition")
+    private String composition;
+    @Column(name="usage")
     private String usage;
     @Column(name="size")
     private String size;
@@ -101,4 +107,16 @@ public class Product extends AbstractEntity{
     public void setSubCategory(SubCategory subCategory) {
         this.subCategory = subCategory;
     }
+
+    public String getHistory() { return history; }
+
+    public void setHistory(String history) { this.history = history;}
+
+    public String getOrigin() { return origin;}
+
+    public void setOrigin(String origin) { this.origin = origin; }
+
+    public String getComposition() { return composition; }
+
+    public void setComposition(String composition) { this.composition = composition;}
 }
