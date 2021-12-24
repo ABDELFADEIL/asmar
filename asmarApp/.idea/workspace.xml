@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="841f1a9e-fc95-4664-bdb7-702b59ced5dd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../asmaradmin/.idea/sonarIssues.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../asmaradmin/.idea/sonarIssues.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../asmarweb/.idea/sonarIssues.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../asmarweb/.idea/sonarIssues.xml" afterDir="false" />
+    <list default="true" id="3b36388c-ecc1-4324-bbdb-b329deac93fa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/screens/categories/categories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/home/home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/product/product.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/profile/profile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/search/search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/shoppingCart/shopping_cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,10 +21,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="21pA7tYRvp0lHX2wgecmcBjQYTD" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="22kOd2uRpD2MbGXSDZm9VzxxsD8" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -26,22 +32,40 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../asmaradmin" />
-    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\abdal\apps\asmarApp" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="841f1a9e-fc95-4664-bdb7-702b59ced5dd" name="Changes" comment="" />
-      <created>1638627490809</created>
+      <changelist id="3b36388c-ecc1-4324-bbdb-b329deac93fa" name="Changes" comment="" />
+      <created>1640378201861</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1638627490809</updated>
-      <workItem from="1638627492252" duration="2412000" />
+      <updated>1640378201861</updated>
+      <workItem from="1640378203184" duration="2649000" />
+      <workItem from="1640381167859" duration="1045000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

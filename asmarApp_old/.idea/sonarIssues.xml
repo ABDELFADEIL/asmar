@@ -358,47 +358,47 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../asmarApp/App.js">
+        <entry key="$PROJECT_DIR$/App.js">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../asmarApp/containers/mainContainer.js">
+        <entry key="$PROJECT_DIR$/containers/mainContainer.js">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../asmarApp/infos.txt">
+        <entry key="$PROJECT_DIR$/infos.txt">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../asmarApp/package.json">
+        <entry key="$PROJECT_DIR$/package.json">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../asmarApp/screens/home/home.js">
+        <entry key="$PROJECT_DIR$/screens/home/home.js">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../asmarApp/screens/product/product.js">
+        <entry key="$PROJECT_DIR$/screens/product/product.js">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../asmarApp/screens/profile/profile.js">
+        <entry key="$PROJECT_DIR$/screens/profile/profile.js">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../asmarApp/screens/search/search.js">
+        <entry key="$PROJECT_DIR$/screens/search/search.js">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/../asmarApp/screens/shoppingCart/shopping_cart.js">
+        <entry key="$PROJECT_DIR$/screens/shoppingCart/shopping_cart.js">
           <value>
             <set />
           </value>
@@ -408,12 +408,12 @@
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/src/App.js">
+        <entry key="$PROJECT_DIR$/../asmarweb/src/App.js">
           <value>
             <set />
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/src/screens/search/search.js">
+        <entry key="$PROJECT_DIR$/../asmarweb/src/screens/search/search.js">
           <value>
             <set />
           </value>
