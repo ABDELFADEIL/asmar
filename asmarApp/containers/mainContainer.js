@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { StyleSheet, Text, View } from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Screens
@@ -11,8 +11,8 @@ import CategoriesScreen from "../screens/categories/categories";
 import ProfileScreen from "../screens/profile/profile";
 import SearchScreen from "../screens/search/search";
 import ShoppingCartScreen from "../screens/shoppingCart/shopping_cart";
-import {setStatusBarBackgroundColor} from "expo-status-bar";
-import {source} from "react-native/Libraries/DeprecatedPropTypes/DeprecatedImagePropType";
+import productDetailsScreen from "../screens/product/productDetails";
+
 
 // screen names
 const homeName = "Accueil";
@@ -20,15 +20,38 @@ const profileName = "Profile";
 const searchName = "Rechercher";
 const categoriesName = "Categories";
 const shppingCartName = "Panier";
+const productDetailsName = "Détails de produit";
 
 const Tab = createBottomTabNavigator();
-
+const CustomTabBarButton = ({children, onPress}) =>(
+    <TouchableOpacity
+    style={{
+        top: -35,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }}
+    onPress={onPress}>
+        <View
+        style={{
+            position: 'absolute',
+            top: -35,
+            width: 60,
+            height: 60,
+            backgroundColor: '#003B49',
+            borderRadius: 30,
+            borderWidth: 4,
+            borderColor: '#FFF',
+            justifyContent: 'center',
+            alignItems: 'center',
+        }}> {children}</View>
+    </TouchableOpacity>
+);
 export default function MainContainer() {
     return (
         <NavigationContainer>
             <Tab.Navigator
                 initialRouteName={homeName}
-                screenOptions={({route}) => ({
+                screenOptions={({navigation, route}) => ({
                     tabBarStyle: { padding: 10, height: 60, backgroundColor: '#003B49',
                         borderTopEndRadius: 20, borderTopStartRadius: 20, elevation: 0,
                     margin: 0, position: 'absolute', bottom: 0},
@@ -39,7 +62,7 @@ export default function MainContainer() {
                         let routeName = route.name;
 
                         if (routeName === homeName){
-                            iconName = focused ? 'home' : 'home'
+                            iconName = focused ? 'home' : 'home';
                         }else if (routeName === profileName){
                             iconName = focused ? 'person' : 'person'
                         }else if (routeName === searchName){
@@ -63,7 +86,31 @@ export default function MainContainer() {
                 }}>
                 <Tab.Screen name={categoriesName} component={CategoriesScreen} />
                 <Tab.Screen name={searchName} component={SearchScreen}/>
-                <Tab.Screen name={homeName} component={HomeScreen}/>
+                <Tab.Screen name={homeName} component={HomeScreen}
+                            options={{
+                                tabBarIcon: ({ focused }) => (
+
+                                        <View
+                                            style={{
+                                            position: 'absolute',
+                                            top: -35,
+                                            width: 60,
+                                            height: 60,
+                                            backgroundColor: '#003B49',
+                                            borderRadius: 30,
+                                            borderWidth: 4,
+                                            borderColor: '#FFF',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+
+                                        }}>
+                                            <Ionicons style={{
+                                                color: focused ? '#F7B14C' : '#F4D19E'
+                                            }} name={'home'} size={30} color={'#F4D19E'}/>
+                                        </View>
+
+                                )
+                            }}/>
                 <Tab.Screen name={shppingCartName} component={ShoppingCartScreen}/>
                 <Tab.Screen name={profileName} component={ProfileScreen}/>
             </Tab.Navigator>

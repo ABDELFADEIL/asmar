@@ -8,7 +8,7 @@
       <change afterPath="$PROJECT_DIR$/containers/mainContainer.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/screens/categories/categories.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/screens/home/home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/product/product.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/product/productDetails.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/screens/profile/profile.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/screens/search/search.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/screens/shoppingCart/shopping_cart.js" afterDir="false" />
@@ -50,7 +50,7 @@
       <option name="presentableId" value="Default" />
       <updated>1640378201861</updated>
       <workItem from="1640378203184" duration="2649000" />
-      <workItem from="1640381167859" duration="19409000" />
+      <workItem from="1640381167859" duration="30255000" />
     </task>
     <servers />
   </component>
