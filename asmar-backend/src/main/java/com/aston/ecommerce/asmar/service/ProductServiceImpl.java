@@ -5,7 +5,6 @@ import com.aston.ecommerce.asmar.dto.ProductDto;
 import com.aston.ecommerce.asmar.entity.Image;
 import com.aston.ecommerce.asmar.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,12 +14,8 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService{
 
 
-
+    @Autowired
     private ProductRepository productRepository;
-
-    public ProductServiceImpl(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
 
     @Override
     public Product getProductById(Integer id) {
@@ -28,12 +23,12 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Page<ProductDto> getProductByLabelOrDescriptionPage() {
-        List<Product> products = productRepository.findAll();
-        List<ProductDto> productDtoList = mapperProductToProductDto(products);
-
-        return null;
-    }
+    public List<Product> getProductByLabelOrDescription(String keyword) {
+              if (keyword != null) {
+                return productRepository.findProductsByLabelOrderByDescription(keyword);
+            }
+            return productRepository.findAll();
+        }
 
     @Override
     public List<ProductDto> mapperProductToProductDto(List<Product> products){
@@ -55,7 +50,7 @@ public class ProductServiceImpl implements ProductService{
             productDtoList.add(productDto);
         }
 
-    return productDtoList;
+        return productDtoList;
     }
 
 }

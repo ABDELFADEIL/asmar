@@ -22,7 +22,7 @@ public class Product extends AbstractEntity{
     private String origin;
     @Column(name="composition")
     private String composition;
-    @Column(name="usage")
+    @Column(name="usage_")
     private String usage;
     @Column(name="size")
     private String size;
@@ -58,14 +58,6 @@ public class Product extends AbstractEntity{
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getUsage() {
-        return usage;
-    }
-
-    public void setUsage(String usage) {
-        this.usage = usage;
     }
 
     public String getSize() {
@@ -119,4 +111,9 @@ public class Product extends AbstractEntity{
     public String getComposition() { return composition; }
 
     public void setComposition(String composition) { this.composition = composition;}
+
+    public String getUsage() {  return usage; }
+
+    public void setUsage(String usage) {  this.usage = usage;
+    }
 }
