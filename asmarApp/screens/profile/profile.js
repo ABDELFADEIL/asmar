@@ -1,5 +1,6 @@
 import * as React from "react";
 import { View, Text } from "react-native";
+import { ScreenContainer } from "react-native-screens";
 
 export default function ProfileScreen(navigation) {
     return(
