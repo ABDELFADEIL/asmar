@@ -14,6 +14,9 @@ public interface ProductService {
     Product getProductById(Integer id);
 
     List<ProductDto> mapperProductToProductDto(List<Product> products);
+
+    List<Product> getProductsBySbuCategoryId(Integer sub_category_id);
+
 }
 
 

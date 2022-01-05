@@ -53,4 +53,12 @@ public class ProductServiceImpl implements ProductService{
         return productDtoList;
     }
 
-}
+    @Override
+    public List<Product> getProductsBySbuCategoryId(Integer sub_category_id) {
+
+            return productRepository.getProductsBySubCategory(sub_category_id);
+        }
+
+    }
+
+

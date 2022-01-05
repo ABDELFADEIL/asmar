@@ -31,6 +31,19 @@ public class ProductController {
         this.productRepository = productRepository;
     }
 
+    /* get product list by sub-category */
+    @GetMapping("/list/{subCategoryId}")
+    @ApiOperation(value = "Return list of product by subcategory id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Return product list"),
+            @ApiResponse(code = 204, message = "No content"),
+            @ApiResponse(code = 404, message = "product list not found"),
+            @ApiResponse(code = 500, message = "Server error")})
+    public List<Product> getProductsBySubcategoryId(
+            @PathVariable(name = "subCategoryId") Integer sub_category_id){
+             return this.productService.getProductsBySbuCategoryId(sub_category_id);
+    }
+
     /* get product by id */
     @GetMapping("/{id}")
     @ApiOperation(value = "Return product detail by product id")
@@ -48,6 +61,7 @@ public class ProductController {
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
+
     /*get products by label or description*/
     @RequestMapping
     @ApiOperation(value = "Get List of products by label or description")
@@ -56,7 +70,7 @@ public class ProductController {
             @ApiResponse(code = 204, message = "No content"),
             @ApiResponse(code = 404, message = "product not found"),
             @ApiResponse(code = 500, message = "Server error")})
-    public ResponseEntity<List<ProductDto>> viewHomePage(@Param("keyword") String keyword) {
+    public ResponseEntity<List<ProductDto>> Search(@Param("keyword") String keyword) {
         List<Product> listProducts = productService.getProductByLabelOrDescription(keyword);
         if (listProducts.isEmpty()) {
             return ResponseEntity.noContent().build();
