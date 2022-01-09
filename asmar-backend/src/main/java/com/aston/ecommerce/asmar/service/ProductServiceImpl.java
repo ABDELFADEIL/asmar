@@ -5,6 +5,8 @@ import com.aston.ecommerce.asmar.dto.ProductDto;
 import com.aston.ecommerce.asmar.entity.Image;
 import com.aston.ecommerce.asmar.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,6 +18,11 @@ public class ProductServiceImpl implements ProductService{
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Override
+    public Page<Product> getProductList(Pageable pageable) {
+        return productRepository.findAll(pageable);
+    }
 
     @Override
     public Product getProductById(Integer id) {
@@ -54,11 +61,12 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<Product> getProductsBySbuCategoryId(Integer sub_category_id) {
+    public List<Product> getProductsBySbuCategory(Integer subCategoryId){
 
-            return productRepository.getProductsBySubCategory(sub_category_id);
+        return productRepository.getProductBySubCategory(subCategoryId);
         }
 
-    }
+
+}
 
 

@@ -10,9 +10,11 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-    @Query("SELECT p FROM Product p WHERE CONCAT(p.label,'', p.description) LIKE %?1%")
+    @Query("SELECT DISTINCT(p) FROM Product p WHERE CONCAT(p.label,'', p.description) LIKE %:keyword%")
     List<Product> findProductsByLabelOrderByDescription(String keyword);
 
+
     @Query("SELECT p from Product p WHERE p.subCategory.id = ?1")
-    List<Product> getProductsBySubCategory(Integer sub_category_id);
+    List<Product> getProductBySubCategory(Integer sub_category_id);
+
 }

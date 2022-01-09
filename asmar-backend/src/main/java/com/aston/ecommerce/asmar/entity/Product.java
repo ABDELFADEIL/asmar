@@ -33,7 +33,7 @@ public class Product extends AbstractEntity{
     @OneToMany(mappedBy = "product")
     private List<Image> urlImages;
     @ManyToOne
-    @JoinColumn(name="subCategoryId", nullable = false)
+    @JoinColumn(name="sub_category_id", nullable = false)
     private SubCategory subCategory;
 
     public String getLabel() {

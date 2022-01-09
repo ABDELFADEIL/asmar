@@ -9,6 +9,10 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +35,20 @@ public class ProductController {
         this.productRepository = productRepository;
     }
 
+    /* get list of product*/
+    @GetMapping("/list")
+    public ResponseEntity<Page<Product>> getProductlist(
+            @RequestParam(value = "offset", defaultValue = "0") Integer page,
+            @RequestParam(value = "limit", defaultValue = "10") Integer size) {
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by("label"));
+
+        return ResponseEntity.ok(productService.getProductList(pageable));
+
+    }
+
     /* get product list by sub-category */
-    @GetMapping("/list/{subCategoryId}")
+    @GetMapping("/subCategory/{subCategory_id}")
     @ApiOperation(value = "Return list of product by subcategory id")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Return product list"),
@@ -40,8 +56,8 @@ public class ProductController {
             @ApiResponse(code = 404, message = "product list not found"),
             @ApiResponse(code = 500, message = "Server error")})
     public List<Product> getProductsBySubcategoryId(
-            @PathVariable(name = "subCategoryId") Integer sub_category_id){
-             return this.productService.getProductsBySbuCategoryId(sub_category_id);
+            @PathVariable(name = "subCategory_id") Integer subCategoryId){
+             return this.productService.getProductsBySbuCategory(subCategoryId);
     }
 
     /* get product by id */
@@ -63,7 +79,7 @@ public class ProductController {
 
 
     /*get products by label or description*/
-    @RequestMapping
+    @GetMapping
     @ApiOperation(value = "Get List of products by label or description")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Return the list of products by label or description"),
