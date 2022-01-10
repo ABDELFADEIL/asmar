@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
 
-    @Query("SELECT s from SubCategory s WHERE s.category.id = ?1")
-    List<SubCategory> getSubCategoriesByCategoryId(Integer categoryId);
+    @Query("SELECT s from SubCategory s WHERE s.category = ?1 ORDER BY s.label")
+    List<SubCategory> getSubCategoriesByCategoryId(Category category);
 }

@@ -3,6 +3,7 @@ package com.aston.ecommerce.asmar.controller;
 import com.aston.ecommerce.asmar.dao.ProductRepository;
 import com.aston.ecommerce.asmar.dto.ProductDto;
 import com.aston.ecommerce.asmar.entity.Product;
+import com.aston.ecommerce.asmar.entity.SubCategory;
 import com.aston.ecommerce.asmar.service.ProductService;
 
 import io.swagger.annotations.ApiOperation;
@@ -48,7 +49,7 @@ public class ProductController {
     }
 
     /* get product list by sub-category */
-    @GetMapping("/subCategory/{subCategory_id}")
+    @GetMapping("/subCategory/{subCategoryId}")
     @ApiOperation(value = "Return list of product by subcategory id")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Return product list"),
@@ -56,8 +57,8 @@ public class ProductController {
             @ApiResponse(code = 404, message = "product list not found"),
             @ApiResponse(code = 500, message = "Server error")})
     public List<Product> getProductsBySubcategoryId(
-            @PathVariable(name = "subCategory_id") Integer subCategoryId){
-             return this.productService.getProductsBySbuCategory(subCategoryId);
+            @PathVariable(name = "subCategoryId") SubCategory subCategory){
+             return this.productService.getProductsBySbuCategory(subCategory);
     }
 
     /* get product by id */

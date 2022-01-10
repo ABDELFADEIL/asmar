@@ -4,6 +4,7 @@ import com.aston.ecommerce.asmar.dao.ProductRepository;
 import com.aston.ecommerce.asmar.dto.ProductDto;
 import com.aston.ecommerce.asmar.entity.Image;
 import com.aston.ecommerce.asmar.entity.Product;
+import com.aston.ecommerce.asmar.entity.SubCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -61,9 +62,9 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<Product> getProductsBySbuCategory(Integer subCategoryId){
+    public List<Product> getProductsBySbuCategory(SubCategory subCategory){
 
-        return productRepository.getProductBySubCategory(subCategoryId);
+        return productRepository.getProductBySubCategory(subCategory);
         }
 
 

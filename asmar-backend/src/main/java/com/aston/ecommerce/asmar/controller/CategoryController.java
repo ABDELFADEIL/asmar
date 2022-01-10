@@ -50,7 +50,7 @@ public class CategoryController {
             @ApiResponse(code = 404, message = "subcategories list not found"),
             @ApiResponse(code = 500, message = "Server error")})
     public List<SubCategory> getSubCategoriesByCategoryId(
-            @PathVariable(name = "categoryId") Integer categoryId){
-        return this.categoryService.getSubCategoriesByCategoryId(categoryId);
+            @PathVariable(name = "categoryId") Category category){
+        return this.categoryService.getSubCategoriesByCategoryId(category);
     }
 }
