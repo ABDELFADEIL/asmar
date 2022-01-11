@@ -1,9 +1,8 @@
 package com.aston.ecommerce.asmar.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -16,7 +15,8 @@ public class Category extends AbstractEntity{
     @NotNull
     @NotEmpty
     private String label;
-    @OneToMany(mappedBy = "category")
+    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "category")
     private List<SubCategory> subCategories;
 
     public String getLabel() {

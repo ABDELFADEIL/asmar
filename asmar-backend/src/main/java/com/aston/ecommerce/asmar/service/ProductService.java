@@ -1,5 +1,6 @@
 package com.aston.ecommerce.asmar.service;
 
+import com.aston.ecommerce.asmar.dto.ProductDetailDto;
 import com.aston.ecommerce.asmar.dto.ProductDto;
 import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.entity.SubCategory;
@@ -17,6 +18,8 @@ public interface ProductService {
     Product getProductById(Integer id);
 
     List<ProductDto> mapperProductToProductDto(List<Product> products);
+
+    ProductDetailDto mapperProductToProductDetailDto(Product product);
 
     List<Product> getProductsBySbuCategory(SubCategory subCategory);
 

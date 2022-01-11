@@ -17,9 +17,9 @@ public class CategoryServiceImpl implements CategoryService{
     private CategoryRepository categoryRepository;
 
     @Override
-    public List<SubCategory> getSubCategoriesByCategoryId(Category category) {
+    public List<SubCategory> getSubCategoriesByCategory(Category category) {
 
-        return categoryRepository.getSubCategoriesByCategoryId(category);
+        return categoryRepository.findSubCategoriesByCategory(category);
     }
 
     @Override

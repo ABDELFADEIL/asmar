@@ -15,6 +15,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<Product> findProductsByLabelOrderByDescription(String keyword);
 
     @Query( value = "SELECT p FROM Product p WHERE p.subCategory =?1 ORDER BY p.label")
-    List<Product> getProductBySubCategory(SubCategory subCategory);
+    List<Product> findProductsBySubCategory(SubCategory subCategory);
     }
 

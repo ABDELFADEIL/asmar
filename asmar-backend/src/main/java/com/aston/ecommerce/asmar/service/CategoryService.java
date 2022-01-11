@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface CategoryService {
 
-    List<SubCategory> getSubCategoriesByCategoryId(Category category);
+    List<SubCategory> getSubCategoriesByCategory(Category category);
 
     Page<Category> getCategoryList(Pageable pageable);
 }

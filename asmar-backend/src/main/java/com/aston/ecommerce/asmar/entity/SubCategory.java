@@ -1,5 +1,7 @@
 package com.aston.ecommerce.asmar.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,8 +11,9 @@ public class SubCategory extends AbstractEntity{
 
     @Column(name="label", nullable = false)
     private String label;
-    @OneToMany(mappedBy = "subCategory")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "subCategory")
     private List<Product> products;
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="category_id", nullable = false)
     private Category category;

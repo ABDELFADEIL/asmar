@@ -1,6 +1,7 @@
 package com.aston.ecommerce.asmar.controller;
 
 import com.aston.ecommerce.asmar.dao.ProductRepository;
+import com.aston.ecommerce.asmar.dto.ProductDetailDto;
 import com.aston.ecommerce.asmar.dto.ProductDto;
 import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.entity.SubCategory;
@@ -15,7 +16,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,21 +63,21 @@ public class ProductController {
 
     /* get product by id */
     @GetMapping("/{id}")
-    @ApiOperation(value = "Return product detail by product id")
+    @ApiOperation(value = "Return product by product id")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Return product detail"),
+            @ApiResponse(code = 200, message = "Return product by id"),
             @ApiResponse(code = 204, message = "No content"),
             @ApiResponse(code = 404, message = "product not found"),
             @ApiResponse(code = 500, message = "Server error")})
-    public ResponseEntity<Product> getProductById(
+    public ResponseEntity<ProductDetailDto> getProductById(
             @PathVariable(name = "id") Integer id) {
         Product product = this.productService.getProductById(id);
         if (product == null) {
             return ResponseEntity.noContent().build();
         }
-        return new ResponseEntity<>(product, HttpStatus.OK);
+      /*  return new ResponseEntity<>(product, HttpStatus.OK);*/
+        return ResponseEntity.ok(productService.mapperProductToProductDetailDto(product));
     }
-
 
     /*get products by label or description*/
     @GetMapping

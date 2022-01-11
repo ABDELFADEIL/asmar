@@ -1,6 +1,7 @@
 package com.aston.ecommerce.asmar.service;
 
 import com.aston.ecommerce.asmar.dao.ProductRepository;
+import com.aston.ecommerce.asmar.dto.ProductDetailDto;
 import com.aston.ecommerce.asmar.dto.ProductDto;
 import com.aston.ecommerce.asmar.entity.Image;
 import com.aston.ecommerce.asmar.entity.Product;
@@ -62,9 +63,29 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
+    public ProductDetailDto mapperProductToProductDetailDto(Product product){
+
+        ProductDetailDto productDetail = new ProductDetailDto();
+            productDetail.setLabel(product.getLabel());
+            productDetail.setPrice(product.getPrice());
+            productDetail.setDescription(product.getDescription());
+            productDetail.setHistory(product.getHistory());
+            productDetail.setOrigin(product.getOrigin());
+            productDetail.setComposition(product.getComposition());
+            productDetail.setUsage(product.getUsage());
+            productDetail.setSize(product.getSize());
+            productDetail.setDisponible(product.isDisponible());
+            productDetail.setQuantity(product.getQuantity());
+            productDetail.setUrlImages((product.getUrlImages()));
+
+        return productDetail;
+    }
+
+
+    @Override
     public List<Product> getProductsBySbuCategory(SubCategory subCategory){
 
-        return productRepository.getProductBySubCategory(subCategory);
+        return productRepository.findProductsBySubCategory(subCategory);
         }
 
 
