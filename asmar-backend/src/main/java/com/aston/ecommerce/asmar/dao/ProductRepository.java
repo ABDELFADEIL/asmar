@@ -1,23 +1,19 @@
 package com.aston.ecommerce.asmar.dao;
 
 import com.aston.ecommerce.asmar.entity.Product;
-import com.aston.ecommerce.asmar.entity.User;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
+    @Query("SELECT DISTINCT(p) FROM Product p WHERE CONCAT(p.label,'', p.description) LIKE %:keyword%")
+    List<Product> findProductsByLabelOrderByDescription(String keyword);
 
-    Page<Product> findAllByDescriptionContainsOrderByLabel(String description, String label, Pageable pageable);
-    //@Query(value = "SELECT * FROM product p WHERE p.label = ?1 OR "
-            // retourne une liste de products
- /*   Page<Product>*/
+    @Query( value = "SELECT p FROM Product p WHERE p.category =:categoryId ORDER BY p.label")
+    List<Product> getProductsByCategoryId(Long categoryId);
+    }
 
-
-}

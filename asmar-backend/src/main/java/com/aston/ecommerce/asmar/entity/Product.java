@@ -1,5 +1,7 @@
 package com.aston.ecommerce.asmar.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -29,7 +31,8 @@ public class Product extends AbstractEntity{
     private long quantity;
     @OneToMany(mappedBy = "product")
     private List<Image> urlImages;
-    @ManyToOne
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="categoryId", nullable = false)
     private Category category;
 
@@ -79,7 +82,7 @@ public class Product extends AbstractEntity{
         return disponible;
     }
 
-    public void setDisponible(boolean disponible) {
+    public void setDisponible() {
         this.disponible = disponible;
     }
 
