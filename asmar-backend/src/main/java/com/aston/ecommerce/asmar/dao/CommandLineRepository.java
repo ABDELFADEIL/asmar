@@ -4,5 +4,5 @@ import com.aston.ecommerce.asmar.entity.CommandLine;
 import com.aston.ecommerce.asmar.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CommandLineRepository extends JpaRepository<CommandLine, Integer> {
+public interface CommandLineRepository extends JpaRepository<CommandLine, Long> {
 }

@@ -17,7 +17,7 @@ public class Category extends AbstractEntity{
     @NotEmpty
     private String label;
     @OneToMany(mappedBy = "category")
-    private List<SubCategory> subCategories;
+    private List<Product> products;
 
     public String getLabel() {
         return label;
@@ -27,11 +27,11 @@ public class Category extends AbstractEntity{
         this.label = label;
     }
 
-    public List<SubCategory> getSubCategories() {
-        return subCategories;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setSubCategories(List<SubCategory> subCategories) {
-        this.subCategories = subCategories;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

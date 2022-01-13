@@ -1,9 +1,6 @@
 package com.aston.ecommerce.asmar.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import java.awt.*;
 import java.util.List;
 
 @Entity
@@ -22,8 +19,8 @@ public class Product extends AbstractEntity{
     private String origin;
     @Column(name="composition")
     private String composition;
-    @Column(name="usage")
-    private String usage;
+    @Column(name="usage_")
+    private String usage_;
     @Column(name="size")
     private String size;
     @Column(name="disponible", nullable = false)
@@ -33,8 +30,10 @@ public class Product extends AbstractEntity{
     @OneToMany(mappedBy = "product")
     private List<Image> urlImages;
     @ManyToOne
-    @JoinColumn(name="subCategoryId", nullable = false)
-    private SubCategory subCategory;
+    @JoinColumn(name="categoryId", nullable = false)
+    private Category category;
+
+
 
     public String getLabel() {
         return label;
@@ -60,12 +59,12 @@ public class Product extends AbstractEntity{
         this.description = description;
     }
 
-    public String getUsage() {
-        return usage;
+    public String getUsage_() {
+        return usage_;
     }
 
-    public void setUsage(String usage) {
-        this.usage = usage;
+    public void setUsage_(String usage) {
+        this.usage_ = usage;
     }
 
     public String getSize() {
@@ -100,14 +99,6 @@ public class Product extends AbstractEntity{
         this.urlImages = urlImages;
     }
 
-    public SubCategory getSubCategory() {
-        return subCategory;
-    }
-
-    public void setSubCategory(SubCategory subCategory) {
-        this.subCategory = subCategory;
-    }
-
     public String getHistory() { return history; }
 
     public void setHistory(String history) { this.history = history;}
@@ -119,4 +110,12 @@ public class Product extends AbstractEntity{
     public String getComposition() { return composition; }
 
     public void setComposition(String composition) { this.composition = composition;}
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }
