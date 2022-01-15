@@ -3,7 +3,302 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="/a.dummy">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="/fragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/controller/CategoryController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/controller/ProductController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dao/AddressRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dao/CategoryRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dao/CommandLineRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dao/ImageRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dao/OrderRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dao/PaymentRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dao/ProductRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dao/RoleRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dao/ShippingInfoRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dao/UserRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/Address.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/AddressDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/CategoryDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/CommandLine.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/CommandLineDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/ImageDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/Order.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/OrderDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/PaymentDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/ProductDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/ProductDto.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/RoleDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/ShippingDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/ShippingInfoDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/UserDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/mapper/AddressMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/mapper/CategoryMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/mapper/CommandLineMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/mapper/ImageMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/mapper/OrderMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/mapper/PaymentMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/mapper/ProductMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/mapper/RoleDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/mapper/RoleMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/mapper/ShippingInfoMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/mapper/UserMapper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/entity/AbstractEntity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/entity/Category.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/entity/Product.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/service/CategoryService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/service/CategoryServiceImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/service/ProductService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/service/ProductServiceImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/target/classes/com/aston/ecommerce/asmar/dto/mapper/AddressMapper.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/target/classes/com/aston/ecommerce/asmar/dto/mapper/ProductMapper.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/target/classes/com/aston/ecommerce/asmar/dto/mapper/ProductMapperImpl.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/target/classes/com/aston/ecommerce/asmar/dto/mapper/UserMapper.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/target/classes/com/aston/ecommerce/asmar/dto/mapper/UserMapperImpl.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/target/generated-sources/annotations/com/aston/ecommerce/asmar/dto/mapper/ProductMapperImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/target/generated-sources/annotations/com/aston/ecommerce/asmar/dto/mapper/UserMapperImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/App.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/assets/asmar-logo.svg">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/babel.config.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/compontents/header.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/compontents/logo.js">
           <value>
             <set />
           </value>

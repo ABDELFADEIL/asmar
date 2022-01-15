@@ -5,7 +5,7 @@ import { ScreenContainer } from "react-native-screens";
 export default function ProductScreen() {
     return(
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>
-            <Text style={{ fontSize: 26, fontWeight: "bold"}}>Product Screen</Text>
+            <Text style={{ fontSize: 26, fontWeight: "bold"}}>Product Screen (Cheyu)</Text>
         </View>
     );
 
