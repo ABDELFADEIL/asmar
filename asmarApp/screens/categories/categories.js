@@ -1,7 +1,7 @@
 import * as React from "react";
 import { View, Text, Button } from "react-native";
 
-const productDetailsName = "Détails de produit";
+const productDetailsName = "Détails";
 
 export default function CategoriesScreen({navigation}) {
     return(

@@ -6,7 +6,7 @@ import SignUpScreen from "../autentication/signUp";
 import {ScreenContainer} from "react-native-screens";
 
 
-  const productDetailsName = "Détails de produit";
+  const productDetailsName = "Détails";
   const LoginName = "Connexion";
 
 export default function HomeScreen({navigation}) {

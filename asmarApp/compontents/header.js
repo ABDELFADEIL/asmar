@@ -8,8 +8,8 @@ export default function Header({ title, navigation }) {
     return (
 
             <View style={styles.header}>
-                <View style={{ backgroundColor: "darkorange", marginRight: 30 }}>
-                    <Image source={require('../assets/asmar-logo.svg')} style={styles.headerImage} />
+                <View style={{ backgroundColor: "white", marginRight: 30 }}>
+                    <Image source={require('../assets/asmar_logo.png')} style={styles.headerImage} />
                 </View>
                 <View style={{ }}>
                     <Text style={styles.headerText}>{title}</Text>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     },
     headerImage: {
         width: 40,
-        height: 25,
+        height: 30,
         marginHorizontal: 10
     },
 });

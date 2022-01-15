@@ -25,7 +25,7 @@ import ProductScreen from '../screens/product/productDetails';
 const homeName = "Asmar Boutique";
 const profileName = "Profile";
 const searchName = "Rechercher";
-const categoriesName = "Categories";
+const categoriesName = "Catégories";
 const shoppingCartName = "Panier";
 const productDetailsName = "Détails de produit";
 const LoginName = "Connexion";
@@ -43,7 +43,7 @@ const ShoppingCartStack = createStackNavigator();
 
 const HomeStackScreen = () => (
     <HomeStack.Navigator
-        initialRouteName={homeName}
+        initialRouteName={'Asmar'}
         screenOptions={(route, navigation, title)=> ({
         headerStyle: { backgroundColor: '#003B49'},
         headerTitleStyle: { color: '#F4D19E' },
@@ -54,9 +54,9 @@ const HomeStackScreen = () => (
 
 
     })}>
-        <HomeStack.Screen name={homeName} component={HomeScreen}
+        <HomeStack.Screen name={'home'} component={HomeScreen}
                           options={{ title: <Header title={homeName} /> }}/>
-        <HomeStack.Screen name={productDetailsName} component={ProductScreen}
+        <HomeStack.Screen name={'Détails'} component={ProductScreen}
                           />
     </HomeStack.Navigator>
 );
@@ -67,9 +67,9 @@ const CategoriesStackScreen = () => (
         //headerTitleAlign: 'center',
         headerShown: true,
     })}>
-        <CategoriesStack.Screen name={categoriesName} component={CategoriesScreen}
+        <CategoriesStack.Screen name={'categories'} component={CategoriesScreen}
                                 options={{ title: <Header title={categoriesName} /> }}/>
-        <CategoriesStack.Screen name={productDetailsName} component={productDetailsScreen}/>
+        <CategoriesStack.Screen name={'Détails'} component={productDetailsScreen}/>
     </CategoriesStack.Navigator>
 );
 const SearchStackScreen = () => (
@@ -79,7 +79,7 @@ const SearchStackScreen = () => (
         //headerTitleAlign: 'center',
         headerShown: true,
     })}>
-        <SearchStack.Screen name={searchName} component={SearchScreen}
+        <SearchStack.Screen name={'search'} component={SearchScreen}
                             options={{ title: <Header title={searchName} /> }}/>
     </SearchStack.Navigator>
 );
@@ -90,7 +90,7 @@ const ProfileStackScreen = () => (
         //headerTitleAlign: 'center',
         headerShown: true,
     })}>
-        <ProfileStack.Screen name={profileName} component={ProfileScreen}
+        <ProfileStack.Screen name={'profile'} component={ProfileScreen}
                              options={{ title: <Header title={profileName} /> }}/>
     </ProfileStack.Navigator>
 );
@@ -101,7 +101,7 @@ const ShoppingCartStackScreen = () => (
         //headerTitleAlign: 'center',
         headerShown: true,
     })}>
-        <ShoppingCartStack.Screen name={shoppingCartName} component={ShoppingCartScreen}
+        <ShoppingCartStack.Screen name={'shoppingCart'} component={ShoppingCartScreen}
                                   options={{ title: <Header title={shoppingCartName} /> }}/>
     </ShoppingCartStack.Navigator>
 );
@@ -139,7 +139,7 @@ export default function MainContainer() {
                         paddingBottom: 5, paddingTop: 5, fontSize: 10
                     },
                     headerShown: false,
-                    headerStyle: {backgroundColor: '#FFF'},
+                    //headerStyle: {backgroundColor: '#FFF'},
                     tabBarIcon: ({focused, color, size}) => {
                         let iconName;
                         let routeName = route.name;

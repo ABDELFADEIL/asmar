@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b36388c-ecc1-4324-bbdb-b329deac93fa" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/asmar-logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compontents/header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/containers/mainContainer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/autentication/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/autentication/signUp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/categories/categories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/home/home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/product/productDetails.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/profile/profile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/search/search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screens/shoppingCart/shopping_cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-    </list>
+    <list default="true" id="3b36388c-ecc1-4324-bbdb-b329deac93fa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +53,7 @@
       <workItem from="1640728956664" duration="6558000" />
       <workItem from="1640880916097" duration="931000" />
       <workItem from="1642103692019" duration="594000" />
-      <workItem from="1642156423952" duration="42577000" />
+      <workItem from="1642156423952" duration="42734000" />
     </task>
     <servers />
   </component>
