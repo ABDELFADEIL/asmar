@@ -12,6 +12,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface AddressMapper {
     public static final AddressMapper INSTANCE = Mappers.getMapper(AddressMapper.class);
+
     AddressDTO toAddressDto(Address address);
     List<ProductDTO> toAddressDtos(List<Address> addresses);
 
