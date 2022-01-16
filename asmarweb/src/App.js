@@ -1,14 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import Navbar from "./compontents/Navbar";
+import React, {Fragment} from "react";
+import { Router, Switch, Route, Routes, BrowserRouter} from "react-router-dom";
+
+import HomeScreen from "./screens/home/home";
+import ProfileScreen from "./screens/profile/profile";
+import ProductScreen from "./screens/product/product";
+import SearchScreen from "./screens/search/search";
+import LoginScreen from "./screens/autentication/login";
+import SignUpScreen from "./screens/autentication/signUp";
+import CategoriesScreen from "./screens/categories/categories";
+import ShoppingCartScreen from "./screens/shoppingCart/shopping_cart";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h3>Asmar App</h3>
-      </header>
-    </div>
-  );
+    return (
+        <Fragment>
+            <BrowserRouter>
+                <div className="App">
+                    <Navbar/>
+                    <Routes>
+                        <Route exact path="/" element={<HomeScreen/>} />
+                        <Route path="/categories" element={<CategoriesScreen/>} />
+                        <Route path="/search" element={<SearchScreen/>} />
+                        <Route path="/product-details" element={<ProductScreen/>} />
+                        <Route path="/profile" element={<ProfileScreen/>} />
+                        <Route path="/login" element={<LoginScreen/>} />
+                        <Route path="/signup" element={<SignUpScreen/>} />
+                        <Route path="/shopping-cart" element={<ShoppingCartScreen/>} />
+                    </Routes>
+                </div>
+            </BrowserRouter>
+        </Fragment>
+    );
 }
 
 export default App;

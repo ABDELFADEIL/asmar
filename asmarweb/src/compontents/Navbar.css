@@ -1,0 +1,28 @@
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 6vh;
+    color: #F4D19E;
+    background: #003B49;
+}
+li, h3{
+    color: #F4D19E !important;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+.nav-links {
+    /*width: 80%;*/
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    }
+.nav-links li{
+    margin-right: 10px;
+}
+.logo {
+}
