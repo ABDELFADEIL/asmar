@@ -33,13 +33,7 @@ public class ProductServiceImpl implements ProductService{
         return productRepository.getById(id);
     }
 
-    @Override
-    public Page<ProductDTO> getProductByLabelOrDescriptionPage() {
-        List<Product> products = productRepository.findAll();
-        List<ProductDTO> productDtoList = productMapper.toProductDtos(products);
 
-        return null;
-    }
 
     public List<Product> getProductByLabelOrDescription(String keyword) {
               if (keyword != null) {
@@ -64,30 +58,11 @@ public class ProductServiceImpl implements ProductService{
                 }
             }
 
-            productDto.setImage(image);
+            productDto.setUrlImages(image);
             productDtoList.add(productDto);
         }
 
         return productDtoList;
-    }
-
-    @Override
-    public ProductDetailDto mapperProductToProductDetailDto(Product product){
-
-        ProductDetailDto productDetail = new ProductDetailDto();
-            productDetail.setLabel(product.getLabel());
-            productDetail.setPrice(product.getPrice());
-            productDetail.setDescription(product.getDescription());
-            productDetail.setHistory(product.getHistory());
-            productDetail.setOrigin(product.getOrigin());
-            productDetail.setComposition(product.getComposition());
-            productDetail.setUsage(product.getUsage_());
-            productDetail.setSize(product.getSize());
-            productDetail.setDisponible(product.isDisponible());
-            productDetail.setQuantity(product.getQuantity());
-            productDetail.setUrlImages((product.getUrlImages()));
-
-        return productDetail;
     }
 
 

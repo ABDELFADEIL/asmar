@@ -42,7 +42,7 @@ public class ProductController {
     }
 
 
-    @GetMapping("/product-by-id")
+ /*   @GetMapping("/product-by-id")
 
     public Product getProduct(
                   @RequestParam(name = "productId" , required = true) Long id
@@ -53,7 +53,7 @@ public class ProductController {
             return null;//ResponseEntity.noContent().build();
         }
         return product;
-    }
+    }*/
     /* get list of product*/
     @GetMapping("/list")
     public ResponseEntity<Page<Product>> getProducts(
@@ -74,7 +74,7 @@ public class ProductController {
             @ApiResponse(code = 204, message = "No content"),
             @ApiResponse(code = 404, message = "product list not found"),
             @ApiResponse(code = 500, message = "Server error")})
-    public List<Product> getProductsBySubcategoryId(
+    public List<Product> getProductsByCategoryId(
             @PathVariable(name = "categoryId") Long categoryId){
              return this.productService.getProductsByCategoryId(categoryId);
     }
