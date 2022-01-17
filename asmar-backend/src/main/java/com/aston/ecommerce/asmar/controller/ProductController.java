@@ -5,6 +5,7 @@ import com.aston.ecommerce.asmar.dto.ProductDTO;
 import com.aston.ecommerce.asmar.entity.Category;
 import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.service.ProductService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.aston.ecommerce.asmar.dao.ProductRepository;
@@ -42,29 +43,7 @@ public class ProductController {
     }
 
 
- /*   @GetMapping("/product-by-id")
 
-    public Product getProduct(
-                  @RequestParam(name = "productId" , required = true) Long id
-                  ) {
-
-        Product product = this.productService.getProductById(id);
-        if (product == null) {
-            return null;//ResponseEntity.noContent().build();
-        }
-        return product;
-    }*/
-    /* get list of product*/
-    @GetMapping("/list")
-    public ResponseEntity<Page<Product>> getProducts(
-            @RequestParam(value = "offset", defaultValue = "0") Integer page,
-            @RequestParam(value = "limit", defaultValue = "10") Integer size) {
-
-        Pageable pageable = PageRequest.of(page, size, Sort.by("label"));
-
-        return ResponseEntity.ok(productService.getProductList(pageable));
-
-    }
 
     /* get product list by category */
     @GetMapping("/category/{categoryId}")
@@ -74,7 +53,7 @@ public class ProductController {
             @ApiResponse(code = 204, message = "No content"),
             @ApiResponse(code = 404, message = "product list not found"),
             @ApiResponse(code = 500, message = "Server error")})
-    public List<Product> getProductsByCategoryId(
+    public List<ProductDTO> getProductsByCategoryId(
             @PathVariable(name = "categoryId") Long categoryId){
              return this.productService.getProductsByCategoryId(categoryId);
     }
@@ -89,12 +68,12 @@ public class ProductController {
             @ApiResponse(code = 500, message = "Server error")})
     public ResponseEntity<ProductDetailDto> getProductById(
             @PathVariable(name = "id") Long id) {
-        Product product = this.productService.getProductById(id);
+        ProductDetailDto product = this.productService.getProductById(id);
         if (product == null) {
             return ResponseEntity.noContent().build();
         }
       /*  return new ResponseEntity<>(product, HttpStatus.OK);*/
-        return ResponseEntity.ok(productService.mapperProductToProductDetailDto(product));
+        return ResponseEntity.ok(product);
     }
 
     /*get products by label or description*/
@@ -106,11 +85,11 @@ public class ProductController {
             @ApiResponse(code = 404, message = "product not found"),
             @ApiResponse(code = 500, message = "Server error")})
     public ResponseEntity<List<ProductDTO>> Search(@Param("keyword") String keyword) {
-        List<Product> listProducts = productService.getProductByLabelOrDescription(keyword);
+        List<ProductDTO> listProducts = productService.getProductByLabelOrDescription(keyword);
         if (listProducts.isEmpty()) {
-            return ResponseEntity.noContent().build();
+            return new ResponseEntity<>(listProducts, HttpStatus.NOT_FOUND);
 
         }
-        return ResponseEntity.ok(productService.mapperProductToProductDto(listProducts));
+        return ResponseEntity.ok(listProducts);
     }
 }

@@ -38,11 +38,11 @@ public class ProductDTO {
         this.description = description;
     }
 
-    public List<Image> getUrlImages() {
+    public List<ImageDTO> getUrlImages() {
         return urlImages;
     }
 
-    public void setUrlImages(List<Image> urlImages) {
+    public void setUrlImages(List<ImageDTO> urlImages) {
         this.urlImages = urlImages;
     }
 

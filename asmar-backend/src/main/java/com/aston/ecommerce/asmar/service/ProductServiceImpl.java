@@ -23,56 +23,33 @@ public class ProductServiceImpl implements ProductService{
     @Autowired
     private ProductRepository productRepository;
 
-    @Override
-    public Page<Product> getProductList(Pageable pageable) {
-        return productRepository.findAll(pageable);
-    }
+
 
     @Override
-    public Product getProductById(Long id) {
-        return productRepository.getById(id);
+    public ProductDetailDto getProductById(Long id) {
+         Product product = productRepository.getById(id);
+        return productMapper.toProductDetailDto(product);
     }
 
 
 
-    public List<Product> getProductByLabelOrDescription(String keyword) {
+    public List<ProductDTO> getProductByLabelOrDescription(String keyword) {
+        List<Product> products;
               if (keyword != null) {
-                return productRepository.findProductsByLabelOrderByDescription(keyword);
+                  products =  productRepository.findProductsByLabelOrderByDescription(keyword);
+                  return productMapper.toProductDtos(products);
             }
-            return productRepository.findAll();
+        products =  productRepository.findAll();
+        return productMapper.toProductDtos(products);
         }
 
-    @Override
-    public List<ProductDTO> mapperProductToProductDto(List<Product> products){
-        List<ProductDTO> productDtoList = new ArrayList<>();
-
-        // boucle sur la list de products
-        for (Product product: products){
-            ProductDTO productDto = new ProductDTO();
-            productDto.setLabel(product.getLabel());
-            productDto.setPrice(product.getPrice());
-            Image image = new Image();
-            for (Image image1: product.getUrlImages()){
-                if(image1.isPrincipal()){
-                    image = image1;
-                }
-            }
-
-            productDto.setUrlImages(image);
-            productDtoList.add(productDto);
-        }
-
-        return productDtoList;
-    }
 
 
     @Override
-    public List<Product> getProductsByCategoryId(Long categoryId){
-
-        return productRepository.getProductsByCategoryId(categoryId);
+    public List<ProductDTO> getProductsByCategoryId(Long categoryId){
+        List<Product> products = productRepository.getProductsByCategoryId(categoryId);
+        return productMapper.toProductDtos(products);
         }
 
 
 }
-
-
