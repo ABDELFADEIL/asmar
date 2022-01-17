@@ -1,12 +1,18 @@
 import React from 'react';
 import './Navbar.css';
 import {Link} from "react-router-dom";
+import logo from "../assets/asmar_logo.png"
+import {FaSearch, FaShoppingBasket, FaUser, FaUserCircle} from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import {IoBasket, MdOutlineShoppingBasket, MdShoppingBasket} from "react-icons/all";
+
+
 
 export default function Navbar({title, navigation}) {
 
     return (
         <nav>
-            <Link to="/"><h3 className="logo">logo</h3></Link>
+            <Link to="/"><img src={logo} className="logo"/></Link>
             <div>
                 <ul className="nav-links">
                     <Link to="/">
@@ -32,13 +38,13 @@ export default function Navbar({title, navigation}) {
             <div>
                 <ul className="nav-links nav-right">
                     <Link to="/search">
-                        <li>Chercher</li>
+                        <li><FaSearch /></li>
                     </Link>
                     <Link to="/profile">
-                        <li>User</li>
+                        <li><FaUser /></li>
                     </Link>
                     <Link to="/chopping-cart">
-                        <li>Panier</li>
+                        <li><MdShoppingBasket /></li>
                     </Link>
                 </ul>
             </div>

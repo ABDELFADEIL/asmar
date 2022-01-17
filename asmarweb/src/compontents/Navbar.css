@@ -25,4 +25,9 @@ a {
     margin-right: 10px;
 }
 .logo {
+    width: 50px;
+    background: white;
+}
+.nav-links.nav-right li{
+    margin-left: 20px;
 }
