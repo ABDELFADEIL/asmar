@@ -41,4 +41,13 @@ public class Image extends AbstractEntity{
     public void setPrincipal(boolean principal) {
         this.principal = principal;
     }
+
+    @Override
+    public String toString() {
+        return "Image{" +
+                "url='" + url + '\'' +
+                ", principal=" + principal +
+                '}';
+    }
 }
+

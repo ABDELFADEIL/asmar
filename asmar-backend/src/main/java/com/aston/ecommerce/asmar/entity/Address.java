@@ -93,4 +93,18 @@ public class Address extends AbstractEntity{
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", country='" + country + '\'' +
+                ", addInfos='" + addInfos + '\'' +
+                ", active=" + active +
+                ", user=" + user +
+                '}';
+    }
 }
