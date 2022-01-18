@@ -568,6 +568,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../asmarApp/containers/routers.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../asmarApp/infos.txt">
           <value>
             <set />
@@ -634,6 +639,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/App.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/compontents/IconHeader.js">
           <value>
             <set />
           </value>

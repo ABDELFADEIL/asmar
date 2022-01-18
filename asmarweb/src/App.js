@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from "./compontents/Navbar";
 import React, {Fragment} from "react";
-import { Router, Switch, Route, Routes, BrowserRouter} from "react-router-dom";
+import {Router, Switch, Route, Routes, BrowserRouter} from "react-router-dom";
 
 import HomeScreen from "./screens/home/home";
 import ProfileScreen from "./screens/profile/profile";
@@ -19,16 +19,19 @@ function App() {
             <BrowserRouter>
                 <div className="App">
                     <Navbar/>
-                    <Routes>
-                        <Route exact path="/" element={<HomeScreen/>} />
-                        <Route path="/categories" element={<CategoriesScreen/>} />
-                        <Route path="/search" element={<SearchScreen/>} />
-                        <Route path="/product-details" element={<ProductScreen/>} />
-                        <Route path="/profile" element={<ProfileScreen/>} />
-                        <Route path="/login" element={<LoginScreen/>} />
-                        <Route path="/signup" element={<SignUpScreen/>} />
-                        <Route path="/shopping-cart" element={<ShoppingCartScreen/>} />
-                    </Routes>
+                    <div className="main">
+                        <Routes>
+                            <Route exact path="/" element={<HomeScreen/>}/>
+                            <Route path="/categories" element={<CategoriesScreen/>}/>
+                            <Route path="/search" element={<SearchScreen/>}/>
+                            <Route path="/product-details" element={<ProductScreen/>}/>
+                            <Route path="/profile" element={<ProfileScreen/>}/>
+                            <Route path="/login" element={<LoginScreen/>}/>
+                            <Route path="/signup" element={<SignUpScreen/>}/>
+                            <Route path="/shopping-cart" element={<ShoppingCartScreen/>}/>
+                        </Routes>
+                    </div>
+                    <Navbar/>
                 </div>
             </BrowserRouter>
         </Fragment>

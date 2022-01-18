@@ -6,7 +6,7 @@ import {Image, Pressable, StyleSheet, Text, TouchableOpacity, TouchableWithoutFe
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createStackNavigator} from "@react-navigation/stack";
 import Logo from "../assets/asmar-logo.svg";
-import Header from "../compontents/header";
+import Header from "../components/header";
 
 
 // Screens
