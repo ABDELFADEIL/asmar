@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 
 public class AddressDTO {
 
+    private Long id;
     private String street;
     private String city;
     private String state;
@@ -18,7 +19,16 @@ public class AddressDTO {
     private String country;
     private String addInfos;
     private boolean active;
-    private UserDTO userDTO;
+    private UserDTO user;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getStreet() {
         return street;
@@ -76,13 +86,14 @@ public class AddressDTO {
         this.active = active;
     }
 
-    public UserDTO getUserDTO() {
-        return userDTO;
+    public UserDTO getUser() {
+        return user;
     }
 
-    public void setUserDTO(UserDTO userDTO) {
-        this.userDTO = userDTO;
+    public void setUser(UserDTO userDTO) {
+        this.user = userDTO;
     }
+
 
     @Override
     public String toString() {
@@ -94,7 +105,7 @@ public class AddressDTO {
                 ", country='" + country + '\'' +
                 ", addInfos='" + addInfos + '\'' +
                 ", active=" + active +
-                ", userDTO=" + userDTO +
+                ", userDTO=" + user +
                 '}';
     }
 }

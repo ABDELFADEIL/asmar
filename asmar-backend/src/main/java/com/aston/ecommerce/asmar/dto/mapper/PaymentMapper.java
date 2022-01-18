@@ -11,7 +11,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface PaymentMapper {
-    public static final PaymentMapper INSTANCE = Mappers.getMapper(PaymentMapper.class);
+
     PaymentDTO toPaymentDto(Payment payment);
     List<PaymentDTO> toPaymentDtos(List<Payment> payments);
 

@@ -4,8 +4,17 @@ import javax.persistence.Column;
 
 public class ImageDTO {
 
+    private Long id;
     private String url;
     private boolean principal;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getUrl() {
         return url;
@@ -26,7 +35,8 @@ public class ImageDTO {
     @Override
     public String toString() {
         return "ImageDTO{" +
-                "url='" + url + '\'' +
+                "id=" + id +
+                ", url='" + url + '\'' +
                 ", principal=" + principal +
                 '}';
     }

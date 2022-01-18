@@ -12,7 +12,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {
-    public static final CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
+
     CategoryDTO toCategoryDto(Category category);
     List<CategoryDTO> toCategoryDtos(List<Category> categories);
 

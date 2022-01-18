@@ -2,6 +2,8 @@ package com.aston.ecommerce.asmar.entity;
 
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -34,9 +36,10 @@ public class Address extends AbstractEntity{
     private String addInfos;
     @Column(name="active")
     private boolean active;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
 
     public String getStreet() {
         return street;
@@ -92,6 +95,14 @@ public class Address extends AbstractEntity{
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     @Override

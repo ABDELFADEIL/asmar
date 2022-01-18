@@ -11,7 +11,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface RoleMapper {
-    public static final RoleMapper INSTANCE = Mappers.getMapper(RoleMapper.class);
+
     RoleDTO toRoleDto(Role role);
     List<RoleDTO> toRoleDtos(List<Role> roles);
 

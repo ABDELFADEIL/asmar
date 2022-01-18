@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -24,16 +25,18 @@ public class User extends AbstractEntity {
     @Column(name="last_name")
     private String lastName;
 
-    @Column(name="email", nullable = false)
+    @Column(name="email", nullable = false, unique = true)
     private String email;
 
     @Column(name="password", nullable = false)
     @JsonProperty(access = JsonProperty.Access.READ_WRITE)
     private String password;
 
-    @Column(name="username", nullable = true)
+    @Column(name="username", nullable = true, unique = true)
     private String userName;
-
+    @Column(name="birth_date", nullable = true)
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate birthDate;
     @Column(name="registration_date")
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime registrationDate;
@@ -46,7 +49,11 @@ public class User extends AbstractEntity {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
-    private List<Role> roles;
+    private List<Role> roles = new ArrayList<>();
+
+    public User() {
+        this.registrationDate = LocalDateTime.now();
+    }
 
     public String getFirstName() {
         return firstName;
@@ -78,6 +85,14 @@ public class User extends AbstractEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getUserName() {

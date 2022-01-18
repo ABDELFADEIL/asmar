@@ -8,11 +8,20 @@ import java.util.List;
 
 public class ProductDTO {
 
+    private Long id;
     private String label;
     private float price;
     private String description;
     private List<ImageDTO> urlImages;
     private CategoryDTO categoryDTO;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getLabel() {
         return label;
@@ -57,7 +66,8 @@ public class ProductDTO {
     @Override
     public String toString() {
         return "ProductDTO{" +
-                "label='" + label + '\'' +
+                "id=" + id +
+                ", label='" + label + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
                 ", urlImages=" + urlImages +

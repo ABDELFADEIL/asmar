@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ProductDetailDTO {
 
+    private Long id;
     private String label;
     private float price;
     private String description;
@@ -17,6 +18,14 @@ public class ProductDetailDTO {
     private boolean disponible;
     private long quantity;
     private List<ImageDTO> urlImages;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getLabel() {
         return label;

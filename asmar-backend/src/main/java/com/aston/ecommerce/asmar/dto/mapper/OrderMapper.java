@@ -12,7 +12,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface OrderMapper {
-    public static final OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
+
     OrderDTO toOrderDto(Order order);
     List<OrderDTO> toOrderDtos(List<Order> orders);
 

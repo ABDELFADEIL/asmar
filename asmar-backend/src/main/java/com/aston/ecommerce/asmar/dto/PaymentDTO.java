@@ -12,10 +12,18 @@ import java.time.LocalDate;
 
 public class PaymentDTO {
 
-
+    private Long id;
     private String type;
     private LocalDate paymentDate;
     private String total;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getType() {
         return type;
@@ -44,7 +52,8 @@ public class PaymentDTO {
     @Override
     public String toString() {
         return "PaymentDTO{" +
-                "type='" + type + '\'' +
+                "id=" + id +
+                ", type='" + type + '\'' +
                 ", paymentDate=" + paymentDate +
                 ", total='" + total + '\'' +
                 '}';

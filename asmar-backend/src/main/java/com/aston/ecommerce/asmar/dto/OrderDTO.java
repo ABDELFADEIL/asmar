@@ -6,7 +6,7 @@ import java.util.List;
 
 public class OrderDTO {
 
-
+    private Long id;
     private String deliveryStatus;
     private LocalDate orderDate;
     private LocalDate shippingDate;
@@ -17,6 +17,13 @@ public class OrderDTO {
     private AddressDTO addressDTO;
     private PaymentDTO paymentDTO;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getDeliveryStatus() {
         return deliveryStatus;
@@ -93,7 +100,8 @@ public class OrderDTO {
     @Override
     public String toString() {
         return "OrderDTO{" +
-                "deliveryStatus='" + deliveryStatus + '\'' +
+                "id=" + id +
+                ", deliveryStatus='" + deliveryStatus + '\'' +
                 ", orderDate=" + orderDate +
                 ", shippingDate=" + shippingDate +
                 ", deliveryPrice=" + deliveryPrice +

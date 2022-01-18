@@ -5,12 +5,20 @@ import com.aston.ecommerce.asmar.entity.AbstractEntity;
 
 public class CommandLineDTO {
 
+    private Long id;
     private int quantity;
     private float price;
-    private ProductDTO productDTO;
-    private OrderDTO orderDTO;
-    private UserDTO userDTO;
+    private ProductDTO product;
+    private OrderDTO order;
+    private UserDTO user;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public int getQuantity() {
         return quantity;
@@ -28,38 +36,39 @@ public class CommandLineDTO {
         this.price = price;
     }
 
-    public ProductDTO getProductDTO() {
-        return productDTO;
+    public ProductDTO getProduct() {
+        return product;
     }
 
-    public void setProductDTO(ProductDTO productDTO) {
-        this.productDTO = productDTO;
+    public void setProduct(ProductDTO product) {
+        this.product = product;
     }
 
-    public OrderDTO getOrderDTO() {
-        return orderDTO;
+    public OrderDTO getOrder() {
+        return order;
     }
 
-    public void setOrderDTO(OrderDTO orderDTO) {
-        this.orderDTO = orderDTO;
+    public void setOrder(OrderDTO order) {
+        this.order = order;
     }
 
-    public UserDTO getUserDTO() {
-        return userDTO;
+    public UserDTO getUser() {
+        return user;
     }
 
-    public void setUserDTO(UserDTO userDTO) {
-        this.userDTO = userDTO;
+    public void setUser(UserDTO user) {
+        this.user = user;
     }
 
     @Override
     public String toString() {
         return "CommandLineDTO{" +
-                "quantity=" + quantity +
+                "id=" + id +
+                ", quantity=" + quantity +
                 ", price=" + price +
-                ", productDTO=" + productDTO +
-                ", orderDTO=" + orderDTO +
-                ", userDTO=" + userDTO +
+                ", product=" + product +
+                ", order=" + order +
+                ", user=" + user +
                 '}';
     }
 }

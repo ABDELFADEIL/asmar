@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface ShippingInfoMapper {
-    public static final ShippingInfoMapper INSTANCE = Mappers.getMapper(ShippingInfoMapper.class);
+
     ShippingInfoDTO toShippingInfoDto(ShippingInfo shippingInfo);
     List<ShippingInfoDTO> toShippingInfoDtos(List<ShippingInfo> shippingInfos);
 

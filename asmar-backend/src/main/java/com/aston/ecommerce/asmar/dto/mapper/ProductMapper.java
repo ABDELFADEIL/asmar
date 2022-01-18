@@ -8,9 +8,8 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {CategoryMapper.class, ImageMapper.class})
 public interface ProductMapper {
-    public static final ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
 
     ProductDTO toProductDto(Product product);
     ProductDetailDTO toProductDetailDto(Product product);
