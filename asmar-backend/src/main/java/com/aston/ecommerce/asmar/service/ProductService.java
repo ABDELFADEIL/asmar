@@ -9,21 +9,12 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-
 public interface ProductService {
 
-    Page<ProductDTO> getProductByLabelOrDescriptionPage();
-    List<Product> getProductByLabelOrDescription(String keyword);
+    List<ProductDTO> getProductByLabelOrDescription(String keyword);
+    ProductDetailDto getProductById(Long id);
+    List<ProductDTO> getProductsByCategoryId(Long categoryId);
 
-    Product getProductById(Long id);
-
-    List<ProductDTO> mapperProductToProductDto(List<Product> products);
-
-    ProductDetailDto mapperProductToProductDetailDto(Product product);
-
-    List<Product> getProductsByCategoryId(Long categoryId);
-
-    Page<Product> getProductList(Pageable pageable);
 
 }
 
