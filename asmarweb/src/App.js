@@ -12,6 +12,7 @@ import LoginScreen from "./screens/autentication/login";
 import SignUpScreen from "./screens/autentication/signUp";
 import CategoriesScreen from "./screens/categories/categories";
 import ShoppingCartScreen from "./screens/shoppingCart/shopping_cart";
+import Footer from "./compontents/Footer";
 
 function App() {
     return (
@@ -31,7 +32,7 @@ function App() {
                             <Route path="/shopping-cart" element={<ShoppingCartScreen/>}/>
                         </Routes>
                     </div>
-                    <Navbar/>
+                    <Footer/>
                 </div>
             </BrowserRouter>
         </Fragment>
