@@ -4,7 +4,7 @@ import com.aston.ecommerce.asmar.entity.Image;
 
 import java.util.List;
 
-public class ProductDetailDto {
+public class ProductDetailDTO {
 
     private String label;
     private float price;
@@ -16,7 +16,7 @@ public class ProductDetailDto {
     private String size;
     private boolean disponible;
     private long quantity;
-    private List<Image> urlImages;
+    private List<ImageDTO> urlImages;
 
     public String getLabel() {
         return label;
@@ -98,11 +98,11 @@ public class ProductDetailDto {
         this.quantity = quantity;
     }
 
-    public List<Image> getUrlImages() {
+    public List<ImageDTO> getUrlImages() {
         return urlImages;
     }
 
-    public void setUrlImages(List<Image> urlImages) {
+    public void setUrlImages(List<ImageDTO> urlImages) {
         this.urlImages = urlImages;
     }
 }

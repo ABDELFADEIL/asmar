@@ -1,7 +1,7 @@
 package com.aston.ecommerce.asmar.dto.mapper;
 
 import com.aston.ecommerce.asmar.dto.ProductDTO;
-import com.aston.ecommerce.asmar.dto.ProductDetailDto;
+import com.aston.ecommerce.asmar.dto.ProductDetailDTO;
 import com.aston.ecommerce.asmar.entity.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -13,7 +13,7 @@ public interface ProductMapper {
     public static final ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
 
     ProductDTO toProductDto(Product product);
-    ProductDetailDto toProductDetailDto(Product product);
+    ProductDetailDTO toProductDetailDto(Product product);
     List<ProductDTO> toProductDtos(List<Product> products);
 
     Product toProduct(ProductDTO productDTO);

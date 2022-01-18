@@ -121,4 +121,22 @@ public class Product extends AbstractEntity{
     public void setCategory(Category category) {
         this.category = category;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "label='" + label + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", history='" + history + '\'' +
+                ", origin='" + origin + '\'' +
+                ", composition='" + composition + '\'' +
+                ", usage_='" + usage_ + '\'' +
+                ", size='" + size + '\'' +
+                ", disponible=" + disponible +
+                ", quantity=" + quantity +
+                ", urlImages=" + urlImages +
+                ", category=" + category +
+                '}';
+    }
 }

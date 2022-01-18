@@ -2,17 +2,12 @@ package com.aston.ecommerce.asmar.service;
 
 import com.aston.ecommerce.asmar.dao.ProductRepository;
 import com.aston.ecommerce.asmar.dto.ProductDTO;
+import com.aston.ecommerce.asmar.dto.ProductDetailDTO;
 import com.aston.ecommerce.asmar.dto.mapper.ProductMapper;
-import com.aston.ecommerce.asmar.entity.*;
-import com.aston.ecommerce.asmar.dto.ProductDetailDto;
-import com.aston.ecommerce.asmar.entity.Image;
 import com.aston.ecommerce.asmar.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,7 +21,7 @@ public class ProductServiceImpl implements ProductService{
 
 
     @Override
-    public ProductDetailDto getProductById(Long id) {
+    public ProductDetailDTO getProductById(Long id) {
          Product product = productRepository.getById(id);
         return productMapper.toProductDetailDto(product);
     }
@@ -50,6 +45,11 @@ public class ProductServiceImpl implements ProductService{
         List<Product> products = productRepository.getProductsByCategoryId(categoryId);
         return productMapper.toProductDtos(products);
         }
+
+    @Override
+    public List<Product> findAll() {
+        return productRepository.findAll();
+    }
 
 
 }
