@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './Navbar.css';
+import './footer.css';
 import {Link} from "react-router-dom";
 import logo from "../assets/asmar_logo.png"
 import { FaSearch, FaUser } from "react-icons/fa";
@@ -13,17 +13,17 @@ export default class Footer extends Component{
     render() {
         const { clicked } = this.state;
     return (
-        <nav className="NavBarItems">
-            <ul className='nav-menu' >
+        <nav className="FooterItems">
+            <ul className='footer-menu' >
 
                     <Link to="/">
-                        <li>NOUVEAUTE</li>
+                        <li>A propos de nous</li>
                     </Link>
-                    <Link to="/categories">
-                        <li>VISAGE</li>
+                    <Link to="/">
+                        <li>Contact</li>
                     </Link>
-                <Link to="/categories">
-                    <li>VISAGE</li>
+                <Link to="/">
+                    <li>Mentions légales</li>
                 </Link>
                 </ul>
         </nav>
