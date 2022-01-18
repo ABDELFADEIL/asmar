@@ -13,7 +13,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("SELECT DISTINCT(p) FROM Product p WHERE CONCAT(p.label,'', p.description) LIKE %:keyword%")
     List<Product> findProductsByLabelOrderByDescription(String keyword);
 
-    @Query( value = "SELECT p FROM Product p WHERE p.category =?1 ORDER BY p.label")
+    @Query( value = "SELECT p FROM Product p WHERE p.category.id =:categoryId ORDER BY p.label")
     List<Product> getProductsByCategoryId(Long categoryId);
     }
 
