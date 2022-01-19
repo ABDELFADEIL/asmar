@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import { productService } from '../../services/productService';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import 'react-multi-carousel/lib/styles.css';
 import Button from 'react-bootstrap/Button';
@@ -30,7 +31,7 @@ export default function ProductScreen() {
             <Container>
             <Row>
                 <Col sm={8}>
-                 <img src={productDetails.urlimages.principal= true} style={styles.productImages} alt="productImages"/>
+                 <img src={productDetails.urlimages} alt="productImages"/>
 
                 </Col>
                 <Col sm={4}>
@@ -86,11 +87,7 @@ export default function ProductScreen() {
 
     )
 }
-const styles = StyleSheet.create({
-      productImages:{
-          flexDirection: 'column'
-      }
-})
+
 
 
 
