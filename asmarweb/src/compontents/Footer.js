@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import './footer.css';
 import {Link} from "react-router-dom";
 import logo from "../assets/asmar_logo.png"
-import { FaSearch, FaUser } from "react-icons/fa";
-import { MdShoppingBasket} from "react-icons/all";
+import { FaSearch, FaUser } from 'react-icons/fa';
+import { MdShoppingBasket} from 'react-icons/all';
 import 'font-awesome/css/font-awesome.min.css';
 
 

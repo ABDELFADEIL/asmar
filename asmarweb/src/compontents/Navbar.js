@@ -35,7 +35,7 @@ export default class Navbar extends Component{
                     <Link to="/categories">
                         <li>PARFUM</li>
                     </Link>
-                    <Link to="/categories">
+                    <Link to="/product-details">
                         <li>VÊTEMENTS</li>
                     </Link>
 
