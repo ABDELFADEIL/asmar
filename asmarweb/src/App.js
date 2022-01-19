@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from "./compontents/Navbar";
 import React, {Fragment} from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Router, Switch, Route, Routes, BrowserRouter} from "react-router-dom";
 
 import HomeScreen from "./screens/home/home";
