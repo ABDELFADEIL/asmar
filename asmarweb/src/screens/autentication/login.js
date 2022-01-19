@@ -1,8 +1,13 @@
-import * as React from "react";
+import React, {Component} from "react";
+import './login.css';
 
 
-export default function LoginScreen()  {
-        return (
-            <div>Login Screen</div>
-        );
+export default class LoginScreen extends Component{
+        render() {
+                return (
+                    <div>Login Screen</div>
+                );
+        }
+
+
 }

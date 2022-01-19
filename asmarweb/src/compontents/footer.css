@@ -15,6 +15,10 @@
     list-style: none;
     text-align: center;
     justify-content: space-around;
+    align-items: center;
+    margin-top: 15px !important;
+
+
 }
 
 .footer-menu a {
@@ -22,6 +26,7 @@
     border: 0.4px #F4D19E solid;
     transition: all .5s ease-out;
     margin: 10px;
+    color: #F4D19E;
 }
 
 .footer-menu a:hover {
@@ -40,15 +45,21 @@
     .FooterItems {
         height: auto;
         display: flex;
+        align-items: center;
     }
-    .footer-menu {
+    .FooterItems .footer-menu {
         display: flex;
         flex-flow: row wrap;
         grid-gap: 4px;
         justify-content: center;
+        align-items: center !important;
     }
-    .footer-menu a {
+  .FooterItems .footer-menu a {
         margin: 10px 5px;
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+        color: #F4D19E !important;
     }
+  .FooterItems .footer-menu a li{
+      color: #F4D19E !important;
+  }
 }
