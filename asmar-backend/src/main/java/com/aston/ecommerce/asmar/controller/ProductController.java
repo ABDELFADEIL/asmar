@@ -100,4 +100,20 @@ public class ProductController {
         }
         return ResponseEntity.ok(listProducts);
     }
+
+    /*get all products */
+    @PostMapping("/add")
+    @ApiOperation(value = "add product")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "product added"),
+            @ApiResponse(code = 500, message = "Server error")})
+    public ResponseEntity<ProductDetailDTO> addProduct(@RequestBody ProductDTO productDTO) {
+        ProductDetailDTO productDetailDTO = null;
+        productDetailDTO = productService.addProduct(productDTO);
+        if (productDetailDTO == null) {
+            return new ResponseEntity<>(productDetailDTO, HttpStatus.BAD_REQUEST);
+
+        }
+        return new ResponseEntity<>(productDetailDTO, HttpStatus.CREATED);
+    }
 }

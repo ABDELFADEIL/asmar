@@ -1,14 +1,18 @@
 package com.aston.ecommerce.asmar.service;
 
+import com.aston.ecommerce.asmar.dao.CategoryRepository;
 import com.aston.ecommerce.asmar.dao.ProductRepository;
 import com.aston.ecommerce.asmar.dto.ProductDTO;
 import com.aston.ecommerce.asmar.dto.ProductDetailDTO;
 import com.aston.ecommerce.asmar.dto.mapper.ProductMapper;
+import com.aston.ecommerce.asmar.entity.Category;
 import com.aston.ecommerce.asmar.entity.Product;
+import com.aston.ecommerce.asmar.exption.ProductExpception;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -17,7 +21,8 @@ public class ProductServiceImpl implements ProductService{
     private ProductMapper productMapper;
     @Autowired
     private ProductRepository productRepository;
-
+    @Autowired
+    private CategoryRepository categoryRepository;
 
 
     @Override
@@ -49,6 +54,18 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<Product> findAll() {
         return productRepository.findAll();
+    }
+
+    @Override
+    public ProductDetailDTO addProduct(ProductDTO productDTO) {
+        Product product = productMapper.toProduct(productDTO);
+        Category category = categoryRepository.getById(productDTO.getCategoryDTO().getId());
+        if (category== null){
+            throw new ProductExpception("category not found " + category);
+        }
+        product.setCategory(category);
+        product = productRepository.save(product);
+        return productMapper.toProductDetailDto(product);
     }
 
 

@@ -12,6 +12,7 @@ public interface ProductService {
     ProductDetailDTO getProductById(Long id);
     List<ProductDTO> getProductsByCategoryId(Long categoryId);
     List<Product> findAll();
+    ProductDetailDTO addProduct(ProductDTO productDTO);
 }
 
 

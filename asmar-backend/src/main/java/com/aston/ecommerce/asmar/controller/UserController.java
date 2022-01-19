@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,10 @@ public class UserController {
             @ApiResponse(code = 500, message = "Server error")})
     public ResponseEntity<UserDTO> addUser(@RequestBody UserForm userForm){
 
-        return ResponseEntity.ok(userService.addUser(userForm));
+        UserDTO userDto = userService.addUser(userForm);
+        if (userDto == null){
+            return new ResponseEntity<>(userDto, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(userDto, HttpStatus.CREATED);
     }
 }
