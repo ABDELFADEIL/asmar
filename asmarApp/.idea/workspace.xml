@@ -7,7 +7,7 @@
     <list default="true" id="3b36388c-ecc1-4324-bbdb-b329deac93fa" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/assets/asmar_logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarIssues.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarIssues.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compontents/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/compontents/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compontents/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/containers/mainContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/containers/mainContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/containers/screenContainer.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/categories/categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/categories/categories.js" afterDir="false" />
@@ -61,7 +61,7 @@
       <workItem from="1640728956664" duration="6558000" />
       <workItem from="1640880916097" duration="931000" />
       <workItem from="1642103692019" duration="594000" />
-      <workItem from="1642156423952" duration="46097000" />
+      <workItem from="1642156423952" duration="48471000" />
     </task>
     <servers />
   </component>

@@ -308,6 +308,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/containers/routers.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/package.json">
           <value>
             <set />
@@ -344,6 +349,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../asmarweb/src/App.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarweb/src/compontents/IconHeader.js">
           <value>
             <set />
           </value>

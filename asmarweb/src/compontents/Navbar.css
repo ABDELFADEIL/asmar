@@ -1,33 +1,126 @@
 
-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 6vh;
+.NavBarItems {
+    height: 60px;
     color: #F4D19E;
     background: #003B49;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
 }
 li, h3{
     color: #F4D19E !important;
     list-style: none;
 }
-a {
-    text-decoration: none;
+
+.nav-menu a:hover {
+    background: rgb(63, 125, 139);
+    border-radius: 3px;
+    transition: all .5s ease-out;
 }
-.nav-links {
-    /*width: 80%;*/
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+
+.nav-links a, a{
+    padding: .5rem .5rem;
     list-style: none;
-    }
-.nav-links li{
-    margin-right: 10px;
+    text-decoration: none;
+    cursor: pointer;
 }
-.logo {
-    width: 50px;
+.logo img{
     background: white;
+    width: 70px;
+    border-radius: 2px;
 }
-.nav-links.nav-right li{
-    margin-left: 20px;
+
+
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(9, auto);
+    grid-gap: 5px;
+    list-style: none;
+    text-align: center;
+    justify-content: end;
+    margin-right: 1rem;
+    width: 70vw;
+}
+.Menu-icon {
+    display: none;
+}
+
+.nav-links-mobile {
+    display: none;
+}
+
+nav .nav-menu {
+    justify-self: end;
+
+}
+.not {
+    display: none;
+}
+.icon {
+    display: block;
+}
+
+.display {
+    display: block;
+}
+.hidden {
+    display: none;
+}
+
+@media screen and (min-width: 961px){
+    .nav-menu a:nth-of-type(7){
+     margin-left: 60px;
+    }
+    .nav-menu a:nth-of-type(9){
+        justify-self: end;
+        margin-right: 0px;
+    }
+}
+@media screen and (max-width: 960px){
+    .NavBarItems {
+        position: relative;
+    }
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 450px;
+        position: absolute;
+        top: 60px;
+        left: -100%;
+        opacity: 1;
+        transition: all .8s ease;
+    }
+    .nav-menu.active {
+        background: #003B49;
+        left: 0;
+        opacity: 1;
+        transition: all .5ms ease;
+        z-index: 1;
+    }
+    .nav-links, .nav-menu a {
+        text-align: center;
+        padding: .8rem;
+        width: 100%;
+        display: table;
+    }
+    .nav-menu a:hover {
+        border-radius: 0;
+        background: rgb(63, 125, 139);
+    }
+    .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(10%, 5%);
+    }
+    .Menu-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 50%);
+        font-size: 1.5rem;
+    }
 }
