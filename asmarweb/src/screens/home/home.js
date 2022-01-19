@@ -19,9 +19,9 @@ export default function HomeScreen() {
   }
 
   return (
-    <div style={{ margin: "2rem" }}>
-      <div>Home Screen page</div>
-      <Carousel style={{ margin: "2rem" }} >
+    <div>
+
+      <Carousel style={{ margin: ".5rem" }} >
         <Carousel.Item>
           <img 
             className="d-block w-100 sizeimg"
