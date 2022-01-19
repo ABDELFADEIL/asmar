@@ -12,7 +12,7 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = { RoleMapper.class})
 public interface UserMapper {
 
     @InheritInverseConfiguration

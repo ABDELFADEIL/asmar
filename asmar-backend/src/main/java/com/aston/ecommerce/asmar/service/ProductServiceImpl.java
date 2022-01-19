@@ -52,14 +52,14 @@ public class ProductServiceImpl implements ProductService{
         }
 
     @Override
-    public List<Product> findAll() {
-        return productRepository.findAll();
+    public List<ProductDTO> findAll() {
+        return productMapper.toProductDtos(productRepository.findAll());
     }
 
     @Override
     public ProductDetailDTO addProduct(ProductDTO productDTO) {
         Product product = productMapper.toProduct(productDTO);
-        Category category = categoryRepository.getById(productDTO.getCategoryDTO().getId());
+        Category category = categoryRepository.getById(productDTO.getCategory().getId());
         if (category== null){
             throw new ProductExpception("category not found " + category);
         }

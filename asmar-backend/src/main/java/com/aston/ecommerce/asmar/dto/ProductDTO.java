@@ -13,7 +13,7 @@ public class ProductDTO {
     private float price;
     private String description;
     private List<ImageDTO> urlImages;
-    private CategoryDTO categoryDTO;
+    private CategoryDTO category;
 
     public Long getId() {
         return id;
@@ -55,12 +55,12 @@ public class ProductDTO {
         this.urlImages = urlImages;
     }
 
-    public CategoryDTO getCategoryDTO() {
-        return categoryDTO;
+    public CategoryDTO getCategory() {
+        return category;
     }
 
-    public void setCategoryDTO(CategoryDTO categoryDTO) {
-        this.categoryDTO = categoryDTO;
+    public void setCategory(CategoryDTO categoryDTO) {
+        this.category = categoryDTO;
     }
 
     @Override
@@ -71,7 +71,7 @@ public class ProductDTO {
                 ", price=" + price +
                 ", description='" + description + '\'' +
                 ", urlImages=" + urlImages +
-                ", categoryDTO=" + categoryDTO +
+                ", categoryDTO=" + category +
                 '}';
     }
 }

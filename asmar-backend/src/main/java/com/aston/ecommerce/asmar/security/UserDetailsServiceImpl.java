@@ -25,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User u =null;
         System.out.println("email: "+s);
         //u=userRepository.findByEmailOrUID(email);
-        u=userRepository.findByEmail(s);
+        u=userRepository.findByEmailOrUserName(s);
         System.out.println("email: "+u.getEmail()+ " password: "+u.getPassword());
         if(u==null) throw new UsernameNotFoundException(s+ "est null .....");
         final User user = u;

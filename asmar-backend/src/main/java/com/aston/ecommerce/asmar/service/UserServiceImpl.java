@@ -45,14 +45,14 @@ public class UserServiceImpl implements UserService{
         String repassword=userForm.getRepassword();
         if(!(repassword.equals(password))) throw new UserExpception(repassword+ " Mot de passe n'est pas confirmé");
         String username = userForm.getUserName();
-        User user= userRepository.findByEmail(username);
+        User user= userRepository.findByEmailOrUserName(username);
         if(user !=null) throw new UserExpception(userForm.getUserName() +" existe déjà");
 
         user = userMapper.toUser(userForm);
         user.setPassword(bCryptPasswordEncoder.encode(password));
 
         try {
-            Role role =roleRepository.findByRoleName("USER");
+            Role role =roleRepository.findByRoleName("CUSTOMER");
             user = userRepository.save(user);
             user.getRoles().add(role);
             user = userRepository.save(user);
@@ -77,5 +77,11 @@ public class UserServiceImpl implements UserService{
         user.setPassword(password);
         user = userRepository.save(user);
         return userMapper.toUserDto(user);
+    }
+
+    @Override
+    public List<UserDTO> findAll() {
+        List<User> users = userRepository.findAll();
+        return userMapper.toUserDtos(users);
     }
 }

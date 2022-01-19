@@ -92,8 +92,8 @@ public class ProductController {
             @ApiResponse(code = 204, message = "No content"),
             @ApiResponse(code = 404, message = "products not found"),
             @ApiResponse(code = 500, message = "Server error")})
-    public ResponseEntity<List<Product>> getAllProducts() {
-        List<Product> listProducts = productService.findAll();
+    public ResponseEntity<List<ProductDTO>> getAllProducts() {
+        List<ProductDTO> listProducts = productService.findAll();
         if (listProducts.isEmpty()) {
             return new ResponseEntity<>(listProducts, HttpStatus.NOT_FOUND);
 
