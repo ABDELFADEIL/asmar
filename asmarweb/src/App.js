@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import Navbar from "./components/header/Navbar";
+import React, {Fragment} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./components/Navbar";
 import React, {Fragment} from "react";
@@ -13,7 +15,7 @@ import LoginScreen from "./screens/autentication/login";
 import SignUpScreen from "./screens/autentication/signUp";
 import CategoriesScreen from "./screens/categories/categories";
 import ShoppingCartScreen from "./screens/shoppingCart/shopping_cart";
-import Footer from "./components/Footer";
+import Footer from "./components/footer/Footer";
 
 function App() {
     return (
@@ -21,7 +23,7 @@ function App() {
             <BrowserRouter>
                 <div className="App">
                     <Navbar/>
-                    <div className="main">
+                    <div className="Main">
                         <Routes>
                             <Route exact path="/" element={<HomeScreen/>}/>
                             <Route path="/categories" element={<CategoriesScreen/>}/>

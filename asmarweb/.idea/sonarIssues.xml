@@ -183,6 +183,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/ImageSaveDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/Order.java">
           <value>
             <set />
@@ -199,6 +204,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/ProductDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/ProductDetailDTO.java">
           <value>
             <set />
           </value>
@@ -224,6 +234,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/UserDTO.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/UserForm.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/dto/UserUpdatePassword.java">
           <value>
             <set />
           </value>
@@ -438,6 +458,26 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/service/FlickrImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/service/FlickrImplService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/service/IFlickr.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/service/IFlickrService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/service/ImageProductService.java">
           <value>
             <set />
@@ -498,12 +538,62 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/utils/FlickrConfigImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/utils/FlickrImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/utils/IFlickr.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/utils/IFlickrCofig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/utils/SendingMailService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/resources/application.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/resources/application.proporties">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/resources/application.yml">
           <value>
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/test/java/com/aston/ecommerce/asmarbackend/AsmarBackendApplicationTests.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/target/classes/com/aston/ecommerce/asmar/dto/AddressDTO.class">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/target/classes/com/aston/ecommerce/asmar/dto/mapper/AddressMapper.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/target/classes/com/aston/ecommerce/asmar/dto/mapper/AddressMapperImpl.class">
           <value>
             <set />
           </value>
@@ -524,6 +614,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/target/classes/com/aston/ecommerce/asmar/dto/mapper/UserMapperImpl.class">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/target/generated-sources/annotations/com/aston/ecommerce/asmar/dto/mapper/AddressMapperImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/target/generated-sources/annotations/com/aston/ecommerce/asmar/dto/mapper/ImageMapperImpl.java">
           <value>
             <set />
           </value>
@@ -633,12 +733,37 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/.gitignore">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/.idea/workspace.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/App.css">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/App.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/components/footer/Footer.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/components/header/Navbar.css">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/components/header/Navbar.js">
           <value>
             <set />
           </value>
@@ -683,6 +808,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/screens/autentication/login.css">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/screens/autentication/login.js">
           <value>
             <set />
@@ -719,6 +849,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/screens/shoppingCart/shopping_cart.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/tailwind.config.js">
           <value>
             <set />
           </value>
