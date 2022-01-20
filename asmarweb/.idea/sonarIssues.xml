@@ -823,6 +823,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/screens/autentication/signup.css">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/screens/categories/categories.js">
           <value>
             <set />

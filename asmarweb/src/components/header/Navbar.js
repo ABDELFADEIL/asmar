@@ -55,7 +55,7 @@ export default class Navbar extends Component{
     }
 
     handleClick = ()=> {
-        //this.setState({clicked: !this.state.clicked});
+        this.setState({clicked: !this.state.clicked});
         //this.setState(prevState => ({ clicked: !prevState.clicked }));
         this.setState((state) => ({
             clicked: !state.clicked
