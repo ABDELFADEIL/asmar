@@ -8,7 +8,7 @@ import 'font-awesome/css/font-awesome.min.css';
 
 
 export default class Navbar extends Component{
-    state = { clicked: true, icon: "fa fa-bars"}
+    state = { clicked: false, icon: "fa fa-bars"}
 
     render() {
         const { clicked } = this.state;
