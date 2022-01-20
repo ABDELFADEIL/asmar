@@ -5,6 +5,13 @@ import './ArticleMini.css'
 
 
 export default function ArticleMini({ article }) {
+  // function afficher() {
+  //   console.log("AFFICHER")
+    
+  // };
+  let afficher = () => {
+    console.log("AFFICHER")
+  };
 
   return (
     <div>
@@ -12,16 +19,19 @@ export default function ArticleMini({ article }) {
       <Card className="cardbackground" style={{ width: '18rem' }}>
         <Card.Body>
           <Card.Img style={{ maxHeight: "15rem" }} variant="top" src="https://m.media-amazon.com/images/I/51XgqzfXiiL._AC_.jpg" />
-          <Card.Title>{article.name}</Card.Title>
+          <Card.Title>
+            {article.name}
+          </Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
+            {article.description}
           </Card.Text>
           <Card.Text>
             <Container>
               <Row>
                 <Col className='color2' style={{ fontWeight: 'bold', margin: "auto" }} >{article.prix} € </Col>
-                <Col><Button className='color2bg color3' variant="primary">AFFICHER</Button></Col>
+                <Col>
+                <Button onClick={afficher} className='color2bg color3' variant="primary">AFFICHER</Button>
+                </Col>
               </Row>
             </Container>
           </Card.Text>
