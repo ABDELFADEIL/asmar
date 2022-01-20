@@ -8,7 +8,7 @@
     align-content: center;
     align-items: center;
 }
-li, h3{
+.NavBarItems li, h3{
     color: #F4D19E !important;
     list-style: none;
 }

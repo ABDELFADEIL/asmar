@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import Navbar from "./compontents/Navbar";
-import React, {Fragment} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from "./components/Navbar";
+import React, {Fragment} from "react";
 import {Router, Switch, Route, Routes, BrowserRouter} from "react-router-dom";
 
 import HomeScreen from "./screens/home/home";
@@ -13,7 +13,7 @@ import LoginScreen from "./screens/autentication/login";
 import SignUpScreen from "./screens/autentication/signUp";
 import CategoriesScreen from "./screens/categories/categories";
 import ShoppingCartScreen from "./screens/shoppingCart/shopping_cart";
-import Footer from "./compontents/Footer";
+import Footer from "./components/Footer";
 
 function App() {
     return (

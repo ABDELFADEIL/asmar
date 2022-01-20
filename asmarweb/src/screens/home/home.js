@@ -1,18 +1,22 @@
 import * as React from "react";
 import ArticleMini from "../../components/templates/ArticleMini";
+// import ProductService from "../../services/ProductService";
 import { Button, Card, Container, Row, Col, Carousel } from 'react-bootstrap';
 import './../../index.css'
 import './home.css'
 
+
+// let product_service = new ProductService();
 export default function HomeScreen() {
-  let articles = [{ name: "robe", prix: 11 }, { name: "robe", prix: 12 }, { name: "robe", prix: 13 }, { name: "robe", prix: 14 }, { name: "robe", prix: 15 }]
+  let articles = [{ name: "robe", prix: 11, description: "Ceci est une robe" }, { name: "robe", prix: 12, description: "Ceci est une robe" }, { name: "robe", prix: 13, description: "Ceci est une robe" }, { name: "robe", prix: 14, description: "Ceci est une robe" }, { name: "robe", prix: 15, description: "Ceci est une robe" }]
 
   const list = []
 
   for (const [i, article] of articles.entries()) {
     // list.push(<li>{product}</li>)
     list.push(
-      <Col>
+      <Col style={{ marginTop: "1rem" }}>
+      {/* <Col className="mgt2"> */}
         <ArticleMini  article={article} />
       </Col>
     )
@@ -21,7 +25,7 @@ export default function HomeScreen() {
   return (
     <div style={{ margin: "2rem" }}>
       <div>Home Screen page</div>
-      <Carousel style={{ margin: "2rem" }} >
+      <Carousel style={{ margin: "auto",width:"80%" }} >
         <Carousel.Item>
           <img 
             className="d-block w-100 sizeimg"
@@ -59,8 +63,12 @@ export default function HomeScreen() {
         </Carousel.Item>
       </Carousel>
       {/* <ArticleMini article={article} /> */}
-      <h3 className="color3" >Catégories les plus recherchées:</h3>
       <Container>
+      <h3 style={{marginBottom:"0rem"}} className="color3 mgt2" >Catégories les plus recherchées:</h3>
+        <Row>
+          {list}
+        </Row>
+        <h3 style={{marginBottom:"0rem"}} className="color3 mgt2" >Catégories les plus recherchées:</h3>
         <Row>
           {list}
         </Row>
