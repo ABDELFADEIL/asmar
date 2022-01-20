@@ -101,6 +101,14 @@ padding: 0px;
 .btnConn .btnSignup {
     background: rgba(0, 59, 73, 0.5);
 }
+.btnConn .btnSignin:hover {
+    background: linear-gradient(#F3BD6E, rgb(101, 78, 46));
+    border: 1px solid #F3BD6E;
+}
+.btnConn .btnSignup:hover {
+    background: rgba(0, 59, 73, 0.81);
+    border: 1px solid #003B49;
+}
 .btnConn , .btnConn a {
     color: #003B49;
 }
