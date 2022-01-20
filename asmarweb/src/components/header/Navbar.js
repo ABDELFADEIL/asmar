@@ -8,7 +8,7 @@ import 'font-awesome/css/font-awesome.min.css';
 
 
 export default class Navbar extends Component{
-    state = { clicked: false, icon: "fa fa-bars"}
+    state = { clicked: true, icon: "fa fa-bars"}
 
     render() {
         const { clicked } = this.state;
@@ -55,7 +55,7 @@ export default class Navbar extends Component{
     }
 
     handleClick = ()=> {
-        this.setState({clicked: !this.state.clicked});
+        //this.setState({clicked: !this.state.clicked});
         //this.setState(prevState => ({ clicked: !prevState.clicked }));
         this.setState((state) => ({
             clicked: !state.clicked
