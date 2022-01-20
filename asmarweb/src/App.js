@@ -21,7 +21,7 @@ function App() {
             <BrowserRouter>
                 <div className="App">
                     <Navbar/>
-                    <div className="main">
+                    <div className="Main">
                         <Routes>
                             <Route exact path="/" element={<HomeScreen/>}/>
                             <Route path="/categories" element={<CategoriesScreen/>}/>

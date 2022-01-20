@@ -42,7 +42,7 @@ export default class Navbar extends Component{
                     <Link to="/search">
                         <li><FaSearch /></li>
                     </Link>
-                    <Link to="/profile">
+                    <Link to="/login">
                         <li><FaUser /></li>
                     </Link>
                     <Link to="/chopping-cart">

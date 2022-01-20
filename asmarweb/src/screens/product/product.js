@@ -1,7 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import { productService } from '../../services/productService';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import 'react-multi-carousel/lib/styles.css';
 import Button from 'react-bootstrap/Button';
 import { Container, Col, Row
