@@ -2,19 +2,20 @@
     background-color: white;
     display: flex;
     justify-content: center;
-    position: relative;
+    /*position: relative;*/
     }
 
 .SignupPage .SignupPageCart {
+    margin-top: 20px;
     background: white;
     text-align: center;
     width: 500PX;
-    min-height: 650px;
-    position: absolute;
+    min-height: 630px;
+    /*position: absolute;
     top: 50px;
     display: grid;
     grid-template-rows: .8fr 3fr .7fr;
-    grid-gap: 5px;
+    grid-gap: 5px;  */
     border-radius: 10px;
     /* box-shadow: 10px 10px 40px rgba(0, 59, 73, 0.38); */
     box-shadow: 0 4px 6px 2px rgba(0, 59, 73, 0.2), 0 4px 4px 2px rgba(0, 59, 73, 0.14), 0 5px 4px -4px rgba(0, 59, 73, 0.12);

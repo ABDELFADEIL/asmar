@@ -2,18 +2,19 @@
     background-color: white;
     display: flex;
     justify-content: center;
-    position: relative;
+    /*position: relative;*/
     }
 
 .LoginPage .LoginPageCart {
+    margin-top: 20px;
     background: white;
     text-align: center;
     width: 500PX;
-    min-height: 650px;
-    position: absolute;
-    top: 50px;
+    min-height: 630px;
+    /*position: absolute;*/
+    /*top: 50px;
     display: grid;
-    grid-template-rows: 1fr 1fr 3fr 2fr;
+    grid-template-rows: 1fr 1fr 3fr 2fr; */
     grid-gap: 5px;
     border-radius: 10px;
     /* box-shadow: 10px 10px 40px rgba(0, 59, 73, 0.38); */
