@@ -858,6 +858,21 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/services/productService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/services/userService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/utils/constants.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/tailwind.config.js">
           <value>
             <set />

@@ -6,6 +6,40 @@ import "./signup.css"
 
 export default class SignUpScreen extends Component {
 
+    state = {
+        firstName: "",
+        lastName: "",
+        password: "",
+        repassword: "",
+        email: "",
+        userName: "",
+        birthDate: "",
+        street: "",
+        city: "",
+        state: "",
+        postalCode: "",
+        country: "",
+        addInfos: "",
+        active: true
+    }
+
+    constructor() {
+        super();
+        this.state = {
+        };
+        this.onInputchange = this.onInputchange.bind(this);
+        this.onSubmitForm = this.onSubmitForm.bind(this);
+    }
+
+    onInputchange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+    onSubmitForm() {
+        console.log(this.state)
+    }
+
     render() {
         return (<div className="SignupPage">
                 <div className="SignupPageCart">
@@ -102,7 +136,7 @@ export default class SignUpScreen extends Component {
                     </div>
                     <div>
                         <div className="btnSend">
-                            <div className="btnSignin">Envoyer</div>
+                            <button onClick={this.onSubmitForm} className="btnSignin">Envoyer</button>
                         </div>
                         <div className="btnLog">
                             <p>Si vous avez un compte <span><Link to="/login">Se connecter</Link></span></p>

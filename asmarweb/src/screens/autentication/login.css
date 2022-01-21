@@ -115,6 +115,8 @@ padding: 0px;
 }
 .btnSignin, .btnConn {
     cursor: pointer;
+    border: none;
+    border-radius: 15px;
 }
 @media screen and (min-width: 540px) and (max-width: 768px ){
     .LoginPage .LoginPageCart {
