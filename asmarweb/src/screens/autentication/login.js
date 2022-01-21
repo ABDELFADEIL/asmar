@@ -2,37 +2,43 @@ import React, {Component} from "react";
 import './login.css';
 import Logo from "../../assets/asmar_logo.png"
 import {FaEnvelope, FaLock} from "react-icons/all";
-import {Link} from "react-router-dom";
-import {Login} from "../../services/userService";
+import {Link, useNavigate, withRouter} from "react-router-dom";
+import {GET_JWT_TOKEN, Login, SET_JWT_TOKEN} from "../../services/userService";
+import {BASE_URL} from "../../utils/constants";
 
 export default class LoginScreen extends Component{
 
-    state = {
-        email: "",
-        password: "",
-        jwtToken: null
-            }
 
-    constructor() {
+
+    constructor(props) {
         super();
         this.state = {
-        };
+            email: "",
+            password: "",
+        }
         this.onInputchange = this.onInputchange.bind(this);
         this.onSubmitForm = this.onSubmitForm.bind(this);
     }
+
 
     onInputchange(event) {
         this.setState({
             [event.target.name]: event.target.value
         });
     }
-    onSubmitForm() {
+    async onSubmitForm() {
         console.log(this.state);
-        Login(this.state).then(res=> {
-            console.log(res);
-            this.state.jwtToken = res.data;
-            console.log(this.state.jwtToken);
-        })
+        const response = await Login(this.state);
+        try {
+            const headers = response.headers;
+            SET_JWT_TOKEN(headers.authorization);
+            console.log(GET_JWT_TOKEN("jwtToken"));
+            if (response.status === 200){
+                this.props.history.push('/');
+            }
+        }catch (e) {
+            console.log(e);
+        }
     }
 
 
