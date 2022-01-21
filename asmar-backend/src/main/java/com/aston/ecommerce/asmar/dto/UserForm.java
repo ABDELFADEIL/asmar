@@ -9,6 +9,7 @@ public class UserForm {
     private String password;
     private String repassword;
     private String email;
+    private int telephone;
     private String userName;
     private String birthDate;
     private String street;
@@ -125,6 +126,14 @@ public class UserForm {
 
     public boolean isActive() {
         return active;
+    }
+
+    public int getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(int telephone) {
+        this.telephone = telephone;
     }
 
     public void setActive(boolean active) {

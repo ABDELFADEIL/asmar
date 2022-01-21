@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 
@@ -46,7 +47,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
                     .parseClaimsJws(jwtToken.replace(SecurityConstants.TOKEN_PREFIX,""))
                     .getBody();
             String username=claims.getSubject();
-            ArrayList<Map<String, String>> roles=(ArrayList<Map<String, String>>)
+            List<Map<String, String>> roles=(ArrayList<Map<String, String>>)
                     claims.get("roles");
             Collection<GrantedAuthority> authorities=new ArrayList<>();
             roles.forEach(r->{

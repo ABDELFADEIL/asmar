@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -21,24 +20,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User u =null;
-        System.out.println("email: "+s);
-        //u=userRepository.findByEmailOrUID(email);
-        u=userRepository.findByEmailOrUserName(s);
-        System.out.println("email: "+u.getEmail()+ " password: "+u.getPassword());
-        if(u==null) throw new UsernameNotFoundException(s+ "est null .....");
-        final User user = u;
-          Collection<Role> roles = new ArrayList<>();
-        roles.addAll(user.getRoles());
-        Collection<GrantedAuthority> authorities=new ArrayList<GrantedAuthority>();
-        roles.forEach(r->
-        { authorities.add(new SimpleGrantedAuthority(r.getRoleName()));
+        u=userRepository.findByEmailOrUserName(username);
+        if(u==null) throw new UsernameNotFoundException(username);
+        Collection<GrantedAuthority> authorities=new ArrayList<>();
+        u.getRoles().forEach(r->{
+            authorities.add(new SimpleGrantedAuthority(r.getRoleName()));
         });
-
-        System.out.println("email: "+user.getEmail()+ " password: "+user.getPassword());
-        System.out.println("succès ....//////");
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
+        return new org.springframework.security.core.userdetails.User(u.getEmail(), u.getPassword(), authorities);
     }
 
 }

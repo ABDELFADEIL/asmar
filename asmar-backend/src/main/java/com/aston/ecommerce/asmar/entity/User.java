@@ -5,14 +5,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -33,7 +29,7 @@ public class User extends AbstractEntity {
     private String password;
 
     @Column(name="username", nullable = true, unique = true)
-    private String userName;
+    private String username;
     @Column(name="birth_date", nullable = true)
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate birthDate;
@@ -43,7 +39,8 @@ public class User extends AbstractEntity {
 
     @Column(name="connection_status", nullable = false)
     private boolean connectionStatus;
-
+    @Column(name = "telephone")
+    private int telephone;
     @ManyToMany
     @JoinTable(name = "user_roles",
             joinColumns = {@JoinColumn(name = "user_id")},
@@ -95,12 +92,12 @@ public class User extends AbstractEntity {
         this.birthDate = birthDate;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public LocalDateTime getRegistrationDate() {
@@ -127,6 +124,14 @@ public class User extends AbstractEntity {
         this.roles = roles;
     }
 
+    public int getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(int telephone) {
+        this.telephone = telephone;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -134,9 +139,12 @@ public class User extends AbstractEntity {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", userName='" + userName + '\'' +
+                ", username='" + username + '\'' +
+                ", birthDate=" + birthDate +
                 ", registrationDate=" + registrationDate +
-                ", connectionStatus='" + connectionStatus + '\'' +
+                ", connectionStatus=" + connectionStatus +
+                ", telephone=" + telephone +
+                ", roles=" + roles +
                 '}';
     }
 }

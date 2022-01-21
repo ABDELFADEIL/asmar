@@ -20,6 +20,7 @@ public class UserDTO {
     private String email;
     private String userName;
     private LocalDate birthDate;
+    private int telephone;
     private LocalDateTime registrationDate;
     private List<RoleDTO> roles;
 
@@ -73,6 +74,13 @@ public class UserDTO {
         this.birthDate = birthDate;
     }
 
+    public int getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(int telephone) {
+        this.telephone = telephone;
+    }
 
     public List<RoleDTO> getRoles() {
         return roles;
@@ -97,6 +105,7 @@ public class UserDTO {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", telephone='" + telephone + '\'' +
                 ", userName='" + userName + '\'' +
                 ", birthDate=" + birthDate +
                 ", registrationDate=" + registrationDate +
