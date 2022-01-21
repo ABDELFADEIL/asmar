@@ -29,16 +29,17 @@ export default function ProductScreen() {
                 let firstImg = null;
                 for( let item of res.data.urlImages){
                     console.log(item);
+                    imgTab.push(item.url);
+                    console.log(imgTab);
+
                     if (item.principal){
                       firstImg = item.url;
                       setImagePrincipal(firstImg);
                       console.log(firstImg);
-                    }else {
-                        imgTab.push(item.url);
-                        console.log(imgTab);
-                        setNoImagePrincipal(imgTab) ;
                     }
+
                 };
+                setNoImagePrincipal(imgTab) ;
 
                 console.log(res.data);
             })
@@ -51,31 +52,25 @@ export default function ProductScreen() {
             <>
                 <Container style={{padding: 50}}>
                     <Row>
-                        <Col sm={8}>
-                            <Row xs={1} md={2}>
+                        <Col md={6} className="imagesContainer">
+                            <Col sm={10} md={4} className="images">
+                                {noImagePrincipal.map((img, index)=>(
+                                    <img src={img} key={index} style={{ width: '100%', height: 550/noImagePrincipal.length}} alt="productImage"/>
 
-
-                               <div>
-                                    {noImagePrincipal.map((img, index)=>(
-                                        <img src={img} key={index} style={{width: 200, height:130, margin:0,padding:0}} alt="productImage"/>
-
-                                        ))}
-                                 </div>
-
-                                <img src={imagePrincipal}style={{width: 500, height:390}} alt="principal"/>
-
-                            </Row>
-
+                                ))}
+                            </Col>
+                            <Col sm={10} md={8} className="imagePrincipal">
+                                <img src={imagePrincipal}style={{height: 550+ 5*(noImagePrincipal.length-1), width: '100%'}} alt="principal"/>
+                            </Col>
                         </Col>
-                        <Col sm={4}>
+
+                        <Col md={6}>
                             <div className="productDetails">
-                                <ol>
+                                <ul>
                                     <li>
                                         <h5>{productDetails.label}</h5>
                                     </li>
-                                    <li>
-                                        <h5>{productDetails.price} € </h5>
-                                    </li>
+
 
                                     <li>
                                         <h5>Origin : {productDetails.origin}</h5>
@@ -84,6 +79,10 @@ export default function ProductScreen() {
                                         <h5>Material : {productDetails.composition}</h5>
                                     </li>
                                     <li>{productDetails.usage_ && (<h5> Model d'emploi : {productDetails.usage_}</h5>)}
+                                    </li>
+
+                                    <li>
+                                        <h5>{productDetails.price} € </h5>
                                     </li>
                                     <li><span style={{color: productDetails.quantity > 0 ? 'green' : 'red'}}>
                             Status :{''}
@@ -118,23 +117,28 @@ export default function ProductScreen() {
                                     </style>
                                     <li>
                                         {productDetails.quantity > 0 && (
-                                            <Button onClick={ajouterPanier} variant="flat" size="xl">Ajouter</Button>)}
+                                            <Button onClick={ajouterPanier} variant="flat" size="xxl">Ajouter</Button>)}
                                     </li>
-                                </ol>
+                                </ul>
                             </div>
                         </Col>
                     </Row>
                     <Row>
-                        <Col sm>
-                            <li>{productDetails.description && (<h4> Description : {productDetails.description}</h4>)}
-                            </li>
-                        </Col>
-                        <Col sm>
-                            <li>{productDetails.history && (<h4> Histoire : {productDetails.history}</h4>)}
-                            </li>
-                        </Col>
+                    <Col sm>
+                        <li>{productDetails.description && (<h4> Description : {productDetails.description}</h4>)}
+                        </li>
+                    </Col>
+                    <Col sm>
+                        <li>{productDetails.history && (<h4> Histoire : {productDetails.history}</h4>)}
+                        </li>
+                    </Col>
                     </Row>
+
+
+
                 </Container>
+
+
             </>
 
         );
