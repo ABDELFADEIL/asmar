@@ -9,3 +9,59 @@ h5 ,h6 {
 h4 {
     color: #626262;
 }
+
+.imagesContainer {
+ /*   display: grid;
+    grid-template-columns: 200px 400px;
+    gap: 10px;*/
+    display: flex;
+    padding: 0;
+}
+/*
+.container {
+    padding: 20px !important;
+    margin-right: 15px !important;
+    margin-left: 15px !important;
+
+}
+*/
+
+
+.images {
+    height: 550px;
+    width: 33.33% !important;
+  /*  display: grid;
+    grid-template-columns: 1fr; */
+    gap: 5px !important;
+}
+.images img {
+    margin-bottom: 5px;
+}
+.images img:last-of-type {
+    margin-bottom: 5px;
+}
+.imagePrincipal {
+    width: 66.67% !important;
+    margin-left: 5px;
+}
+li{
+    list-style-type:none;
+}
+
+@media screen and (max-width: 768px ){
+    .imagesContainer{
+        /*grid-auto-rows: 400px 200px !important;*/
+    }
+    .images, .imagePrincipal{
+      /*  width: 350px;*/
+    }
+    images {
+        height: 200px !important;
+   /*     display: grid;
+        grid-template-columns: auto;*/
+      /*  grid-gap: 5px;*/
+    }
+    .imagePrincipal{
+        /*height: 400px !important;*/
+    }
+}
