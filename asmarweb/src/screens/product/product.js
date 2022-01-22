@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './product.css';
 import 'react-multi-carousel/lib/styles.css';
 import Button from 'react-bootstrap/Button';
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Container, Col, Row
 } from 'react-bootstrap';
 
@@ -48,19 +49,26 @@ export default function ProductScreen() {
     useEffect(() => {
         getProductDetailsById();
     }, []);
-        return (
+
+    const renderIcon = () => {
+        switch(this.props.btnText) {
+            case 'Ajouter': return <i className="fa fa-AiOutlineShoppingCart" />;
+        }
+    }
+
+    return (
             <>
                 <Container style={{padding: 50}}>
                     <Row>
                         <Col md={6} className="imagesContainer">
                             <Col sm={10} md={4} className="images">
                                 {noImagePrincipal.map((img, index)=>(
-                                    <img src={img} key={index} style={{ width: '100%', height: 550/noImagePrincipal.length}} alt="productImage"/>
+                                    <img src={img} key={index} style={{ width: '100%', height: 500/noImagePrincipal.length}} alt="productImage"/>
 
                                 ))}
                             </Col>
                             <Col sm={10} md={8} className="imagePrincipal">
-                                <img src={imagePrincipal}style={{height: 550+ 5*(noImagePrincipal.length-1), width: '100%'}} alt="principal"/>
+                                <img src={imagePrincipal}style={{height: 500+ 5*(noImagePrincipal.length-1), width: '100%'}} alt="principal"/>
                             </Col>
                         </Col>
 
@@ -84,22 +92,25 @@ export default function ProductScreen() {
                                     <li>
                                         <h5>{productDetails.price} € </h5>
                                     </li>
-                                    <li><span style={{color: productDetails.quantity > 0 ? 'green' : 'red'}}>
+
+
+                                 <li style={{color: productDetails.quantity > 0 ? 'green' : 'red'}}>
                             Status :{''}
                                         {productDetails.quantity > 0 ? 'disponible' : 'épuisé'}
-                        </span>
-                                    </li>
-                                    <li style={{marginTop: '1rem'}}><h6 style={{color: '#003B49'}}>
-                                        Quantité :{''}   </h6>
+                        </li>
+                                </ul>
+                        <Row>
+                                    <Col style={{marginTop: '1rem',color: '#003B49',marginLeft:32}}>
+                                        Quantité :{''}
                                         <select value={qty}
                                                 onChange={(e) => {
                                                     setQty(e.target.value);
                                                 }
-                                                }>
+                                                } style={{width:100, borderRadius:2, marginLeft:40}} >
                                             {[...Array(productDetails.quantity).keys()].map((x) => (
                                                 <option key={x + 1} value={x + 1}> {x + 1} </option>))}
                                         </select>
-                                    </li>
+
                                     <style type="text/css">
                                         {`
                               .btn-flat {
@@ -115,11 +126,14 @@ export default function ProductScreen() {
                                }
                                `}
                                     </style>
-                                    <li>
+                                    <span style={{marginLeft:40}}>
                                         {productDetails.quantity > 0 && (
-                                            <Button onClick={ajouterPanier} variant="flat" size="xxl">Ajouter</Button>)}
-                                    </li>
-                                </ul>
+                                            <Button style={{margin:0,backgroundColor:'#003B49'}}  onClick={ajouterPanier} variant="flat" size="sm" >
+                                                <AiOutlineShoppingCart/>   Ajouter
+                                            </Button>)}
+                                    </span>
+                                    </Col>
+                                    </Row>
                             </div>
                         </Col>
                     </Row>
@@ -133,14 +147,8 @@ export default function ProductScreen() {
                         </li>
                     </Col>
                     </Row>
-
-
-
                 </Container>
-
-
             </>
-
         );
     }
 
