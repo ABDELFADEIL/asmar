@@ -6,7 +6,7 @@
     }
 
 .LoginPage .LoginPageCart {
-    margin-top: 10px !important;
+    margin: 20px auto;
     background: white;
     text-align: center;
     width: 500PX;
@@ -38,7 +38,7 @@
     margin: 10px;
 }
 .LoginPage .LoginPageCart .loginInput{
-  display: flex;
+    display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     gap: 10px;

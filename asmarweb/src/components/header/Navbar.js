@@ -20,32 +20,32 @@ export default class Navbar extends Component{
             </div>
             <ul className={clicked ? 'nav-menu active': 'nav-menu'} >
 
-                    <Link to="/">
+                    <Link to="/" onClick={this.handleClick}>
                         <li>NOUVEAUTE</li>
                     </Link>
-                    <Link to="/categories">
+                    <Link to="/categories" onClick={this.handleClick}>
                         <li>VISAGE</li>
                     </Link>
-                    <Link to="/categories">
+                    <Link to="/categories" onClick={this.handleClick}>
                         <li>CHEVEAUX</li>
                     </Link>
-                    <Link to="/categories">
+                    <Link to="/categories" onClick={this.handleClick}>
                         <li>CORP</li>
                     </Link>
-                    <Link to="/categories">
+                    <Link to="/categories" onClick={this.handleClick}>
                         <li>PARFUM</li>
                     </Link>
-                    <Link to="/product-details">
+                    <Link to="/product-details" onClick={this.handleClick}>
                         <li>VÊTEMENTS</li>
                     </Link>
 
-                    <Link to="/search">
+                    <Link to="/search" onClick={this.handleClick}>
                         <li><FaSearch /></li>
                     </Link>
-                    <Link to="/login">
+                    <Link to="/login" onClick={this.handleClick}>
                         <li><FaUser /></li>
                     </Link>
-                    <Link to="/chopping-cart">
+                    <Link to="/chopping-cart" onClick={this.handleClick}>
                         <li><MdShoppingBasket /></li>
                     </Link>
                 </ul>

@@ -1,10 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import Navbar from "./components/header/Navbar";
-import React, {Fragment} from "react";
+import React, {Fragment, useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Router, Switch, Route, Routes, BrowserRouter} from "react-router-dom";
-
+import {Router, Switch, Route, Routes, BrowserRouter, useNavigate} from "react-router-dom";
 import HomeScreen from "./screens/home/home";
 import ProfileScreen from "./screens/profile/profile";
 import ProductScreen from "./screens/product/product";
@@ -15,7 +14,9 @@ import CategoriesScreen from "./screens/categories/categories";
 import ShoppingCartScreen from "./screens/shoppingCart/shopping_cart";
 import Footer from "./components/footer/Footer";
 
-function App() {
+
+const App = ()=> {
+
     return (
         <Fragment>
             <BrowserRouter>
@@ -41,3 +42,4 @@ function App() {
 }
 
 export default App;
+
