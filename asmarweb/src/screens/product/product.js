@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import { productService } from '../../services/productService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './product.css';
-import 'react-multi-carousel/lib/styles.css';
 import Button from 'react-bootstrap/Button';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Container, Col, Row
@@ -49,12 +48,6 @@ export default function ProductScreen() {
     useEffect(() => {
         getProductDetailsById();
     }, []);
-
-    const renderIcon = () => {
-        switch(this.props.btnText) {
-            case 'Ajouter': return <i className="fa fa-AiOutlineShoppingCart" />;
-        }
-    }
 
     return (
             <>
