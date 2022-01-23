@@ -21,7 +21,7 @@ public interface UserMapper {
 
     User toUser(UserDTO userDTO);
     List<User> toUsers(List<UserDTO> userDTOS);
-    @Mapping(target = "birthDate", source = "birthDate", dateFormat = "dd-MM-yyyy")
+    @Mapping(target = "birthDate", source = "birthDate", dateFormat = "yyyy-MM-dd")
     @InheritInverseConfiguration
     User toUser(UserForm userForm);
 }

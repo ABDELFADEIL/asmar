@@ -10,7 +10,7 @@ public class UserForm {
     private String repassword;
     private String email;
     private int telephone;
-    private String userName;
+    private String username;
     private String birthDate;
     private String street;
     private String city;
@@ -60,12 +60,12 @@ public class UserForm {
         this.email = email;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String username) {
-        this.userName = username;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getBirthDate() {

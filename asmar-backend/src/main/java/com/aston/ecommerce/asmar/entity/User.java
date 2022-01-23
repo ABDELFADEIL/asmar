@@ -31,7 +31,7 @@ public class User extends AbstractEntity {
     @Column(name="username", nullable = true, unique = true)
     private String username;
     @Column(name="birth_date", nullable = true)
-    @JsonFormat(pattern = "dd-MM-yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
     @Column(name="registration_date")
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
