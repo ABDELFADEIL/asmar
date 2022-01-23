@@ -1,4 +1,6 @@
 import * as React from "react";
+import {useEffect, useState} from 'react';
+import { productService } from '../../services/productService';
 import { View, Text } from "react-native";
 
 export default function LoginScreen(navigation) {
