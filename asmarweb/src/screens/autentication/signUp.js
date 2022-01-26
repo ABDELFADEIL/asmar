@@ -80,7 +80,7 @@ export default function SignUpScreen() {
                             </div>
                             <div className="signupForm">
                                 <label>Date de naissance</label>
-                                <input type="text" placeholder=""
+                                <input type="date" placeholder=""
                                        name="birthDate" value={state.birthDate}  onChange={onInputchange}/>
                                 <hr/>
                             </div>
@@ -88,13 +88,13 @@ export default function SignUpScreen() {
                         <div className="signupFormGroup">
                             <div className="signupForm">
                                 <label>N° téléphon</label>
-                                <input type="text" placeholder=""
+                                <input type="number" placeholder=""
                                        name="telephone" value={state.telephone}  onChange={onInputchange}/>
                                 <hr/>
                             </div>
                             <div className="signupForm">
                                 <label>Username</label>
-                                <input type="text" placeholder="" name="userName"
+                                <input type="text" placeholder="" name="username"
                                        value={state.username}  onChange={onInputchange}/>
                                 <hr/>
                             </div>
@@ -136,7 +136,7 @@ export default function SignUpScreen() {
                             </div>
                             <div className="signupForm">
                                 <label>Code postal</label>
-                                <input type="text" placeholder="" name="postalCode"
+                                <input type="number" placeholder="" name="postalCode"
                                        value={state.postalCode}  onChange={onInputchange}/>
                                 <hr/>
                             </div>

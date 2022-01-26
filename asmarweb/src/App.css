@@ -13,6 +13,13 @@
 }
 
 @media screen  and (max-width: 360px ){
+    .SignupPage {
+        width: 96vw;
+        margin: auto;
+    }
+    .SignupPage .SignupPageCart hr {
+        width: 100% !important;
+    }
    .span2 {
        width: 200px !important;
        display: inline-block;
