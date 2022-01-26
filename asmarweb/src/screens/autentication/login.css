@@ -142,7 +142,7 @@ padding: 0px;
 
 @media screen  and (max-width: 539px ){
     .LoginPage .LoginPageCart {
-        width: 97vw;
+        width: 80vw;
         min-height: 550px;
     }
 

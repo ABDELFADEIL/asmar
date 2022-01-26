@@ -171,7 +171,7 @@ padding: 0px;
 
 @media screen  and (max-width: 539px ){
     .SignupPage .SignupPageCart {
-        width: 360PX;
+        width: 80vw;
         min-height: 550px;
         height: auto;
     }

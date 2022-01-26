@@ -1,10 +1,8 @@
-import * as React from "react";
-import { View, Text } from "react-native";
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View } from "react-native";
 import { productService } from '../../services/productService';
-import { ScreenContainer } from "react-native-screens";
-import { Button } from 'react-native-paper';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+
+
 
 export default function ProductScreen({ navigation }) {
     const [qty, setQty] = useState(1);
@@ -54,6 +52,6 @@ export default function ProductScreen({ navigation }) {
 
 }
 
-export default ProductScreen;
 
-const styles = StyleSheet.create({});
+
+/*const styles = StyleSheet.create({});*/

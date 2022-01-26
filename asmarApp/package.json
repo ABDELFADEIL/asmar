@@ -34,6 +34,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@expo/vector-icons": "^12.0.5",
+    "axios": "^0.25.0",
     "prop-types": "^15.8.1"
   },
   "private": true
