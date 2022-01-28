@@ -1,57 +1,121 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 import { productService } from '../../services/productService';
+import { Button } from 'react-native-paper';
+
+export default function ProductScreen() {
+
+        const [qty, setQty] = useState(1);
+        const [productDetails, setProductDetails] = useState({});
+        const [urlImages, setUrlImages]= useState([]);
+        const [imagePrincipal,setImagePrincipal] =useState(null);
+        const [noImagePrincipal, setNoImagePrincipal] = useState([]);
 
 
+          const getProductDetailsById = () => {
+            productService
+                .getProductDetailsById(1)
+                .then((res) => {
+                    setProductDetails(res.data);
+                    setUrlImages(res.data.urlImages);
+                    let imgTab =[];
+                    let firstImg = null;
+                    for( let item of res.data.urlImages){
+                        console.log(item);
+                        imgTab.push(item.url);
+                        console.log(imgTab);
 
-export default function ProductScreen({ navigation }) {
-    const [qty, setQty] = useState(1);
-    const [productDetails, setProductDetails] = useState({});
-    const [urlImages, setUrlImages]= useState([]);
-    const [imagePrincipal,setImagePrincipal] =useState(null);
-    const [noImagePrincipal, setNoImagePrincipal] = useState([]);
+                        if (item.principal){
+                            firstImg = item.url;
+                            setImagePrincipal(firstImg);
+                            console.log(firstImg);
+                        }
+                    };
+                    setNoImagePrincipal(imgTab) ;
 
-    let ajouterPanier = () => {
-    }
+                    console.log(res.data);
+                })
+                .catch(err => console.log(err))
+        }
+        useEffect(() => {
+            getProductDetailsById();
+        }, []);
 
-    const getProductDetailsById = () => {
-        productService
-            .getProductDetailsById(1)
-            .then((res) => {
-                setProductDetails(res.data);
-                setUrlImages(res.data.urlImages);
-                let imgTab =[];
-                let firstImg = null;
-                for( let item of res.data.urlImages){
-                    console.log(item);
-                    imgTab.push(item.url);
-                    console.log(imgTab);
+    return (
 
-                    if (item.principal){
-                        firstImg = item.url;
-                        setImagePrincipal(firstImg);
-                        console.log(firstImg);
-                    }
+        <SafeAreaView style={styles.container}>
+                    <View style={{flexDirection:"row"}}>
+                        <View style={styles.images}>
+                            {noImagePrincipal.map((img, index)=>(
+                                <Image source={img} key={index} style={{ width: '100%', height: 400/noImagePrincipal.length}} alt="productImage"/>
+                            ))}
+                        </View>
+                       <View style={styles.imagePrincipal}>
+                            <Image source={imagePrincipal}style={{height: 400+ 5*(noImagePrincipal.length-1), width: '100%'}} alt="principal"/>
+                        </View>
+                    </View>
 
-                };
-                setNoImagePrincipal(imgTab) ;
+                    <Text style={styles.text}>{productDetails.label}</Text>
+                                <Text style={styles.text}>Origin : {productDetails.origin}</Text>
+                        <Text style={styles.text}>Material : {productDetails.composition}</Text>
+                            <Text style={styles.text}>{productDetails.usage_ && (<Text>Model d'emploi : {productDetails.usage_}</Text>)}
+                            </Text>
+                        <Text  style={styles.text}>{productDetails.price} € </Text>
+                            <Text style={{color: productDetails.quantity > 0 ? 'green' : 'red'}}>
+                                Status :{''}
+                                {productDetails.quantity > 0 ? 'disponible' : 'épuisé'}
+                            </Text>
 
-                console.log(res.data);
-            })
-            .catch(err => console.log(err))
-    }
-    useEffect(() => {
-        getProductDetailsById();
-    }, []);
+                    <Text style={{color: '#003B49'}}>
+                        Quantité :{''}
+                        <select data={qty}
+                                onChange={(e) => {
+                                    setQty(e.target.value);
+                                }
+                                } style={{width:100, borderRadius:2, marginLeft:40}} >
+                            {[...Array(productDetails.quantity).keys()].map((x) => (
+                                <option key={x + 1} value={x + 1}> {x + 1} </option>))}
+                        </select>
 
-    return(
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>
-            <Text style={{ fontSize: 26, fontWeight: "bold"}}>Product Screen (Cheyu)</Text>
-        </View>
-    );
+                            {productDetails.quantity > 0 && (
+                                <Button icon="cart" mode="contained" style={{width: '110px', height: '25px', backgroundColor:
+                                    '#003B49',marginLeft: '20px'}} labelStyle={{color:'#F4D19E' , fontSize: '10px',marginTop:'7px'}} onPress={() => console.log('Pressed')}
+                                        >
+                                    Ajouter
+                                </Button>)}
+                    </Text>
 
-}
+            <Text  style={styles.text}>{productDetails.description && (<Text> Description : {productDetails.description}</Text>)}
+            </Text>
 
+            <Text  style={styles.text}>{productDetails.history && (<Text> Histoire : {productDetails.history}</Text>)}
+            </Text>
+        </SafeAreaView>
+        )
+};
 
+const styles = StyleSheet.create({
 
-/*const styles = StyleSheet.create({});*/
+    container: {
+        backgroundColor: '#fff',
+        flexDirection: "column",
+       margin:0,
+       flex: 1,
+    },
+    text: {
+        color:'#003B49',
+        fontWeight: 'bold',
+    },
+    imagesContainer:{
+        padding: 0,
+    },
+    images:{
+    height: 65,
+    width: '30%' ,
+    alignItems:'center',
+    },
+    imagePrincipal :{
+    width: '70%',
+    marginLeft: 5,
+    },
+});
