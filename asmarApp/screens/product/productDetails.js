@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 import { productService } from '../../services/productService';
 import { Button } from 'react-native-paper';
+import {StyleSheet, Text, View, Image }from 'react-native';
+import {Picker} from '@react-native-community/picker';
+
 
 export default function ProductScreen() {
 
@@ -10,6 +12,7 @@ export default function ProductScreen() {
         const [urlImages, setUrlImages]= useState([]);
         const [imagePrincipal,setImagePrincipal] =useState(null);
         const [noImagePrincipal, setNoImagePrincipal] = useState([]);
+         const handleValueChange=(itemValue, itemIndex) =>setQty(itemValue)
 
 
           const getProductDetailsById = () => {
@@ -43,7 +46,7 @@ export default function ProductScreen() {
 
     return (
 
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
                     <View style={{flexDirection:"row"}}>
                         <View style={styles.images}>
                             {noImagePrincipal.map((img, index)=>(
@@ -58,16 +61,31 @@ export default function ProductScreen() {
                     <Text style={styles.text}>{productDetails.label}</Text>
                                 <Text style={styles.text}>Origin : {productDetails.origin}</Text>
                         <Text style={styles.text}>Material : {productDetails.composition}</Text>
-                            <Text style={styles.text}>{productDetails.usage_ && (<Text>Model d'emploi : {productDetails.usage_}</Text>)}
+                            <Text style={styles.text}>{productDetails.usage_  ? (<Text>Model d'emploi : {productDetails.usage_}</Text>): null }
                             </Text>
-                        <Text  style={styles.text}>{productDetails.price} € </Text>
+                        <Text  style={styles.text}>{productDetails.price ? (<Text>Price : {productDetails.price}</Text>): null} € </Text>
                             <Text style={{color: productDetails.quantity > 0 ? 'green' : 'red'}}>
                                 Status :{''}
                                 {productDetails.quantity > 0 ? 'disponible' : 'épuisé'}
                             </Text>
-
+                    <View>
                     <Text style={{color: '#003B49'}}>
                         Quantité :{''}
+                        <Picker
+                            selectedValue={qty}
+                            onValueChange={handleValueChange}
+                            style={{width:100, borderRadius:2, marginLeft:40}}>
+                            {/*    setQty(e.target.value)
+                            } style={{width:100, borderRadius:2, marginLeft:40}}
+                        >*/}
+                           {/* {[...Array(productDetails.quantity).keys()].map((x) => (
+                                <Picker.Item key={x + 1} value={x + 1}>{x + 1}</Picker.Item>))}*/}
+
+                            {[...Array(productDetails.quantity).keys()].map((x) => (<Picker.Item key={x+1} label={x} value={x+1}/>))}
+
+
+                        </Picker>
+                       {/* Quantité :{''}
                         <select data={qty}
                                 onChange={(e) => {
                                     setQty(e.target.value);
@@ -75,7 +93,7 @@ export default function ProductScreen() {
                                 } style={{width:100, borderRadius:2, marginLeft:40}} >
                             {[...Array(productDetails.quantity).keys()].map((x) => (
                                 <option key={x + 1} value={x + 1}> {x + 1} </option>))}
-                        </select>
+                        </select>*/}
 
                             {productDetails.quantity > 0 && (
                                 <Button icon="cart" mode="contained" style={{width: '110px', height: '25px', backgroundColor:
@@ -84,13 +102,16 @@ export default function ProductScreen() {
                                     Ajouter
                                 </Button>)}
                     </Text>
+                    </View>
 
-            <Text  style={styles.text}>{productDetails.description && (<Text> Description : {productDetails.description}</Text>)}
+            <Text  style={styles.text}>{productDetails.description ? (<Text> Description : {productDetails.description}</Text>): null}
             </Text>
 
-            <Text  style={styles.text}>{productDetails.history && (<Text> Histoire : {productDetails.history}</Text>)}
+            <Text  style={styles.text}>{productDetails.history ? (<Text> Histoire : {productDetails.history}</Text>): null}
             </Text>
-        </SafeAreaView>
+        </View>
+
+
         )
 };
 
@@ -99,8 +120,8 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
         flexDirection: "column",
-       margin:0,
-       flex: 1,
+                        margin:0,
+                        flex: 1,
     },
     text: {
         color:'#003B49',
@@ -113,7 +134,7 @@ const styles = StyleSheet.create({
     height: 65,
     width: '30%' ,
     alignItems:'center',
-    },
+        },
     imagePrincipal :{
     width: '70%',
     marginLeft: 5,
