@@ -162,4 +162,6 @@ padding: 0px;
     .btnSignin a , .btnSignup a{
         font-size: .8rem;
     }
+    .pwdForget {
+    }
 }

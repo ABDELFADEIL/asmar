@@ -34,7 +34,8 @@ export default function LoginScreen() {
         }
     }
 
-    return (<div className="LoginPage">
+    return (
+        <div className="LoginPage">
             <div className="LoginPageCart">
                 <div className="loginLogo"><img src={Logo} width="120px" alt="asmar logo"/></div>
                 <div className="connHead"><h5>Se connecter</h5></div>

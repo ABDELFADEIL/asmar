@@ -3,14 +3,14 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Image, Pressable, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View} from 'react-native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createStackNavigator} from "@react-navigation/stack";
+import {createDrawerNavigator} from "@react-navigation/drawer"
 import Logo from "../assets/asmar-logo.svg";
 import Header from "../components/header";
 
 
 // Screens
-import HomeScreen, { Details } from "../screens/home/home";
+import HomeScreen, {Details} from "../screens/home/home";
 import CategoriesScreen from "../screens/categories/categories";
 import ProfileScreen from "../screens/profile/profile";
 import SearchScreen from "../screens/search/search";
@@ -19,6 +19,8 @@ import productDetailsScreen from "../screens/product/productDetails";
 import LoginScreen from "../screens/autentication/login";
 import SignUpScreen from "../screens/autentication/signUp";
 import ProductScreen from '../screens/product/productDetails';
+import {useState} from "react";
+import {Animated} from "react-native-web";
 
 
 // screen names
@@ -38,71 +40,77 @@ const CategoriesStack = createStackNavigator();
 const SearchStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 const ShoppingCartStack = createStackNavigator();
+const RootStack = createStackNavigator();
 
+const Drawer = createDrawerNavigator();
+const RootStackScreen = () => (
+    <RootStack.Navigator headerMod="none">
+        <RootStack.Screen name={LoginName} component={LoginScreen}/>
+    </RootStack.Navigator>
+)
 
 
 const HomeStackScreen = () => (
     <HomeStack.Navigator
         initialRouteName={'Asmar'}
-        screenOptions={(route, navigation, title)=> ({
-        headerStyle: { backgroundColor: '#003B49'},
-        headerTitleStyle: { color: '#F4D19E' },
-        //headerTitleAlign: 'center',
-        //headerMode: 'screen',
-        headerShown: true,
+        screenOptions={(route, navigation, title) => ({
+            headerStyle: {backgroundColor: '#003B49'},
+            headerTitleStyle: {color: '#F4D19E'},
+            //headerTitleAlign: 'center',
+            //headerMode: 'screen',
+            headerShown: true,
 
 
-
-    })}>
+        })}>
         <HomeStack.Screen name={'home'} component={HomeScreen}
-                          options={{ title: <Header title={homeName} /> }}/>
+                          options={{title: <Header title={homeName}/>}}/>
         <HomeStack.Screen name={'Détails'} component={ProductScreen}
-                          />
+        />
     </HomeStack.Navigator>
 );
 const CategoriesStackScreen = () => (
-    <CategoriesStack.Navigator screenOptions={(route, navigation)=> ({
-        headerStyle: { backgroundColor: '#003B49' },
-        headerTitleStyle: { color: '#F4D19E'},
+    <CategoriesStack.Navigator screenOptions={(route, navigation) => ({
+        headerStyle: {backgroundColor: '#003B49'},
+        headerTitleStyle: {color: '#F4D19E'},
         //headerTitleAlign: 'center',
         headerShown: true,
     })}>
         <CategoriesStack.Screen name={'categories'} component={CategoriesScreen}
-                                options={{ title: <Header title={categoriesName} /> }}/>
+                                options={{title: <Header title={categoriesName}/>}}/>
         <CategoriesStack.Screen name={'Détails'} component={productDetailsScreen}/>
     </CategoriesStack.Navigator>
 );
 const SearchStackScreen = () => (
-    <SearchStack.Navigator screenOptions={(route, navigation)=> ({
-        headerStyle: { backgroundColor: '#003B49' },
-        headerTitleStyle: { color: '#F4D19E' },
+    <SearchStack.Navigator screenOptions={(route, navigation) => ({
+        headerStyle: {backgroundColor: '#003B49'},
+        headerTitleStyle: {color: '#F4D19E'},
         //headerTitleAlign: 'center',
         headerShown: true,
     })}>
         <SearchStack.Screen name={'search'} component={SearchScreen}
-                            options={{ title: <Header title={searchName} /> }}/>
+                            options={{title: <Header title={searchName}/>}}/>
     </SearchStack.Navigator>
 );
 const ProfileStackScreen = () => (
-    <ProfileStack.Navigator screenOptions={(route, navigation)=> ({
-        headerStyle: { backgroundColor: '#003B49' },
-        headerTitleStyle: { color: '#F4D19E' },
+    <ProfileStack.Navigator screenOptions={(route, navigation) => ({
+        headerStyle: {backgroundColor: '#003B49'},
+        headerTitleStyle: {color: '#F4D19E'},
         //headerTitleAlign: 'center',
         headerShown: true,
     })}>
         <ProfileStack.Screen name={'profile'} component={ProfileScreen}
-                             options={{ title: <Header title={profileName} /> }}/>
+                             options={{title: <Header title={profileName}/>}}/>
     </ProfileStack.Navigator>
 );
 const ShoppingCartStackScreen = () => (
-    <ShoppingCartStack.Navigator screenOptions={(route, navigation)=> ({
-        headerStyle: { backgroundColor: '#003B49' },
-        headerTitleStyle: { color: '#F4D19E' },
+    <ShoppingCartStack.Navigator screenOptions={(route, navigation) => ({
+        headerStyle: {backgroundColor: '#003B49'},
+        headerTitleStyle: {color: '#F4D19E'},
         //headerTitleAlign: 'center',
         headerShown: true,
     })}>
         <ShoppingCartStack.Screen name={'shoppingCart'} component={ShoppingCartScreen}
-                                  options={{ title: <Header title={shoppingCartName} /> }}/>
+                                  options={{title: <Header title={shoppingCartName}/>}}/>
     </ShoppingCartStack.Navigator>
 );
 const AuthStackScreen = () => (
@@ -121,10 +129,12 @@ const AuthStackScreen = () => (
 );
 
 
-
 export default function MainContainer() {
-    return (
-        <NavigationContainer>
+    const [isLoding] = useState(false);
+    const [token, setToken] = useState(null);
+
+    function TabsApp() {
+        return (
             <Tab.Navigator
                 initialRouteName={homeName}
                 screenOptions={({navigation, route}) => ({
@@ -183,8 +193,56 @@ export default function MainContainer() {
                                 )
                             }}/>
                 <Tab.Screen name={shoppingCartName} component={ShoppingCartStackScreen}/>
-                <Tab.Screen name={profileName} component={ProfileStackScreen}/>
+                <Tab.Screen name={profileName} component={ProfileStackScreen}
+                            listeners={({navigation}) => ({
+                                tabPress: event => {
+                                    event.preventDefault();
+                                    //navigation.navigate(LoginName);
+                                    openModal(navigation);
+                                }
+                            })}
+                />
             </Tab.Navigator>
+        );
+    }
+
+    const openModal = (navigation) => {
+        console.log('open modal.....');
+        if (token) {
+            navigation.navigate(profileName);
+        } else {
+            console.log('open modal.. no token exist');
+            navigation.navigate(LoginName);
+        }
+    }
+
+    return (
+        <NavigationContainer>
+            <RootStack.Navigator
+                initialRouteName={homeName}
+                screenOptions={{
+                    animationEnabled: false,
+                    headerShown: false,
+                    presentation: "modal"
+                }}
+            >
+
+                <RootStack.Group>
+                    <RootStack.Screen name="Home" component={TabsApp}/>
+
+                </RootStack.Group>
+                <RootStack.Group screenOptions={{
+                    presentation: 'transparentModal',
+                    animationType: "slide"
+                }}>
+                    <RootStack.Screen name={LoginName} component={LoginScreen}
+                                      options={{
+                                          animationEnabled: true,
+                                          cardOverlayEnabled: true
+                                      }}
+                    />
+                </RootStack.Group>
+            </RootStack.Navigator>
         </NavigationContainer>
     );
 }
