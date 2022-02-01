@@ -7,6 +7,7 @@ import {createStackNavigator} from "@react-navigation/stack";
 import {createDrawerNavigator} from "@react-navigation/drawer"
 import Logo from "../assets/asmar-logo.svg";
 import Header from "../components/header";
+import {GET_JWT_TOKEN, SET_JWT_TOKEN} from "../services/userService";
 
 
 // Screens
@@ -131,7 +132,7 @@ const AuthStackScreen = () => (
 
 export default function MainContainer() {
     const [isLoding] = useState(false);
-    const [token, setToken] = useState(null);
+    const [token, setToken] = useState(GET_JWT_TOKEN());
 
     function TabsApp() {
         return (
@@ -179,10 +180,10 @@ export default function MainContainer() {
                                         color: focused ? '#F7B14C' : '#F4D19E',
                                         position: 'absolute',
                                         top: -25,
-                                        width: 60,
-                                        height: 60,
-                                        paddingLeft: 15,
-                                        paddingTop: 10,
+                                        width: 50,
+                                        height: 50,
+                                        textAlign: 'center',
+                                        paddingTop: 4,
                                         backgroundColor: '#003B49',
                                         borderRadius: 40,
                                         borderWidth: 4,
@@ -197,8 +198,7 @@ export default function MainContainer() {
                             listeners={({navigation}) => ({
                                 tabPress: event => {
                                     event.preventDefault();
-                                    //navigation.navigate(LoginName);
-                                    openModal(navigation);
+                                    openModal(navigation, profileName);
                                 }
                             })}
                 />
@@ -206,13 +206,14 @@ export default function MainContainer() {
         );
     }
 
-    const openModal = (navigation) => {
+    const openModal = (navigation, url) => {
         console.log('open modal.....');
-        if (token) {
-            navigation.navigate(profileName);
+        if (!token) {
+            console.log('token exist');
+            navigation.navigate(url);
         } else {
             console.log('open modal.. no token exist');
-            navigation.navigate(LoginName);
+            navigation.navigate(LoginName, {name:url} );
         }
     }
 
@@ -236,6 +237,12 @@ export default function MainContainer() {
                     animationType: "slide"
                 }}>
                     <RootStack.Screen name={LoginName} component={LoginScreen}
+                                      options={{
+                                          animationEnabled: true,
+                                          cardOverlayEnabled: true
+                                      }}
+                    />
+                    <RootStack.Screen name={SignUpName} component={SignUpScreen}
                                       options={{
                                           animationEnabled: true,
                                           cardOverlayEnabled: true

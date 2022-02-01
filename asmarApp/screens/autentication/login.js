@@ -1,5 +1,5 @@
 import React from "react";
-import {Animated, View, Text, Pressable, Button, StyleSheet, Image, TextInput, TouchableOpacity} from 'react-native';
+import { Animated, View, Text, Pressable, Button, StyleSheet, Image, TextInput, TouchableOpacity, AsyncStorage } from 'react-native';
 import {Link, useTheme} from '@react-navigation/native';
 import { useCardAnimation } from '@react-navigation/stack';
 import {useEffect, useState} from 'react';
@@ -7,32 +7,33 @@ import {productService} from '../../services/productService';
 import {ScreenContainer} from "react-native-screens";
 import Logo from "../../assets/asmar_logo.png"
 import {GET_JWT_TOKEN, Login, SET_JWT_TOKEN} from "../../services/userService";
-import {FaEnvelope, FaLock} from "react-icons/all";
-
-
-export default function LoginScreen({navigation}) {
+import { emailValidator } from '../helpers/emailValidator'
+import { passwordValidator } from '../helpers/passwordValidator'
+import Icon from 'react-native-vector-icons/FontAwesome';
+export default function LoginScreen({route, navigation}) {
     const { colors } = useTheme();
     const { current } = useCardAnimation();
-
-    const [state, setState] = useState({
-        email: "",
-        password: "",
-    });
-
-
-
-    const onInputchange = (e) => {
-        setState(state => ({...state, [e.target.name]: e.target.value}))
-    }
+    let [ token, setToken ] = useState(GET_JWT_TOKEN());
+    const [email, setEmail] = useState({ value: '', error: '' })
+    const [password, setPassword] = useState({ value: '', error: '' })
 
     const onSubmitForm = async () => {
-        const response = await Login(state);
+        const emailError = emailValidator(email.value)
+        const passwordError = passwordValidator(password.value)
+        if (emailError || passwordError) {
+            setEmail({ ...email, error: emailError })
+            setPassword({ ...password, error: passwordError })
+            return
+        }
+        const user = {'email': email.value, 'password': password.value};
+        const response = await Login(user);
         try {
             const headers = response.headers;
             SET_JWT_TOKEN(headers.authorization);
             console.log(GET_JWT_TOKEN("jwtToken"));
             if (response.status === 200) {
-                navigate("/");
+                console.log(navigation)
+                navigation.navigate(route.params.name);
             }
         } catch (e) {
             console.log(e);
@@ -40,16 +41,12 @@ export default function LoginScreen({navigation}) {
     }
 
     return (
-        <View
-            style={styles.container}
-        >
-            <Pressable
-                style={[
+        <View style={styles.container}>
+            <Pressable style={[
                     StyleSheet.absoluteFill,
                     { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
                 ]}
-                onPress={navigation.goBack}
-            />
+                onPress={navigation.goBack}/>
             <Animated.View
                 style={{
                     padding: 16,
@@ -69,21 +66,11 @@ export default function LoginScreen({navigation}) {
                     margin: '20px auto',
                     textAlign: 'center',
                     minHeight: '630px',
-                    gap: '5px',
                     /* box-shadow: 10px 10px 40px rgba(0, 59, 73, 0.38); */
                     boxShadow: '0 4px 6px 2px rgba(0, 59, 73, 0.2), 0 4px 4px 2px rgba(0, 59, 73, 0.14), 0 5px 4px -4px rgba(0, 59, 73, 0.12)'
 
                 }}
             >
-
-               {/* <Button
-                    title="Se connecter"
-                    color={colors.primary}
-                    style={{ alignSelf: 'flex-end' }}
-                    onPress={onsubmit}
-                />*/}
-
-
                         <View style={{alignItems: 'center',
                             justifyContent: 'center',}}>
                             <Image source={Logo}
@@ -92,18 +79,33 @@ export default function LoginScreen({navigation}) {
                         <View style={styles.connHead}><Text style={styles.connHeadH5}>Se connecter</Text></View>
                         <View style={styles.loginInput}>
                             <View style={styles.loginEmail}>
-                                <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start'}}>
-                                    <FaEnvelope style={{width: 20, marginBottom: 0, height: 30, color: '#003B49'}}/>
-                                    <TextInput style={styles.loginPageCartInput} type="email" name="email" value={state.email} placeholder="Email adresse"
-                                               onChange={onInputchange}/>
+                                <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start', alignContent: 'flex-end'}}>
+                                    <Icon name="envelope" size={20} color="#003B49" style={{marginBottom: -10}}/>
+                                    <TextInput
+                                               style={styles.loginPageCartInput}
+                                               returnKeyType="next"
+                                               value={email.value}
+                                               error={!!email.error}
+                                               errorText={email.error}
+                                               onChangeText={(text) => setEmail({ value: text, error: '' })}
+                                               autoCapitalize="none"
+                                               autoCompleteType="email"
+                                               textContentType="emailAddress"
+                                               keyboardType="email-address"
+                                               placeholder="Email adresse" />
                                 </View>
                                 <View style={styles.loginPageCartHr}/>
                             </View>
                             <View style={styles.loginEmail}>
                                 <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start'}}>
-                                    <FaLock style={{width: 20, marginBottom: 0, height: 30, color: '#003B49'}}/>
-                                    <TextInput style={styles.loginPageCartInput} type="password" name="password" value={state.password} placeholder="Mot de passe"
-                                               onChange={onInputchange}/>
+                                    <Icon name="lock" size={24} color="#003B49" style={{marginBottom: -10}}/>
+                                    <TextInput
+                                        style={styles.loginPageCartInput}
+                                        type="password"
+                                        name="password"
+                                        value={password.value}
+                                        onChangeText={(text) => setPassword({ value: text, error: '' })}
+                                        placeholder="Mot de passe"/>
                                 </View>
 
                                 <View style={styles.loginPageCartHr}/>
@@ -113,11 +115,15 @@ export default function LoginScreen({navigation}) {
                             </View>
                         </View>
                         <View style={styles.btnConn}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() =>{
+                                navigation.goBack();
+                                navigation.navigate('Créer un compte')}
+                            }
+                                >
                                 <View style={styles.btnSignup}><Text style={{ fontSize: '0.8rem'}} to="/signup">Créer un compte</Text></View>
                             </TouchableOpacity>
                             <TouchableOpacity>
-                                <View onClick={onSubmitForm} style={styles.btnSignin}>se connecter</View>
+                                <View onClick={onSubmitForm} style={styles.btnSignin}><Text>se connecter</Text></View>
                             </TouchableOpacity>
                         </View>
 
@@ -140,7 +146,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '500PX',
     minHeight: '630px',
-    gap: '5px',
     borderRadius: '10px',
     /* box-shadow: 10px 10px 40px rgba(0, 59, 73, 0.38); */
     boxShadow: '0 4px 6px 2px rgba(0, 59, 73, 0.2), 0 4px 4px 2px rgba(0, 59, 73, 0.14), 0 5px 4px -4px rgba(0, 59, 73, 0.12)'
@@ -167,7 +172,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexFlow: 'column nowrap',
     justifyContent: 'center',
-    gap: '10px',
     marginTop: '100px',
     outlineStyle: 'none'
 },
@@ -180,7 +184,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         margin: 'auto',
         marginTop: 0,
-        width: '80%',
+        width: '85%',
         borderBottomColor: '#F4D19E',
         borderBottomWidth: 1.5,
     },

@@ -528,12 +528,27 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/screens/helpers/emailValidator.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/screens/helpers/passwordValidator.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/screens/home/home.js">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/screens/product/productDetails.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/screens/profile/profile.js">
           <value>
             <set />
           </value>

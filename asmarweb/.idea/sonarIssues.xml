@@ -698,6 +698,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../asmarApp/screens/helpers/emailValidator.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarApp/screens/helpers/passwordValidator.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../asmarApp/screens/home/home.js">
           <value>
             <set />
