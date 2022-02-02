@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'react-native-axios';
 
 const BASE_URL = 'http://localhost:8080/api/products';
 
@@ -6,10 +6,9 @@ const BASE_URL = 'http://localhost:8080/api/products';
 function getProductDetailsById(id) {
     return axios.get(BASE_URL+'/'+id);
 }
-
-function getProductsByCategoryId(categoryId) {
+/*function getProductsByCategoryId(categoryId) {
     return axios.get(BASE_URL+'/'+categoryId);
-}
+}*/
 export const productService = {
     getProductDetailsById
 };
