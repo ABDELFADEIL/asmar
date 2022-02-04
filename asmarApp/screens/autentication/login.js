@@ -10,6 +10,8 @@ import {GET_JWT_TOKEN, Login, SET_JWT_TOKEN} from "../../services/userService";
 import { emailValidator } from '../helpers/emailValidator'
 import { passwordValidator } from '../helpers/passwordValidator'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { LinearGradient } from 'expo-linear-gradient';
+
 export default function LoginScreen({route, navigation}) {
     const { colors } = useTheme();
     const { current } = useCardAnimation();
@@ -120,10 +122,12 @@ export default function LoginScreen({route, navigation}) {
                                 navigation.navigate('Créer un compte')}
                             }
                                 >
-                                <View style={styles.btnSignup}><Text style={{ fontSize: '0.8rem'}} to="/signup">Créer un compte</Text></View>
+                                <View style={styles.btnSignup}><Text style={{ fontSize: 0.8}} to="/signup">Créer un compte</Text></View>
                             </TouchableOpacity>
                             <TouchableOpacity>
-                                <View onClick={onSubmitForm} style={styles.btnSignin}><Text>se connecter</Text></View>
+                                <LinearGradient colors={['#F3BD6E', '#7A5F37']}>
+                                    <View onClick={onSubmitForm} style={styles.btnSignin}><Text>se connecter</Text></View>
+                                </LinearGradient>
                             </TouchableOpacity>
                         </View>
 
@@ -146,9 +150,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '500PX',
     minHeight: '630px',
-    borderRadius: '10px',
-    /* box-shadow: 10px 10px 40px rgba(0, 59, 73, 0.38); */
-    boxShadow: '0 4px 6px 2px rgba(0, 59, 73, 0.2), 0 4px 4px 2px rgba(0, 59, 73, 0.14), 0 5px 4px -4px rgba(0, 59, 73, 0.12)'
+    borderRadius: 10,
 },
  loginLogo: {
     paddingTop: '10px',
@@ -165,19 +167,18 @@ const styles = StyleSheet.create({
  connHeadH5: {
     padding: '10px',
     margin: '10px',
-     fontSize: '1.5rem',
+     fontSize: 1.5,
      color: '#003B49'
 },
   loginInput: {
-    display: 'flex',
-    flexFlow: 'column nowrap',
+     flexDirection: 'column',
+    flexWrap: 'nowrap',
     justifyContent: 'center',
-    marginTop: '100px',
-    outlineStyle: 'none'
+    marginTop: 100,
 },
  loginEmail: {
-    padding: '10px',
-    margin: '10px',
+    padding: 10,
+    margin: 10,
      },
     loginPageCartHr: {
         color: '#F4D19E',
@@ -189,11 +190,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1.5,
     },
     loginPageCartInput: {
-        border: 'none',
-        outlineStyle: 'none',
-        lineHeight: 'initial',
-        alignSelf: 'end',
-        fontSize: 'medium',
         marginLeft: 10
 },
 loginPageCartSvg: {
@@ -203,7 +199,6 @@ loginPageCartSvg: {
         width: '10%',
 },
 pwdForget: {
-        display: 'flex',
         width: '80%',
         marginLeft: '70px',
         padding: '0px',
@@ -212,27 +207,21 @@ pwdForget: {
 },
 
   btnConn: {
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
       justifyContent: 'center',
       margin: 'auto',
       width: '80%',
-      gridColumnGap: '10px',
-      marginTop: '0px',
-      cursor: 'pointer',
-      border: 'none',
-      borderRadius: '15px',
+      marginTop: 0,
+      borderRadius: 15,
       color: '#003B49',
 },
 btnConnDiv: {
-    borderRadius: '10px',
-        height: '40px',
+    borderRadius: 10,
+        height: 40,
         textAlign: 'center',
-        padding: '8px',
+        padding: 8,
 
 },
  btnSignin: {
-    backgroundImage: 'linear-gradient(#F3BD6E, #7A5F37)',
      borderRadius: 15,
      height: 30,
      textAlign: 'center',
@@ -244,7 +233,7 @@ btnSignup: {
     height: 30,
     textAlign: 'center',
     paddingTop: 4,
-    fontSize: '.8rem'
+    fontSize: 0.8
 
 },
 

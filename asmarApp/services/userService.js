@@ -1,5 +1,6 @@
-import axios from 'axios';
+import axios from 'react-native-axios';
 import {BASE_URL} from "../utils/constants";
+import { AsyncStorage } from 'react-native';
 
 export const //BASE_URL = 'http://localhost:8080',
     Login = (user) => {
@@ -9,12 +10,12 @@ export const //BASE_URL = 'http://localhost:8080',
         return axios.post(BASE_URL + '/api/users/add', user);
     },
     SET_JWT_TOKEN = (jwtToken) => {
-        localStorage.setItem('jwtToken', jwtToken);
+        AsyncStorage.setItem('jwtToken', jwtToken);
     },
     GET_JWT_TOKEN = () => {
-        return localStorage.getItem('jwtToken');
+        return AsyncStorage.getItem('jwtToken');
     },
     REMOVE_JWT_TOKEN = () => {
-        localStorage.removeItem('jwtToken');
+        AsyncStorage.removeItem('jwtToken');
 
     };
