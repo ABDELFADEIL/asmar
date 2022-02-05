@@ -44,9 +44,9 @@ public class UserServiceImpl implements UserService{
         String password=userForm.getPassword();
         String repassword=userForm.getRepassword();
         if(!(repassword.equals(password))) throw new UserExpception(repassword+ " Mot de passe n'est pas confirmé");
-        String username = userForm.getUserName();
+        String username = userForm.getUsername();
         User user= userRepository.findByEmailOrUserName(username);
-        if(user !=null) throw new UserExpception(userForm.getUserName() +" existe déjà");
+        if(user !=null) throw new UserExpception(userForm.getUsername() +" existe déjà");
 
         user = userMapper.toUser(userForm);
         user.setPassword(bCryptPasswordEncoder.encode(password));
