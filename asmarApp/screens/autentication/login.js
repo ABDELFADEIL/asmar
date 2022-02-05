@@ -1,10 +1,8 @@
-import React from "react";
-import { Animated, View, Text, Pressable, Button, StyleSheet, Image, TextInput, TouchableOpacity, AsyncStorage } from 'react-native';
+import 'react-native-gesture-handler';
+import React, {useState} from "react";
+import { Animated, View, Text, Pressable, StyleSheet, Image, TextInput, TouchableOpacity, AsyncStorage } from 'react-native';
 import {Link, useTheme} from '@react-navigation/native';
 import { useCardAnimation } from '@react-navigation/stack';
-import {useEffect, useState} from 'react';
-import {productService} from '../../services/productService';
-import {ScreenContainer} from "react-native-screens";
 import Logo from "../../assets/asmar_logo.png"
 import {GET_JWT_TOKEN, Login, SET_JWT_TOKEN} from "../../services/userService";
 import { emailValidator } from '../helpers/emailValidator'
@@ -27,14 +25,11 @@ export default function LoginScreen({route, navigation}) {
             setPassword({ ...password, error: passwordError })
             return
         }
-        const user = {'email': email.value, 'password': password.value};
-        const response = await Login(user);
+        const response = await Login({'email': email.value, 'password': password.value});
         try {
             const headers = response.headers;
             SET_JWT_TOKEN(headers.authorization);
-            console.log(GET_JWT_TOKEN("jwtToken"));
             if (response.status === 200) {
-                console.log(navigation)
                 navigation.navigate(route.params.name);
             }
         } catch (e) {
@@ -65,11 +60,9 @@ export default function LoginScreen({route, navigation}) {
                             }),
                         },
                     ],
-                    margin: '20px auto',
+                    margin: '20 auto',
                     textAlign: 'center',
-                    minHeight: '630px',
-                    /* box-shadow: 10px 10px 40px rgba(0, 59, 73, 0.38); */
-                    boxShadow: '0 4px 6px 2px rgba(0, 59, 73, 0.2), 0 4px 4px 2px rgba(0, 59, 73, 0.14), 0 5px 4px -4px rgba(0, 59, 73, 0.12)'
+                    minHeight: 630,
 
                 }}
             >
@@ -145,28 +138,28 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
    loginPageCart: {
-    margin: '20px auto',
+    margin: '20 auto',
        backgroundColor: 'white',
     textAlign: 'center',
-    width: '500PX',
-    minHeight: '630px',
+    width: 500,
+    minHeight: 630,
     borderRadius: 10,
 },
  loginLogo: {
-    paddingTop: '10px',
+    paddingTop: 10,
 
 },
  loginLogoImg: {
     margin: 'auto'
 },
  connHead: {
-    height: '30px',
-    padding: '5px',
+    height: 30,
+    padding: 30,
     margin: '0'
 },
  connHeadH5: {
-    padding: '10px',
-    margin: '10px',
+    padding: 10,
+    margin: 10,
      fontSize: 1.5,
      color: '#003B49'
 },
@@ -193,17 +186,17 @@ const styles = StyleSheet.create({
         marginLeft: 10
 },
 loginPageCartSvg: {
-        height: '1.5rem',
+        height: 1.5,
         color: '#003B49',
-        marginBottom: '5px',
+        marginBottom: 5,
         width: '10%',
 },
 pwdForget: {
         width: '80%',
-        marginLeft: '70px',
-        padding: '0px',
-        height: '40px',
-        marginTop: '0px',
+        marginLeft: 70,
+        padding: 0,
+        height: 40,
+        marginTop: 0,
 },
 
   btnConn: {

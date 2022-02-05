@@ -1,6 +1,6 @@
 import axios from 'react-native-axios';
 import {BASE_URL} from "../utils/constants";
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const //BASE_URL = 'http://localhost:8080',
     Login = (user) => {

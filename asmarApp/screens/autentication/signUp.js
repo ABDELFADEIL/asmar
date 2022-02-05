@@ -1,22 +1,11 @@
+import 'react-native-gesture-handler';
 import React from "react";
-import {
-    Animated,
-    View,
-    Text,
-    Pressable,
-    Button,
-    StyleSheet,
-    Image,
-    TextInput,
-    TouchableOpacity,
-    AsyncStorage,
-    ScrollView
+import { Animated, View, Text, Pressable,
+    StyleSheet, Image, TextInput,TouchableOpacity, ScrollView
 } from 'react-native';
-import {Link, useTheme} from '@react-navigation/native';
+import {useTheme} from '@react-navigation/native';
 import { useCardAnimation } from '@react-navigation/stack';
 import {useEffect, useState} from 'react';
-import {productService} from '../../services/productService';
-import {ScreenContainer} from "react-native-screens";
 import Logo from "../../assets/asmar_logo.png"
 import {GET_JWT_TOKEN, Login, SET_JWT_TOKEN} from "../../services/userService";
 import { emailValidator } from '../helpers/emailValidator'
@@ -92,12 +81,9 @@ export default function SignUpScreen({route, navigation}) {
                             }),
                         },
                     ],
-                    margin: '20px auto',
+                    margin: '20 auto',
                     textAlign: 'center',
-                    minHeight: '630px',
-                    /* box-shadow: 10px 10px 40px rgba(0, 59, 73, 0.38); */
-                    boxShadow: '0 4px 6px 2px rgba(0, 59, 73, 0.2), 0 4px 4px 2px rgba(0, 59, 73, 0.14), 0 5px 4px -4px rgba(0, 59, 73, 0.12)'
-
+                    minHeight: 630,
                 }}
             >
                     <ScrollView keyboardShouldPersistTaps="handled"
@@ -316,8 +302,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    /*
     loginPageCart: {
-        margin: '20px auto',
+        margin: '20 auto',
         backgroundColor: 'white',
         textAlign: 'center',
         width: 500,
@@ -413,11 +400,11 @@ const styles = StyleSheet.create({
 
     /*btnSignin:hover: {
         backgroundImage: 'linear-gradient(#F3BD6E, rgb(101, 78, 46))',
-            border: '1px solid #F3BD6E',
+            border: '1 solid #F3BD6E',
     },
     btnSignup:hover: {
         backgroundColor: 'rgba(0, 59, 73, 0.81)',
-            border: '1px solid #003B49',
+            border: '1 solid #003B49',
     },
      */
     btnConnA: {
