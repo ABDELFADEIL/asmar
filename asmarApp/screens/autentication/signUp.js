@@ -1,9 +1,10 @@
 import 'react-native-gesture-handler';
 import React from "react";
 import { Animated, View, Text, Pressable,
-    StyleSheet, Image, TextInput,TouchableOpacity, ScrollView
-} from 'react-native';
+    StyleSheet, Image, TextInput,TouchableOpacity, ScrollView } from 'react-native';
 import {useTheme} from '@react-navigation/native';
+import {AsyncStorage,} from '@react-native-async-storage/async-storage';
+import {Link, useTheme} from '@react-navigation/native';
 import { useCardAnimation } from '@react-navigation/stack';
 import {useEffect, useState} from 'react';
 import Logo from "../../assets/asmar_logo.png"
