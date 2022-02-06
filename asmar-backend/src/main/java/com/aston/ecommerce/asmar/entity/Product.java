@@ -62,13 +62,6 @@ public class Product extends AbstractEntity{
         this.description = description;
     }
 
-    public String getUsage_() {
-        return usage_;
-    }
-
-    public void setUsage_(String usage) {
-        this.usage_ = usage;
-    }
 
     public String getSize() {
         return size;
@@ -122,6 +115,11 @@ public class Product extends AbstractEntity{
         this.category = category;
     }
 
+
+    public String getUsage_() { return usage_; }
+
+    public void setUsage_(String usage_) { this.usage_ = usage_;}
+
     @Override
     public String toString() {
         return "Product{" +
@@ -139,4 +137,5 @@ public class Product extends AbstractEntity{
                 ", category=" + category +
                 '}';
     }
+
 }

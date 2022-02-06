@@ -1,5 +1,7 @@
 package com.aston.ecommerce.asmar.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -10,6 +12,7 @@ public class CommandLine extends AbstractEntity{
 
     @Column(name="quantity", nullable = false)
     private int quantity;
+
     @Column(name="price", nullable = false)
     @NotEmpty
     private float price;
@@ -22,15 +25,11 @@ public class CommandLine extends AbstractEntity{
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
+    @ManyToOne
+    @JoinColumn(name="cart_id")
+    private Cart cart;
 
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     public float getPrice() {
         return price;
@@ -56,11 +55,21 @@ public class CommandLine extends AbstractEntity{
         this.order = order;
     }
 
-    public User getUser() {
-        return user;
-    }
+    public User getUser() { return user;}
 
     public void setUser(User user) {
         this.user = user;
     }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public int getQuantity() { return quantity; }
+
+    public void setQuantity(int quantity) { this.quantity = quantity;}
 }

@@ -1,16 +1,13 @@
 package com.aston.ecommerce.asmar.dto;
 
-import com.aston.ecommerce.asmar.entity.AbstractEntity;
-
-
 public class CommandLineDTO {
 
     private Long id;
-    private int quantity;
     private float price;
     private ProductDTO product;
     private OrderDTO order;
     private UserDTO user;
+    private CartDTO cart;
 
     public Long getId() {
         return id;
@@ -18,14 +15,6 @@ public class CommandLineDTO {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public float getPrice() {
@@ -64,11 +53,11 @@ public class CommandLineDTO {
     public String toString() {
         return "CommandLineDTO{" +
                 "id=" + id +
-                ", quantity=" + quantity +
                 ", price=" + price +
                 ", product=" + product +
                 ", order=" + order +
                 ", user=" + user +
+                ", cart=" + cart +
                 '}';
     }
 }
