@@ -11,4 +11,5 @@ public interface UserService {
     UserDTO addUser(UserForm userForm);
     UserDTO updatePassword(UserUpdatePassword userUpdatePassword) throws Exception;
     List<UserDTO> findAll();
+    UserDTO getCurrentUser(String username);
 }

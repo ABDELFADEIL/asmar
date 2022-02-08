@@ -116,4 +116,6 @@ public class ProductController {
         }
         return new ResponseEntity<>(productDetailDTO, HttpStatus.CREATED);
     }
+
+    /*add product by category*/
 }

@@ -1,10 +1,8 @@
 package com.aston.ecommerce.asmar.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "command_line")
@@ -25,9 +23,6 @@ public class CommandLine extends AbstractEntity{
     @ManyToOne
     @JoinColumn(name="user_id")
     private User user;
-    @ManyToOne
-    @JoinColumn(name="cart_id")
-    private Cart cart;
 
 
 
@@ -61,15 +56,18 @@ public class CommandLine extends AbstractEntity{
         this.user = user;
     }
 
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
-
-    public int getQuantity() { return quantity; }
+    public int getQuantity() {  return quantity;}
 
     public void setQuantity(int quantity) { this.quantity = quantity;}
+
+    @Override
+    public String toString() {
+        return "CommandLine{" +
+                "quantity=" + quantity +
+                ", price=" + price +
+                ", product=" + product +
+                ", order=" + order +
+                ", user=" + user +
+                '}';
+    }
 }

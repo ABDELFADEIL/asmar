@@ -3,6 +3,8 @@ package com.aston.ecommerce.asmar.service;
 import com.aston.ecommerce.asmar.dao.CommandLineRepository;
 import com.aston.ecommerce.asmar.dto.CommandLineDTO;
 
+import com.aston.ecommerce.asmar.dto.mapper.CommandLineMapper;
+import com.aston.ecommerce.asmar.entity.CommandLine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +15,7 @@ public class CommandLineServiceImpl implements CommandLineService{
 
 
     @Autowired
-    private CommandLineRepository commandLineService;
+    private CommandLineMapper commandLineMapper;
     @Autowired
     private CommandLineRepository commandLineRepository;
 
@@ -25,7 +27,8 @@ public class CommandLineServiceImpl implements CommandLineService{
 
     @Override
     public List<CommandLineDTO> getCommandLineListByUserId(Long userId) {
-        return null;
+        List<CommandLine> commandLineList = commandLineRepository.findByUserAndOrderIsNull(userId);
+        return commandLineMapper.toCommandLineDtos(commandLineList);
     }
 
     @Override

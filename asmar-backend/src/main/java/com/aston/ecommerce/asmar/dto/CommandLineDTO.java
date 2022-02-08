@@ -7,7 +7,7 @@ public class CommandLineDTO {
     private ProductDTO product;
     private OrderDTO order;
     private UserDTO user;
-    private CartDTO cart;
+    private int quantity;
 
     public Long getId() {
         return id;
@@ -49,6 +49,12 @@ public class CommandLineDTO {
         this.user = user;
     }
 
+
+    public int getQuantity() { return quantity; }
+
+    public void setQuantity(int quantity) { this.quantity = quantity;
+    }
+
     @Override
     public String toString() {
         return "CommandLineDTO{" +
@@ -57,7 +63,7 @@ public class CommandLineDTO {
                 ", product=" + product +
                 ", order=" + order +
                 ", user=" + user +
-                ", cart=" + cart +
+                ", quantity=" + quantity +
                 '}';
     }
 }
