@@ -2,6 +2,8 @@
 package com.aston.ecommerce.asmar.controller;
 
 import com.aston.ecommerce.asmar.dto.CommandLineDTO;
+import com.aston.ecommerce.asmar.dto.ProductDetailDTO;
+import com.aston.ecommerce.asmar.dto.addProductToCartDTO;
 import com.aston.ecommerce.asmar.entity.CommandLine;
 import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.entity.User;
@@ -57,27 +59,30 @@ public class CommandLineController {
             @AuthenticationPrincipal User user
     ) {
 
-        Product product = productService.findById(commandLineDTO.getProduct().getId());
+            Product product = productService.findById(commandLineDTO.getProduct().getId());
+            addProductToCartDTO add = new addProductToCartDTO();
+            add.setProduct_id(product.getId());
+            add.setProduct(product);
+            add.setUser_id(user.getId());
+            add.setUser(user);
+            add.setQuantity(quantity);
 
-        commandLineService.addProductToCart(user, product, quantity);
-
+        commandLineService.addProductToCart(add);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-
     @PutMapping("/update/{id}")
     public ResponseEntity<CommandLineDTO> updateCommandLine(
             @Valid @RequestBody  CommandLineDTO commandLineDTO,
-            @RequestParam("id")  Long id,
-            @RequestParam ("quantity") int quantity,
+           /* @RequestParam("id")  Long id,
+            @RequestParam ("quantity") int quantity,*/
             @AuthenticationPrincipal User user
     ){
-        CommandLine commandLine = commandLineService.findById(commandLineDTO.getId());
-        commandLine.setQuantity(quantity);
-        commandLineService.updateCommandLine(id,commandLine,user);
-        return new ResponseEntity<>(HttpStatus.OK);
+        Product product = productService.findById(commandLineDTO.getProduct().getId());
 
+        commandLineService.updateCommandLine(commandLineDTO,user,product);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/remove/{Id}")

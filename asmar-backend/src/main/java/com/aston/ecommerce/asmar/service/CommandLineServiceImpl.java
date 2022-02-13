@@ -3,14 +3,17 @@ package com.aston.ecommerce.asmar.service;
 import com.aston.ecommerce.asmar.dao.CommandLineRepository;
 import com.aston.ecommerce.asmar.dto.CommandLineDTO;
 
+import com.aston.ecommerce.asmar.dto.addProductToCartDTO;
 import com.aston.ecommerce.asmar.dto.mapper.CommandLineMapper;
 import com.aston.ecommerce.asmar.entity.CommandLine;
+import com.aston.ecommerce.asmar.entity.Order;
 import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
+
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,36 +32,24 @@ public class CommandLineServiceImpl implements CommandLineService {
     }
 
     @Override
-     public CommandLineDTO updateCommandLine(Long id, CommandLine commandLine,User user) {
+    public CommandLineDTO addProductToCart(addProductToCartDTO addProductToCartDTO) {
+        CommandLine command = new CommandLine();
+        command.setQuantity(addProductToCartDTO.getQuantity());
+        command.setProduct(addProductToCartDTO.getProduct());
+        command.setUser(addProductToCartDTO.getUser());
+        Order ord = commandLineRepository.findOrderByIdOrderByDesc();
 
-        BigDecimal bigDecimal = new BigDecimal(commandLine.getProduct().getPrice()).multiply(new BigDecimal(commandLine.getQuantity()));
-        commandLine.getSubTotal(bigDecimal);
-        commandLineRepository.save(commandLine);
-        return commandLineMapper.toCommandLineDto(commandLine);
-
+        command.setOrder(ord);
+        return commandLineMapper.toCommandLineDto(command);
     }
 
     @Override
-    public CommandLineDTO  addProductToCart(User user, Product product, int quantity) {
+     public void updateCommandLine( CommandLineDTO commandLineDTO,User user,Product product) {
 
-        List<CommandLine> commandLineList = commandLineRepository.findByUserAndOrderIsNull(user.getId());
-
-        for (CommandLine commandLine : commandLineList) {
-            if (product.getId() == commandLine.getProduct().getId()) {
-                commandLine.setProduct(product);
-                commandLine.setQuantity(commandLine.getQuantity() + quantity);
-                commandLine.setSubTotal(new BigDecimal(product.getPrice()).multiply(new BigDecimal(quantity)));
-                commandLineRepository.save(commandLine);
-
-            }
-            commandLine = new CommandLine();
-            commandLine.setProduct(product);
-            commandLine.setQuantity(quantity);
-            commandLine.getSubTotal(new BigDecimal(product.getPrice()).multiply(new BigDecimal(quantity)));
-            commandLine = commandLineRepository.save(commandLine);
-            return commandLineMapper.toCommandLineDto(commandLine);
-        }
-        return (CommandLineDTO) commandLineList;
+        CommandLine commandLine = commandLineRepository.getById(commandLineDTO.getId());
+        commandLine.setQuantity(commandLineDTO.getQuantity());
+        commandLine.setCreatedDate(new Date());
+        commandLineRepository.save(commandLine);
     }
 
     @Override
@@ -83,5 +74,7 @@ public class CommandLineServiceImpl implements CommandLineService {
     public List<CommandLineDTO> findByOrder(Long orderId) {
         return commandLineMapper.toCommandLineDtos(commandLineRepository.findByOrder(orderId));
     }
+
+
 
 }

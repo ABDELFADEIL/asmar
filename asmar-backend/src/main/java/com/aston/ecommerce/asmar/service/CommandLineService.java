@@ -2,6 +2,7 @@
 package com.aston.ecommerce.asmar.service;
 
 import com.aston.ecommerce.asmar.dto.CommandLineDTO;
+import com.aston.ecommerce.asmar.dto.addProductToCartDTO;
 import com.aston.ecommerce.asmar.entity.CommandLine;
 import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.entity.User;
@@ -14,11 +15,11 @@ public interface CommandLineService {
 
 
     List<CommandLineDTO> getCommandLineListByUserId(Long userId);
-    CommandLineDTO addProductToCart(User user, Product product, int quantity);
     CommandLine findById(Long id);
-    CommandLineDTO updateCommandLine(Long id, CommandLine commandLine, User user);
+    void updateCommandLine(CommandLineDTO commandLineDTO, User user,Product product);
     void deleteCommandLine(Long id, User user);
     CommandLineDTO save(CommandLine commandLine);
     List<CommandLineDTO> findByOrder(Long orderId);
+    CommandLineDTO addProductToCart(addProductToCartDTO addProductToCartDTO);
 }
 
