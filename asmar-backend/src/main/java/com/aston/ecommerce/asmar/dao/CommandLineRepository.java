@@ -10,4 +10,5 @@ import java.util.List;
 public interface CommandLineRepository extends JpaRepository<CommandLine, Long> {
     @Query("select c from CommandLine c where c.user.id=:userId and c.order.id is null ")
     List<CommandLine> findByUserAndOrderIsNull(Long userId);
+    List<CommandLine> findByOrder(Long orderId);
 }

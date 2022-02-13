@@ -30,7 +30,10 @@ public class ProductServiceImpl implements ProductService{
         return productMapper.toProductDetailDto(product);
     }
 
-
+    @Override
+    public Product findById(Long id) {
+        return productRepository.findById(id).orElse(null);
+    }
 
     public List<ProductDTO> getProductByLabelOrDescription(String keyword) {
         List<Product> products;

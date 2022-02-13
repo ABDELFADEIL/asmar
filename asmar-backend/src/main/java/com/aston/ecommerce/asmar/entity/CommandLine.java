@@ -3,6 +3,7 @@ package com.aston.ecommerce.asmar.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "command_line")
@@ -24,15 +25,9 @@ public class CommandLine extends AbstractEntity{
     @JoinColumn(name="user_id")
     private User user;
 
-
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
+    @Column(name="subTotal", nullable = false)
+    @NotEmpty
+    private BigDecimal subTotal;
 
     public Product getProduct() {
         return product;
@@ -60,6 +55,17 @@ public class CommandLine extends AbstractEntity{
 
     public void setQuantity(int quantity) { this.quantity = quantity;}
 
+    public BigDecimal getSubTotal(BigDecimal multiply) { return subTotal; }
+
+    public void setSubTotal(BigDecimal subTotal) { this.subTotal = subTotal;}
+
+
+    public float getPrice() { return price;}
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "CommandLine{" +
@@ -70,4 +76,6 @@ public class CommandLine extends AbstractEntity{
                 ", user=" + user +
                 '}';
     }
+
+
 }

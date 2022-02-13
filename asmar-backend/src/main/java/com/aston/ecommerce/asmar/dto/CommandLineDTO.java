@@ -1,9 +1,12 @@
 package com.aston.ecommerce.asmar.dto;
 
+import java.math.BigDecimal;
+
 public class CommandLineDTO {
 
     private Long id;
     private float price;
+    private  BigDecimal subTotal;
     private ProductDTO product;
     private OrderDTO order;
     private UserDTO user;
@@ -17,21 +20,9 @@ public class CommandLineDTO {
         this.id = id;
     }
 
-    public float getPrice() {
-        return price;
-    }
+    public ProductDTO getProduct() {  return product; }
 
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public ProductDTO getProduct() {
-        return product;
-    }
-
-    public void setProduct(ProductDTO product) {
-        this.product = product;
-    }
+    public void setProduct(ProductDTO product) { this.product = product;}
 
     public OrderDTO getOrder() {
         return order;
@@ -55,11 +46,23 @@ public class CommandLineDTO {
     public void setQuantity(int quantity) { this.quantity = quantity;
     }
 
+    public float getPrice() {  return price;  }
+
+    public void setPrice(float price) { this.price = price; }
+
+    public BigDecimal getSubTotal() {  return subTotal;  }
+
+    public void setSubTotal(BigDecimal subTotal) {
+        this.subTotal = subTotal;
+    }
+
+
     @Override
     public String toString() {
         return "CommandLineDTO{" +
                 "id=" + id +
                 ", price=" + price +
+                ", subTotal=" + subTotal +
                 ", product=" + product +
                 ", order=" + order +
                 ", user=" + user +
