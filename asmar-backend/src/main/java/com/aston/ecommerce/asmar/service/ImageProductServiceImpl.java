@@ -3,6 +3,7 @@ package com.aston.ecommerce.asmar.service;
 import com.aston.ecommerce.asmar.dao.ImageRepository;
 import com.aston.ecommerce.asmar.dao.ProductRepository;
 import com.aston.ecommerce.asmar.dto.ImageSaveDTO;
+import com.aston.ecommerce.asmar.dto.ProductDTO;
 import com.aston.ecommerce.asmar.entity.Image;
 import com.aston.ecommerce.asmar.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.List;
 
 @Service
 public class ImageProductServiceImpl implements ImageProductService{

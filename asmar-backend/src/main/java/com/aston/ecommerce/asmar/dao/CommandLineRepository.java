@@ -15,4 +15,6 @@ public interface CommandLineRepository extends JpaRepository<CommandLine, Long> 
 
     @Query(value ="SELECT o FROM Order o ORDER BY o.id DESC LIMIT 1", nativeQuery=true )
     Order findOrderByIdOrderByDesc();
+    @Query("select c from CommandLine c where c.product.id=:productId and c.order.id is null ")
+    CommandLine findByProductAndOrderIsNull(Long productId);
 }

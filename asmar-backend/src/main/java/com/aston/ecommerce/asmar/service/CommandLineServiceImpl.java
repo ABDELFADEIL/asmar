@@ -1,20 +1,23 @@
 package com.aston.ecommerce.asmar.service;
 
 import com.aston.ecommerce.asmar.dao.CommandLineRepository;
+import com.aston.ecommerce.asmar.dao.ProductRepository;
+import com.aston.ecommerce.asmar.dao.UserRepository;
 import com.aston.ecommerce.asmar.dto.CommandLineDTO;
 
-import com.aston.ecommerce.asmar.dto.addProductToCartDTO;
+import com.aston.ecommerce.asmar.dto.ProductToCartDTO;
 import com.aston.ecommerce.asmar.dto.mapper.CommandLineMapper;
 import com.aston.ecommerce.asmar.entity.CommandLine;
-import com.aston.ecommerce.asmar.entity.Order;
 import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.List;
+
 
 @Service
 public class CommandLineServiceImpl implements CommandLineService {
@@ -24,6 +27,10 @@ public class CommandLineServiceImpl implements CommandLineService {
     private CommandLineMapper commandLineMapper;
     @Autowired
     private CommandLineRepository commandLineRepository;
+    @Autowired
+    private ProductRepository productRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public List<CommandLineDTO> getCommandLineListByUserId(Long userId) {
@@ -32,24 +39,40 @@ public class CommandLineServiceImpl implements CommandLineService {
     }
 
     @Override
-    public CommandLineDTO addProductToCart(addProductToCartDTO addProductToCartDTO) {
-        CommandLine command = new CommandLine();
-        command.setQuantity(addProductToCartDTO.getQuantity());
-        command.setProduct(addProductToCartDTO.getProduct());
-        command.setUser(addProductToCartDTO.getUser());
-        Order ord = commandLineRepository.findOrderByIdOrderByDesc();
+    public CommandLineDTO addProductToCart(ProductToCartDTO productToCartDTO) {
+        CommandLine commandLine = commandLineRepository.findByProductAndOrderIsNull(productToCartDTO.getProductId());
+        if (commandLine == null) {
+            Product product = productRepository.getById(productToCartDTO.getProductId());
+            User user = userRepository.getById(productToCartDTO.getUserId());
 
-        command.setOrder(ord);
-        return commandLineMapper.toCommandLineDto(command);
+            CommandLine command = new CommandLine();
+            BigDecimal price = product.getPrice().multiply(BigDecimal.valueOf(productToCartDTO.getQuantity()));
+            command.setPrice(price);
+            command.setQuantity(productToCartDTO.getQuantity());
+            command.setProduct(product);
+            command.setUser(user);
+            command.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+            command = commandLineRepository.save(command);
+            return commandLineMapper.toCommandLineDto(command);
+        } else {
+            int quantity = commandLine.getQuantity() + productToCartDTO.getQuantity();
+            BigDecimal price = commandLine.getProduct().getPrice().multiply(BigDecimal.valueOf(quantity));
+            commandLine.setPrice(price);
+           commandLine.setQuantity(quantity);
+           commandLine = commandLineRepository.save(commandLine);
+            return commandLineMapper.toCommandLineDto(commandLine);
+        }
+
     }
 
     @Override
-     public void updateCommandLine( CommandLineDTO commandLineDTO,User user,Product product) {
+     public CommandLineDTO updateCommandLine( CommandLineDTO commandLineDTO,User user,Product product) {
 
         CommandLine commandLine = commandLineRepository.getById(commandLineDTO.getId());
         commandLine.setQuantity(commandLineDTO.getQuantity());
-        commandLine.setCreatedDate(new Date());
-        commandLineRepository.save(commandLine);
+        commandLine.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        commandLine = commandLineRepository.save(commandLine);
+        return commandLineMapper.toCommandLineDto(commandLine);
     }
 
     @Override

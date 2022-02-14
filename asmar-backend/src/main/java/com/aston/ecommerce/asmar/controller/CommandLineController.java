@@ -3,8 +3,8 @@ package com.aston.ecommerce.asmar.controller;
 
 import com.aston.ecommerce.asmar.dto.CommandLineDTO;
 import com.aston.ecommerce.asmar.dto.ProductDetailDTO;
-import com.aston.ecommerce.asmar.dto.addProductToCartDTO;
-import com.aston.ecommerce.asmar.entity.CommandLine;
+import com.aston.ecommerce.asmar.dto.ProductToCartDTO;
+
 import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.entity.User;
 import com.aston.ecommerce.asmar.service.CommandLineService;
@@ -15,9 +15,11 @@ import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;;
 import java.util.List;
 
 @RestController
@@ -54,22 +56,12 @@ public class CommandLineController {
 
     @PostMapping("/add")
     public ResponseEntity<CommandLineDTO> addProductToCart(
-            @Valid @RequestBody CommandLineDTO commandLineDTO,
-            @RequestParam("quantity") int quantity,
-            @AuthenticationPrincipal User user
+           @RequestBody ProductToCartDTO productToCartDTO
     ) {
 
-            Product product = productService.findById(commandLineDTO.getProduct().getId());
-            addProductToCartDTO add = new addProductToCartDTO();
-            add.setProduct_id(product.getId());
-            add.setProduct(product);
-            add.setUser_id(user.getId());
-            add.setUser(user);
-            add.setQuantity(quantity);
+        CommandLineDTO commandLineDTO = commandLineService.addProductToCart(productToCartDTO);
 
-        commandLineService.addProductToCart(add);
-
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(commandLineDTO, HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}")

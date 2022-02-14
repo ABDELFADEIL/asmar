@@ -2,6 +2,8 @@ package com.aston.ecommerce.asmar.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -10,10 +12,8 @@ public class CommandLine extends AbstractEntity{
 
     @Column(name="quantity", nullable = false)
     private int quantity;
-
     @Column(name="price", nullable = false)
-    @NotEmpty
-    private float price;
+    private BigDecimal price;
     @ManyToOne
     @JoinColumn(name="product_id")
     private Product product;
@@ -25,7 +25,7 @@ public class CommandLine extends AbstractEntity{
     private User user;
 
     @Column(name = "created_date")
-    private Date createdDate;
+    private Timestamp createdDate;
 
 
     public Product getProduct() {
@@ -54,21 +54,15 @@ public class CommandLine extends AbstractEntity{
 
     public void setQuantity(int quantity) { this.quantity = quantity;}
 
-  /*  public BigDecimal getSubTotal(BigDecimal multiply) { return subTotal; }
+    public BigDecimal getPrice() { return price;}
 
-    public void setSubTotal(BigDecimal subTotal) { this.subTotal = subTotal;}*/
-
-
-    public float getPrice() { return price;}
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
+    public void setPrice(BigDecimal price) {
+        this.price = price;  }
 
 
-    public Date getCreatedDate() {        return createdDate;    }
+    public Timestamp getCreatedDate() { return createdDate;    }
 
-    public void setCreatedDate(Date createdDate) {        this.createdDate = createdDate;    }
+    public void setCreatedDate(Timestamp createdDate) {        this.createdDate = createdDate;    }
 
     @Override
     public String toString() {
