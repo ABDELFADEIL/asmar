@@ -1,6 +1,17 @@
-import 'react-native-gesture-handler';
 import React, {useState} from "react";
-import { Animated, View, Text, Pressable, StyleSheet, Image, TextInput, TouchableOpacity, AsyncStorage } from 'react-native';
+import {
+    Dimensions,
+    Animated,
+    View,
+    Text,
+    Pressable,
+    StyleSheet,
+    Image,
+    TextInput,
+    TouchableOpacity,
+    AsyncStorage,
+    ScrollView
+} from 'react-native';
 import {Link, useTheme} from '@react-navigation/native';
 import { useCardAnimation } from '@react-navigation/stack';
 import Logo from "../../assets/asmar_logo.png"
@@ -27,7 +38,9 @@ export default function LoginScreen({route, navigation}) {
         }
         const response = await Login({'email': email.value, 'password': password.value});
         try {
+            console.log(response.status);
             const headers = response.headers;
+            console.log(headers.authorization);
             SET_JWT_TOKEN(headers.authorization);
             if (response.status === 200) {
                 navigation.navigate(route.params.name);
@@ -38,17 +51,18 @@ export default function LoginScreen({route, navigation}) {
     }
 
     return (
-        <View style={styles.container}>
+        <View
+            style={[styles.container, {}]}>
             <Pressable style={[
                     StyleSheet.absoluteFill,
                     { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
                 ]}
                 onPress={navigation.goBack}/>
+
             <Animated.View
                 style={{
                     padding: 16,
                     width: '90%',
-                    maxWidth: 400,
                     borderRadius: 10,
                     backgroundColor: colors.card,
                     transform: [
@@ -60,21 +74,21 @@ export default function LoginScreen({route, navigation}) {
                             }),
                         },
                     ],
-                    margin: '20 auto',
+
                     textAlign: 'center',
-                    minHeight: 630,
+                    minHeight: 480,
+                    justifyContent: 'center'
 
                 }}
             >
-                        <View style={{alignItems: 'center',
-                            justifyContent: 'center',}}>
+                        <View style={{alignSelf: 'center', marginBottom: 20, marginTop: -20}}>
                             <Image source={Logo}
-                                     style={{ width: 80, height: 50, textAlign: 'center', marginTop: 10}}
+                                     style={{ width: 100, height: 60}}
                                       alt="asmar logo"/></View>
                         <View style={styles.connHead}><Text style={styles.connHeadH5}>Se connecter</Text></View>
-                        <View style={styles.loginInput}>
-                            <View style={styles.loginEmail}>
-                                <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start', alignContent: 'flex-end'}}>
+                        <View style={styles.loginFrom}>
+                            <View style={styles.loginInput}>
+                                <View style={{ flexDirection: "row", justifyContent: 'flex-start', alignContent: 'flex-end'}}>
                                     <Icon name="envelope" size={20} color="#003B49" style={{marginBottom: -10}}/>
                                     <TextInput
                                                style={styles.loginPageCartInput}
@@ -91,12 +105,13 @@ export default function LoginScreen({route, navigation}) {
                                 </View>
                                 <View style={styles.loginPageCartHr}/>
                             </View>
-                            <View style={styles.loginEmail}>
+
+                            <View style={styles.loginInput}>
                                 <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start'}}>
                                     <Icon name="lock" size={24} color="#003B49" style={{marginBottom: -10}}/>
                                     <TextInput
                                         style={styles.loginPageCartInput}
-                                        type="password"
+                                        secureTextEntry={true}
                                         name="password"
                                         value={password.value}
                                         onChangeText={(text) => setPassword({ value: text, error: '' })}
@@ -106,29 +121,34 @@ export default function LoginScreen({route, navigation}) {
                                 <View style={styles.loginPageCartHr}/>
                             </View>
                             <View style={styles.pwdForget}>
-                                <Link to="/">Mot de passe oublié</Link>
+                                <TouchableOpacity onPress={() =>{
+                                    navigation.goBack();
+                                    navigation.navigate('Créer un compte ')}
+                                }>
+                                    <Text >Mot de passe oublié</Text>
+                                </TouchableOpacity>
                             </View>
                         </View>
                         <View style={styles.btnConn}>
+                            <TouchableOpacity onPress={onSubmitForm}>
+                                <LinearGradient style={styles.button} colors={['#F3BD6E', '#7A5F37']}>
+                                    <View onClick={onSubmitForm} style={styles.btnSignin}><Text>se connecter</Text></View>
+                                </LinearGradient>
+                            </TouchableOpacity>
                             <TouchableOpacity onPress={() =>{
                                 navigation.goBack();
                                 navigation.navigate('Créer un compte')}
                             }
                                 >
-                                <View style={styles.btnSignup}><Text style={{ fontSize: 0.8}} to="/signup">Créer un compte</Text></View>
+                                <View style={styles.btnSignup}><Text style={{ fontSize: 14, marginLeft: 'auto', marginRight: 'auto'}} to="/signup">Créer un compte</Text></View>
                             </TouchableOpacity>
-                            <TouchableOpacity>
-                                <LinearGradient colors={['#F3BD6E', '#7A5F37']}>
-                                    <View onClick={onSubmitForm} style={styles.btnSignin}><Text>se connecter</Text></View>
-                                </LinearGradient>
-                            </TouchableOpacity>
+
                         </View>
-
-
             </Animated.View>
         </View>
     );
 }
+
 
 const styles = StyleSheet.create({
 
@@ -136,13 +156,14 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        alignContent: 'center',
+        paddingTop: 80,
+
+
     },
    loginPageCart: {
-    margin: '20 auto',
-       backgroundColor: 'white',
+    backgroundColor: 'white',
     textAlign: 'center',
-    width: 500,
-    minHeight: 630,
     borderRadius: 10,
 },
  loginLogo: {
@@ -150,63 +171,62 @@ const styles = StyleSheet.create({
 
 },
  loginLogoImg: {
-    margin: 'auto'
 },
  connHead: {
-    height: 30,
-    padding: 30,
-    margin: '0'
+    height: 20,
+    padding: 10,
+
 },
  connHeadH5: {
     padding: 10,
-    margin: 10,
-     fontSize: 1.5,
+     fontSize: 20,
      color: '#003B49'
 },
-  loginInput: {
+    loginFrom: {
      flexDirection: 'column',
-    flexWrap: 'nowrap',
+    flexWrap: 'wrap',
     justifyContent: 'center',
-    marginTop: 100,
+    marginTop: 20,
+
 },
- loginEmail: {
-    padding: 10,
-    margin: 10,
+    loginInput: {
+     height: 80,
+
      },
     loginPageCartHr: {
-        color: '#F4D19E',
-        textAlign: 'center',
-        margin: 'auto',
         marginTop: 0,
-        width: '85%',
+        width: '100%',
         borderBottomColor: '#F4D19E',
         borderBottomWidth: 1.5,
     },
     loginPageCartInput: {
-        marginLeft: 10
+        marginLeft: 10,
+        width: '80%'
 },
 loginPageCartSvg: {
-        height: 1.5,
+        height: 20,
         color: '#003B49',
         marginBottom: 5,
         width: '10%',
 },
 pwdForget: {
-        width: '80%',
-        marginLeft: 70,
-        padding: 0,
-        height: 40,
-        marginTop: 0,
+        width: '90%',
+        height: 20,
+        marginTop: -20,
+        color: '#0017aa'
 },
 
   btnConn: {
       justifyContent: 'center',
-      margin: 'auto',
-      width: '80%',
-      marginTop: 0,
+      marginTop: 10,
       borderRadius: 15,
       color: '#003B49',
 },
+    button: {
+        borderRadius: 15,
+        marginBottom: 15,
+        height: 35
+    },
 btnConnDiv: {
     borderRadius: 10,
         height: 40,
@@ -215,18 +235,22 @@ btnConnDiv: {
 
 },
  btnSignin: {
-     borderRadius: 15,
      height: 30,
      textAlign: 'center',
-     paddingTop: 4
+     paddingTop: 5,
+     marginLeft: 'auto',
+     marginRight: 'auto'
 },
 btnSignup: {
     backgroundColor: 'rgba(0, 59, 73, 0.5)',
     borderRadius: 15,
-    height: 30,
+    height: 35,
     textAlign: 'center',
-    paddingTop: 4,
-    fontSize: 0.8
+    paddingTop: 5,
+    fontSize: 14,
+    width: '100%',
+
+
 
 },
 
