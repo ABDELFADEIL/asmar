@@ -14,7 +14,6 @@ export default function ProductScreen() {
     const [urlImages, setUrlImages] = useState([]);
     const [imagePrincipal, setImagePrincipal] = useState(null);
     const [noImagePrincipal, setNoImagePrincipal] = useState([]);
-    const[user, setUser] = useState(null);
     const [selectedQty, setSelectedQty] = useState(1);
 
 

@@ -2,39 +2,30 @@ import React, {useEffect, useState} from 'react';
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col';
 import theme from '../../src/utils/theme';
-import {productService} from "../services/productService";
-
+import {Link} from "react-router-dom";
 
 export const ProductItem = ({product}) => {
     const  [imageP,setImageP] = useState();
 
-
-    const getImage = () => {
-        productService
-            .getProductsByCategoryId(2)
-            .then((res) => {
-                let firstImg = null;
-                for(let item of res.data) {
-                    for(let i of item.urlImages){
-                    if(i.principal) {
-                        firstImg = i.url;
-                        setImageP(firstImg);
-                        console.log(firstImg);
-                    }
-                    }
-                }
-            })
-            .catch(err => console.log(err))
+  const getImagePrincipal =() => {
+      console.log(product);
+      if(product.urlImages.length !== 0 ){
+          for(let image of product.urlImages){
+              if(image.principal){
+                  setImageP(image.url);
+                  console.log(imageP);
+              }
+          }
+      }
     }
     useEffect(() => {
-        getImage();
+        getImagePrincipal();
     }, []);
-
 
     return (
      <>
         <Col xs={12} md={6} lg={3}>
-
+            <Link to="/product-details">
             <Card style={{width: '15rem',
                           height:'20rem',
                           marginBottom: '1rem',
@@ -42,10 +33,11 @@ export const ProductItem = ({product}) => {
                           marginTop:'1rem',
                           borderRadius: "10px",
                           overflow:'hidden'}}>
-                   <Card.Img style={{height:'10rem'}}  alt="productImagePrincipal"
+
+                   <Card.Img style={{height:'12rem'}}  alt="productImagePrincipal"
                    src={imageP}/>
                 <Card.Body style={{backgroundColor:theme.COLORS.SECOND_DARK_GREEN, height:'6rem'}}>
-                    <Card.Title>{product.label}</Card.Title>
+                    <Card.Title style={{color:theme.COLORS.BASIC_GREEN}}>{product.label}</Card.Title>
                     <Card.Text style={{color:theme.COLORS.BASIC_LIGHT_YELLOW, fontSize:'0.8rem'}}>
                         {product.description}
                     </Card.Text>
@@ -54,6 +46,7 @@ export const ProductItem = ({product}) => {
                     <small style={{color:theme.COLORS.BASIC_LIGHT_YELLOW}}>{product.price} €</small>
                 </Card.Footer>
             </Card>
+        </Link>
         </Col>
          </>
 

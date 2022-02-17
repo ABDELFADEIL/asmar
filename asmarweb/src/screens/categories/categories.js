@@ -3,14 +3,13 @@ import React, { useEffect, useState} from 'react';
 import {productService} from '../../services/productService';
 import ProductItem from "../../components/ProductItem";
 
-
 export default function CategoriesScreen() {
 
     const [products, setProducts] = useState([]);
 
     const getProducts = () => {
         productService
-            .getProductsByCategoryId(2)
+            .getProductsByCategoryId(1)
             .then((res) => {
                 setProducts(res.data);
                 console.log(res.data);
