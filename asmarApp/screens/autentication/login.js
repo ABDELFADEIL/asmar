@@ -36,18 +36,18 @@ export default function LoginScreen({route, navigation}) {
             setPassword({ ...password, error: passwordError })
             return
         }
-        const response = await Login({'email': email.value, 'password': password.value});
-        try {
-            console.log(response.status);
-            const headers = response.headers;
-            console.log(headers.authorization);
-            SET_JWT_TOKEN(headers.authorization);
-            if (response.status === 200) {
-                navigation.navigate(route.params.name);
-            }
-        } catch (e) {
-            console.log(e);
-        }
+        Login({'email': email.value, 'password': password.value})
+            .then(response=> {
+                console.log(response.status);
+                const headers = response.headers;
+                console.log(response.data.Authorization);
+                SET_JWT_TOKEN(response.data.Authorization);
+                if (response.status === 200) {
+                    navigation.navigate(route.params.name);
+                }
+            })
+            .catch(error=> console.log(error));
+
     }
 
     return (

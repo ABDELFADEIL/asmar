@@ -20,6 +20,7 @@
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "@react-navigation/stack": "^6.0.11",
+    "axios": "^0.26.0",
     "blueimp-md5": "^2.19.0",
     "browserify": "^17.0.0",
     "expo": "~44.0.6",
@@ -52,7 +53,6 @@
     "@babel/core": "^7.12.9",
     "@expo/vector-icons": "^12.0.0",
     "@react-native-community/async-storage": "^1.12.1",
-    "axios": "^0.25.0",
     "prop-types": "^15.8.1"
   },
   "private": true
