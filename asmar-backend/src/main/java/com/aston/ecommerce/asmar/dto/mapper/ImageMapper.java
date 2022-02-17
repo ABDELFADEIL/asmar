@@ -12,10 +12,10 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface ImageMapper {
-    public static final ImageMapper INSTANCE = Mappers.getMapper(ImageMapper.class);
+
     ImageDTO toImageDto(Image image);
     List<ImageDTO> toImageDtos(List<Image> images);
 
-    Image toCommandLine(CommandLineDTO commandLineDTO);
+    Image toImage(ImageDTO imageDTO);
     List<Image> toImages(List<ImageDTO> imageDTOS);
 }

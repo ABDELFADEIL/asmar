@@ -1,13 +1,5 @@
 package com.aston.ecommerce.asmar.dto;
 
-import com.aston.ecommerce.asmar.entity.Role;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -18,8 +10,9 @@ public class UserDTO {
     private String firstName;
     private String lastName;
     private String email;
-    private String userName;
+    private String username;
     private LocalDate birthDate;
+    private int telephone;
     private LocalDateTime registrationDate;
     private List<RoleDTO> roles;
 
@@ -57,12 +50,12 @@ public class UserDTO {
         this.email = email;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public LocalDate getBirthDate() {
@@ -73,6 +66,13 @@ public class UserDTO {
         this.birthDate = birthDate;
     }
 
+    public int getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(int telephone) {
+        this.telephone = telephone;
+    }
 
     public List<RoleDTO> getRoles() {
         return roles;
@@ -97,7 +97,8 @@ public class UserDTO {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", userName='" + userName + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", userName='" + username + '\'' +
                 ", birthDate=" + birthDate +
                 ", registrationDate=" + registrationDate +
                 ", roles=" + roles +

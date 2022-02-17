@@ -13,7 +13,7 @@ public class ProductDetailDTO {
     private String history;
     private String origin;
     private String composition;
-    private String usage;
+    private String usage_;
     private String size;
     private boolean disponible;
     private long quantity;
@@ -75,13 +75,7 @@ public class ProductDetailDTO {
         this.composition = composition;
     }
 
-    public String getUsage() {
-        return usage;
-    }
 
-    public void setUsage(String usage) {
-        this.usage = usage;
-    }
 
     public String getSize() {
         return size;
@@ -113,5 +107,13 @@ public class ProductDetailDTO {
 
     public void setUrlImages(List<ImageDTO> urlImages) {
         this.urlImages = urlImages;
+    }
+
+    public String getUsage_() {
+        return usage_;
+    }
+
+    public void setUsage_(String usage_) {
+        this.usage_ = usage_;
     }
 }

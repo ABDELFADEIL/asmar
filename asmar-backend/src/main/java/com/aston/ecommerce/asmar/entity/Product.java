@@ -3,6 +3,7 @@ package com.aston.ecommerce.asmar.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -12,7 +13,7 @@ public class Product extends AbstractEntity{
     @Column(name="label", nullable = false)
     private String label;
     @Column(name="price", nullable = false)
-    private float price;
+    private BigDecimal price;
     @Column(name="description", nullable = false)
     private String description;
     @Column(name="history")
@@ -46,11 +47,11 @@ public class Product extends AbstractEntity{
         this.label = label;
     }
 
-    public float getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -62,13 +63,6 @@ public class Product extends AbstractEntity{
         this.description = description;
     }
 
-    public String getUsage_() {
-        return usage_;
-    }
-
-    public void setUsage_(String usage) {
-        this.usage_ = usage;
-    }
 
     public String getSize() {
         return size;
@@ -122,6 +116,11 @@ public class Product extends AbstractEntity{
         this.category = category;
     }
 
+
+    public String getUsage_() { return usage_; }
+
+    public void setUsage_(String usage_) { this.usage_ = usage_;}
+
     @Override
     public String toString() {
         return "Product{" +
@@ -139,4 +138,5 @@ public class Product extends AbstractEntity{
                 ", category=" + category +
                 '}';
     }
+
 }

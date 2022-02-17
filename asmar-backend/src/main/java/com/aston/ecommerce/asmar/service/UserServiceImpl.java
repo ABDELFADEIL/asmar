@@ -16,9 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.net.UnknownServiceException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -44,9 +41,9 @@ public class UserServiceImpl implements UserService{
         String password=userForm.getPassword();
         String repassword=userForm.getRepassword();
         if(!(repassword.equals(password))) throw new UserExpception(repassword+ " Mot de passe n'est pas confirmé");
-        String username = userForm.getUserName();
-        User user= userRepository.findByEmail(username);
-        if(user !=null) throw new UserExpception(userForm.getUserName() +" existe déjà");
+        String username = userForm.getUsername();
+        User user= userRepository.findByEmailOrUserName(username);
+        if(user !=null) throw new UserExpception(userForm.getUsername() +" existe déjà");
 
         user = userMapper.toUser(userForm);
         user.setPassword(bCryptPasswordEncoder.encode(password));
@@ -77,5 +74,16 @@ public class UserServiceImpl implements UserService{
         user.setPassword(password);
         user = userRepository.save(user);
         return userMapper.toUserDto(user);
+    }
+
+    @Override
+    public List<UserDTO> findAll() {
+        List<User> users = userRepository.findAll();
+        return userMapper.toUserDtos(users);
+    }
+
+    @Override
+    public UserDTO getCurrentUser(String username) {
+        return userMapper.toUserDto(userRepository.findByEmailOrUserName(username));
     }
 }

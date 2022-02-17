@@ -10,8 +10,9 @@ public interface ProductService {
 
     List<ProductDTO> getProductByLabelOrDescription(String keyword);
     ProductDetailDTO getProductById(Long id);
+    Product findById(Long id);
     List<ProductDTO> getProductsByCategoryId(Long categoryId);
-    List<Product> findAll();
+    List<ProductDTO> findAll();
     ProductDetailDTO addProduct(ProductDTO productDTO);
 }
 

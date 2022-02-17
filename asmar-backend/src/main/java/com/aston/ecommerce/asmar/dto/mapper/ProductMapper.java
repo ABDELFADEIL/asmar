@@ -8,7 +8,7 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {CategoryMapper.class, ImageMapper.class})
+@Mapper(componentModel = "spring", uses = { CategoryMapper.class, ImageMapper.class})
 public interface ProductMapper {
 
     ProductDTO toProductDto(Product product);
