@@ -1,10 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {Image, Pressable, StyleSheet, Text, TouchableOpacity, TouchableWithoutFeedback, View} from 'react-native';
 import {createStackNavigator} from "@react-navigation/stack";
-import {createDrawerNavigator} from "@react-navigation/drawer"
 import Logo from "../assets/asmar-logo.svg";
 import Header from "../components/header";
 import {GET_JWT_TOKEN, SET_JWT_TOKEN} from "../services/userService";
@@ -31,8 +30,8 @@ const searchName = "Rechercher";
 const categoriesName = "Catégories";
 const shoppingCartName = "Panier";
 const productDetailsName = "Détails de produit";
-const LoginName = "Connexion";
-const SignUpName = "Créer un compte";
+const LoginName = "Connexion ";
+const SignUpName = "Créer un compte ";
 
 const Tab = createBottomTabNavigator();
 const AuthStack = createStackNavigator();
@@ -43,12 +42,8 @@ const ProfileStack = createStackNavigator();
 const ShoppingCartStack = createStackNavigator();
 const RootStack = createStackNavigator();
 
-const Drawer = createDrawerNavigator();
-const RootStackScreen = () => (
-    <RootStack.Navigator headerMod="none">
-        <RootStack.Screen name={LoginName} component={LoginScreen}/>
-    </RootStack.Navigator>
-)
+
+
 
 
 const HomeStackScreen = () => (
@@ -115,14 +110,19 @@ const ShoppingCartStackScreen = () => (
     </ShoppingCartStack.Navigator>
 );
 const AuthStackScreen = () => (
-    <AuthStack.Navigator>
+    <AuthStack.Navigator
+        screenOptions={ () => (
+        {
+            headerShown: false,
+        }
+    )}>
         <AuthStack.Screen
-            name={LoginName}
+            name={"Connexion"}
             component={LoginScreen}
             options={{title: LoginName}}
         />
         <AuthStack.Screen
-            name={SignUpName}
+            name={"Créer un compte"}
             component={SignUpScreen}
             options={{title: SignUpName}}
         />
@@ -147,7 +147,7 @@ export default function MainContainer() {
                         padding: 6, height: 60, backgroundColor: '#003B49',
                         borderTopEndRadius: 20, borderTopStartRadius: 20, elevation: 0,
                         margin: 0, position: 'absolute', bottom: 0,
-                        paddingBottom: 5, paddingTop: 5, fontSize: 10
+                        paddingBottom: 5, paddingTop: 5, fontSize: 10,
                     },
                     headerShown: false,
                     //headerStyle: {backgroundColor: '#FFF'},
@@ -209,7 +209,7 @@ export default function MainContainer() {
     const openModal = (navigation, url) => {
         console.log('open modal.....');
         if (!token) {
-            console.log('token exist');
+            console.log('token exist', url);
             navigation.navigate(url);
         } else {
             console.log('open modal.. no token exist');
@@ -226,6 +226,7 @@ export default function MainContainer() {
                     headerShown: false,
                     presentation: "modal"
                 }}
+
             >
 
                 <RootStack.Group>
@@ -239,7 +240,7 @@ export default function MainContainer() {
                     <RootStack.Screen name={LoginName} component={LoginScreen}
                                       options={{
                                           animationEnabled: true,
-                                          cardOverlayEnabled: true
+                                          cardOverlayEnabled: true,
                                       }}
                     />
                     <RootStack.Screen name={SignUpName} component={SignUpScreen}

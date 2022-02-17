@@ -5,31 +5,13 @@ import logo from "../../assets/asmar_logo.png"
 import { FaSearch, FaUser } from "react-icons/fa";
 import { MdShoppingBasket} from "react-icons/all";
 import 'font-awesome/css/font-awesome.min.css';
-import CategoriesScreen from "../screens/categories/categories";
 
 
 export default class Navbar extends Component{
     state = { clicked: false, icon: "fa fa-bars"}
-    state ={
-        currentCategory: "",
-    }
-    state = { categories :[]};
-    changeCategory = (category) => {
-        this.setState({currentCategory: category.label});
-            }
-
-    categories = () => {
-        fetch("http://localhost:8080/api/categories")
-            .then(response => response.json())
-            .then(data => this.setState({categories:data}))
-    }
-
-
-
 
     render() {
         const { clicked } = this.state;
-        let categoryList = { title:"Category List", description: "product categories list"}
     return (
         <nav className="NavBarItems">
             <Link className="logo" to="/"><img width="60px" src={logo} /></Link>
@@ -38,12 +20,10 @@ export default class Navbar extends Component{
             </div>
             <ul className={clicked ? 'nav-menu active': 'nav-menu'} >
 
-                    <Link to="/product-details">
+                    <Link to="/">
                         <li>NOUVEAUTE</li>
                     </Link>
-                <CategoriesScreen current
-
-                 {/*   <Link to="/categories">
+                    <Link to="/categories">
                         <li>VISAGE</li>
                     </Link>
                     <Link to="/categories">
@@ -56,7 +36,7 @@ export default class Navbar extends Component{
                         <li>PARFUM</li>
                     </Link>
                     <Link to="/product-details">
-                        <li>VÊTEMENTS</li>*/}
+                        <li>VÊTEMENTS</li>
                     </Link>
 
                     <Link to="/search">
@@ -65,7 +45,7 @@ export default class Navbar extends Component{
                     <Link to="/login">
                         <li><FaUser /></li>
                     </Link>
-                    <Link to="/shopping-cart">
+                    <Link to="/chopping-cart">
                         <li><MdShoppingBasket /></li>
                     </Link>
                 </ul>
@@ -90,4 +70,5 @@ export default class Navbar extends Component{
       return (clicked) ? 'fa fa-times' : 'fa fa-bars';
     }
 }
+
 

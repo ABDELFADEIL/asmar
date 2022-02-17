@@ -7,9 +7,10 @@ function getProductDetailsById(id) {
 }
 
 function getProductsByCategoryId(categoryId) {
-    return axios.get(BASE_URL+'/category/'+categoryId);
+    return axios.get(BASE_URL+'/'+categoryId);
 }
 export const productService = {
     getProductDetailsById,
     getProductsByCategoryId
 };
+

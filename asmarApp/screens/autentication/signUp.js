@@ -1,4 +1,3 @@
-import 'react-native-gesture-handler';
 import React from "react";
 import { Animated, View, Text, Pressable,
     StyleSheet, Image, TextInput,TouchableOpacity, ScrollView } from 'react-native';
@@ -44,7 +43,7 @@ export default function SignUpScreen({route, navigation}) {
         const response = await Login(user);
         try {
             const headers = response.headers;
-            SET_JWT_TOKEN(headers.authorization);
+            await SET_JWT_TOKEN(headers.authorization);
             console.log(GET_JWT_TOKEN("jwtToken"));
             if (response.status === 200) {
                 console.log(navigation)
@@ -413,3 +412,4 @@ const styles = StyleSheet.create({
 
 
 });
+
