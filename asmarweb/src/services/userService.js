@@ -17,5 +17,17 @@ export const //BASE_URL = 'http://localhost:8080',
     REMOVE_JWT_TOKEN = () => {
     localStorage.removeItem('jwtToken');
 
+},
+
+    userInfo = (JWT) => {
+        return axios({
+            method: 'get',
+            url: BASE_URL +'/api/users/user',
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization': JWT
+            },
+        });
+
 };
 

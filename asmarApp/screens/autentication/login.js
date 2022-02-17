@@ -105,7 +105,6 @@ export default function LoginScreen({route, navigation}) {
                                 </View>
                                 <View style={styles.loginPageCartHr}/>
                             </View>
-
                             <View style={styles.loginInput}>
                                 <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start'}}>
                                     <Icon name="lock" size={24} color="#003B49" style={{marginBottom: -10}}/>

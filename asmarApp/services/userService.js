@@ -11,14 +11,14 @@ export const //BASE_URL = 'http://192.168.1.28:8080',
     },
     SET_JWT_TOKEN = async (jwtToken) => {
         try {
-            await AsyncStorage.setItem('@jwtToken', jwtToken);
+            await AsyncStorage.setItem('jwtToken', jwtToken);
         } catch (e) {
             console.log(e);
         }
     },
     GET_JWT_TOKEN = async () => {
         try {
-            const jwtToken = await AsyncStorage.getItem('@jwtToken')
+            const jwtToken = await AsyncStorage.getItem('jwtToken')
             return jwtToken != null ? jwtToken : null;
         } catch(e) {
             console.log(e);
