@@ -31,7 +31,7 @@ const categoriesName = "Catégories";
 const shoppingCartName = "Panier";
 const productDetailsName = "Détails de produit";
 const LoginName = "Connexion ";
-const SignUpName = "Créer un compte ";
+const SignUpName = "Créer un compte";
 
 const Tab = createBottomTabNavigator();
 const AuthStack = createStackNavigator();

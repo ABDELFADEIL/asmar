@@ -1,49 +1,50 @@
 import React from "react";
-import { Animated, View, Text, Pressable,
-    StyleSheet, Image, TextInput,TouchableOpacity, ScrollView } from 'react-native';
+import {
+    Animated, View, Text, Pressable,
+    StyleSheet, Image, TextInput, TouchableOpacity, ScrollView, Platform
+} from 'react-native';
 import {AsyncStorage,} from '@react-native-async-storage/async-storage';
 import {Link, useTheme} from '@react-navigation/native';
 import { useCardAnimation } from '@react-navigation/stack';
 import {useEffect, useState} from 'react';
-import Logo from "../../assets/asmar_logo.png"
-import {GET_JWT_TOKEN, Login, SET_JWT_TOKEN} from "../../services/userService";
+import Logo from "../../assets/asmar_logo.png";
+import * as Animatable from 'react-native-animatable';
+import {GET_JWT_TOKEN, Login, SET_JWT_TOKEN, Signup} from "../../services/userService";
 import { emailValidator } from '../helpers/emailValidator'
 import { passwordValidator } from '../helpers/passwordValidator'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {LinearGradient} from "expo-linear-gradient";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import Feather from "react-native-vector-icons/Feather";
+import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
 export default function SignUpScreen({route, navigation}) {
     const { colors } = useTheme();
     const { current } = useCardAnimation();
-    let [ token, setToken ] = useState(GET_JWT_TOKEN());
-    const [email, setEmail] = useState({ value: '', error: '' })
-    const [password, setPassword] = useState({ value: '', error: '' })
-    const [repassword, setRepassword] = useState({ value: '' })
-    const [lastName, setLastName] = useState({ value: '' })
-    const [firstName, setFirstName] = useState({ value: '' })
-    const [telephone, setTelephone] = useState({ value: '' })
-    const [username, setUsername] = useState({ value: '' })
-    const [birthDate, setBirthDate] = useState({ value: '' })
-    const [street, setStreet] = useState({ value: '' })
-    const [city, setCity] = useState({ value: '' })
-    const [state, setState] = useState({ value: '' })
-    const [postalCode, SetPostalCode] = useState({ value: '' })
-    const [country, setCountry] = useState({ value: '' })
-    const [addInfos, setAddInfos] = useState({ value: '' })
-    const [active, setActive] = useState({ value: true })
+    const [ token, setToken ] = useState(GET_JWT_TOKEN());
+    const [data, setData] = useState(
+        {
+            email: '',
+            password: '',
+            confirm_password: '',
+            lastName: '',
+            firstName: '',
+            telephone: '',
+            username: '',
+            birthDate: '',
+            street: '',
+            city: '',
+            state: '',
+            postalCode: '',
+            country: '',
+            addInfos: '',
+            active: true,
+                  })
 
 
     const onSubmitForm = async () => {
-        const emailError = emailValidator(email.value)
-        const passwordError = passwordValidator(password.value)
-        if (emailError || passwordError) {
-            setEmail({ ...email, error: emailError })
-            setPassword({ ...password, error: passwordError })
-            return
-        }
-        const user = {'email': email.value, 'password': password.value};
-        const response = await Login(user);
+        const response = await Signup(user);
         try {
             const headers = response.headers;
-            await SET_JWT_TOKEN(headers.authorization);
             console.log(GET_JWT_TOKEN("jwtToken"));
             if (response.status === 200) {
                 console.log(navigation)
@@ -53,22 +54,34 @@ export default function SignUpScreen({route, navigation}) {
             console.log(e);
         }
     }
-
+    const textInputChange = (val) => {
+        if( val.length !== 0 ) {
+            setData({
+                ...data,
+                username: val,
+                check_textInputChange: true
+            });
+        } else {
+            setData({
+                ...data,
+                username: val,
+                check_textInputChange: false
+            });
+        }
+    }
     return (
-
-        <View style={styles.container}>
+        <View
+            style={[styles.container, {}]}>
             <Pressable style={[
                 StyleSheet.absoluteFill,
                 { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
             ]}
                        onPress={navigation.goBack}/>
 
-                <Animated.View
+            <Animated.View
                 style={{
                     padding: 16,
                     width: '90%',
-                    maxWidth: 400,
-                    maxHeight: 630,
                     borderRadius: 10,
                     backgroundColor: colors.card,
                     transform: [
@@ -80,219 +93,149 @@ export default function SignUpScreen({route, navigation}) {
                             }),
                         },
                     ],
-                    margin: '20 auto',
+
                     textAlign: 'center',
-                    minHeight: 630,
+                    height: 560,
+                    justifyContent: 'center'
+
                 }}
             >
-                    <ScrollView keyboardShouldPersistTaps="handled"
-                                contentContainerStyle={{
-                                    justifyContent: 'center',
-                                    alignContent: 'center',
-                                }}>
-                <View style={{alignItems: 'center',
-                    justifyContent: 'center',}}>
+                <ScrollView>
+                <View style={{
+                    flex: 1,
+                    justifyContent: 'space-between'
+                }}>
+                <View style={{alignSelf: 'center', marginBottom: 0, marginTop: 0}}>
                     <Image source={Logo}
-                           style={{ width: 80, height: 50, textAlign: 'center', marginTop: 10}}
-                           alt="asmar logo"/></View>
-                <View style={styles.connHead}><Text style={styles.connHeadH5}>Créer un compte</Text></View>
-                <View style={styles.loginInput}>
-                    <View style={styles.loginEmail}>
-                        <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start', alignContent: 'flex-end'}}>
+                           style={{ width: 100, height: 60}}
+                           alt="asmar logo"/>
+                    <View style={styles.connHead}><Text style={styles.connHeadH5}>Créer un compte</Text></View>
+                </View>
+                <View style={styles.loginFrom}>
+                    <View style={{width: '100%'}}>
+                        <Text style={styles.text_label}>Nom</Text>
+                        <View style={styles.action}>
                             <TextInput
-                                style={styles.loginPageCartInput}
-                                label="Nom"
-                                returnKeyType="next"
-                                value={email.value}
-                                error={!!email.error}
-                                errorText={email.error}
-                                onChangeText={(text) => setEmail({ value: text, error: '' })}
+                                placeholder=""
+                                style={styles.textInput}
                                 autoCapitalize="none"
-                                autoCompleteType="email"
-                                textContentType="emailAddress"
-                                keyboardType="email-address"
-                                placeholder="Email adresse" />
+                                onChangeText={(val) => textInputChange(val)}
+                            />
                         </View>
-                        <View style={styles.loginPageCartHr}/>
                     </View>
-                    <View style={styles.loginEmail}>
-                        <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start', alignContent: 'flex-end'}}>
+                    <View style={{width: '100%', marginTop: 10}}>
+                        <Text style={styles.text_label}>Prénom</Text>
+                        <View style={styles.action}>
                             <TextInput
-                                style={styles.loginPageCartInput}
-                                label="Nom"
-                                returnKeyType="next"
-                                value={email.value}
-                                error={!!email.error}
-                                errorText={email.error}
-                                onChangeText={(text) => setEmail({ value: text, error: '' })}
+                                placeholder=""
+                                style={styles.textInput}
                                 autoCapitalize="none"
-                                autoCompleteType="email"
-                                textContentType="emailAddress"
-                                keyboardType="email-address"
-                                placeholder="Email adresse" />
+                                onChangeText={(val) => textInputChange(val)}
+                            />
                         </View>
-                        <View style={styles.loginPageCartHr}/>
                     </View>
-                    <View style={styles.loginEmail}>
-                        <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start', alignContent: 'flex-end'}}>
+                    <View style={{width: '100%', marginTop: 10}}>
+                        <Text style={styles.text_label}>Email</Text>
+                        <View style={styles.action}>
                             <TextInput
-                                style={styles.loginPageCartInput}
-                                label="Nom"
-                                returnKeyType="next"
-                                value={email.value}
-                                error={!!email.error}
-                                errorText={email.error}
-                                onChangeText={(text) => setEmail({ value: text, error: '' })}
+                                placeholder=""
+                                style={styles.textInput}
                                 autoCapitalize="none"
-                                autoCompleteType="email"
-                                textContentType="emailAddress"
-                                keyboardType="email-address"
-                                placeholder="Email adresse" />
+                                onChangeText={(val) => textInputChange(val)}
+                            />
                         </View>
-                        <View style={styles.loginPageCartHr}/>
                     </View>
-                    <View style={styles.loginEmail}>
-                        <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start', alignContent: 'flex-end'}}>
+                    <View style={{width: '100%', marginTop: 10}}>
+                        <Text style={styles.text_label}>Password</Text>
+                        <View style={styles.action}>
                             <TextInput
-                                style={styles.loginPageCartInput}
-                                label="Nom"
-                                returnKeyType="next"
-                                value={email.value}
-                                error={!!email.error}
-                                errorText={email.error}
-                                onChangeText={(text) => setEmail({ value: text, error: '' })}
+                                placeholder=""
+                                style={styles.textInput}
                                 autoCapitalize="none"
-                                autoCompleteType="email"
-                                textContentType="emailAddress"
-                                keyboardType="email-address"
-                                placeholder="Email adresse" />
+                                onChangeText={(val) => textInputChange(val)}
+                            />
                         </View>
-                        <View style={styles.loginPageCartHr}/>
                     </View>
-                    <View style={styles.loginEmail}>
-                        <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start', alignContent: 'flex-end'}}>
+                    <View style={{width: '100%', marginTop: 10}}>
+                        <Text style={styles.text_label}>Confirme mot de passe</Text>
+                        <View style={styles.action}>
                             <TextInput
-                                style={styles.loginPageCartInput}
-                                label="Nom"
-                                returnKeyType="next"
-                                value={email.value}
-                                error={!!email.error}
-                                errorText={email.error}
-                                onChangeText={(text) => setEmail({ value: text, error: '' })}
+                                placeholder=""
+                                style={styles.textInput}
                                 autoCapitalize="none"
-                                autoCompleteType="email"
-                                textContentType="emailAddress"
-                                keyboardType="email-address"
-                                placeholder="Email adresse" />
+                                onChangeText={(val) => textInputChange(val)}
+                            />
                         </View>
-                        <View style={styles.loginPageCartHr}/>
                     </View>
-                    <View style={styles.loginEmail}>
-                        <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start', alignContent: 'flex-end'}}>
+                    <View style={{width: '100%', marginTop: 10}}>
+                        <Text style={styles.text_label}>N° + Voie</Text>
+                        <View style={styles.action}>
                             <TextInput
-                                style={styles.loginPageCartInput}
-                                label="Nom"
-                                returnKeyType="next"
-                                value={email.value}
-                                error={!!email.error}
-                                errorText={email.error}
-                                onChangeText={(text) => setEmail({ value: text, error: '' })}
+                                placeholder=""
+                                style={styles.textInput}
                                 autoCapitalize="none"
-                                autoCompleteType="email"
-                                textContentType="emailAddress"
-                                keyboardType="email-address"
-                                placeholder="Email adresse" />
+                                onChangeText={(val) => textInputChange(val)}
+                            />
                         </View>
-                        <View style={styles.loginPageCartHr}/>
                     </View>
-                    <View style={styles.loginEmail}>
-                        <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start', alignContent: 'flex-end'}}>
+                    <View style={{width: '100%', marginTop: 10}}>
+                        <Text style={styles.text_label}>Ville</Text>
+                        <View style={styles.action}>
                             <TextInput
-                                style={styles.loginPageCartInput}
-                                label="Nom"
-                                returnKeyType="next"
-                                value={email.value}
-                                error={!!email.error}
-                                errorText={email.error}
-                                onChangeText={(text) => setEmail({ value: text, error: '' })}
+                                placeholder=""
+                                style={styles.textInput}
                                 autoCapitalize="none"
-                                autoCompleteType="email"
-                                textContentType="emailAddress"
-                                keyboardType="email-address"
-                                placeholder="Email adresse" />
+                                onChangeText={(val) => textInputChange(val)}
+                            />
                         </View>
-                        <View style={styles.loginPageCartHr}/>
                     </View>
-                    <View style={styles.loginEmail}>
-                        <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start', alignContent: 'flex-end'}}>
+                    <View style={{width: '100%', marginTop: 10}}>
+                        <Text style={styles.text_label}>Code postale</Text>
+                        <View style={styles.action}>
                             <TextInput
-                                style={styles.loginPageCartInput}
-                                label="Prénom"
-                                returnKeyType="next"
-                                value={email.value}
-                                error={!!email.error}
-                                errorText={email.error}
-                                onChangeText={(text) => setEmail({ value: text, error: '' })}
+                                placeholder=""
+                                style={styles.textInput}
                                 autoCapitalize="none"
-                                autoCompleteType="email"
-                                textContentType="emailAddress"
-                                keyboardType="email-address"
-                                placeholder="Email adresse" />
+                                onChangeText={(val) => textInputChange(val)}
+                            />
                         </View>
-                        <View style={styles.loginPageCartHr}/>
                     </View>
-                    <View style={styles.loginEmail}>
-                        <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start', alignContent: 'flex-end'}}>
+                    <View style={{width: '100%', marginTop: 10}}>
+                        <Text style={styles.text_label}>Pays</Text>
+                        <View style={styles.action}>
                             <TextInput
-                                style={styles.loginPageCartInput}
-                                label="Email"
-                                returnKeyType="next"
-                                value={email.value}
-                                error={!!email.error}
-                                errorText={email.error}
-                                onChangeText={(text) => setEmail({ value: text, error: '' })}
+                                placeholder=""
+                                style={styles.textInput}
                                 autoCapitalize="none"
-                                autoCompleteType="email"
-                                textContentType="emailAddress"
-                                keyboardType="email-address"
-                                placeholder="Email adresse" />
+                                onChangeText={(val) => textInputChange(val)}
+                            />
                         </View>
-                        <View style={styles.loginPageCartHr}/>
-                    </View>
-                    <View style={styles.loginEmail}>
-                        <View style={{ display: "flex", flexDirection: "row", justifyContent: 'flex-start'}}>
-                            <TextInput
-                                style={styles.loginPageCartInput}
-                                label="Date de naissance"
-                                type="password"
-                                name="password"
-                                value={password.value}
-                                onChangeText={(text) => setPassword({ value: text, error: '' })}
-                                placeholder="Mot de passe"/>
-                        </View>
-
-                        <View style={styles.loginPageCartHr}/>
                     </View>
                 </View>
                 <View style={styles.btnConn}>
-                    <TouchableOpacity onPress={()=> {
+                    <TouchableOpacity style={styles.btn} onPress={onSubmitForm}>
+                        <LinearGradient style={styles.button} colors={['#F3BD6E', '#7A5F37']}>
+                            <View onClick={onSubmitForm} style={styles.btnSignin}><Text>Envoyer</Text></View>
+                        </LinearGradient>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.btn} onPress={() =>{
                         navigation.goBack();
-                        navigation.navigate('Connexion')
-                    }}>
-                        <View style={styles.btnSignup}><Text style={{ fontSize: 0.8}} to="/signup">Si vous avez un compte </Text></View>
+                        navigation.navigate('Créer un compte')
+                    }
+                    }
+                    >
+                        <View style={styles.btnSignup}><Text style={{ fontSize: 14, marginLeft: 'auto', marginRight: 'auto'}} >Se connecter</Text></View>
                     </TouchableOpacity>
-                    <TouchableOpacity>
-                        <View onClick={onSubmitForm} style={styles.btnSignin}><Text>Evoyer</Text></View>
-                    </TouchableOpacity>
+
                 </View>
 
+                </View>
                     </ScrollView>
             </Animated.View>
-
         </View>
-
     );
 }
+
 
 const styles = StyleSheet.create({
 
@@ -300,79 +243,61 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    /*
-    loginPageCart: {
-        margin: '20 auto',
-        backgroundColor: 'white',
-        textAlign: 'center',
-        width: 500,
-        minHeight: 630,
-        borderRadius: 10,
-   },
-    loginLogo: {
-        paddingTop: 10,
+        alignContent: 'center',
+        paddingTop: 80,
+
 
     },
+
     loginLogoImg: {
-        margin: 'auto'
     },
     connHead: {
-        height: 30,
-        padding: 5,
-        margin: '0'
+     marginTop: 10
     },
     connHeadH5: {
-        padding: 10,
-        margin: 10,
-        fontSize: 1.2,
+        textAlign: 'center',
+        fontSize: 18,
         color: '#003B49'
     },
-    loginInput: {
-        display: 'flex',
+    loginFrom: {
         flexDirection: 'column',
+        flexWrap: 'wrap',
         justifyContent: 'center',
-        marginTop: 100,
+        marginTop: 20,
+
     },
-    loginEmail: {
-        padding: 10,
-        margin: 10,
-    },
-    loginPageCartHr: {
-        color: '#F4D19E',
-        textAlign: 'center',
-        margin: 'auto',
-        marginTop: 0,
-        width: '100%',
-        borderBottomColor: '#F4D19E',
-        borderBottomWidth: 1.5,
-    },
-    loginPageCartInput: {
-        marginLeft: 10
+
+    signupInput: {
+        width: '80%',
+        color: 'red'
     },
     loginPageCartSvg: {
-        height: 1.5,
+        height: 20,
         color: '#003B49',
         marginBottom: 5,
         width: '10%',
     },
     pwdForget: {
-        display: 'flex',
-        width: '80%',
-        marginLeft: 70,
-        padding: 0,
-        height: 40,
-        marginTop: 0,
+        width: '90%',
+        height: 20,
+        marginTop: -20,
+        color: '#0017aa'
     },
 
     btnConn: {
-        display: 'flex',
-        justifyContent: 'center',
-        margin: 'auto',
-        width: '80%',
-        marginTop: 0,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 10,
         borderRadius: 15,
         color: '#003B49',
+    },
+    btn: {
+        width: '48%'
+    },
+    button: {
+        borderRadius: 15,
+        marginBottom: 15,
+        height: 35,
     },
     btnConnDiv: {
         borderRadius: 10,
@@ -382,33 +307,47 @@ const styles = StyleSheet.create({
 
     },
     btnSignin: {
-        borderRadius: 15,
         height: 30,
         textAlign: 'center',
-        paddingTop: 4
+        paddingTop: 5,
+        marginLeft: 'auto',
+        marginRight: 'auto'
     },
     btnSignup: {
         backgroundColor: 'rgba(0, 59, 73, 0.5)',
         borderRadius: 15,
-        height: 30,
+        height: 35,
         textAlign: 'center',
-        paddingTop: 4,
-        fontSize: 0.8
+        paddingTop: 5,
+        fontSize: 14,
+        width: '100%',
+
+
 
     },
 
-    /*btnSignin:hover: {
-        backgroundImage: 'linear-gradient(#F3BD6E, rgb(101, 78, 46))',
-            border: '1 solid #F3BD6E',
-    },
-    btnSignup:hover: {
-        backgroundColor: 'rgba(0, 59, 73, 0.81)',
-            border: '1 solid #003B49',
-    },
-     */
     btnConnA: {
         color: '#003B49',
     },
+    action: {
+        flexDirection: 'row',
+        marginTop: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#F4D19E',
+        paddingBottom: 0
+    },
+    textInput: {
+        flex: 1,
+        marginTop: Platform.OS === 'ios' ? 0 : -12,
+        paddingLeft: 0,
+        color: '#05375a',
+    },
+    text_label: {
+        marginLeft: 0,
+        fontSize: 16,
+        textTransform: 'capitalize',
+        color: '#003B49'
+    }
 
 
 });

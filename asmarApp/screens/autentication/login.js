@@ -12,6 +12,7 @@ import {
     AsyncStorage,
     ScrollView
 } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {Link, useTheme} from '@react-navigation/native';
 import { useCardAnimation } from '@react-navigation/stack';
 import Logo from "../../assets/asmar_logo.png"
@@ -58,7 +59,6 @@ export default function LoginScreen({route, navigation}) {
                     { backgroundColor: 'rgba(0, 0, 0, 0.5)' },
                 ]}
                 onPress={navigation.goBack}/>
-
             <Animated.View
                 style={{
                     padding: 16,
@@ -81,11 +81,15 @@ export default function LoginScreen({route, navigation}) {
 
                 }}
             >
-                        <View style={{alignSelf: 'center', marginBottom: 20, marginTop: -20}}>
+                <View style={{
+                    flex: 1
+                }}>
+                        <View style={{alignSelf: 'center', marginBottom: 20, marginTop: 0}}>
                             <Image source={Logo}
                                      style={{ width: 100, height: 60}}
-                                      alt="asmar logo"/></View>
-                        <View style={styles.connHead}><Text style={styles.connHeadH5}>Se connecter</Text></View>
+                                      alt="asmar logo"/>
+                            <View style={styles.connHead}><Text style={styles.connHeadH5}>Se connecter</Text></View>
+                        </View>
                         <View style={styles.loginFrom}>
                             <View style={styles.loginInput}>
                                 <View style={{ flexDirection: "row", justifyContent: 'flex-start', alignContent: 'flex-end'}}>
@@ -136,13 +140,15 @@ export default function LoginScreen({route, navigation}) {
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() =>{
                                 navigation.goBack();
-                                navigation.navigate('Créer un compte')}
+                                navigation.navigate('Créer un compte')
+                                }
                             }
                                 >
                                 <View style={styles.btnSignup}><Text style={{ fontSize: 14, marginLeft: 'auto', marginRight: 'auto'}} to="/signup">Créer un compte</Text></View>
                             </TouchableOpacity>
 
                         </View>
+                </View>
             </Animated.View>
         </View>
     );
@@ -172,13 +178,11 @@ const styles = StyleSheet.create({
  loginLogoImg: {
 },
  connHead: {
-    height: 20,
-    padding: 10,
 
 },
  connHeadH5: {
     padding: 10,
-     fontSize: 20,
+     fontSize: 18,
      color: '#003B49'
 },
     loginFrom: {
