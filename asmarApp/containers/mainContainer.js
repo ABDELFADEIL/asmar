@@ -15,7 +15,6 @@ import CategoriesScreen from "../screens/categories/categories";
 import ProfileScreen from "../screens/profile/profile";
 import SearchScreen from "../screens/search/search";
 import ShoppingCartScreen from "../screens/shoppingCart/shopping_cart";
-import productDetailsScreen from "../screens/product/productDetails";
 import LoginScreen from "../screens/autentication/login";
 import SignUpScreen from "../screens/autentication/signUp";
 import ProductScreen from '../screens/product/productDetails';
@@ -29,7 +28,7 @@ const profileName = "Profile";
 const searchName = "Rechercher";
 const categoriesName = "Catégories";
 const shoppingCartName = "Panier";
-const productDetailsName = "Détails de produit";
+const productDetailsName = "Détails";
 const LoginName = "Connexion ";
 const SignUpName = "Créer un compte ";
 
@@ -73,7 +72,7 @@ const CategoriesStackScreen = () => (
     })}>
         <CategoriesStack.Screen name={'categories'} component={CategoriesScreen}
                                 options={{title: <Header title={categoriesName}/>}}/>
-        <CategoriesStack.Screen name={'Détails'} component={productDetailsScreen}/>
+        <CategoriesStack.Screen name={'Détails'} component={ProductScreen}/>
     </CategoriesStack.Navigator>
 );
 const SearchStackScreen = () => (
