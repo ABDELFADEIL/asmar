@@ -40,7 +40,7 @@ public class User extends AbstractEntity {
     @Column(name="connection_status", nullable = false)
     private boolean connectionStatus;
     @Column(name = "telephone")
-    private int telephone;
+    private long telephone;
     @ManyToMany
     @JoinTable(name = "user_roles",
             joinColumns = {@JoinColumn(name = "user_id")},
@@ -124,11 +124,11 @@ public class User extends AbstractEntity {
         this.roles = roles;
     }
 
-    public int getTelephone() {
+    public long getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(long telephone) {
         this.telephone = telephone;
     }
 
