@@ -86,7 +86,7 @@ export default function LoginScreen({route, navigation}) {
                 }}>
                         <View style={{alignSelf: 'center', marginBottom: 20, marginTop: 0}}>
                             <Image source={Logo}
-                                     style={{ width: 100, height: 60}}
+                                     style={{ width: 70, height: 40}}
                                       alt="asmar logo"/>
                             <View style={styles.connHead}><Text style={styles.connHeadH5}>Se connecter</Text></View>
                         </View>
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
 },
  loginLogo: {
-    paddingTop: 10,
+    paddingTop: 0,
 
 },
  loginLogoImg: {
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
 },
  connHeadH5: {
     padding: 10,
-     fontSize: 18,
+     fontSize: 16,
      color: '#003B49'
 },
     loginFrom: {
