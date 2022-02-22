@@ -7,7 +7,7 @@ export const //BASE_URL = 'http://192.168.1.28:8080',
         return axios.post(BASE_URL + '/login', user);
     },
     Signup = (user) => {
-        return axios.post(BASE_URL + '/api/users/add', user);
+        return axios.post(BASE_URL + '/api/users/new', user);
     },
     SET_JWT_TOKEN = async (jwtToken) => {
         try {
