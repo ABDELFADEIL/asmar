@@ -30,7 +30,7 @@ const categoriesName = "Catégories";
 const shoppingCartName = "Panier";
 const productDetailsName = "Détails";
 const LoginName = "Connexion ";
-const SignUpName = "Créer un compte ";
+const SignUpName = "Créer un compte";
 
 const Tab = createBottomTabNavigator();
 const AuthStack = createStackNavigator();
