@@ -10,14 +10,14 @@ import {GET_JWT_TOKEN, SET_JWT_TOKEN} from "../services/userService";
 
 
 // Screens
-import HomeScreen, {Details} from "../screens/home/home";
+import HomeScreen from "../screens/home/home";
 import CategoriesScreen from "../screens/categories/categories";
 import ProfileScreen from "../screens/profile/profile";
 import SearchScreen from "../screens/search/search";
 import ShoppingCartScreen from "../screens/shoppingCart/shopping_cart";
 import LoginScreen from "../screens/autentication/login";
 import SignUpScreen from "../screens/autentication/signUp";
-import ProductScreen from '../screens/product/productDetails';
+import ProductDetailsScreen from '../screens/product/productDetails';
 import {useState} from "react";
 import {Animated} from "react-native-web";
 
@@ -41,10 +41,6 @@ const ProfileStack = createStackNavigator();
 const ShoppingCartStack = createStackNavigator();
 const RootStack = createStackNavigator();
 
-
-
-
-
 const HomeStackScreen = () => (
     <HomeStack.Navigator
         initialRouteName={'Asmar'}
@@ -56,13 +52,16 @@ const HomeStackScreen = () => (
             headerShown: true,
 
 
-        })}>
-        <HomeStack.Screen name={'home'} component={HomeScreen}
-                          options={{title: <Header title={homeName}/>}}/>
-        <HomeStack.Screen name={'Détails'} component={ProductScreen}
-        />
-    </HomeStack.Navigator>
-);
+            })}>
+            <HomeStack.Screen name={'home'} component={HomeScreen}
+                              options={{title: <Header title={homeName}/>}}/>
+            <HomeStack.Screen name={'ProductDetailsScreen'} component={ProductDetailsScreen}
+                                      />
+
+
+        </HomeStack.Navigator>
+    );
+
 const CategoriesStackScreen = () => (
     <CategoriesStack.Navigator screenOptions={(route, navigation) => ({
         headerStyle: {backgroundColor: '#003B49'},
@@ -72,9 +71,11 @@ const CategoriesStackScreen = () => (
     })}>
         <CategoriesStack.Screen name={'categories'} component={CategoriesScreen}
                                 options={{title: <Header title={categoriesName}/>}}/>
-        <CategoriesStack.Screen name={'Détails'} component={ProductScreen}/>
+        <CategoriesStack.Screen name={'ProductDetailsScreen'} component={ProductDetailsScreen}
+                                />
     </CategoriesStack.Navigator>
 );
+
 const SearchStackScreen = () => (
     <SearchStack.Navigator screenOptions={(route, navigation) => ({
         headerStyle: {backgroundColor: '#003B49'},

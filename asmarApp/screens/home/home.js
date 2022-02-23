@@ -3,6 +3,7 @@ import {View, Text, Button} from "react-native";
 import LoginScreen from "../autentication/login";
 import ProductScreen from "../product/productDetails";
 import SignUpScreen from "../autentication/signUp";
+import ProductDetailsScreen from "../product/productDetails";
 import {ScreenContainer} from "react-native-screens";
 
 
@@ -29,7 +30,7 @@ export default function HomeScreen({navigation}) {
             <Button
                 title="Détail de produit page"
                 onPress={() =>
-                    navigation.navigate('Détails')
+                    navigation.navigate("Détails")
                 }
             />
         </View>

@@ -5,7 +5,7 @@ import {StyleSheet, Text, View, Image }from 'react-native';
 import {Picker} from '@react-native-community/picker';
 
 
-export default function ProductScreen() {
+export default function ProductDetailsScreen() {
 
     const [qty, setQty] = useState(1);
     const [productDetails, setProductDetails] = useState({});

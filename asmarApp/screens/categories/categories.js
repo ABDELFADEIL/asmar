@@ -10,7 +10,7 @@ export default function CategoriesScreen({navigation}) {
             <Button
                 title="Détail de produit page"
                 onPress={() =>
-                    navigation.push(productDetailsName)
+                    navigation.navigate("ProductDetailsScreen")
                 }
             />
         </View>
