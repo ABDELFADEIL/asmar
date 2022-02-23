@@ -7,8 +7,16 @@ import ProductDetailsScreen from "../product/productDetails";
 import {ScreenContainer} from "react-native-screens";
 
 
-  const productDetailsName = "Détails";
-  const LoginName = "Connexion";
+
+// screen names
+const homeName = "Asmar Boutique";
+const profileName = "Profile";
+const searchName = "Rechercher";
+const categoriesName = "Catégories";
+const shoppingCartName = "Panier";
+const productDetailsName = "Détails";
+const LoginName = "Connexion ";
+const SignUpName = "Créer un compte";
 
 export default function HomeScreen({navigation}) {
     return (
@@ -24,7 +32,7 @@ export default function HomeScreen({navigation}) {
             <Button
                 title="SignUp"
                 onPress={() =>
-                    navigation.push('SignUpScreen')
+                    navigation.push(SignUpName)
                 }
             />
             <Button

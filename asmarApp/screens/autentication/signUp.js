@@ -55,19 +55,22 @@ export default function SignUpScreen({route, navigation}) {
     const onSubmitForm = async () => {
         console.log(user);
         const response = await Signup(user);
+
         try {
             console.log(response);
+            const userAddress = await response.data;
+            setUserDTO(userAddress);
             if (response.status === 201) {
-                setUserDTO(response.data);
                 console.log('201 response');
-                navigation.goBack();
-                navigation.navigate('Connexion ');
+                console.log('userDTO');
+                console.log(userDTO);
+                //navigation.goBack();
+                //navigation.navigate('Connexion ');
             }
         } catch (e) {
             console.log(e);
         }
-        console.log('userDTO');
-        console.log(userDTO);
+
     }
     const textInputChange = (val) => {
         console.log(val);
@@ -279,8 +282,27 @@ export default function SignUpScreen({route, navigation}) {
                         </View>
 
                     </View>
-
-
+                </View>
+                    <View style={styles.btnConn}>
+                        <TouchableOpacity style={styles.btn} onPress={onSubmitForm}>
+                            <LinearGradient style={styles.button} colors={['#F3BD6E', '#7A5F37']}>
+                                <View onClick={onSubmitForm} style={styles.btnSignin}><Text>Créer mon compte</Text></View>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                    </View>
+                    <View>
+                        <TouchableOpacity style={styles.btn} onPress={() =>{
+                            navigation.goBack();
+                            navigation.navigate('Connexion ')
+                        }
+                        }
+                        >
+                            <View style={{flexDirection: 'row'}}>
+                                <Text style={{width: '48%', marginTop: 5}}>Si vous avez un compte</Text>
+                                <Text style={[styles.btnSignup]} >se connecter</Text></View>
+                        </TouchableOpacity>
+                    </View>
+                </View>
 
                     {/*<View style={{width: '100%', marginTop: 10}}>
                         <Text style={styles.text_label}>N° + Voie</Text>
@@ -326,27 +348,8 @@ export default function SignUpScreen({route, navigation}) {
                             />
                         </View>
                     </View>*/}
-                </View>
-                <View style={styles.btnConn}>
-                    <TouchableOpacity style={styles.btn} onPress={onSubmitForm}>
-                        <LinearGradient style={styles.button} colors={['#F3BD6E', '#7A5F37']}>
-                            <View onClick={onSubmitForm} style={styles.btnSignin}><Text>Créer mon compte</Text></View>
-                        </LinearGradient>
-                    </TouchableOpacity>
-                </View>
-                <View>
-                    <TouchableOpacity style={styles.btn} onPress={() =>{
-                        navigation.goBack();
-                        navigation.navigate('Connexion ')
-                    }
-                    }
-                    >
-                        <View style={{flexDirection: 'row'}}>
-                            <Text style={{width: '48%', marginTop: 5}}>Si vous avez un compte</Text>
-                            <Text style={[styles.btnSignup]} >se connecter</Text></View>
-                    </TouchableOpacity>
-                </View>
-                </View>
+
+
                     </ScrollView>
             </Animated.View>
         </View>

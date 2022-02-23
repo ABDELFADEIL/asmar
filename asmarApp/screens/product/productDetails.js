@@ -46,7 +46,7 @@ export default function ProductDetailsScreen() {
 
     return (
 
-        <View style={styles.container}>
+       <View style={styles.container}>
             <View style={{flexDirection:"row"}}>
                 <View style={styles.images}>
                     {noImagePrincipal.map((img, index)=>(
@@ -84,8 +84,8 @@ export default function ProductDetailsScreen() {
 
 
                     {productDetails.quantity > 0 && (
-                        <Button icon="cart" mode="contained" style={{width: '110px', height: '25px', backgroundColor:
-                                '#003B49',marginLeft: '20px'}} labelStyle={{color:'#F4D19E' , fontSize: '10px',marginTop:'7px'}} onPress={() => console.log('Pressed')}
+                        <Button icon="cart" mode="contained" style={{width: 110, height: 25, backgroundColor:
+                                '#003B49',marginLeft: 20}} labelStyle={{color:'#F4D19E' , fontSize: 10,marginTop: 7}} onPress={() => console.log('Pressed')}
                         >
                             Ajouter
                         </Button>)}
@@ -106,7 +106,7 @@ export default function ProductDetailsScreen() {
 const styles = StyleSheet.create({
 
     container: {
-        backgroundColor: '#fff',
+        backgroundColor: '#ffffff',
         flexDirection: "column",
         margin:0,
         flex: 1,
