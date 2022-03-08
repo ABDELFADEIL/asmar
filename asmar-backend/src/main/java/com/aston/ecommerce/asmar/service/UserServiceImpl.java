@@ -99,8 +99,6 @@ public class UserServiceImpl implements UserService{
             Role role =roleRepository.findByRoleName("CUSTOMER");
             user.getRoles().add(role);
             user = userRepository.save(user);
-            //user.getRoles().add(role);
-            //user = userRepository.save(user);
         } catch (Exception e) {
             throw new UserExpception("error de sevgarde " + e);
         }
