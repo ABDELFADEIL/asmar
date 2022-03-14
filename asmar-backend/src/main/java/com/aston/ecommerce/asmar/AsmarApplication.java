@@ -40,8 +40,8 @@ public class AsmarApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Product product = productRepository.findById(1l).get();
+        //Product product = productRepository.findById(1l).get();
         System.out.println("product : ");
-        System.out.println(product);
+        //System.out.println(product);
     }
 }
