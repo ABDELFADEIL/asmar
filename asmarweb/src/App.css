@@ -7,8 +7,34 @@
 }
 .App {
   /*text-align: center;*/
-
 }
 .Main {
     min-height: 87vh;
+}
+
+@media screen  and (max-width: 360px ){
+    .SignupPage {
+        width: 96vw;
+        margin: auto;
+    }
+    .SignupPage .SignupPageCart hr {
+        width: 100% !important;
+    }
+   .span2 {
+       width: 200px !important;
+       display: inline-block;
+       margin-top: 10px;
+   }
+    .btnConn {
+        display: flex !important;
+        flex-flow: row wrap !important;
+        justify-content: center !important;
+
+    }
+    .btnConn .btnSignin {
+        height: 40px;
+        width: 130px;
+        margin-top: 10px;
+        border-radius: 9px;
+    }
 }

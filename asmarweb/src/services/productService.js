@@ -9,7 +9,7 @@ function getProductDetailsById(id) {
     return axios.get(BASE_URL+'/'+id);
 }
 function getProductsByCategoryId(categoryId) {
-    return axios.get(BASE_URL+'/'+categoryId);
+    return axios.get(BASE_URL+'/category/'+categoryId);
 }
 export const productService = {
     getProductDetailsById
@@ -30,3 +30,4 @@ export const productService = {
     getProductDetailsById,
 
 };
+

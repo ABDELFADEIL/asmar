@@ -288,6 +288,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/security/JWTAuthenticationFilter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/security/JWTAuthorizationFilter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar-backend/src/main/java/com/aston/ecommerce/asmar/security/UserDetailsServiceImpl.java">
           <value>
             <set />
@@ -518,6 +528,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/screens/helpers/emailValidator.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/screens/helpers/passwordValidator.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/screens/home/home.js">
           <value>
             <set />
@@ -528,12 +548,62 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/screens/profile/profile.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/services/productService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/services/userService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/utils/constants.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/yarn.lock">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarweb/.gitignore">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarweb/.idea/workspace.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../asmarweb/src/App.css">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../asmarweb/src/App.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarweb/src/components/footer/Footer.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarweb/src/components/header/Navbar.css">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarweb/src/components/header/Navbar.js">
           <value>
             <set />
           </value>
@@ -578,12 +648,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../asmarweb/src/screens/autentication/login.css">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../asmarweb/src/screens/autentication/login.js">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../asmarweb/src/screens/autentication/signUp.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarweb/src/screens/autentication/signup.css">
           <value>
             <set />
           </value>
@@ -614,6 +694,26 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../asmarweb/src/screens/shoppingCart/shopping_cart.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarweb/src/services/productService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarweb/src/services/userService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarweb/src/utils/constants.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarweb/tailwind.config.js">
           <value>
             <set />
           </value>

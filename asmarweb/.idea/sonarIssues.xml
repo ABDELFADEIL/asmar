@@ -698,6 +698,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../asmarApp/screens/helpers/emailValidator.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarApp/screens/helpers/passwordValidator.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../asmarApp/screens/home/home.js">
           <value>
             <set />
@@ -724,6 +734,26 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../asmarApp/screens/shoppingCart/shopping_cart.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarApp/services/productService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarApp/services/userService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarApp/utils/constants.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarApp/yarn.lock">
           <value>
             <set />
           </value>
@@ -823,6 +853,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/screens/autentication/signup.css">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/screens/categories/categories.js">
           <value>
             <set />
@@ -849,6 +884,21 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/screens/shoppingCart/shopping_cart.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/services/productService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/services/userService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/utils/constants.js">
           <value>
             <set />
           </value>

@@ -9,3 +9,35 @@ h5 ,h6 {
 h4 {
     color: #626262;
 }
+
+.imagesContainer {
+    display: flex;
+    padding: 0;
+}
+
+.images {
+    height: 550px;
+    width: 30% !important;
+    gap: 5px !important;
+}
+.images img {
+    margin-bottom: 5px;
+}
+.images img:last-of-type {
+    margin-bottom: 5px;
+}
+.imagePrincipal {
+    width: 70% !important;
+    margin-left: 5px;
+}
+li{
+    list-style-type:none;
+}
+
+@media screen and (max-width: 768px ){
+
+    images {
+        height: 200px !important;
+    }
+
+}

@@ -10,6 +10,7 @@ import 'font-awesome/css/font-awesome.min.css';
 export default class Navbar extends Component{
     state = { clicked: false, icon: "fa fa-bars"}
 
+
     render() {
         const { clicked } = this.state;
     return (
@@ -20,32 +21,32 @@ export default class Navbar extends Component{
             </div>
             <ul className={clicked ? 'nav-menu active': 'nav-menu'} >
 
-                    <Link to="/">
+                    <Link to="/" onClick={this.handleClick}>
                         <li>NOUVEAUTE</li>
                     </Link>
-                    <Link to="/categories">
+                    <Link to="/categories/3" onClick={this.handleClick}>
                         <li>VISAGE</li>
                     </Link>
-                    <Link to="/categories">
+                    <Link to="/categories/5" onClick={this.handleClick}>
                         <li>CHEVEAUX</li>
                     </Link>
-                    <Link to="/categories">
+                    <Link to="/categories/4" onClick={this.handleClick}>
                         <li>CORP</li>
                     </Link>
-                    <Link to="/categories">
+                    <Link to="/categories/1" onClick={this.handleClick}>
                         <li>PARFUM</li>
                     </Link>
-                    <Link to="/product-details">
+                    <Link to="/categories/2" onClick={this.handleClick}>
                         <li>VÊTEMENTS</li>
                     </Link>
 
-                    <Link to="/search">
+                    <Link to="/product-details" onClick={this.handleClick}>
                         <li><FaSearch /></li>
                     </Link>
-                    <Link to="/login">
+                    <Link to="/login" onClick={this.handleClick}>
                         <li><FaUser /></li>
                     </Link>
-                    <Link to="/chopping-cart">
+                    <Link to="/chopping-cart" onClick={this.handleClick}>
                         <li><MdShoppingBasket /></li>
                     </Link>
                 </ul>
