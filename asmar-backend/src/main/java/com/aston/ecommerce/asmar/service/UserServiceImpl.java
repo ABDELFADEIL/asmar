@@ -2,10 +2,7 @@ package com.aston.ecommerce.asmar.service;
 
 import com.aston.ecommerce.asmar.dao.RoleRepository;
 import com.aston.ecommerce.asmar.dao.UserRepository;
-import com.aston.ecommerce.asmar.dto.AddressDTO;
-import com.aston.ecommerce.asmar.dto.UserDTO;
-import com.aston.ecommerce.asmar.dto.UserForm;
-import com.aston.ecommerce.asmar.dto.UserUpdatePassword;
+import com.aston.ecommerce.asmar.dto.*;
 import com.aston.ecommerce.asmar.dto.mapper.AddressMapper;
 import com.aston.ecommerce.asmar.dto.mapper.UserMapper;
 import com.aston.ecommerce.asmar.entity.Role;
@@ -85,5 +82,26 @@ public class UserServiceImpl implements UserService{
     @Override
     public UserDTO getCurrentUser(String username) {
         return userMapper.toUserDto(userRepository.findByEmailOrUserName(username));
+    }
+
+    @Override
+    public UserDTO addUser(UserMobileDTO userMobileDTO) {
+        String password=userMobileDTO.getPassword();
+        String repassword=userMobileDTO.getConfirmPassword();
+        if(!(repassword.equals(password))) throw new UserExpception(repassword+ " Mot de passe n'est pas confirmé");
+        String username = userMobileDTO.getUsername();
+        User user= userRepository.findByEmailOrUserName(username);
+        if(user !=null) throw new UserExpception(userMobileDTO.getUsername() +" existe déjà");
+
+        user = userMapper.toUser(userMobileDTO);
+        user.setPassword(bCryptPasswordEncoder.encode(password));
+        try {
+            Role role =roleRepository.findByRoleName("CUSTOMER");
+            user.getRoles().add(role);
+            user = userRepository.save(user);
+        } catch (Exception e) {
+            throw new UserExpception("error de sevgarde " + e);
+        }
+        return userMapper.toUserDto(user);
     }
 }

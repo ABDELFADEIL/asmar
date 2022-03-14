@@ -1,17 +1,15 @@
 package com.aston.ecommerce.asmar.dto;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-public class UserForm {
+public class UserMobileDTO {
     private String firstName;
     private String lastName;
     private String password;
-    private String repassword;
+    private String confirmPassword;
     private String email;
     private long telephone;
     private String username;
     private String birthDate;
+    /*
     private String street;
     private String city;
     private String state;
@@ -19,7 +17,7 @@ public class UserForm {
     private String country;
     private String addInfos;
     private boolean active;
-
+    */
     public String getFirstName() {
         return firstName;
     }
@@ -44,12 +42,12 @@ public class UserForm {
         this.password = password;
     }
 
-    public String getRepassword() {
-        return repassword;
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
 
-    public void setRepassword(String repassword) {
-        this.repassword = repassword;
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     public String getEmail() {
@@ -76,6 +74,15 @@ public class UserForm {
         this.birthDate = birthDate;
     }
 
+    public long getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(long telephone) {
+        this.telephone = telephone;
+    }
+
+    /*
     public String getStreet() {
         return street;
     }
@@ -127,17 +134,10 @@ public class UserForm {
     public boolean isActive() {
         return active;
     }
-
-    public long getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(int telephone) {
-        this.telephone = telephone;
-    }
-
-    public void setActive(boolean active) {
+     public void setActive(boolean active) {
         this.active = active;
     }
+*/
+
 
 }

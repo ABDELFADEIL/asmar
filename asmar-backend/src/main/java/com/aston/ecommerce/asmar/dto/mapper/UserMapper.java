@@ -3,6 +3,7 @@ package com.aston.ecommerce.asmar.dto.mapper;
 import com.aston.ecommerce.asmar.dto.RoleDTO;
 import com.aston.ecommerce.asmar.dto.UserDTO;
 import com.aston.ecommerce.asmar.dto.UserForm;
+import com.aston.ecommerce.asmar.dto.UserMobileDTO;
 import com.aston.ecommerce.asmar.entity.Role;
 import com.aston.ecommerce.asmar.entity.User;
 import org.mapstruct.InheritInverseConfiguration;
@@ -24,4 +25,7 @@ public interface UserMapper {
     @Mapping(target = "birthDate", source = "birthDate", dateFormat = "yyyy-MM-dd")
     @InheritInverseConfiguration
     User toUser(UserForm userForm);
+    @Mapping(target = "birthDate", source = "birthDate", dateFormat = "yyyy-MM-dd")
+    @InheritInverseConfiguration
+    User toUser(UserMobileDTO userMobileDTO);
 }

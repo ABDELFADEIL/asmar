@@ -4,6 +4,7 @@ package com.aston.ecommerce.asmar.controller;
 import com.aston.ecommerce.asmar.dto.ProductDTO;
 import com.aston.ecommerce.asmar.dto.UserDTO;
 import com.aston.ecommerce.asmar.dto.UserForm;
+import com.aston.ecommerce.asmar.dto.UserMobileDTO;
 import com.aston.ecommerce.asmar.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -34,6 +35,21 @@ public class UserController {
     public ResponseEntity<UserDTO> addUser(@RequestBody UserForm userForm){
 
         UserDTO userDto = userService.addUser(userForm);
+        if (userDto == null){
+            return new ResponseEntity<>(userDto, HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(userDto, HttpStatus.CREATED);
+    }
+    @PostMapping("/new")
+    @ApiOperation(value = "Add new user mobile app")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "New User created"),
+            @ApiResponse(code = 204, message = "No content"),
+            @ApiResponse(code = 404, message = "not found"),
+            @ApiResponse(code = 500, message = "Server error")})
+    public ResponseEntity<UserDTO> addUserMobile(@RequestBody UserMobileDTO userMobileDTO){
+
+        UserDTO userDto = userService.addUser(userMobileDTO);
         if (userDto == null){
             return new ResponseEntity<>(userDto, HttpStatus.BAD_REQUEST);
         }
