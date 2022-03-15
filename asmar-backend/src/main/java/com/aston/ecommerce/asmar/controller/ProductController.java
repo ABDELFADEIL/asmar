@@ -16,6 +16,7 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -57,7 +58,7 @@ public class ProductController {
             @ApiResponse(code = 204, message = "No content"),
             @ApiResponse(code = 404, message = "product not found"),
             @ApiResponse(code = 500, message = "Server error")})
-    public ResponseEntity<ProductDetailDTO> getProductById(
+    public ResponseEntity<ProductDetailDTO> get(
             @PathVariable(name = "id") Long id) {
         ProductDetailDTO product = this.productService.getProductById(id);
         if (product == null) {
@@ -65,6 +66,23 @@ public class ProductController {
         }
       /*  return new ResponseEntity<>(product, HttpStatus.OK);*/
         return ResponseEntity.ok(product);
+    }
+    
+     
+    @GetMapping("/bydate/{nb}")
+    @ApiOperation(value = "Return list of n products by creation date")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Return list of products sorted by date"),
+            @ApiResponse(code = 204, message = "No content"),
+            @ApiResponse(code = 404, message = "products not found"),
+            @ApiResponse(code = 500, message = "Server error")})
+    public ResponseEntity<List<ProductDetailDTO>> getProductsByDate(
+            @PathVariable Long nb) {
+    	List<ProductDetailDTO> listProducts = this.productService.getProductsByDate(nb);
+        if (listProducts == null) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(listProducts);
     }
 
     /*get products by label or description*/
