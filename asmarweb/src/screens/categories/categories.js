@@ -15,8 +15,6 @@ export default function CategoriesScreen() {
             .getProductsByCategoryId(idCat)
             .then((res) => {
                 setProducts(res.data);
-
-                console.log(res.data);
             })
             .catch(err => console.log(err))
 
