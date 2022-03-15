@@ -42,10 +42,33 @@ class AddressDTOTest {
         assertEquals("Street", actualAddressDTO.getStreet());
         assertSame(userDTO.getId(), actualAddressDTO.getUserId());
         assertTrue(actualAddressDTO.isActive());
-        assertEquals("AddressDTO{street='Street', city='Oxford', state='MD', postalCode='Postal Code', country='GB',"
-                + " addInfos='Add Infos', active=true, userDTO=UserDTO{id=123, firstName='Jane', lastName='Doe',"
-                + " email='jane.doe@example.org', telephone='1', userName='janedoe', birthDate=1970-01-02, registrationDate"
-                + "=0001-01-01T01:01, roles=[]}}", actualAddressDTO.toString());
+    }
+
+    @Test
+    void testConstructor2() {
+        AddressDTO actualAddressDTO = new AddressDTO();
+        actualAddressDTO.setActive(true);
+        actualAddressDTO.setAddInfos("Add Infos");
+        actualAddressDTO.setCity("Oxford");
+        actualAddressDTO.setCountry("GB");
+        actualAddressDTO.setId(123L);
+        actualAddressDTO.setPostalCode("Postal Code");
+        actualAddressDTO.setState("MD");
+        actualAddressDTO.setStreet("Street");
+        actualAddressDTO.setUserId(123L);
+        assertEquals("Add Infos", actualAddressDTO.getAddInfos());
+        assertEquals("Oxford", actualAddressDTO.getCity());
+        assertEquals("GB", actualAddressDTO.getCountry());
+        assertEquals(123L, actualAddressDTO.getId().longValue());
+        assertEquals("Postal Code", actualAddressDTO.getPostalCode());
+        assertEquals("MD", actualAddressDTO.getState());
+        assertEquals("Street", actualAddressDTO.getStreet());
+        assertEquals(123L, actualAddressDTO.getUserId());
+        assertTrue(actualAddressDTO.isActive());
+        assertEquals(
+                "AddressDTO{id=123, street='Street', city='Oxford', state='MD', postalCode='Postal Code', country='GB',"
+                        + " addInfos='Add Infos', active=true, userId=123}",
+                actualAddressDTO.toString());
     }
 }
 
