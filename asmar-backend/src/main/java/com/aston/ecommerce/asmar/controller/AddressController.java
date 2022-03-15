@@ -31,7 +31,8 @@ public class AddressController {
             @ApiResponse(code = 404, message = "not found"),
             @ApiResponse(code = 500, message = "Server error")})
     public ResponseEntity<AddressDTO> addUser(@RequestBody AddressDTO addressDTO){
-
+        System.out.println("addressDTO ****************************************");
+        System.out.println(addressDTO);
         AddressDTO address = addressService.addAddress(addressDTO);
         if (address == null){
             return new ResponseEntity<>(address, HttpStatus.BAD_REQUEST);

@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService{
             AddressDTO addressDTO = addressMapper.toAddressDto(userForm);
             UserDTO userDTO = userMapper.toUserDto(user);
             userDTO.setId(user.getId());
-            addressDTO.setUser(userDTO);
+            addressDTO.setUserId(userDTO.getId());
             addressService.addAddress(addressDTO);
         } catch (Exception e) {
             throw new UserExpception("error de sevgarde " + e);

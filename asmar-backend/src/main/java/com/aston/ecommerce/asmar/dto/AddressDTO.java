@@ -19,7 +19,7 @@ public class AddressDTO {
     private String country;
     private String addInfos;
     private boolean active;
-    private UserDTO user;
+    private long userId;
 
 
     public Long getId() {
@@ -86,26 +86,26 @@ public class AddressDTO {
         this.active = active;
     }
 
-    public UserDTO getUser() {
-        return user;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUser(UserDTO userDTO) {
-        this.user = userDTO;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
-
 
     @Override
     public String toString() {
         return "AddressDTO{" +
-                "street='" + street + '\'' +
+                "id=" + id +
+                ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", postalCode='" + postalCode + '\'' +
                 ", country='" + country + '\'' +
                 ", addInfos='" + addInfos + '\'' +
                 ", active=" + active +
-                ", userDTO=" + user +
+                ", userId=" + userId +
                 '}';
     }
 }

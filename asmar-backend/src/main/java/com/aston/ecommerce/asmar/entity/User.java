@@ -35,6 +35,7 @@ public class User extends AbstractEntity {
     private LocalDate birthDate;
     @Column(name="registration_date")
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+    //                    "15-03-2022 11:40:00"
     private LocalDateTime registrationDate;
 
     @Column(name="connection_status", nullable = false)
