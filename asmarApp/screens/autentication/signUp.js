@@ -11,11 +11,13 @@ import Logo from "../../assets/asmar_logo.png";
 import {GET_JWT_TOKEN, Login, SET_JWT_TOKEN, Signup} from "../../services/userService";
 import {LinearGradient} from "expo-linear-gradient";
 import Feather from "react-native-vector-icons/Feather";
+import {AddAddress} from "../../services/AddressService";
 export default function SignUpScreen({route, navigation}) {
     const { colors } = useTheme();
     const { current } = useCardAnimation();
     const [ token, setToken ] = useState(GET_JWT_TOKEN());
-    const [ userDTO, setUserDTO ] = useState({});
+    const [ userDTO, setUserDTO ] = useState(null);
+    const [ created, setCreated] = useState(false);
     const [ secure, setSecure] = useState({
         secureTextEntry: true,
         confirm_secureTextEntry: true
@@ -27,13 +29,12 @@ export default function SignUpScreen({route, navigation}) {
             firstName: '', telephone: '', username: null, birthDate: ''
                   });
     const [address, setAddress] = useState(
-        { street: '', city: '', state: '', postalCode: '',
-            country: '', addInfos: '', active: true
+        {
+            id: null, street: '', city: '', state: '', postalCode: '',
+            country: '', addInfos: '', active: true, userId: null
         });
 
     const onInputchange = (value, name) => {
-        console.log(name);
-
         if( value.length !== 0 ) {
             if (name === 'code'){
                 setCode(value)
@@ -49,43 +50,49 @@ export default function SignUpScreen({route, navigation}) {
         } else {
 
         }
-        console.log(user);
     }
 
-    const onSubmitForm = async () => {
-        console.log(user);
-        const response = await Signup(user);
-
-        try {
-            console.log(response);
-            const userAddress = await response.data;
-            setUserDTO(userAddress);
-            if (response.status === 201) {
-                console.log('201 response');
-                console.log('userDTO');
+    const onSubmitForm = () => {
+            console.log(user);
+            //const response = await Signup(user);
+            Signup(user).then(response => {
+                setUserDTO(response.data);
+                console.log(response.data);
+                console.log('status response: ' + response.status);
+                console.log("userDTO");
                 console.log(userDTO);
-                //navigation.goBack();
-                //navigation.navigate('Connexion ');
-            }
-        } catch (e) {
-            console.log(e);
-        }
+                setCreated(true);
+            }).catch(error => console.log(error));
+            console.log(userDTO);
 
     }
-    const textInputChange = (val) => {
-        console.log(val);
-        if( val.length !== 0 ) {
-            setUser({
-                ...user,
-                username: val,
-                check_textInputChange: true
-            });
-        } else {
-            setUser({
-                ...user,
-                username: val,
-                check_textInputChange: false
-            });
+
+    const onSubmitFormAddress = () => {
+        console.log("userDTO");
+        console.log(userDTO);
+        console.log("address");
+        console.log(address);
+        console.log("addressDto");
+        address.userId = userDTO.id;
+        console.log(address);
+        const response = AddAddress(address).then(
+            response => {
+                console.log(response);
+                const address = response.data;
+                console.log('201 response');
+                console.log('address');
+                console.log(address);
+                navigation.goBack();
+                navigation.navigate('Connexion ');
+                console.log("Address created whith status"+ response.status);
+                setCreated(false);
+            }
+        )
+            .catch(error => console.log(error))
+    }
+    const textInputChange = (value, name) => {
+        if( value.length !== 0 ) {
+            setAddress(address => ({...address, [name]: value}))
         }
     }
     const convertDate = (dateStr) => {
@@ -140,13 +147,23 @@ export default function SignUpScreen({route, navigation}) {
                     flex: 1,
                     justifyContent: 'space-between'
                 }}>
+
                 <View style={{alignSelf: 'center', marginBottom: 0, marginTop: 0}}>
                     <Image source={Logo}
                            style={{ width: 60, height: 40}}
                            alt="asmar logo"/>
-                    <View style={styles.connHead}><Text style={styles.connHeadH5}>Créer un compte</Text></View>
+                    {!created ?
+                        <View style={styles.connHead}><Text style={styles.connHeadH5}> Créer un compte</Text></View>
+                        :
+                        <View style={styles.connHead}><Text style={styles.connHeadH5}>Ajouter votre adresse</Text></View>
+                    }
+
                 </View>
+                    {!created ?
+                    <View>
+
                 <View style={styles.loginFrom}>
+
                     <View style={{width: '100%'}}>
                         <Text style={styles.text_label}>Nom</Text>
                         <View style={styles.action}>
@@ -283,71 +300,129 @@ export default function SignUpScreen({route, navigation}) {
 
                     </View>
                 </View>
-                    <View style={styles.btnConn}>
-                        <TouchableOpacity style={styles.btn} onPress={onSubmitForm}>
-                            <LinearGradient style={styles.button} colors={['#F3BD6E', '#7A5F37']}>
-                                <View onClick={onSubmitForm} style={styles.btnSignin}><Text>Créer mon compte</Text></View>
-                            </LinearGradient>
-                        </TouchableOpacity>
-                    </View>
-                    <View>
-                        <TouchableOpacity style={styles.btn} onPress={() =>{
-                            navigation.goBack();
-                            navigation.navigate('Connexion ')
-                        }
-                        }
-                        >
-                            <View style={{flexDirection: 'row'}}>
-                                <Text style={{width: '48%', marginTop: 5}}>Si vous avez un compte</Text>
-                                <Text style={[styles.btnSignup]} >se connecter</Text></View>
-                        </TouchableOpacity>
-                    </View>
-                </View>
 
-                    {/*<View style={{width: '100%', marginTop: 10}}>
-                        <Text style={styles.text_label}>N° + Voie</Text>
-                        <View style={styles.action}>
-                            <TextInput
-                                placeholder=""
-                                style={styles.textInput}
-                                autoCapitalize="none"
-                                onChangeText={(val) => textInputChange(val)}
-                            />
+                        <View style={styles.btnConn}>
+                            <TouchableOpacity style={styles.btn} onPress={onSubmitForm}>
+                                <LinearGradient style={styles.button} colors={['#F3BD6E', '#7A5F37']}>
+                                    <View style={styles.btnSignin}><Text>Créer mon compte</Text></View>
+                                </LinearGradient>
+                            </TouchableOpacity>
+                        </View>
+                        <View>
+                            <TouchableOpacity style={styles.btn} onPress={() =>{
+                                navigation.goBack();
+                                navigation.navigate('Connexion ')
+                            }
+                            }
+                            >
+                                <View style={{flexDirection: 'row'}}>
+                                    <Text style={{width: '48%', marginTop: 5}}>Si vous avez un compte</Text>
+                                    <Text style={[styles.btnSignup]} >se connecter</Text></View>
+                            </TouchableOpacity>
                         </View>
                     </View>
-                    <View style={{width: '100%', marginTop: 10}}>
-                        <Text style={styles.text_label}>Ville</Text>
-                        <View style={styles.action}>
-                            <TextInput
-                                placeholder=""
-                                style={styles.textInput}
-                                autoCapitalize="none"
-                                onChangeText={(val) => textInputChange(val)}
-                            />
+                        :
+
+                   /* start address*/
+                    <View>
+                        <View style={{width: '100%', marginTop: 10}}>
+                            <Text style={styles.text_label}>N° et rue</Text>
+                            <View style={styles.action}>
+                                <TextInput
+                                    placeholder=""
+                                    style={styles.textInput}
+                                    autoCapitalize="none"
+                                    onChangeText={(val) => textInputChange(val, 'street')}
+                                />
+                            </View>
+                        </View>
+
+                        <View style={{width: '100%', marginTop: 10}}>
+                            <Text style={styles.text_label}>Code postale</Text>
+                            <View style={styles.action}>
+                                <TextInput
+                                    placeholder=""
+                                    style={styles.textInput}
+                                    autoCapitalize="none"
+                                    onChangeText={(val) => textInputChange(val, 'postalCode')}
+                                />
+                            </View>
+                        </View>
+                        <View style={{width: '100%', marginTop: 10}}>
+                            <Text style={styles.text_label}>Ville</Text>
+                            <View style={styles.action}>
+                                <TextInput
+                                    placeholder=""
+                                    style={styles.textInput}
+                                    autoCapitalize="none"
+                                    onChangeText={(val) => textInputChange(val, 'city')}
+                                />
+                            </View>
+                        </View>
+                        <View style={{width: '100%', marginTop: 10}}>
+                            <Text style={styles.text_label}>Province / Etat</Text>
+                            <View style={styles.action}>
+                                <TextInput
+                                    placeholder=""
+                                    style={styles.textInput}
+                                    autoCapitalize="none"
+                                    onChangeText={(val) => textInputChange(val, 'state')}
+                                />
+                            </View>
+                        </View>
+                        <View style={{width: '100%', marginTop: 10}}>
+                            <Text style={styles.text_label}>Pays</Text>
+                            <View style={styles.action}>
+                                <TextInput
+                                    placeholder=""
+                                    style={styles.textInput}
+                                    autoCapitalize="none"
+                                    onChangeText={(val) => textInputChange(val, 'country')}
+                                />
+                            </View>
+                        </View>
+                        <View style={{width: '100%', marginTop: 10}}>
+                            <Text style={styles.text_label}>Complément</Text>
+                            <View style={styles.action}>
+                                <TextInput
+                                    placeholder=""
+                                    style={styles.textInput}
+                                    autoCapitalize="none"
+                                    onChangeText={(val) => textInputChange(val, 'addInfos')}
+                                />
+                            </View>
+                        </View>
+                        <View style={styles.btnConn}>
+                            <TouchableOpacity style={styles.btn} onPress={onSubmitFormAddress} >
+                                <LinearGradient style={styles.button} colors={['#F3BD6E', '#7A5F37']}>
+                                    <View style={styles.btnSignin}><Text>Ajouter mon adresse</Text></View>
+                                </LinearGradient>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.addressBtn}>
+                            <TouchableOpacity style={styles.btn50} onPress={() =>{
+                                navigation.goBack();
+                            }
+                            }
+                            >
+                                <View style={styles.btnCancel}>
+                                    <Text style={[ styles.text]} >Annuler</Text></View>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.btn50} onPress={() =>{
+                                navigation.goBack();
+                                navigation.navigate('Connexion ')
+                            }
+                            }
+                            >
+                                <View style={styles.addressBtnConn}>
+                                    <Text style={[styles.text]} >se connecter</Text></View>
+                            </TouchableOpacity>
                         </View>
                     </View>
-                    <View style={{width: '100%', marginTop: 10}}>
-                        <Text style={styles.text_label}>Code postale</Text>
-                        <View style={styles.action}>
-                            <TextInput
-                                placeholder=""
-                                style={styles.textInput}
-                                autoCapitalize="none"
-                                onChangeText={(val) => textInputChange(val)}
-                            />
-                        </View>
-                    </View>
-                    <View style={{width: '100%', marginTop: 10}}>
-                        <Text style={styles.text_label}>Pays</Text>
-                        <View style={styles.action}>
-                            <TextInput
-                                placeholder=""
-                                style={styles.textInput}
-                                autoCapitalize="none"
-                                onChangeText={(val) => textInputChange(val)}
-                            />
-                        </View>
-                    </View>*/}
+                    /*fin de address*/
+                    }
+
+                </View>
 
 
                     </ScrollView>
@@ -440,9 +515,14 @@ const styles = StyleSheet.create({
         paddingTop: 5,
         fontSize: 14,
         width: '50%',
-
-
-
+    },
+    btnCancel: {
+        backgroundColor: 'rgba(229,1,1,.8)',
+        borderRadius: 15,
+        height: 35,
+        textAlign: 'center',
+        paddingTop: 6,
+        fontSize: 14,
     },
 
     btnConnA: {
@@ -465,8 +545,30 @@ const styles = StyleSheet.create({
     text_label: {
         marginLeft: 0,
         fontSize: 16,
-        textTransform: 'capitalize',
         color: '#003B49'
+    },
+    addressBtn: {
+        display: "flex",
+        flex: 1,
+        flexDirection: "row",
+        width: '100%',
+        justifyContent: 'space-between'
+    },
+    btn50: {
+        width: '48%',
+        textAlign: 'center'
+    },
+    addressBtnConn: {
+        backgroundColor: 'rgba(0, 59, 73, 0.5)',
+        borderRadius: 15,
+        height: 35,
+        textAlign: 'center',
+        paddingTop: 5,
+        fontSize: 14,
+    },
+    text: {
+        textAlign: "center",
     }
+
 
 });
