@@ -50,6 +50,7 @@
     "redux": "^4.1.2",
     "redux-api-middleware": "^3.2.1",
     "redux-thunk": "^2.4.1",
+    "socket.io": "^4.4.1",
     "url-parse": "^1.5.4"
   },
   "devDependencies": {
@@ -58,5 +59,8 @@
     "@react-native-community/async-storage": "^1.12.1",
     "prop-types": "^15.8.1"
   },
-  "private": true
+  "private": true,
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

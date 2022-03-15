@@ -1,24 +1,28 @@
 import Row from 'react-bootstrap/Row';
-import React, { useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {productService} from '../../services/productService';
 import ProductItem from "../../components/ProductItem";
+
 
 export default function CategoriesScreen() {
 
     const [products, setProducts] = useState([]);
 
+
     const getProducts = () => {
+        const idCat = window.location.pathname.split('/')[2];
         productService
-            .getProductsByCategoryId(1)
+            .getProductsByCategoryId(idCat)
             .then((res) => {
                 setProducts(res.data);
-                console.log(res.data);
             })
             .catch(err => console.log(err))
+
     }
+
     useEffect(() => {
-        getProducts();
-    }, []);
+        getProducts()
+    }, [products]);
 
 
     return (

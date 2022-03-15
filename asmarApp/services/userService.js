@@ -27,4 +27,14 @@ export const //BASE_URL = 'http://192.168.1.28:8080',
     REMOVE_JWT_TOKEN = () => {
         AsyncStorage.removeItem('jwtToken');
 
-    };
+    },
+     userInfo = (JWT) => {
+         return axios({
+             method: 'get',
+             url: BASE_URL + '/api/users/user',
+             headers: {
+                 'Content-Type': 'application/json',
+                 'Authorization': JWT
+             },
+         });
+     }

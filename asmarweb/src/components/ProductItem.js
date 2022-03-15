@@ -8,12 +8,10 @@ export const ProductItem = ({product}) => {
     const  [imageP,setImageP] = useState();
 
   const getImagePrincipal =() => {
-      console.log(product);
       if(product.urlImages.length !== 0 ){
           for(let image of product.urlImages){
               if(image.principal){
                   setImageP(image.url);
-                  console.log(imageP);
               }
           }
       }
