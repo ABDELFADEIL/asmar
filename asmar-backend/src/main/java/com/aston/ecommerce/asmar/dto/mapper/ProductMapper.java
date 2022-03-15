@@ -13,6 +13,7 @@ public interface ProductMapper {
 
     ProductDTO toProductDto(Product product);
     ProductDetailDTO toProductDetailDto(Product product);
+    List<ProductDetailDTO> toProductDetailDtos(List<Product> products);
     List<ProductDTO> toProductDtos(List<Product> products);
 
     Product toProduct(ProductDTO productDTO);

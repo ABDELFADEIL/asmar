@@ -1,9 +1,11 @@
 package com.aston.ecommerce.asmar.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -16,6 +18,9 @@ public class Product extends AbstractEntity{
     private BigDecimal price;
     @Column(name="description", nullable = false)
     private String description;
+    @Column(name="creation_date", nullable = false)
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+    private LocalDateTime creationDate;
     @Column(name="history")
     private String history;
     @Column(name="origin")
@@ -59,7 +64,19 @@ public class Product extends AbstractEntity{
         return description;
     }
 
-    public void setDescription(String description) {
+    public LocalDateTime getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(LocalDateTime creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
+	}
+
+	public void setDescription(String description) {
         this.description = description;
     }
 
