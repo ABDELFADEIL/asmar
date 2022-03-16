@@ -1,32 +1,45 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import ArticleMini from "../../components/templates/ArticleMini";
-// import ProductService from "../../services/ProductService";
+import { productService } from '../../services/productService'
 import { Button, Card, Container, Row, Col, Carousel } from 'react-bootstrap';
 import './../../index.css'
 import './home.css'
 
 
-// let product_service = new ProductService();
 export default function HomeScreen() {
-  let articles = [{ name: "robe", prix: 11, description: "Ceci est une robe" }, { name: "robe", prix: 12, description: "Ceci est une robe" }, { name: "robe", prix: 13, description: "Ceci est une robe" }, { name: "robe", prix: 14, description: "Ceci est une robe" }, { name: "robe", prix: 15, description: "Ceci est une robe" }]
 
-  const list = []
+  const [newProductsList, setNewProductsList] = useState([]);
 
-  for (const [i, article] of articles.entries()) {
-    // list.push(<li>{product}</li>)
-    list.push(
-      <Col style={{ marginTop: "1rem" }}>
-      {/* <Col className="mgt2"> */}
-        <ArticleMini  article={article} />
-      </Col>
-    )
-  }
+  let getNewArticles = (nb) => {
+    productService
+      .getNbProductDetailsByDate(nb)
+      .then((res) => {
+        console.log(res);
+        if (res?.data == null) {
+          return
+        }
+        let list = [];
+        for (const [i, article] of res.data.entries()) {
+          list.push(
+            <Col key={i} style={{ marginTop: "1rem" }}>
+              <ArticleMini article={article} />
+            </Col>
+          )
+        }
+        setNewProductsList(list);
+      })
+      .catch(err => console.log(err))
+  };
+
+  useEffect(() => {
+    getNewArticles(5)
+  }, []);
 
   return (
     <div style={{ margin: "2rem" }}>
-      <Carousel style={{ margin: "auto",width:"80%" }} >
+      <Carousel style={{ margin: "auto", width: "80%" }} >
         <Carousel.Item>
-          <img 
+          <img
             className="d-block w-100 sizeimg"
             src="https://upload.wikimedia.org/wikipedia/commons/4/44/Cat_img.jpg"
             alt="First slide"
@@ -63,18 +76,15 @@ export default function HomeScreen() {
       </Carousel>
       {/* <ArticleMini article={article} /> */}
       <Container>
-      <h3 style={{marginBottom:"0rem"}} className="color3 mgt2" >Catégories les plus recherchées:</h3>
+        <h3 style={{ marginBottom: "0rem" }} className="color3 mgt2" >Nouveautés</h3>
         <Row>
-          {list}
+          {newProductsList}
         </Row>
-        <h3 style={{marginBottom:"0rem"}} className="color3 mgt2" >Catégories les plus recherchées:</h3>
+        <h3 style={{ marginBottom: "0rem" }} className="color3 mgt2" >Catégories les plus recherchées:</h3>
         <Row>
-          {list}
+          {newProductsList}
         </Row>
       </Container>
-      {/* <div>
-        {list}
-      </div> */}
       <p>Home page</p>
     </div>
 

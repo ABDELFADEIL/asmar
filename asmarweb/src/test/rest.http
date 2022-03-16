@@ -1,0 +1,4 @@
+GET http://localhost:8080/api/products/1 HTTP/1.1
+
+###
+GET http://localhost:8080/api/products/bydate/5 HTTP/1.1
