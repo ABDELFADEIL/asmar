@@ -47,12 +47,25 @@
     margin-top: 3rem !important;
 }
 .checkout {
-    background: linear-gradient(#F3BD6E, #7A5F37);
     border: none;
-    color: #003B49;
     border-radius: 20px;
     width: 80%;
     margin: auto;
+    height: 2rem;
+}
+.activated {
+    background: linear-gradient(#F3BD6E, #7A5F37);
+    color: #003B49;
+
+}
+.not-activated {
+    /*background: linear-gradient(#003B49, #064f67);*/
+    color: #003b49 !important;
+    opacity: 0.5;
+    background: #003b4963;
+    cursor: not-allowed;
+    pointer-events: none;
+
 }
 @media screen and (max-width: 767px ){
     .item-cart {

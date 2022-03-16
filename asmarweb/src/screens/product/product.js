@@ -12,6 +12,7 @@ import {
   useParams
 } from "react-router-dom";
 import { GET_JWT_TOKEN, userInfo } from "../../services/userService";
+import {onAddProductToCart} from "../../services/commandLineService";
 
 export default function ProductScreen() {
 
@@ -27,8 +28,8 @@ export default function ProductScreen() {
 
   const getProductDetailsById = () => {
     productService
-    // .getProductDetailsById(productId)
-      .getProductDetailsById(1)
+     .getProductDetailsById(4)
+      //.getProductDetailsById(1)
       .then((res) => {
         setProductDetails(res.data);
         setUrlImages(res.data.urlImages);
@@ -66,6 +67,9 @@ export default function ProductScreen() {
       quantity: selectedQty
     }
     console.log(commandLine);
+    onAddProductToCart(commandLine).then(response => {
+      console.log(response);
+    }).catch(error => console.log(error));
   }
 
   return (

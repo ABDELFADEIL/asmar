@@ -1,11 +1,22 @@
 import * as React from "react";
 import { Container, Row, Col, Card} from "react-bootstrap";
 import "./shopping_cart.css"
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {getShoppingCartItems} from "../../services/commandLineService";
+import CommandLine from "../../components/templates/commandLine/commandLine";
 export default function ShoppingCartScreen(){
 
     const [empty, setEmpty ] = useState(true);
-        return (
+    const [ activated, setActivated ] = useState(false);
+    const [ commandLines, setCommandLines] = useState([]);
+
+    useEffect(() => {
+        getShoppingCartItems(34).then(res => {
+            setCommandLines(res.data)
+            console.log(res);
+        }).catch(error => console.log(error));
+    }, []);
+    return (
             <div>
                 <Container className="cart-container" fluid>
                   <Row>
@@ -20,11 +31,11 @@ export default function ShoppingCartScreen(){
                             <hr/>
                             </div>
                             <Card className="item-cart">
-                                {empty ?
+                                {commandLines.length==0 ?
                                     <p className="text-center m-auto">Votre panier est vide !</p>
                                     :
                                     <Card.Body>
-
+                                     <CommandLine commandLine={commandLines[0]}/>
                                     </Card.Body>
                                 }
 
@@ -54,8 +65,8 @@ export default function ShoppingCartScreen(){
                                             <Col>0$</Col>
                                         </Row>
                                     </Container>
-                                    <Row className="row-checkout m-auto text-center">
-                                        <button onClick={()=> console.log("")} className="checkout">Valider</button>
+                                    <Row className={"row-checkout m-auto text-center" }>
+                                        <button onClick={()=> console.log("")} className={"checkout "+(!activated ? " not-activated": " activated")}>Valider</button>
                                     </Row>
                                 </div>
                             </Card>

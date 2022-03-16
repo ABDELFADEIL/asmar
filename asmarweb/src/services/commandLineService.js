@@ -1,17 +1,11 @@
 import axios from 'axios';
+import { BASE_URL } from '../utils/constants'
 
 
-const BASE_URL = 'http://localhost:8080/api/commandLine';
-
-async function addProductToCart(userId,productId,quantity){
-    const newCommandLine = {
-        userId: userId,
-        productId: productId,
-        quantity: quantity
-    };
+export async function onAddProductToCart(newCommandLine){
     return new Promise((resolve, reject) => {
         axios
-            .post(`${BASE_URL}/add`, newCommandLine)
+            .post(`${BASE_URL}/api/commandLine/add`, newCommandLine)
             .then((response) => {
                 resolve(response);
             })
@@ -19,8 +13,17 @@ async function addProductToCart(userId,productId,quantity){
     });
 }
     export const commandLineService = {
-        addProductToCart
+        onAddProductToCart
     };
+ export const getShoppingCartItems = (userId) => {
+     return axios({
+         method: 'get',
+         url: BASE_URL + '/api/commandLine/shopping-cart?userId='+ userId,
+         headers: {
+             'Content-Type': 'application/json'
+         },
+     });
+ }
 
 
 
