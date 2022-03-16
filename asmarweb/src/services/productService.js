@@ -17,5 +17,4 @@ export const productService = {
     getProductDetailsById,
     getProductsByCategoryId,
     getNbProductDetailsByDate
-
 };
