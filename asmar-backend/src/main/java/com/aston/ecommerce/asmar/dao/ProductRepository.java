@@ -5,6 +5,7 @@ import com.aston.ecommerce.asmar.dto.ProductDetailDTO;
 import com.aston.ecommerce.asmar.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -20,6 +21,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> getProductsByCategoryId(Long categoryId);
     
     @Query(value="SELECT * FROM Product WHERE creation_date ORDER BY creation_date DESC LIMIT :nb", nativeQuery=true )
-    List<Product> getDetailProductsByDate(Long nb);
+    List<Product> getDetailProductsByDate(@Param("nb") Long nb);
 }
 
