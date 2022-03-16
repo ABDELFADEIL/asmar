@@ -46,7 +46,7 @@ export default class Navbar extends Component{
                     <Link to="/login" onClick={this.handleClick}>
                         <li><FaUser /></li>
                     </Link>
-                    <Link to="/chopping-cart" onClick={this.handleClick}>
+                    <Link to="/shopping-cart" onClick={this.handleClick}>
                         <li><MdShoppingBasket /></li>
                     </Link>
                 </ul>
