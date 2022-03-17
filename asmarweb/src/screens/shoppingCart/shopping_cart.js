@@ -25,25 +25,29 @@ export default function ShoppingCartScreen(){
                      </div>
                   </Row>
                     <Row>
-                        <Col md={8}>
-                            <div className="items-title">
+                        <div className="items-title col-sm-12">
                             <h6>Articles</h6>
                             <hr/>
-                            </div>
+                        </div>
+                        <Col md={8}>
+
 
                                 {commandLines.length==0 ?
                                     <Card className="item-cart">
                                     <p className="text-center m-auto">Votre panier est vide !</p>
                                     </Card>
                                     :
-                                     <CommandLine commandLine={commandLines[0]}/>
+                                    <Col gap={3}>
+                                        {commandLines.map(commandLine => (
+                                            <CommandLine key={commandLines.id} commandLine={commandLine}/>
+                                        ))}
+                                    </Col>
+
                                 }
 
 
                         </Col>
                         <Col md={4}>
-                            <div className="items-sum">
-                            </div>
                             <Card className="cart cart-sum">
                                 <div>
                                     <h6 className="text-center">Recapitulatif de panier</h6>
