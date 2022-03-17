@@ -1,11 +1,34 @@
 import * as React from "react";
 import { Container, Row, Col, Card} from "react-bootstrap";
 import "./shopping_cart.css"
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {getShoppingCartItems} from "../../services/commandLineService";
+import CommandLine from "../../components/templates/commandLine/commandLine";
 export default function ShoppingCartScreen(){
 
     const [empty, setEmpty ] = useState(true);
-        return (
+    const [ activated, setActivated ] = useState(false);
+    const [ commandLines, setCommandLines] = useState([]);
+
+    function getShoppingCart(id) {
+        getShoppingCartItems(id).then(res => {
+            setCommandLines(res.data)
+            console.log(res);
+        }).catch(error => console.log(error));
+    }
+
+    useEffect(() => {
+        getShoppingCart(34)
+    }, []);
+
+    const total = () => {
+        let total = 0;
+        commandLines.map((commandLine)=> {
+            total = total + commandLine.price;
+        });
+        return total;
+    }
+    return (
             <div>
                 <Container className="cart-container" fluid>
                   <Row>
@@ -14,48 +37,54 @@ export default function ShoppingCartScreen(){
                      </div>
                   </Row>
                     <Row>
-                        <Col md={8}>
-                            <div className="items-title">
+                        <div className="items-title col-sm-12">
                             <h6>Articles</h6>
                             <hr/>
-                            </div>
-                            <Card className="item-cart">
-                                {empty ?
-                                    <p className="text-center m-auto">Votre panier est vide !</p>
-                                    :
-                                    <Card.Body>
+                        </div>
+                        <Col md={8}>
 
-                                    </Card.Body>
+
+                                {commandLines.length==0 ?
+                                    <Card className="item-cart">
+                                    <p className="text-center m-auto">Votre panier est vide !</p>
+                                    </Card>
+                                    :
+                                    <Col>
+                                        {commandLines.map((commandLine, index) =>
+                                            <CommandLine setCommandLines={setCommandLines} key={index} commandLine={commandLine}/>
+                                        )}
+                                    </Col>
+
                                 }
 
-                            </Card>
+
                         </Col>
                         <Col md={4}>
-                            <div className="items-sum">
-                            </div>
                             <Card className="cart cart-sum">
                                 <div>
                                     <h6 className="text-center">Recapitulatif de panier</h6>
                                     <Container className="recap">
                                         <Row>
                                             <Col>Nombre d'articles</Col>
-                                            <Col>0</Col>
+                                            <Col>{commandLines.length}</Col>
                                         </Row>
                                         <Row>
                                             <Col>Prix total des articles</Col>
-                                            <Col>0</Col>
+                                            <Col>{total()}€</Col>
                                         </Row>
                                         <Row>
                                             <Col>TVA (0%)</Col>
-                                            <Col>0</Col>
+                                            <Col>0€</Col>
                                         </Row>
                                         <Row>
                                             <Col>Total</Col>
-                                            <Col>0$</Col>
+                                            <Col>{total() + total() * 0}€</Col>
                                         </Row>
                                     </Container>
-                                    <Row className="row-checkout m-auto text-center">
-                                        <button onClick={()=> console.log("")} className="checkout">Valider</button>
+                                    <Row className={"row-checkout m-auto text-center" }>
+                                        <button onClick={()=> console.log("")} className={"checkout "+(commandLines.length == 0 ? " not-activated": " activated")}>
+                                            Valider mon panier
+                                        </button>
                                     </Row>
                                 </div>
                             </Card>

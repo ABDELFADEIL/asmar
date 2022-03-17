@@ -11,6 +11,8 @@ import {
   useParams
 } from "react-router-dom";
 import { GET_JWT_TOKEN, userInfo } from "../../services/userService";
+import {onAddProductToCart} from "../../services/commandLineService";
+
 export default function ProductScreen() {
   const [productDetails, setProductDetails] = useState({});
   const [urlImages, setUrlImages] = useState([]);
@@ -41,10 +43,12 @@ export default function ProductScreen() {
           console.log(res.data);
         })
         .catch(err => console.log(err))
-  }
+       }
+
   useEffect(() => {
     getProductDetailsById();
   }, []);
+
   const addProductToCart = async () => {
     const JWT = GET_JWT_TOKEN();
     console.log(JWT);
@@ -56,6 +60,9 @@ export default function ProductScreen() {
       quantity: selectedQty
     }
     console.log(commandLine);
+    onAddProductToCart(commandLine).then(response => {
+      console.log(response);
+    }).catch(error => console.log(error));
   }
   return (
       <>

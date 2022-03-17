@@ -25,7 +25,7 @@ export default function ArticleMini({ article }) {
       <Card className="cardbackground" style={{ width: '18rem' }}>
         <Card.Body>
           {/* <Card.Img style={{ maxHeight: "15rem" }} variant="top" src="https://m.media-amazon.com/images/I/51XgqzfXiiL._AC_.jpg" /> */}
-          <Card.Img style={{ maxHeight: "15rem" }} variant="top" src={ article.urlImages[0] !=null? article.urlImages[0].url:"https://m.media-amazon.com/images/I/51XgqzfXiiL._AC_.jpg"} />
+          <Card.Img style={{ maxHeight: "15rem" }} variant="top" src={article.urlImages[0] != null ? article.urlImages[0].url: "https://m.media-amazon.com/images/I/51XgqzfXiiL._AC_.jpg"} />
           <Card.Title>
             {/* {article.name} */}
             {article.label}
