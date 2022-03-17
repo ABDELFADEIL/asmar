@@ -38,7 +38,7 @@ public class CommandLineController {
     }
 
     /*get commands of current user */
-    @GetMapping("/commands")
+    @GetMapping("/shopping-cart")
     @ApiOperation(value = "Get commands of current user")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Return commands of current user"),
@@ -48,7 +48,7 @@ public class CommandLineController {
     public ResponseEntity<List<CommandLineDTO>> getCommandLineList(@RequestParam(name = "userId") Long userId) {
         List<CommandLineDTO> commandLineDTOList = commandLineService.getCommandLineListByUserId(userId);
         if (commandLineDTOList == null) {
-            return new ResponseEntity<>(commandLineDTOList, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 
         }
         return ResponseEntity.ok(commandLineDTOList);
