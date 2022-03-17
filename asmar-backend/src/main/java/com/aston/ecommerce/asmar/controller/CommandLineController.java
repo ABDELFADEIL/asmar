@@ -2,9 +2,8 @@
 package com.aston.ecommerce.asmar.controller;
 
 import com.aston.ecommerce.asmar.dto.CommandLineDTO;
-import com.aston.ecommerce.asmar.dto.ProductDetailDTO;
 import com.aston.ecommerce.asmar.dto.ProductToCartDTO;
-
+import com.aston.ecommerce.asmar.dto.UserDTO;
 import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.entity.User;
 import com.aston.ecommerce.asmar.service.CommandLineService;
@@ -12,13 +11,12 @@ import com.aston.ecommerce.asmar.service.ProductService;
 import com.aston.ecommerce.asmar.service.UserService;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
-
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @RestController
@@ -29,15 +27,16 @@ public class CommandLineController {
     private final CommandLineService commandLineService;
 
     private final ProductService productService;
+    private final UserService userService;
 
-
-    public CommandLineController(CommandLineService commandLineService, UserService userService, ProductService productService) {
+    public CommandLineController(CommandLineService commandLineService, UserService userService, ProductService productService, UserService userService1) {
         this.commandLineService = commandLineService;
         this.productService = productService;
+        this.userService = userService;
     }
 
     /*get commands of current user */
-    @GetMapping("/commands")
+    @GetMapping("/shopping-cart")
     @ApiOperation(value = "Get commands of current user")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Return commands of current user"),
@@ -47,7 +46,7 @@ public class CommandLineController {
     public ResponseEntity<List<CommandLineDTO>> getCommandLineList(@RequestParam(name = "userId") Long userId) {
         List<CommandLineDTO> commandLineDTOList = commandLineService.getCommandLineListByUserId(userId);
         if (commandLineDTOList == null) {
-            return new ResponseEntity<>(commandLineDTOList, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 
         }
         return ResponseEntity.ok(commandLineDTOList);
@@ -76,10 +75,24 @@ public class CommandLineController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/remove/{Id}")
-    public ResponseEntity<Void> deleteCommandLine(@PathVariable("id") Long id, @AuthenticationPrincipal User user) {
+    @DeleteMapping("/remove/{id}")
+    public ResponseEntity<Void> deleteCommandLine(@PathVariable("id") Long id) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDTO user = userService.getCurrentUser(auth.getPrincipal().toString());
         commandLineService.deleteCommandLine(id, user);
         return ResponseEntity.noContent().build();
+
+    }
+
+    @PutMapping("/update-quantity/{id}")
+    public ResponseEntity<CommandLineDTO> updateCommandLineQuantity(
+            @PathVariable(name = "id", required = true) Long id,
+            @RequestParam(name = "quantity", required = true) int quantity) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDTO user = userService.getCurrentUser(auth.getPrincipal().toString());
+        CommandLineDTO commandLineDTO =
+                commandLineService.updateCommandLineQuantity(id, quantity, user);
+        return ResponseEntity.ok(commandLineDTO);
 
     }
 }

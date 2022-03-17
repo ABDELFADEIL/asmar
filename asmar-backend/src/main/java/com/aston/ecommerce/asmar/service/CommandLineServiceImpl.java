@@ -6,6 +6,7 @@ import com.aston.ecommerce.asmar.dao.UserRepository;
 import com.aston.ecommerce.asmar.dto.CommandLineDTO;
 
 import com.aston.ecommerce.asmar.dto.ProductToCartDTO;
+import com.aston.ecommerce.asmar.dto.UserDTO;
 import com.aston.ecommerce.asmar.dto.mapper.CommandLineMapper;
 import com.aston.ecommerce.asmar.entity.CommandLine;
 import com.aston.ecommerce.asmar.entity.Product;
@@ -66,6 +67,30 @@ public class CommandLineServiceImpl implements CommandLineService {
     }
 
     @Override
+    public CommandLineDTO updateCommandLineQuantity(Long id, int quantity, UserDTO user) {
+        CommandLine commandLine = commandLineRepository.getById(id);
+        if (commandLine != null) {
+            if (commandLine.getUser().getId().equals(user.getId())){
+                int newQuantity = commandLine.getQuantity() + quantity;
+                if (newQuantity == 0){
+                    commandLineRepository.deleteById(id);
+                    return new CommandLineDTO();
+                }else if (newQuantity <= 0){
+                 throw new RuntimeException("la quantité est moins à 1");
+                }else {
+                    BigDecimal price = commandLine.getProduct().getPrice().multiply(BigDecimal.valueOf(newQuantity));
+                    commandLine.setQuantity(newQuantity);
+                    commandLine.setPrice(price);
+                    commandLine = commandLineRepository.save(commandLine);
+                    return commandLineMapper.toCommandLineDto(commandLine);
+                }
+
+            }
+        }
+        return null;
+    }
+
+    @Override
      public CommandLineDTO updateCommandLine( CommandLineDTO commandLineDTO,User user,Product product) {
 
         CommandLine commandLine = commandLineRepository.getById(commandLineDTO.getId());
@@ -81,7 +106,7 @@ public class CommandLineServiceImpl implements CommandLineService {
     }
 
     @Override
-    public void deleteCommandLine(Long id, User user) {
+    public void deleteCommandLine(Long id, UserDTO user) {
         CommandLine commandLine = commandLineRepository.getById(id);
         if (commandLine.getUser().getId().equals(user.getId())) {
             commandLineRepository.deleteById(commandLine.getId());
