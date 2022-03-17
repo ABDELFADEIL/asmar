@@ -78,6 +78,7 @@
 @media screen and (max-width: 767px ){
     .item-cart {
         min-height: 40vh !important;
+        margin-bottom: 1rem;
     }
     .cart-sum {
         min-height: auto !important;
