@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { BASE_URL } from '../utils/constants'
+import {GET_JWT_TOKEN} from "./userService";
 
 
 export async function onAddProductToCart(newCommandLine){
@@ -24,6 +25,34 @@ export async function onAddProductToCart(newCommandLine){
          },
      });
  }
+
+export const RemoveItem = (id) => {
+     const JWT =  GET_JWT_TOKEN();
+     return axios(
+     {
+         method: 'delete',
+             url: BASE_URL + '/api/commandLine/remove/' + id,
+         headers: {
+             'Content-Type': 'application/json',
+             'Authorization': JWT
+
+     },
+     });
+ }
+
+export const UpdateItemQuantity = (id, quantity) => {
+    const JWT =  GET_JWT_TOKEN();
+    return axios(
+        {
+            method: 'put',
+            url: BASE_URL + '/api/commandLine/update-quantity/' + id+ '?quantity=' + quantity,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': JWT
+
+            },
+        });
+}
 
 
 

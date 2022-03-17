@@ -28,7 +28,7 @@ export default function ProductScreen() {
 
   const getProductDetailsById = () => {
     productService
-     .getProductDetailsById(4)
+     .getProductDetailsById(5)
       //.getProductDetailsById(1)
       .then((res) => {
         setProductDetails(res.data);
