@@ -20,6 +20,13 @@
     min-height: 60vh;
     background: #ebf0f1;
 }
+.cart-item {
+    background: #ebf0f1;
+}
+.item {
+    align-items: center;
+
+}
 
 .cart-container {
     margin-bottom: 20px;

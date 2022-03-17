@@ -30,16 +30,16 @@ export default function ShoppingCartScreen(){
                             <h6>Articles</h6>
                             <hr/>
                             </div>
-                            <Card className="item-cart">
+
                                 {commandLines.length==0 ?
+                                    <Card className="item-cart">
                                     <p className="text-center m-auto">Votre panier est vide !</p>
+                                    </Card>
                                     :
-                                    <Card.Body>
                                      <CommandLine commandLine={commandLines[0]}/>
-                                    </Card.Body>
                                 }
 
-                            </Card>
+
                         </Col>
                         <Col md={4}>
                             <div className="items-sum">
