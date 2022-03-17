@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 
 import java.io.Serializable;
 
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.persistence.*;

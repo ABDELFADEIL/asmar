@@ -138,12 +138,14 @@ public class Product extends AbstractEntity{
 
     public void setUsage_(String usage_) { this.usage_ = usage_;}
 
+
     @Override
     public String toString() {
         return "Product{" +
                 "label='" + label + '\'' +
                 ", price=" + price +
                 ", description='" + description + '\'' +
+                ", creationDate=" + creationDate +
                 ", history='" + history + '\'' +
                 ", origin='" + origin + '\'' +
                 ", composition='" + composition + '\'' +
@@ -155,5 +157,4 @@ public class Product extends AbstractEntity{
                 ", category=" + category +
                 '}';
     }
-
 }
