@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { productService } from '../../services/productService';
 import { Button } from 'react-native-paper';
-import {StyleSheet, Text, View, Image, SafeAreaView} from 'react-native';
+import {StyleSheet, Text, View, Image, SafeAreaView, ScrollView, PixelRatio} from 'react-native';
+import { Picker } from "@react-native-picker/picker";
 import {GET_JWT_TOKEN, userInfo} from "../../services/userService";
 
 
-
-
-const ProductDetailsScreen = () =>{
+const ProductDetailsScreen = () => {
 
         const [productDetails, setProductDetails] = useState([]);
         const [urlImages, setUrlImages]= useState([]);
         const [imagePrincipal,setImagePrincipal] =useState(null);
         const [noImagePrincipal, setNoImagePrincipal] = useState([]);
+        const [selectedQty, setSelectedQty] = useState(1);
+        const array = Array.from({length:20}, (x, i) => i);
 
 
     const getProductDetailsById = () => {
@@ -22,6 +23,8 @@ const ProductDetailsScreen = () =>{
                 setProductDetails(res);
                 console.log(res);
                 setUrlImages(res.urlImages);
+                setQty(res.quantity);
+                console.log(res.quantity);
                let imgTab = [];
                 let firstImg = null;
                 for (let item of res.urlImages) {
@@ -36,32 +39,94 @@ const ProductDetailsScreen = () =>{
                     }
                 };
                  setNoImagePrincipal(imgTab);
-
-
             })
             .catch(err => console.log(err))
     }
+
     useEffect(() => {
         getProductDetailsById();
     }, []);
-/*    const renderUrlImages =() => (
 
-                    <View>
-                        {noImagePrincipal.map((img,i)=> (
-                        <View style={styles.images}>
-                                <Image source={img} key={i}
-                                       style={{width: '100%', height: 100 / noImagePrincipal.length}}
-                                       alt="productImage"/>
-                        </View>
-                            ))}
-                        <View style={styles.imagePrincipal}>
-                            <Image source={imagePrincipal}
-                                   style={{height: 100 + 5 * (noImagePrincipal.length - 1), width: '100%'}}
-                                   alt="principal"/>
-                        </View>
+    const renderUrlImages =(noImagePrincipal) => {
+        return (
+            <View>
+                {noImagePrincipal.map((urlImages, i) => (
+                    <View key={i} style={styles.images}>
+                        <Image source={urlImages}
+                              /* style={{width: '100%', height: 100 / noImagePrincipal.length}}*/
+
+                               style={{width: PixelRatio.getPixelSizeForLayoutSize(30),
+                                   height: PixelRatio.getPixelSizeForLayoutSize(120 / noImagePrincipal.length),
+                                   resizeMode:'stretch',
+                                   margin:1}}
+                               alt="productImage"/>
                     </View>
-    );*/
+                ))}
 
+            </View>
+        )
+    }
+    const renderImageP =(imagePrincipal) => {
+        return (
+            <View>
+                <View style={styles.imagePrincipal}>
+                    <Image source={imagePrincipal}
+
+                           style={{width: PixelRatio.getPixelSizeForLayoutSize(60),
+                               height: PixelRatio.getPixelSizeForLayoutSize( 120 + 2.5 * (noImagePrincipal.length -3)),
+                               resizeMode:'stretch',
+                               }}
+                           alt="principal"/>
+                </View>
+            </View>
+        )
+    }
+
+
+    const getQuantity =()=> {
+        if(productDetails.quantity > 20) {
+            return array;
+        } else{
+            return  Array.from({length:productDetails.quantity}, (x, i) => i);
+        }
+    }
+    const renderQty = () => {
+       return (
+           <Picker
+               style={{marginTop: 5, marginLeft: 5}}
+               mode="dropdown"
+               selectedValue={selectedQty}
+               onValueChange={(e, index) => setSelectedQty(e.target.value)}>
+               {
+                  getQuantity().map((x) => (
+
+                    <Picker.Item key={x} value={x + 1} label={x+1}> {x + 1} </Picker.Item>))}
+
+
+             {/*      (productDetails.quantity).keys().map((x) =>
+                    (<Picker.Item label={x + 1} value={x + 1} key={x + 1}/>
+               ))*!/}}
+            {/!*   <Picker.Item style={{fontFamily: 'SourceSansPro-Regular'}} label={qty.id} value={qty.id} key={i}/>*!/}
+*/}
+           </Picker>
+
+
+       );
+   };
+
+
+           {/* <Text style={{ color: '#003B49'}}>
+                Quantité :{''}
+                <select value={selectedQty}
+                        onChange={(e) => {
+                            setSelectedQty(e.target.value);
+                        }
+                        }
+                        style={{width: 100, borderRadius: 2, marginLeft: 40}}>
+                    {productDetails.quantity.keys().map((x) => (
+                        <option key={x + 1} value={x + 1}> {x + 1} </option>))}
+                </select>
+            </Text>*/}
 
     const addToCarts = async () => {
         const JWT = GET_JWT_TOKEN();
@@ -79,8 +144,8 @@ const ProductDetailsScreen = () =>{
     const renderButton= () => {
         return (
             <Button icon="cart" mode="contained"
-                    style={{width:100
-                        , height: 30, backgroundColor:
+                    style={{width:90
+                        , height: 25, backgroundColor:
                             '#003B49', padding: 0}} labelStyle={{color:'#F4D19E' , fontSize: 10,marginTop: 7}}
                     onPress={() => { addToCarts();}}>
                 Ajouter
@@ -90,28 +155,20 @@ const ProductDetailsScreen = () =>{
             return (
                 <>
                     <SafeAreaView style={styles.container}>
-            <View style={{padding: 50,
+                        <ScrollView>
+            <View style={{padding: 20,
                           flexDirection: "row"}} >
-                {/*{(renderUrlImages())}*/}
-            </View>
+                {urlImages.length ? renderUrlImages(urlImages) :null}
+                {urlImages.length ? renderImageP(urlImages) :null}
 
-                <View style={styles.images}>
-                    {noImagePrincipal.map((img, index)=>(
-                        <Image source={img} key={index} style={{ width: '100%', height: 40/noImagePrincipal.length}} alt="productImage"/>
-                    ))}
-                </View>
-                <View style={styles.imagePrincipal}>
-                    <Image source={imagePrincipal}style={{height: 40+ 5*(noImagePrincipal.length-1), width: '100%'}} alt="principal"/>
-                </View>
+            </View>
 
                         <View>
                             <Text style={styles.text}>{productDetails.label}</Text>
 
                             <Text style={styles.text}>Origin : {productDetails.origin}</Text>
                             <Text style={styles.text}>Material : {productDetails.composition}</Text>
-                            <Text style={styles.text}>{productDetails.usage_ ? (
-                                <Text>Model d'emploi : {productDetails.usage_}</Text>) : null}
-                            </Text>
+                            <Text style={styles.text}>Model d'emploi : {productDetails.usage_}</Text>
                             <Text style={styles.text}>{productDetails.price ? (
                                 <Text>Price : {productDetails.price}</Text>) : null} € </Text>
                         </View>
@@ -122,8 +179,9 @@ const ProductDetailsScreen = () =>{
                                 {productDetails.quantity > 0 ? 'disponible' : 'épuisé'}
                             </Text>
                     </View>
-                     <View style={{marginTop: 5, color: '#003B49', marginLeft: 5}}>
-                        {/* Quantité :{''}
+                    {/* <View style={{marginTop: 5, color: '#003B49', marginLeft: 5}}>
+                         <Text style={{marginTop: 5, color: '#003B49', marginLeft: 5}}>
+                         Quantité :{''}
                          <select value={selectedQty}
                                  onChange={(e) => {
                                      setSelectedQty(e.target.value);
@@ -131,7 +189,8 @@ const ProductDetailsScreen = () =>{
                                  } style={{width: 100, borderRadius: 2, marginLeft: 40}}>
                              {[...Array(productDetails.quantity).keys()].map((x) => (
                                  <option key={x + 1} value={x + 1}> {x + 1} </option>))}
-                         </select>*/}
+                         </select>
+                         </Text>*/}
                    {/* <Picker
                         selectedValue={qty}
                         onValueChange={(itemValue)=>
@@ -146,34 +205,18 @@ const ProductDetailsScreen = () =>{
 
 
                     </Picker>*/}
-                                    {/* <style type="text/css">
-                                         {`
-                              .btn-flat {
-                               background-color: darkGreen;
-                               color: lightYellow;
-                               border-radius:3rem;
-                               margin-top: 1rem;
-                              }
 
-                               .btn-xxl {
-                                padding: 0.5rem 2rem;
-                                 font-size: 1rem;
-                               }
-                               `}
-                                     </style>*/}
+                                <View>
+                                <Text style={{ color: '#003B49'}}>
+                                    Quantité:{''}
+                                    {productDetails.quantity > 0 ? renderQty() : null}
+                                </Text>
 
-
-
-                                {/*  {productDetails.quantity > 0 && (
-                        <Button icon="cart" mode="contained" style={{width: 110, height: 25, backgroundColor:
-                                '#003B49',marginLeft: 20}} labelStyle={{color:'#F4D19E' , fontSize: 10,marginTop: 7}} onPress={() => console.log('Pressed')}
-                        >
-                            Ajouter
-                        </Button>)}
-*/}
-
+                            </View>
+                                <View>
                             {(renderButton())}
-                     </View>
+
+                            </View>
 
                             <Text  style={styles.text}>Description:{productDetails.description ? (<Text> Description : {productDetails.description}</Text>): null}
                             </Text>
@@ -181,67 +224,11 @@ const ProductDetailsScreen = () =>{
                             <Text  style={styles.text}>Histoire:{productDetails.history ? (<Text> Histoire : {productDetails.history}</Text>): null}
                             </Text>
 
-
+                        </ScrollView>
                     </SafeAreaView>
                     </>
             );
 };
-
-
-{/*            <View style={{flexDirection:"row"}}>
-                <View style={styles.images}>
-                    {noImagePrincipal.map((img, index)=>(
-                        <Image source={img} key={index} style={{ width: '100%', height: 400/noImagePrincipal.length}} alt="productImage"/>
-                    ))}
-                </View>
-                <View style={styles.imagePrincipal}>
-                    <Image source={imagePrincipal}style={{height: 400+ 5*(noImagePrincipal.length-1), width: '100%'}} alt="principal"/>
-                </View>
-            </View>
-
-            <Text style={styles.text}>{productDetails.label}</Text>
-            <Text style={styles.text}>Origin : {productDetails.origin}</Text>
-            <Text style={styles.text}>Material : {productDetails.composition}</Text>
-            <Text style={styles.text}>{productDetails.usage_  ? (<Text>Model d'emploi : {productDetails.usage_}</Text>): null }
-            </Text>
-            <Text  style={styles.text}>{productDetails.price ? (<Text>Price : {productDetails.price}</Text>): null} € </Text>
-            <Text style={{color: productDetails.quantity > 0 ? 'green' : 'red'}}>
-                Status :{''}
-                {productDetails.quantity > 0 ? 'disponible' : 'épuisé'}
-            </Text>
-            <View>
-                <Text style={{color: '#003B49'}}>
-                    Quantité :{''}
-                    <Picker
-                        selectedValue={qty}
-                        onValueChange={handleValueChange}
-                        style={{width:100, borderRadius:2, marginLeft:40}}>
-
-
-                        {[...Array(productDetails.quantity).keys()].map((x) => (<Picker.Item key={x+1} label={x} value={x+1}/>))}
-
-
-                    </Picker>
-
-
-                    {productDetails.quantity > 0 && (
-                        <Button icon="cart" mode="contained" style={{width: 110, height: 25, backgroundColor:
-                                '#003B49',marginLeft: 20}} labelStyle={{color:'#F4D19E' , fontSize: 10,marginTop: 7}} onPress={() => console.log('Pressed')}
-                        >
-                            Ajouter
-                        </Button>)}
-                </Text>
-            </View>
-
-            <Text  style={styles.text}>{productDetails.description ? (<Text> Description : {productDetails.description}</Text>): null}
-            </Text>
-
-            <Text  style={styles.text}>{productDetails.history ? (<Text> Histoire : {productDetails.history}</Text>): null}
-            </Text>
-        </View>
-        </>
-    </SafeAreaView>
-        </ScrollView>*/}
 
 
 export default ProductDetailsScreen;
@@ -251,30 +238,20 @@ const styles = StyleSheet.create({
         flex:1,
         paddingTop: 40,
     },
- /*   images:{
-        height: 65,
-        width: '30%' ,
-        alignItems:'center',
-    },
     imagePrincipal :{
-        width: '70%',
-        marginLeft: 5,
-    },*/
+        width: 160,
+    },
     text: {
         color:'#003B49',
         fontWeight: 'bold',
     },
+        picker: {
+            marginVertical: 30,
+                width: 300,
+                padding: 10,
+                borderWidth: 1,
+                borderColor: "#666",
+        },
 });
 
-/*
-
-,
-text: {
-    color:'#003B49',
-        fontWeight: 'bold',
-},
-imagesContainer:{
-    padding: 0,
-},
-*/
 

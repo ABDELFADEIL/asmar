@@ -24,8 +24,11 @@ const App = ()=> {
                     <Navbar/>
                     <div className="Main">
                         <Routes>
+
+                            {/* <Route exact path="/" element={<HomeScreen/>}/> */}
+                            <Route path="/" element={<HomeScreen/>}/>
+                            <Route path="/categories" element={<CategoriesScreen/>}/>
                             <Route exact path="/" element={<HomeScreen/>}/>
-                            {/* <Route path="/categories" element={<CategoriesScreen/>}/> */}
                             <Route path="/categories/:id" element={<CategoriesScreen/>}/>
                             <Route path="/search" element={<SearchScreen/>}/>
                             <Route path="/product-details/:productId" element={<ProductScreen/>}/>
