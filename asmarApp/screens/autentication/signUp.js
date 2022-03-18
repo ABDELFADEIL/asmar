@@ -122,6 +122,8 @@ export default function SignUpScreen({route, navigation}) {
 
             <Animated.View
                 style={{
+                    flex: 1,
+                    maxHeight: 580,
                     padding: 15,
                     width: '90%',
                     borderRadius: 10,

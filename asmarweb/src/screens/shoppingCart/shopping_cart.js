@@ -11,6 +11,9 @@ export default function ShoppingCartScreen(){
     const [ commandLines, setCommandLines] = useState([]);
 
     function getShoppingCart(id) {
+        const array = Array.from({length: 20}, (x, i) => i);
+
+        console.log(array)
         getShoppingCartItems(id).then(res => {
             setCommandLines(res.data)
             console.log(res);
