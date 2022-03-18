@@ -1,9 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import Navbar from "./components/header/Navbar";
-import React, {Fragment, useEffect, useState} from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Router, Switch, Route, Routes, BrowserRouter, useNavigate} from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+  BrowserRouter
+} from "react-router-dom";
 import HomeScreen from "./screens/home/home";
 import ProfileScreen from "./screens/profile/profile";
 import ProductScreen from "./screens/product/product";
@@ -15,31 +21,31 @@ import ShoppingCartScreen from "./screens/shoppingCart/shopping_cart";
 import Footer from "./components/footer/Footer";
 
 
-const App = ()=> {
+const App = () => {
 
-    return (
-        <Fragment>
-            <BrowserRouter>
-                <div className="App">
-                    <Navbar/>
-                    <div className="Main">
-                        <Routes>
-                            <Route exact path="/" element={<HomeScreen/>}/>
-                            {/* <Route path="/categories" element={<CategoriesScreen/>}/> */}
-                            <Route path="/categories/:id" element={<CategoriesScreen/>}/>
-                            <Route path="/search" element={<SearchScreen/>}/>
-                            <Route path="/product-details/:productId" element={<ProductScreen/>}/>
-                            <Route path="/profile" element={<ProfileScreen/>}/>
-                            <Route path="/login" element={<LoginScreen/>}/>
-                            <Route path="/signup" element={<SignUpScreen/>}/>
-                            <Route path="/shopping-cart" element={<ShoppingCartScreen/>}/>
-                        </Routes>
-                    </div>
-                    <Footer/>
-                </div>
-            </BrowserRouter>
-        </Fragment>
-    );
+  return (
+    <Fragment>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar />
+          <div className="Main">
+            <Routes>
+              <Route path="/home" element={<HomeScreen />} />
+              <Route path="/" element={<Navigate to="/home" />} />
+              <Route path="/categories/:id" element={<CategoriesScreen />} />
+              <Route path="/search" element={<SearchScreen />} />
+              <Route path="/product-details/:productId" element={<ProductScreen />} />
+              <Route path="/profile" element={<ProfileScreen />} />
+              <Route path="/login" element={<LoginScreen />} />
+              <Route path="/signup" element={<SignUpScreen />} />
+              <Route path="/shopping-cart" element={<ShoppingCartScreen />} />
+            </Routes>
+          </div>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </Fragment>
+  );
 }
 
 export default App;
