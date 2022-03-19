@@ -93,6 +93,11 @@ react-native-screens@^3.10.1:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
+react-native-shadow@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-shadow/-/react-native-shadow-1.2.2.tgz#08991cd14b71e32f2fc6363911c139d231949a66"
+  integrity sha512-kwTmqRKmPEML9KbJi0uvvKd+67rOJQcr3IyNp9bg+qi/H+Wnwev/Mr8sUiUZlYEJ433ii2iNwpjc1ERMjHtMWw==
+
 react-navigation-custom-bottom-tab-component@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-navigation-custom-bottom-tab-component/-/react-navigation-custom-bottom-tab-component-1.1.1.tgz#538762405ee0bc892633828fa0f592743e266528"

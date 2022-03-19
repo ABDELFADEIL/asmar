@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { BASE_URL } from '../utils/constants'
 import {GET_JWT_TOKEN} from "./userService";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 export async function onAddProductToCart(newCommandLine){
@@ -26,29 +27,31 @@ export async function onAddProductToCart(newCommandLine){
      });
  }
 
-export const RemoveItem = (id) => {
-     const JWT =  GET_JWT_TOKEN();
+export const RemoveItem = async (id) => {
+    const jwtToken = await AsyncStorage.getItem('jwtToken');
      return axios(
      {
          method: 'delete',
              url: BASE_URL + '/api/commandLine/remove/' + id,
          headers: {
              'Content-Type': 'application/json',
-             'Authorization': JWT
+             'Authorization': jwtToken
 
      },
      });
  }
 
-export const UpdateItemQuantity = (id, quantity) => {
-    const JWT =  GET_JWT_TOKEN();
+export const UpdateItemQuantity = async (id, quantity) => {
+    const jwtToken = await AsyncStorage.getItem('jwtToken');
+    console.log("jwt token ****** ");
+    console.log(jwtToken)
     return axios(
         {
             method: 'put',
             url: BASE_URL + '/api/commandLine/update-quantity/' + id+ '?quantity=' + quantity,
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': JWT
+                'Authorization': jwtToken
 
             },
         });
