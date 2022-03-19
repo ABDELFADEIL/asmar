@@ -1,11 +1,22 @@
 import * as React from "react";
-import {View, Text, StyleSheet, Button, Pressable, SafeAreaView, ScrollView, StatusBar} from "react-native";
+import {
+    View,
+    Text,
+    StyleSheet,
+    Button,
+    Pressable,
+    SafeAreaView,
+    ScrollView,
+    StatusBar,
+    TouchableOpacity
+} from "react-native";
 import {useEffect, useState} from "react";
 import {GET_JWT_TOKEN} from "../../services/userService";
 import {Dimensions} from 'react-native';
 import {getShoppingCartItems} from "../../services/commandLineService";
 import * as PropTypes from "prop-types";
 import CommandLine from "./commandLine";
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 export default function ShoppingCartScreen(navigation) {
@@ -77,9 +88,15 @@ export default function ShoppingCartScreen(navigation) {
                                     <Text style={styles.sumTextNum}>{total() + total() * 0}€</Text>
                                 </View>
                             </View>
-                            <View style={styles.sumBtn}>
-                              <Text style={styles.sumBtnText}>Valider mon panier</Text>
+                            <View>
+                                <TouchableOpacity>
+                                    <LinearGradient style={styles.sumBtn} colors={['#F3BD6E', '#7A5F37']}>
+                                        <Text style={styles.sumBtnText}>Valider mon panier</Text>
+                                    </LinearGradient>
+                                </TouchableOpacity>
+
                             </View>
+
                         </View>
                     </View>
                 }
@@ -167,7 +184,7 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         height: 35,
         textAlign: 'center',
-        paddingTop: 3,
+        paddingTop: 2,
         fontSize: 14,
         marginTop: 10
     },
