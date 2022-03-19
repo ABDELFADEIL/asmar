@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { BASE_URL } from '../utils/constants'
+import { BASE_URL } from '../utils/constants';
 import {GET_JWT_TOKEN} from "./userService";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 
 export async function onAddProductToCart(newCommandLine){
     return new Promise((resolve, reject) => {
@@ -14,7 +13,7 @@ export async function onAddProductToCart(newCommandLine){
             .catch((err) => reject(err));
     });
 }
-    export const commandLineService = {
+export const commandLineService = {
         onAddProductToCart
     };
  export const getShoppingCartItems = (userId) => {
@@ -56,6 +55,5 @@ export const UpdateItemQuantity = async (id, quantity) => {
             },
         });
 }
-
 
 

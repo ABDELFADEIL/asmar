@@ -1,50 +1,66 @@
-import React ,{useState } from 'react';
-import {  Picker } from "@react-native-community/picker";
-import { View, StyleSheet } from "react-native";
+import React ,{useState }from 'react';
+import { Picker } from "@react-native-community/picker";
+import {View, Text, StyleSheet} from 'react-native';
+import theme from '../../asmarApp/utils/theme'
 
+export const PickerItem =({setSelectedQty,quantity})=> {
 
-export const PickerItem = ({setSelectedQty,quantity}) => {
-    const [selectedValue, setSelectedValue] = useState(1);
+    const [selectedValue, setSelectedValue ] = useState(1);
 
-    const array = Array.from({length: 20}, (x, i) => i+1);
-    const getQuantity = () => {
-        console.log("quantity : ", quantity);
-        console.log("array : ", array);
-        if (quantity > 20) {
+    const array = Array.from({length:20}, (x, i) => i);
+    const getQuantity =()=> {
+
+        if(quantity > 20) {
             return array;
-        } else {
-            console.log("array qunatity : ", Array.from({length: quantity}, (x, i) => i+1));
-            return Array.from({length: quantity}, (x, i) => i+1);
+        } else{
+            return  Array.from({length:quantity}, (x, i) => i);
         }
     }
-    return (
+    return(
+        <View   style={styles.pickerContainer}>
             <Picker
                 selectedValue={selectedValue}
-                style={styles.picker}
                 onValueChange={(itemValue, itemIndex) => {setSelectedValue(itemValue);
-                    setSelectedQty(itemValue)}}
+                    setSelectedQty(itemValue)
+                    console.log(selectedValue)}}
+                    mode="dropdown"
+                    style={styles.pickerText}
+
+               /* style={{ height: 18, width: 80,marginLeft:30,marginTop:-15,borderWidth:1,borderColor:theme.COLORS.DARK_GREEN}}*/
+                itemStyle={{ backgroundColor:'transparent', color: theme.COLORS.DARK_GREEN,  fontSize:17 ,marginTop:-70,height:50
+
+                    }}
+
             >
-                {getQuantity().map((x, index) => (
-                        /*<Picker.Item label={x + ''} value={x} />*/
-                        <Picker.Item key={x} value={x} label={x + ''}> {x}</Picker.Item>
+                {
+                    getQuantity().map((x, index) => (
+
+                         <Picker.Item  key={x+1} value={x+1}  label={(x+1).toString()}> {x+1}</Picker.Item>
+
                     ))}
             </Picker>
-
+        </View>
     )
-}
 
+}
 const styles = StyleSheet.create({
-    container: {
+
+    pickerContainer:{
+        marginTop: -50,
+        position: 'absolute', left:0, bottom:0, zIndex:10,
         flex: 1,
-        paddingTop: 20,
-        alignItems: "center"
+
     },
-    picker: {
-        marginVertical: 30,
-        width: 90,
-        padding: 10,
-        borderWidth: 1,
-        borderColor: "#666",
-        marginTop: 5, marginLeft: 5
+    pickerText:{
+        color:theme.COLORS.DARK_GREEN,
+     /*   height: 20,*/
+        textAlign: 'left',
+        padding:0,
+        marginTop: -15,
+        marginLeft: 80,
+        backgroundColor:'transparent',
+
+        borderColor:theme.COLORS.DARK_GREEN,
+        width: 80
     },
 });

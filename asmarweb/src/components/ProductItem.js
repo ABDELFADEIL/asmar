@@ -23,7 +23,7 @@ export const ProductItem = ({product}) => {
     return (
      <>
         <Col xs={12} md={6} lg={3}>
-            <Link to="/product-details">
+            <Link to={`/product-details/${product.id}`}>
             <Card style={{width: '15rem',
                           height:'20rem',
                           marginBottom: '1rem',
