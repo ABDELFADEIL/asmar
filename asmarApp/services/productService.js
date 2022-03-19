@@ -1,8 +1,7 @@
 import axios from 'react-native-axios';
+import {BASE_URL} from "../utils/constants";
 
- //const BASE_URL = 'http://localhost:8080/api/products';
 
- const BASE_URL = 'https://7b08-176-175-44-133.ngrok.io';
 
 /*
 
@@ -33,5 +32,8 @@ export const productService = {
 
 };
 
+export const getProductById = async (id) => {
+    return axios.get(BASE_URL + '/api/products/'+ id);
+};
 
 
