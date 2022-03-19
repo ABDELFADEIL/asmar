@@ -6,30 +6,26 @@ import {onAddProductToCart} from "../../services/commandLineService";
 
 import {GET_JWT_TOKEN, userInfo} from "../../services/userService";
 import {PickerItem} from "../../components/pickerItem";
-import theme from "../../utils/theme";
 
 const ProductDetailsScreen = () => {
-
-    const [productDetails, setProductDetails] = useState([]);
+    const [productDetails, setProductDetails] = useState({});
     const [urlImages, setUrlImages]= useState([]);
     const [imagePrincipal,setImagePrincipal] =useState(null);
     const [noImagePrincipal, setNoImagePrincipal] = useState([]);
     const [selectedQty, setSelectedQty] = useState(1);
 
     const getProductDetailsById = () => {
-             productService
-            // .getProductDetailsById(1)
-                 .getProductById(1)
+        productService
+            .getProductById(1)
             .then((res) => {
                 setProductDetails(res.data);
+                setSelectedQty(res.data.quantity)
                 setUrlImages(res.data.urlImages);
-
                 let imgTab = [];
                 let firstImg = null;
                 for (let item of res.data.urlImages) {
                     imgTab.push(item.url);
-
-                    if (item.principal) {
+                    if (item.principal == true) {
                         firstImg = item.url;
                         setImagePrincipal(firstImg);
                     }
@@ -38,11 +34,9 @@ const ProductDetailsScreen = () => {
             })
             .catch(err => console.log(err))
     }
-
     useEffect(() => {
         getProductDetailsById();
     }, []);
-
     const renderUrlImages =(noImagePrincipal) => {
         return (
             <View>
@@ -65,7 +59,6 @@ const ProductDetailsScreen = () => {
             <View>
                 <View style={styles.imagePrincipal}>
                     <Image source={imagePrincipal}
-
                            style={{width: PixelRatio.getPixelSizeForLayoutSize(60),
                                height: PixelRatio.getPixelSizeForLayoutSize( 118 +  (noImagePrincipal.length )),
                                resizeMode:'stretch',
@@ -75,6 +68,7 @@ const ProductDetailsScreen = () => {
             </View>
         )
     }
+
     const addProductToCart = async () => {
         const JWT = GET_JWT_TOKEN();
         console.log(JWT);
@@ -90,13 +84,12 @@ const ProductDetailsScreen = () => {
             console.log(response);
         }).catch(error => console.log(error));
     }
-
     const renderButton= () => {
         return (
             <Button icon="cart" mode="contained"
-                    style={{width:110
+                    style={{width:95
                         , height: 25, backgroundColor:
-                            '#003B49', padding: 0, margin:10,marginLeft:20}} labelStyle={{color:'#F4D19E' , fontSize: 10,marginTop: 7}}
+                            '#003B49', padding:0, margin:10,marginLeft:20,marginTop:15}} labelStyle={{color:'#F4D19E' , fontSize: 10,marginTop: 7}}
                     onPress={() => { addProductToCart();}}>
                 Ajouter
             </Button>
@@ -108,13 +101,14 @@ const ProductDetailsScreen = () => {
                 <ScrollView>
                     <View style={{padding: 20,
                         flexDirection: "row"}} >
+
                         {urlImages.length ? renderUrlImages(urlImages) :null}
                         {urlImages.length ? renderImageP(urlImages) :null}
                     </View>
 
+
                     <View>
                         <Text style={styles.text}>{productDetails.label}</Text>
-
                         <Text style={styles.text}>Origin : {productDetails.origin}</Text>
                         <Text style={styles.text}>Material : {productDetails.composition}</Text>
                         <Text style={styles.text}>Model d'emploi : {productDetails.usage_}</Text>
@@ -127,10 +121,14 @@ const ProductDetailsScreen = () => {
                             Status :{''}
                             {productDetails.quantity > 0 ? 'disponible' : 'épuisé'}
                         </Text>
-                        <Text style={{paddingLeft:20,marginTop:10}}>Quantité:
-                        <PickerItem style={{borderWidth:1,borderColor:theme.COLORS.BASIC_GREEN,height:20}}quantity={productDetails.quantity} setSelectedQty={setSelectedQty} />
-                        </Text>
+                        <Text style={{paddingLeft:20,marginTop:20}}>Quantité:</Text>
+                        <PickerItem quantity={productDetails.quantity} setSelectedQty={setSelectedQty} />
+
+                        {/*<PickerItem quantity={productDetails.quantity} setSelectedQty={setSelectedQty} />*/}
+                        <View>
                         {(renderButton())}
+                        </View>
+
                     </View>
 
                     <Text  style={styles.text}>Description:{productDetails.description ? (<Text> Description : {productDetails.description}</Text>): null}
@@ -144,25 +142,23 @@ const ProductDetailsScreen = () => {
         </>
     );
 };
-
-
 export default ProductDetailsScreen;
 const styles = StyleSheet.create({
-
     container: {
-        flex:1,
+        flex: 1,
         paddingTop: 40,
         marginBottom: 40,
     },
-    imagePrincipal :{
+    imagePrincipal: {
         width: 160,
     },
     text: {
-        color:'#003B49',
+        color: '#003B49',
         fontWeight: 'bold',
         paddingLeft: 20,
     },
-
 });
+
+
 
 

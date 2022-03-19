@@ -61,6 +61,8 @@ export default function LoginScreen({route, navigation}) {
                 onPress={navigation.goBack}/>
             <Animated.View
                 style={{
+                    flex: 1,
+                    maxHeight: 480,
                     padding: 16,
                     width: '90%',
                     borderRadius: 10,

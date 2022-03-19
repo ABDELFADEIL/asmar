@@ -208,7 +208,7 @@ export default function MainContainer() {
 
     const openModal = (navigation, url) => {
         console.log('open modal.....');
-        if (!token) {
+        if (token) {
             console.log('token exist', url);
             navigation.navigate(url);
         } else {

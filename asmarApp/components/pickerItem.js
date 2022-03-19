@@ -1,4 +1,4 @@
-import React ,{useState,useEffect }from 'react';
+import React ,{useState }from 'react';
 import { Picker } from "@react-native-community/picker";
 import {View, Text, StyleSheet} from 'react-native';
 import theme from '../../asmarApp/utils/theme'
@@ -27,7 +27,7 @@ export const PickerItem =({setSelectedQty,quantity})=> {
                     style={styles.pickerText}
 
                /* style={{ height: 18, width: 80,marginLeft:30,marginTop:-15,borderWidth:1,borderColor:theme.COLORS.DARK_GREEN}}*/
-                itemStyle={{ backgroundColor:'transparent', color: theme.COLORS.DARK_GREEN,  fontSize:17 ,marginTop:-60,
+                itemStyle={{ backgroundColor:'transparent', color: theme.COLORS.DARK_GREEN,  fontSize:17 ,marginTop:-70,height:50
 
                     }}
 

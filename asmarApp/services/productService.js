@@ -1,6 +1,5 @@
 import axios from 'react-native-axios';
 
- //const BASE_URL = 'http://localhost:8080/api/products';
 
  const BASE_URL = 'https://0526-176-175-44-133.ngrok.io';
 
