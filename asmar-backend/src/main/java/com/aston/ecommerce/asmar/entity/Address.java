@@ -11,7 +11,8 @@ import javax.validation.constraints.NotNull;
 @Table(name = "address")
 public class Address extends AbstractEntity{
 
-
+    @Column(name="full_name", nullable = false)
+    private String fullName;
     @Column(name="street", nullable = false)
     @NotNull
     @NotEmpty
@@ -105,10 +106,19 @@ public class Address extends AbstractEntity{
         this.active = active;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     @Override
     public String toString() {
         return "Address{" +
-                "street='" + street + '\'' +
+                "fullName='" + fullName + '\'' +
+                ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", postalCode='" + postalCode + '\'' +

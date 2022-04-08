@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 public class AddressDTO {
 
     private Long id;
+    private String fullName;
     private String street;
     private String city;
     private String state;
@@ -94,10 +95,19 @@ public class AddressDTO {
         this.userId = userId;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     @Override
     public String toString() {
         return "AddressDTO{" +
                 "id=" + id +
+                ", fullName='" + fullName + '\'' +
                 ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +

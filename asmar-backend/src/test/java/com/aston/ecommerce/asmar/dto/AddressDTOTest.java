@@ -66,7 +66,7 @@ class AddressDTOTest {
         assertEquals(123L, actualAddressDTO.getUserId());
         assertTrue(actualAddressDTO.isActive());
         assertEquals(
-                "AddressDTO{id=123, street='Street', city='Oxford', state='MD', postalCode='Postal Code', country='GB',"
+                "AddressDTO{id=123, fullName='null', street='Street', city='Oxford', state='MD', postalCode='Postal Code', country='GB',"
                         + " addInfos='Add Infos', active=true, userId=123}",
                 actualAddressDTO.toString());
     }

@@ -8,7 +8,7 @@ public class CommandLineDTO {
     private float price;
     private  BigDecimal subTotal;
     private ProductDTO product;
-    private OrderDTO order;
+    private Long orderId;
     private UserDTO user;
     private int quantity;
 
@@ -24,12 +24,12 @@ public class CommandLineDTO {
 
     public void setProduct(ProductDTO product) { this.product = product;}
 
-    public OrderDTO getOrder() {
-        return order;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setOrder(OrderDTO order) {
-        this.order = order;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     public UserDTO getUser() {
@@ -64,7 +64,7 @@ public class CommandLineDTO {
                 ", price=" + price +
                 ", subTotal=" + subTotal +
                 ", product=" + product +
-                ", order=" + order +
+                ", orderId=" + orderId +
                 ", user=" + user +
                 ", quantity=" + quantity +
                 '}';

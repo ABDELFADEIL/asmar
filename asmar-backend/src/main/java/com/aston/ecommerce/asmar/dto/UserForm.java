@@ -1,7 +1,10 @@
 package com.aston.ecommerce.asmar.dto;
 
+import lombok.Builder;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
 
 public class UserForm {
     private String firstName;
@@ -139,5 +142,6 @@ public class UserForm {
     public void setActive(boolean active) {
         this.active = active;
     }
+
 
 }

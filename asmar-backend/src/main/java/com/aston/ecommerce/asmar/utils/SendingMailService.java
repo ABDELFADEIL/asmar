@@ -1,5 +1,6 @@
 package com.aston.ecommerce.asmar.utils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
@@ -22,7 +23,8 @@ public class SendingMailService {
     @Autowired
     public SimpleMailMessage template;
 
-
+    @Value("${email.exp}")
+    private String email;
 
     public void sendSimpleMessage(String from, String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
@@ -39,7 +41,7 @@ public class SendingMailService {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
-        mailSender.setUsername("dadeil.dev1@gmail.com");
+        mailSender.setUsername(email);
         mailSender.setPassword("beel123ok");
 
         Properties props = mailSender.getJavaMailProperties();
@@ -85,7 +87,7 @@ public class SendingMailService {
         MimeMessageHelper helper = null;
         try {
             helper = new MimeMessageHelper(message, true);
-            helper.setFrom("dadeil.dev1@gmail.com");
+            helper.setFrom(email);
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(text);
@@ -101,7 +103,7 @@ public class SendingMailService {
         MimeMessageHelper helper = null;
         try {
             helper = new MimeMessageHelper(message, true);
-            helper.setFrom("dadeil.dev1@gmail.com");
+            helper.setFrom(email);
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(text);
@@ -111,4 +113,16 @@ public class SendingMailService {
         emailSender.send(message);
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "SendingMailService{" +
+                "emailSender=" + emailSender +
+                ", template=" + template +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

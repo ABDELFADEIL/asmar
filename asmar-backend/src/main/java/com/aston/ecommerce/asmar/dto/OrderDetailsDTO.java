@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 
-public class OrderDTO {
+public class OrderDetailsDTO {
 
     private Long id;
     private String deliveryStatus;

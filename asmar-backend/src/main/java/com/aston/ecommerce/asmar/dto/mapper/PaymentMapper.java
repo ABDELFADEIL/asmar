@@ -1,11 +1,8 @@
 package com.aston.ecommerce.asmar.dto.mapper;
 
-import com.aston.ecommerce.asmar.dto.OrderDTO;
 import com.aston.ecommerce.asmar.dto.PaymentDTO;
-import com.aston.ecommerce.asmar.entity.Order;
 import com.aston.ecommerce.asmar.entity.Payment;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 

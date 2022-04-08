@@ -25,6 +25,9 @@ public class AddressServiceImpl implements AddressService{
         Address address = addressMapper.toAddress(addressDTO);
         User user = userRepository.getById(addressDTO.getUserId());
         address.setUser(user);
+        if (addressDTO.getFullName() == null){
+            addressDTO.setFullName(user.getFirstName() + " " + user.getLastName());
+        }
         address = addressRepository.save(address);
         return addressMapper.toAddressDto(address);
     }
