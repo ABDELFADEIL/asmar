@@ -13,6 +13,7 @@ import SignUpScreen from "./screens/autentication/signUp";
 import CategoriesScreen from "./screens/categories/categories";
 import ShoppingCartScreen from "./screens/shoppingCart/shopping_cart";
 import Footer from "./components/footer/Footer";
+import OrderScreen from './screens/order/order';
 
 
 const App = ()=> {
@@ -36,6 +37,7 @@ const App = ()=> {
                             <Route path="/login" element={<LoginScreen/>}/>
                             <Route path="/signup" element={<SignUpScreen/>}/>
                             <Route path="/shopping-cart" element={<ShoppingCartScreen/>}/>
+                            <Route path="/order" element={<OrderScreen/>}/>
                         </Routes>
                     </div>
                     <Footer/>

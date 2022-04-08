@@ -4,6 +4,9 @@ import "./shopping_cart.css"
 import {useEffect, useState} from "react";
 import {getShoppingCartItems} from "../../services/commandLineService";
 import CommandLine from "../../components/templates/commandLine/commandLine";
+import { Link } from "react-router-dom";
+import OrderSummary from "../../components/templates/order-summary";
+
 export default function ShoppingCartScreen(){
 
     const [empty, setEmpty ] = useState(true);
@@ -56,38 +59,9 @@ export default function ShoppingCartScreen(){
                                     </Col>
 
                                 }
-
-
                         </Col>
                         <Col md={4}>
-                            <Card className="cart cart-sum">
-                                <div>
-                                    <h6 className="text-center">Recapitulatif de panier</h6>
-                                    <Container className="recap">
-                                        <Row>
-                                            <Col>Nombre d'articles</Col>
-                                            <Col>{commandLines.length}</Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>Prix total des articles</Col>
-                                            <Col>{total()}€</Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>TVA (0%)</Col>
-                                            <Col>0€</Col>
-                                        </Row>
-                                        <Row>
-                                            <Col>Total</Col>
-                                            <Col>{total() + total() * 0}€</Col>
-                                        </Row>
-                                    </Container>
-                                    <Row className={"row-checkout m-auto text-center" }>
-                                        <button onClick={()=> console.log("")} className={"checkout "+(commandLines.length == 0 ? " not-activated": " activated")}>
-                                            Valider mon panier
-                                        </button>
-                                    </Row>
-                                </div>
-                            </Card>
+                            <OrderSummary total={total} commandLines={commandLines} btn={true} />
                         </Col>
                     </Row>
                 </Container>
