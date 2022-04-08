@@ -2,7 +2,11 @@ package com.aston.ecommerce.asmar.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -132,6 +136,8 @@ public class User extends AbstractEntity {
     public void setTelephone(long telephone) {
         this.telephone = telephone;
     }
+
+
 
     @Override
     public String toString() {

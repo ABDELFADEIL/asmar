@@ -3,7 +3,6 @@ package com.aston.ecommerce.asmar.controller;
 
 import com.aston.ecommerce.asmar.dto.CommandLineDTO;
 import com.aston.ecommerce.asmar.dto.ProductToCartDTO;
-
 import com.aston.ecommerce.asmar.dto.UserDTO;
 import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.entity.User;
@@ -12,13 +11,11 @@ import com.aston.ecommerce.asmar.service.ProductService;
 import com.aston.ecommerce.asmar.service.UserService;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 import java.util.List;
 

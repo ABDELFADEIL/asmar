@@ -1,6 +1,8 @@
 package com.aston.ecommerce.asmar.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -15,6 +17,7 @@ public class Image extends AbstractEntity{
     private boolean principal;
     @ManyToOne
     @JoinColumn(name= "product_id", nullable = false)
+    @JsonIgnore
     private Product product;
 
 

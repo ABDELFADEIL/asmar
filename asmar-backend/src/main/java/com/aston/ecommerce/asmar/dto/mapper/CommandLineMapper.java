@@ -5,9 +5,11 @@ import com.aston.ecommerce.asmar.dto.CommandLineDTO;
 import com.aston.ecommerce.asmar.dto.ProductDTO;
 import com.aston.ecommerce.asmar.entity.Address;
 import com.aston.ecommerce.asmar.entity.CommandLine;
+import com.aston.ecommerce.asmar.entity.Order;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
