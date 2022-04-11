@@ -86,17 +86,17 @@ public class ProductController {
     }
 
     /*get products by label or description*/
-    @GetMapping
+    @GetMapping("/search")
     @ApiOperation(value = "Get List of products by label or description")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Return the list of products by label or description"),
             @ApiResponse(code = 204, message = "No content"),
             @ApiResponse(code = 404, message = "product not found"),
             @ApiResponse(code = 500, message = "Server error")})
-    public ResponseEntity<List<ProductDTO>> Search(@Param("keyword") String keyword) {
+    public ResponseEntity<List<ProductDTO>> search(@RequestParam("keyword") String keyword) {
         List<ProductDTO> listProducts = productService.getProductByLabelOrDescription(keyword);
         if (listProducts.isEmpty()) {
-            return new ResponseEntity<>(listProducts, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(listProducts, HttpStatus.NO_CONTENT);
 
         }
         return ResponseEntity.ok(listProducts);
@@ -113,7 +113,7 @@ public class ProductController {
     public ResponseEntity<List<ProductDTO>> getAllProducts() {
         List<ProductDTO> listProducts = productService.findAll();
         if (listProducts.isEmpty()) {
-            return new ResponseEntity<>(listProducts, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(listProducts, HttpStatus.NO_CONTENT);
 
         }
         return ResponseEntity.ok(listProducts);
