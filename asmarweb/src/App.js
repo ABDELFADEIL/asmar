@@ -13,7 +13,7 @@ import {
 import HomeScreen from "./screens/home/home";
 import ProfileScreen from "./screens/profile/profile";
 import ProductScreen from "./screens/product/product";
-import SearchScreen from "./screens/search/search";
+import {SearchScreen} from "./screens/search/search";
 import LoginScreen from "./screens/autentication/login";
 import SignUpScreen from "./screens/autentication/signUp";
 import CategoriesScreen from "./screens/categories/categories";

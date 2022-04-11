@@ -7,8 +7,7 @@ import {GET_JWT_TOKEN, userInfo} from "../../services/userService";
 import {PickerItem} from "../../components/pickerItem";
 
 
-// const ProductDetailsScreen = (navigation) =>{
-const ProductDetailsScreen = () => {
+const ProductDetailsScreen = (navigation) =>{
     const [productDetails, setProductDetails] = useState({});
     const [urlImages, setUrlImages]= useState([]);
     const [imagePrincipal,setImagePrincipal] =useState(null);
@@ -21,7 +20,7 @@ const ProductDetailsScreen = () => {
         productService
             // .getProductDetailsById(id)
             // .getProductDetailsById(1)
-            .getProductById(1)
+            .getProductById(id)
             .then((res) => {
                 setProductDetails(res.data);
                 setSelectedQty(res.data.quantity)
