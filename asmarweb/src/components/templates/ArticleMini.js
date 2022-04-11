@@ -20,7 +20,7 @@ export default function ArticleMini({ article }) {
   };
 
   return (
-    <div>
+    <div style={{margin: '0rem'}}>
 
       <Card className="cardbackground" style={{ width: '18rem' }}>
         <Card.Body>

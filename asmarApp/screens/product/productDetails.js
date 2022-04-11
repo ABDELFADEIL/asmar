@@ -7,7 +7,8 @@ import {GET_JWT_TOKEN, userInfo} from "../../services/userService";
 
 
 
-const ProductDetailsScreen = () =>{
+// const ProductDetailsScreen = (navigation) =>{
+  const ProductDetailsScreen = () =>{
 
         const [productDetails, setProductDetails] = useState([]);
         const [urlImages, setUrlImages]= useState([]);
@@ -15,8 +16,11 @@ const ProductDetailsScreen = () =>{
         const [noImagePrincipal, setNoImagePrincipal] = useState([]);
 
 
+
     const getProductDetailsById = () => {
+      let id = navigation?.route?.params?.idProduct??1;
         productService
+            // .getProductDetailsById(id)
             .getProductDetailsById(1)
             .then((res) => {
                 setProductDetails(res);
