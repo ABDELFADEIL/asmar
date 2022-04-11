@@ -40,7 +40,7 @@ export default class Navbar extends Component{
                         <li>VÊTEMENTS</li>
                     </Link>
 
-                    <Link to="/product-details" onClick={this.handleClick}>
+                    <Link to="/search" onClick={this.handleClick}>
                         <li><FaSearch /></li>
                     </Link>
                     <Link to="/login" onClick={this.handleClick}>
