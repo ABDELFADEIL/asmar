@@ -19,33 +19,36 @@ import SignUpScreen from "./screens/autentication/signUp";
 import CategoriesScreen from "./screens/categories/categories";
 import ShoppingCartScreen from "./screens/shoppingCart/shopping_cart";
 import Footer from "./components/footer/Footer";
+import OrderScreen from './screens/order/order';
 
 
 const App = () => {
+    return (
+        <Fragment>
+            <BrowserRouter>
+                <div className="App">
+                    <Navbar/>
+                    <div className="Main">
+                        <Routes>
 
-  return (
-    <Fragment>
-      <BrowserRouter>
-        <div className="App">
-          <Navbar />
-          <div className="Main">
-            <Routes>
-              <Route path="/home" element={<HomeScreen />} />
-              <Route path="/" element={<Navigate to="/home" />} />
-              <Route path="/categories/:id" element={<CategoriesScreen />} />
-              <Route path="/search" element={<SearchScreen />} />
-              <Route path="/product-details/:productId" element={<ProductScreen />} />
-              <Route path="/profile" element={<ProfileScreen />} />
-              <Route path="/login" element={<LoginScreen />} />
-              <Route path="/signup" element={<SignUpScreen />} />
-              <Route path="/shopping-cart" element={<ShoppingCartScreen />} />
-            </Routes>
-          </div>
-          <Footer />
-        </div>
-      </BrowserRouter>
-    </Fragment>
-  );
+                            {/* <Route exact path="/" element={<HomeScreen/>}/> */}
+                            <Route path="/" element={<HomeScreen/>}/>
+                            <Route path="/categories" element={<CategoriesScreen/>}/>
+                            <Route path="/categories/:id" element={<CategoriesScreen/>}/>
+                            <Route path="/search" element={<SearchScreen/>}/>
+                            <Route path="/product-details/:productId" element={<ProductScreen/>}/>
+                            <Route path="/profile" element={<ProfileScreen/>}/>
+                            <Route path="/login" element={<LoginScreen/>}/>
+                            <Route path="/signup" element={<SignUpScreen/>}/>
+                            <Route path="/shopping-cart" element={<ShoppingCartScreen/>}/>
+                            <Route path="/order" element={<OrderScreen/>}/>
+                        </Routes>
+                    </div>
+                    <Footer/>
+                </div>
+            </BrowserRouter>
+        </Fragment>
+    );
 }
 
 export default App;

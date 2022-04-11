@@ -3,6 +3,7 @@
     "react-native-gesture-handler": "^2.1.0",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
+    "react-native-shadow": "^1.2.2",
     "react-navigation-custom-bottom-tab-component": "^1.1.1"
   }
 }

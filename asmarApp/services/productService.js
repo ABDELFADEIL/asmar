@@ -1,10 +1,8 @@
 import axios from 'react-native-axios';
 
- //const BASE_URL = 'http://localhost:8080/api/products';
 
 //  const BASE_URL = 'http://localhost:8080';
- const BASE_URL ="https://fbe8-77-207-133-77.ngrok.io";
-
+ const BASE_URL = 'https://0526-176-175-44-133.ngrok.io';
 /*
 
 function getProductDetailsById(id) {
@@ -18,6 +16,12 @@ export const productService = {
 };
 
 */
+
+
+export const getProductById = async (id) => {
+    return axios.get(BASE_URL + '/api/products/'+ id);
+};
+
 
 async function getProductDetailsById(id) {
     return new Promise((resolve, reject) => {
@@ -41,7 +45,8 @@ function getNbProductDetailsByDate(nb) {
 export const productService = {
 
     getProductDetailsById,
-    getNbProductDetailsByDate
+    getNbProductDetailsByDate,
+    getProductById
 
 };
 
