@@ -3,10 +3,11 @@ import {productService} from '../../services/productService';
 import { Button } from 'react-native-paper';
 import {StyleSheet, Text, View, Image, SafeAreaView, ScrollView, PixelRatio} from 'react-native';
 import {onAddProductToCart} from "../../services/commandLineService";
-
 import {GET_JWT_TOKEN, userInfo} from "../../services/userService";
 import {PickerItem} from "../../components/pickerItem";
 
+
+// const ProductDetailsScreen = (navigation) =>{
 const ProductDetailsScreen = () => {
     const [productDetails, setProductDetails] = useState({});
     const [urlImages, setUrlImages]= useState([]);
@@ -14,8 +15,12 @@ const ProductDetailsScreen = () => {
     const [noImagePrincipal, setNoImagePrincipal] = useState([]);
     const [selectedQty, setSelectedQty] = useState(1);
 
+
     const getProductDetailsById = () => {
+      let id = navigation?.route?.params?.idProduct??1;
         productService
+            // .getProductDetailsById(id)
+            // .getProductDetailsById(1)
             .getProductById(1)
             .then((res) => {
                 setProductDetails(res.data);

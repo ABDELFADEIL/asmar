@@ -17,8 +17,16 @@
     margin-bottom: 2.8rem;
 }
 .item-cart, .cart-sum {
-    min-height: 60vh;
     background: #ebf0f1;
+}
+.cart-sum {
+    padding-bottom: 2rem;
+}
+.item-cart {
+    min-height: 50vh;
+}
+.empty-cart {
+    min-height: 50vh;
 }
 .cart-item {
     background: #ebf0f1;
@@ -74,6 +82,16 @@
     cursor: not-allowed;
     pointer-events: none;
 
+}
+.step-first h6{
+   color: green;
+}
+.step-two h6{
+    opacity: 0.4;
+}
+.progress {
+    height: 2px;
+    border-radius: 0;
 }
 @media screen and (max-width: 767px ){
     .item-cart {

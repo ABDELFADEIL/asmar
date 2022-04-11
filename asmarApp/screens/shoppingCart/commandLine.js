@@ -2,9 +2,8 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {getShoppingCartItems, RemoveItem, UpdateItemQuantity} from "../../services/commandLineService";
 import * as PropTypes from "prop-types";
-import {Image, Pressable, StyleSheet, Text, View} from "react-native";
-import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5";
-
+import {Image, Platform, Pressable, StyleSheet, Text, View} from "react-native";
+import {BoxShadow} from 'react-native-shadow'
 
 const CommandLine = ({setCommandLines, commandLine}) => {
 
@@ -79,7 +78,7 @@ const CommandLine = ({setCommandLines, commandLine}) => {
             <View style={styles.cartRemove}>
                 <Pressable onPress={removeItem}>
                     <Text>
-                        <Icon name="times" size={13} color="rgba(0, 59, 73, 0.47)"/>
+                        <Icon name="times" size={18} color="rgba(0, 59, 73, 0.47)"/>
                     </Text>
                 </Pressable>
             </View>
@@ -105,14 +104,27 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
         marginBottom: 10,
-        width: '100%',
-        borderRadius: 5
+        borderRadius: 5,
+        overflow: 'hidden',
+        ...Platform.select({
+            ios: {
+                shadowColor: '#000',
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.2,
+            },
+            android: {
+                elevation: 2,
+                position:'relative'
+
+            },
+        }),
 
     },
     cartText: {
         flex: 3,
         marginRight: 5,
         marginLeft: 5,
+        marginBottom: 5,
         justifyContent: 'center',
         alignItems: 'flex-start'
     },
@@ -120,7 +132,6 @@ const styles = StyleSheet.create({
 
     },
     cartRemove: {
-        width: 10,
         textAlign: 'center',
         marginRight: 10,
         alignSelf: 'center',
