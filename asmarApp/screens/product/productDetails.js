@@ -3,20 +3,24 @@ import {productService} from '../../services/productService';
 import { Button } from 'react-native-paper';
 import {StyleSheet, Text, View, Image, SafeAreaView, ScrollView, PixelRatio} from 'react-native';
 import {onAddProductToCart} from "../../services/commandLineService";
-
 import {GET_JWT_TOKEN, userInfo} from "../../services/userService";
 import {PickerItem} from "../../components/pickerItem";
 
-const ProductDetailsScreen = () => {
+
+const ProductDetailsScreen = (navigation) =>{
     const [productDetails, setProductDetails] = useState({});
     const [urlImages, setUrlImages]= useState([]);
     const [imagePrincipal,setImagePrincipal] =useState(null);
     const [noImagePrincipal, setNoImagePrincipal] = useState([]);
     const [selectedQty, setSelectedQty] = useState(1);
 
+
     const getProductDetailsById = () => {
+      let id = navigation?.route?.params?.idProduct??1;
         productService
-            .getProductById(1)
+            // .getProductDetailsById(id)
+            // .getProductDetailsById(1)
+            .getProductById(id)
             .then((res) => {
                 setProductDetails(res.data);
                 setSelectedQty(res.data.quantity)

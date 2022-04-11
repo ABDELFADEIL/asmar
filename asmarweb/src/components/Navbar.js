@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './Navbar.css';
-import {Link, useParams} from "react-router-dom";
 import logo from "../../assets/asmar_logo.png"
 import { FaSearch, FaUser } from "react-icons/fa";
 import { MdShoppingBasket} from "react-icons/all";
@@ -39,7 +38,7 @@ export default class Navbar extends Component{
                         <li>VÊTEMENTS</li>
                     </Link>
 
-                    <Link to="/product-details">
+                    <Link to="/search">
                         <li><FaSearch /></li>
                     </Link>
                     <Link to="/login">

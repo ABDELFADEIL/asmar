@@ -85,7 +85,6 @@ export default function HomeScreen() {
           {newProductsList}
         </Row>
       </Container>
-      <p>Home page</p>
     </div>
 
   );
