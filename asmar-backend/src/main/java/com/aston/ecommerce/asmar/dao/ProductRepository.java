@@ -22,5 +22,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     
     @Query(value="SELECT * FROM product WHERE creation_date ORDER BY creation_date DESC LIMIT :nb", nativeQuery=true )
     List<Product> getDetailProductsByDate(@Param("nb") Long nb);
+
+
 }
 

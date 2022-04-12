@@ -36,10 +36,11 @@ public class Address extends AbstractEntity{
     @Column(name="add_infos")
     private String addInfos;
     @Column(name="active")
-    private boolean active;
+    private boolean delivery;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+    private boolean billing;
 
 
     public String getStreet() {
@@ -98,20 +99,28 @@ public class Address extends AbstractEntity{
         this.user = user;
     }
 
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
     public String getFullName() {
         return fullName;
     }
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public boolean isDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(boolean delivery) {
+        this.delivery = delivery;
+    }
+
+    public boolean isBilling() {
+        return billing;
+    }
+
+    public void setBilling(boolean billing) {
+        this.billing = billing;
     }
 
     @Override
@@ -124,8 +133,9 @@ public class Address extends AbstractEntity{
                 ", postalCode='" + postalCode + '\'' +
                 ", country='" + country + '\'' +
                 ", addInfos='" + addInfos + '\'' +
-                ", active=" + active +
+                ", delivery=" + delivery +
                 ", user=" + user +
+                ", billing=" + billing +
                 '}';
     }
 }

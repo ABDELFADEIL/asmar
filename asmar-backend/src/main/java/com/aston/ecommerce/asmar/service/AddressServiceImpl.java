@@ -9,6 +9,9 @@ import com.aston.ecommerce.asmar.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Objects;
+
 @Service
 public class AddressServiceImpl implements AddressService{
 
@@ -29,6 +32,53 @@ public class AddressServiceImpl implements AddressService{
             addressDTO.setFullName(user.getFirstName() + " " + user.getLastName());
         }
         address = addressRepository.save(address);
+        return addressMapper.toAddressDto(address);
+    }
+
+    @Override
+    public List<AddressDTO> getAddressesByUserId(Long userId) {
+        List<Address> addressList = addressRepository.findAddressesByUserId(userId);
+        return addressMapper.toAddressDtos(addressList);
+    }
+
+    @Override
+    public AddressDTO updateAddressActiveAndType(Long addressId, String addressType) throws IllegalAccessException {
+        if (addressId == null){
+            throw new IllegalAccessException("No address id");
+        }
+        Address address = addressRepository.getById(addressId);
+        if (address == null){
+            throw new IllegalAccessException("No address found with id " + addressId);
+        }
+        System.out.println("user id = " + address.getUser().getId());
+        List<Address> addressList = addressRepository.findAddressesByUserId(address.getUser().getId());
+        //System.out.println(" size of addresses list: " + addressList.size());
+        //System.out.println("Objects.equals(addressType, delivery): " + Objects.equals(addressType, "delivery"));
+        //System.out.println("Objects.equals(addressType, billing): " + Objects.equals(addressType, "billing"));
+
+        addressList.forEach(address1 -> {
+            if (    address1.isDelivery() &&
+                    Objects.equals(addressType, "delivery") &&
+                    address.getId() != address1.getId()
+               ){
+                 address1.setDelivery(false);
+                 addressRepository.save(address1);
+            }else if (
+                    address1.isBilling() &&
+                            Objects.equals(addressType, "billing") &&
+                    address.getId() != address1.getId()
+                    ){
+                address1.setBilling(false);
+                addressRepository.save(address1);
+            }
+        }
+        );
+        if (Objects.equals(addressType, "delivery")){
+            address.setDelivery(true);
+        }else if (Objects.equals(addressType, "billing")){
+            address.setBilling(true);
+        }
+        addressRepository.save(address);
         return addressMapper.toAddressDto(address);
     }
 }

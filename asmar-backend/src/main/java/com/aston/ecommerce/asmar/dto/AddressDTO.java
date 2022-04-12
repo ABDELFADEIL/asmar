@@ -19,8 +19,9 @@ public class AddressDTO {
     private String postalCode;
     private String country;
     private String addInfos;
-    private boolean active;
+    private boolean delivery;
     private long userId;
+    private boolean billing;
 
 
     public Long getId() {
@@ -79,16 +80,26 @@ public class AddressDTO {
         this.addInfos = addInfos;
     }
 
-    public boolean isActive() {
-        return active;
-    }
 
-    public void setActive(boolean active) {
-        this.active = active;
-    }
 
     public long getUserId() {
         return userId;
+    }
+
+    public boolean isDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(boolean delivery) {
+        this.delivery = delivery;
+    }
+
+    public boolean isBilling() {
+        return billing;
+    }
+
+    public void setBilling(boolean billing) {
+        this.billing = billing;
     }
 
     public void setUserId(long userId) {
@@ -114,8 +125,9 @@ public class AddressDTO {
                 ", postalCode='" + postalCode + '\'' +
                 ", country='" + country + '\'' +
                 ", addInfos='" + addInfos + '\'' +
-                ", active=" + active +
+                ", delivery=" + delivery +
                 ", userId=" + userId +
+                ", billing=" + billing +
                 '}';
     }
 }
