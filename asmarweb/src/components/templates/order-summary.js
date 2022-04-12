@@ -1,14 +1,15 @@
 import React from "react";
 import "../../screens/shoppingCart/shopping_cart.css";
+import "../../screens/order/order.css"
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const OrderSummary = ({ total, commandLines, btn }) => {
     return (<>
-        <Card className={"cart cart-sum " + (commandLines.length === 0 ? 'empty-cart': '')}>
+        <Card className={"cart p-2 order-cart " + (commandLines.length === 0 ? 'empty-cart': '')}>
             <div>
                 <h6 className="text-center">Recapitulatif de panier</h6>
-                <Container className="recap">
+                <Container className="sum">
                     <Row>
                         <Col>Nombre d'articles</Col>
                         <Col>{commandLines.length}</Col>

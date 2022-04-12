@@ -64,6 +64,12 @@ nav .nav-menu {
 .nav-menu {
     z-index: 100;
 }
+
+Button:focus {
+    outline: none !important;
+    outline-offset: none !important;
+    box-shadow: none !important;
+}
 @media screen and (min-width: 961px){
     .nav-menu a:nth-of-type(7){
      margin-left: 60px;
