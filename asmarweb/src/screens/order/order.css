@@ -47,3 +47,17 @@
     margin: 0.2rem;
     cursor: pointer;
 }
+.order.activated {
+    background: linear-gradient(#F3BD6E, #7A5F37);
+    color: #003B49;
+}
+.order.checkout {
+    border-radius: 20px;
+    width: 200px;
+    margin: auto;
+    height: 2rem;
+}
+
+.row-btn {
+    margin: 1rem !important;
+}

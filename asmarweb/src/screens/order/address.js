@@ -3,7 +3,7 @@ import "../order/order.css";
 import {GetAddresses, UpdateAddress} from "../../services/addressService";
 import {func, object} from "prop-types";
 
-const Address = ({setAddresses, address, telephone, setActive, active}) =>{
+const Address = ({setAddresses, address, telephone, setActive, active, addressType}) =>{
 
 
     const getAddresses = (userId)=> {
@@ -18,10 +18,14 @@ const Address = ({setAddresses, address, telephone, setActive, active}) =>{
     }
 
     const choiceAddress = () =>{
-        UpdateAddress(address.id, "delivery")
+        UpdateAddress(address.id, addressType)
             .then(res => {
                 console.log(res);
-                setActive(res.data.delivery);
+                if (addressType === "billing"){
+                    setActive(res.data.billing);
+                }else if (addressType === "delivery"){
+                    setActive(res.data.delivery);
+                }
                 getAddresses(34)
             })
             .catch(error=> {
