@@ -7,8 +7,7 @@ import {GET_JWT_TOKEN, userInfo} from "../../services/userService";
 import {PickerItem} from "../../components/pickerItem";
 
 
-// const ProductDetailsScreen = (navigation) =>{
-const ProductDetailsScreen = () => {
+const ProductDetailsScreen = (navigation) =>{
     const [productDetails, setProductDetails] = useState({});
     const [urlImages, setUrlImages]= useState([]);
     const [imagePrincipal,setImagePrincipal] =useState(null);
@@ -20,8 +19,7 @@ const ProductDetailsScreen = () => {
       let id = navigation?.route?.params?.idProduct??1;
         productService
             // .getProductDetailsById(id)
-            // .getProductDetailsById(1)
-            .getProductById(1)
+            .getProductById(id)
             .then((res) => {
                 setProductDetails(res.data);
                 setSelectedQty(res.data.quantity)
@@ -107,8 +105,8 @@ const ProductDetailsScreen = () => {
                     <View style={{padding: 20,
                         flexDirection: "row"}} >
 
-                        {urlImages.length ? renderUrlImages(urlImages) :null}
-                        {urlImages.length ? renderImageP(urlImages) :null}
+                        {/* {urlImages.length ? renderUrlImages(urlImages) :null} */}
+                        {/* {urlImages.length ? renderImageP(urlImages) :null} */}
                     </View>
 
 
@@ -129,7 +127,7 @@ const ProductDetailsScreen = () => {
                         <Text style={{paddingLeft:20,marginTop:20}}>Quantité:</Text>
                         <PickerItem quantity={productDetails.quantity} setSelectedQty={setSelectedQty} />
 
-                        {/*<PickerItem quantity={productDetails.quantity} setSelectedQty={setSelectedQty} />*/}
+                        <PickerItem quantity={productDetails.quantity} setSelectedQty={setSelectedQty} />
                         <View>
                         {(renderButton())}
                         </View>
