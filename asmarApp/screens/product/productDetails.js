@@ -19,7 +19,6 @@ const ProductDetailsScreen = (navigation) =>{
       let id = navigation?.route?.params?.idProduct??1;
         productService
             // .getProductDetailsById(id)
-            // .getProductDetailsById(1)
             .getProductById(id)
             .then((res) => {
                 setProductDetails(res.data);
@@ -106,8 +105,8 @@ const ProductDetailsScreen = (navigation) =>{
                     <View style={{padding: 20,
                         flexDirection: "row"}} >
 
-                        {urlImages.length ? renderUrlImages(urlImages) :null}
-                        {urlImages.length ? renderImageP(urlImages) :null}
+                        {/* {urlImages.length ? renderUrlImages(urlImages) :null} */}
+                        {/* {urlImages.length ? renderImageP(urlImages) :null} */}
                     </View>
 
 
@@ -128,7 +127,7 @@ const ProductDetailsScreen = (navigation) =>{
                         <Text style={{paddingLeft:20,marginTop:20}}>Quantité:</Text>
                         <PickerItem quantity={productDetails.quantity} setSelectedQty={setSelectedQty} />
 
-                        {/*<PickerItem quantity={productDetails.quantity} setSelectedQty={setSelectedQty} />*/}
+                        <PickerItem quantity={productDetails.quantity} setSelectedQty={setSelectedQty} />
                         <View>
                         {(renderButton())}
                         </View>

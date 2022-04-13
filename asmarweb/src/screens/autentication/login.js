@@ -1,6 +1,7 @@
 import React, {Component, useState} from "react";
 import './login.css';
 import Logo from "../../assets/asmar_logo.png"
+import Profile from "../profile/profile"
 import {FaEnvelope, FaLock} from "react-icons/all";
 import {Link, useNavigate} from "react-router-dom";
 import {GET_JWT_TOKEN, Login, SET_JWT_TOKEN} from "../../services/userService";
@@ -13,6 +14,7 @@ export default function LoginScreen() {
         email: "",
         password: "",
     });
+    const JWT = GET_JWT_TOKEN();
 
 
 
@@ -27,13 +29,15 @@ export default function LoginScreen() {
             SET_JWT_TOKEN(headers.authorization);
             console.log(GET_JWT_TOKEN("jwtToken"));
             if (response.status === 200) {
-                navigate("/");
+                navigate("/profile");
             }
         } catch (e) {
             console.log(e);
         }
     }
-
+if(JWT != null){
+  return <Profile/>
+} else {
     return (
         <div className="LoginPage">
             <div className="LoginPageCart">
@@ -63,6 +67,7 @@ export default function LoginScreen() {
             </div>
         </div>
     );
+}
 }
 
 
