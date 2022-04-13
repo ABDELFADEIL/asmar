@@ -2,21 +2,7 @@ import axios from 'react-native-axios';
 
 
 //  const BASE_URL = 'http://localhost:8080';
- const BASE_URL = 'https://0526-176-175-44-133.ngrok.io';
-/*
-
-function getProductDetailsById(id) {
-    return axios.get(BASE_URL+'/'+id);
-}
-function getProductsByCategoryId(categoryId) {
-    return axios.get(BASE_URL+'/'+categoryId);
-}
-export const productService = {
-    getProductDetailsById
-};
-
-*/
-
+ const BASE_URL = 'https://64f1-89-91-1-71.ngrok.io';
 
 export const getProductById = async (id) => {
     return axios.get(BASE_URL + '/api/products/'+ id);
@@ -42,11 +28,17 @@ function getNbProductDetailsByDate(nb) {
         }).catch(err => console.log(err))
         });
 }
+
+function getProductsBySearch(keyword) {
+    return axios.get(BASE_URL+'/api/products/search?keyword='+keyword);
+}
+
 export const productService = {
 
     getProductDetailsById,
     getNbProductDetailsByDate,
-    getProductById
+    getProductById,
+    getProductsBySearch
 
 };
 
