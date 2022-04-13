@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.aston.ecommerce.asmar.config.FlickrConfigImpl;
 import com.flickr4java.flickr.Flickr;
 import com.flickr4java.flickr.REST;
 import com.flickr4java.flickr.Transport;
@@ -17,6 +18,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ContextConfiguration(classes = {FlickrConfigImpl.class})
 @ExtendWith(SpringExtension.class)
 class FlickrConfigImplTest {
+
     @MockBean
     private Flickr flickr;
 
@@ -26,7 +28,7 @@ class FlickrConfigImplTest {
     @Test
     void testConnect() {
         this.flickrConfigImpl.connect();
-        assertEquals("2d89f8efd8dab32024ceedd381e29e08", this.flickrConfigImpl.flickr.getApiKey());
+        assertEquals("2d89f8efd8dab32024ceedd381e29e08", this.flickrConfigImpl.getFlickr().getApiKey());
     }
 
     @Test

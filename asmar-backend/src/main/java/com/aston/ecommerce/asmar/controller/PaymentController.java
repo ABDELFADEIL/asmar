@@ -1,9 +1,8 @@
 package com.aston.ecommerce.asmar.controller;
 
-import com.aston.ecommerce.asmar.stripe.dto.ConfirmPayment;
-import com.aston.ecommerce.asmar.stripe.dto.CreatePayment;
-import com.aston.ecommerce.asmar.stripe.dto.CreatePaymentResponse;
-import com.aston.ecommerce.asmar.stripe.model.CheckoutForm;
+import com.aston.ecommerce.asmar.config.stripe.dto.ConfirmPayment;
+import com.aston.ecommerce.asmar.config.stripe.dto.CreatePaymentResponse;
+import com.aston.ecommerce.asmar.config.stripe.model.CheckoutForm;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 import com.stripe.param.PaymentIntentCreateParams;
@@ -12,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController

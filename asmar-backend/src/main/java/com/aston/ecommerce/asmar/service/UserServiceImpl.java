@@ -8,8 +8,7 @@ import com.aston.ecommerce.asmar.dto.mapper.UserMapper;
 import com.aston.ecommerce.asmar.entity.Role;
 import com.aston.ecommerce.asmar.entity.User;
 import com.aston.ecommerce.asmar.exption.UserExpception;
-import com.aston.ecommerce.asmar.utils.SendingMailService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.aston.ecommerce.asmar.config.SendingMailService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,7 +50,7 @@ public class UserServiceImpl implements UserService{
         String repassword=userForm.getRepassword();
         if(!(repassword.equals(password))) throw new UserExpception(repassword+ " Mot de passe n'est pas confirmé");
         String username = userForm.getUsername();
-        User user= userRepository.findByEmailOrUserName(username);
+        User user= userRepository.findByEmailOrUsername(username, username);
         if(user !=null) throw new UserExpception(userForm.getUsername() +" existe déjà");
 
         user = userMapper.toUser(userForm);
@@ -93,7 +92,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDTO getCurrentUser(String username) {
-        return userMapper.toUserDto(userRepository.findByEmailOrUserName(username));
+        return userMapper.toUserDto(userRepository.findByEmailOrUsername(username, username));
     }
 
     @Override
@@ -102,7 +101,7 @@ public class UserServiceImpl implements UserService{
         String repassword=userMobileDTO.getConfirmPassword();
         if(!(repassword.equals(password))) throw new UserExpception(repassword+ " Mot de passe n'est pas confirmé");
         String username = userMobileDTO.getUsername();
-        User user= userRepository.findByEmailOrUserName(username);
+        User user= userRepository.findByEmailOrUsername(username, username);
         if(user !=null) throw new UserExpception(userMobileDTO.getUsername() +" existe déjà");
 
         user = userMapper.toUser(userMobileDTO);
@@ -125,7 +124,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Long getUserId(String email){
-        User user = userRepository.findByEmailOrUserName(email);
+        User user = userRepository.findByEmailOrUsername(email, email);
         return user.getId();
     }
 }

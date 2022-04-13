@@ -1,17 +1,13 @@
 package com.aston.ecommerce.asmar.controller;
 
 import com.aston.ecommerce.asmar.dto.AddressDTO;
-import com.aston.ecommerce.asmar.dto.UserDTO;
-import com.aston.ecommerce.asmar.dto.UserForm;
 import com.aston.ecommerce.asmar.service.AddressService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.List;
 

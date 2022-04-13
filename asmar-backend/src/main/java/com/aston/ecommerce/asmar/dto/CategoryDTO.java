@@ -1,6 +1,5 @@
 package com.aston.ecommerce.asmar.dto;
 
-import java.util.List;
 
 public class CategoryDTO {
 

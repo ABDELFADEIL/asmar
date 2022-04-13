@@ -1,12 +1,5 @@
 package com.aston.ecommerce.asmar.dto;
 
-import com.aston.ecommerce.asmar.entity.AbstractEntity;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 

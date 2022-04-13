@@ -4,13 +4,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "orders")
 public class Order extends AbstractEntity{
-
 
     @Column(name="delivery_status")
     @NotNull

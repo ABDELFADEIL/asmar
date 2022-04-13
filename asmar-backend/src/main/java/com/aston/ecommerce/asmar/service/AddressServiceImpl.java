@@ -6,7 +6,6 @@ import com.aston.ecommerce.asmar.dto.AddressDTO;
 import com.aston.ecommerce.asmar.dto.mapper.AddressMapper;
 import com.aston.ecommerce.asmar.entity.Address;
 import com.aston.ecommerce.asmar.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,6 +1,4 @@
-package com.aston.ecommerce.asmar.stripe.dto;
-
-import java.util.ArrayList;
+package com.aston.ecommerce.asmar.config.stripe.dto;
 
 public class CreatePaymentResponse {
 

@@ -1,6 +1,6 @@
 package com.aston.ecommerce.asmar.service;
 
-import com.aston.ecommerce.asmar.utils.IFlickrCofig;
+import com.aston.ecommerce.asmar.config.IFlickrCofig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

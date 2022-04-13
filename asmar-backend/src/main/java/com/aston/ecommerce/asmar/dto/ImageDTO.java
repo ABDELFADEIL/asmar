@@ -1,7 +1,5 @@
 package com.aston.ecommerce.asmar.dto;
 
-import javax.persistence.Column;
-
 public class ImageDTO {
 
     private Long id;

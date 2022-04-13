@@ -3,7 +3,6 @@ package com.aston.ecommerce.asmar.security.config;
 import com.aston.ecommerce.asmar.security.JWTAuthenticationFilter;
 import com.aston.ecommerce.asmar.security.JWTAuthorizationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -3,8 +3,6 @@ package com.aston.ecommerce.asmar.dto.mapper;
 import com.aston.ecommerce.asmar.dto.ShippingInfoDTO;
 import com.aston.ecommerce.asmar.entity.ShippingInfo;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
-
 import java.util.List;
 
 @Mapper(componentModel = "spring")

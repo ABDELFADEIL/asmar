@@ -1,14 +1,6 @@
 package com.aston.ecommerce.asmar.dto;
 
 
-
-import com.aston.ecommerce.asmar.entity.AbstractEntity;
-import com.aston.ecommerce.asmar.entity.User;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 public class AddressDTO {
 
     private Long id;

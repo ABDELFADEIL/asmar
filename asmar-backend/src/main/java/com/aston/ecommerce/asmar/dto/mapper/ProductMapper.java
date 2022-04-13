@@ -4,8 +4,6 @@ import com.aston.ecommerce.asmar.dto.ProductDTO;
 import com.aston.ecommerce.asmar.dto.ProductDetailDTO;
 import com.aston.ecommerce.asmar.entity.Product;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
-
 import java.util.List;
 
 @Mapper(componentModel = "spring", uses = { CategoryMapper.class, ImageMapper.class})

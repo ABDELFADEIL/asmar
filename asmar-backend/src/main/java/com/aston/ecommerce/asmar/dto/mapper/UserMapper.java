@@ -1,16 +1,12 @@
 package com.aston.ecommerce.asmar.dto.mapper;
 
-import com.aston.ecommerce.asmar.dto.RoleDTO;
 import com.aston.ecommerce.asmar.dto.UserDTO;
 import com.aston.ecommerce.asmar.dto.UserForm;
 import com.aston.ecommerce.asmar.dto.UserMobileDTO;
-import com.aston.ecommerce.asmar.entity.Role;
 import com.aston.ecommerce.asmar.entity.User;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
-
 import java.util.List;
 
 @Mapper(componentModel = "spring", uses = { RoleMapper.class})

@@ -1,4 +1,4 @@
-package com.aston.ecommerce.asmar.utils;
+package com.aston.ecommerce.asmar.config;
 
 import java.io.InputStream;
 

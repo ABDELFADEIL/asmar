@@ -10,6 +10,7 @@ import static org.mockito.Mockito.when;
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 
+import com.aston.ecommerce.asmar.config.SendingMailService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,12 +1,9 @@
 package com.aston.ecommerce.asmar.entity;
 
 import org.apache.logging.log4j.LogManager;
-
-import java.io.Serializable;
-
 import org.apache.logging.log4j.Logger;
-
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 /**

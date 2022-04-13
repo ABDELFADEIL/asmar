@@ -1,6 +1,5 @@
 package com.aston.ecommerce.asmar.dto;
 
-import com.aston.ecommerce.asmar.entity.Image;
 
 import java.util.List;
 

@@ -1,24 +1,8 @@
 package com.aston.ecommerce.asmar.security;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.anyBoolean;
-import static org.mockito.Mockito.anyLong;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import com.aston.ecommerce.asmar.dao.UserRepository;
 import com.aston.ecommerce.asmar.entity.Role;
 import com.aston.ecommerce.asmar.entity.User;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +11,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 
 @ContextConfiguration(classes = {UserDetailsServiceImpl.class})
 @ExtendWith(SpringExtension.class)
@@ -51,7 +44,7 @@ class UserDetailsServiceImplTest {
         user.setRoles(new ArrayList<>());
         user.setTelephone(1L);
         user.setUsername("janedoe");
-        when(this.userRepository.findByEmailOrUserName((String) any())).thenReturn(user);
+        when(this.userRepository.findByEmailOrUsername((String) any(), (String) any())).thenReturn(user);
         UserDetails actualLoadUserByUsernameResult = this.userDetailsServiceImpl.loadUserByUsername("janedoe");
         assertTrue(actualLoadUserByUsernameResult.getAuthorities().isEmpty());
         assertTrue(actualLoadUserByUsernameResult.isEnabled());
@@ -60,7 +53,7 @@ class UserDetailsServiceImplTest {
         assertTrue(actualLoadUserByUsernameResult.isAccountNonExpired());
         assertEquals("jane.doe@example.org", actualLoadUserByUsernameResult.getUsername());
         assertEquals("iloveyou", actualLoadUserByUsernameResult.getPassword());
-        verify(this.userRepository).findByEmailOrUserName((String) any());
+        verify(this.userRepository).findByEmailOrUsername((String) any(), (String) any());
     }
 
     @Test
@@ -97,7 +90,7 @@ class UserDetailsServiceImplTest {
         user.setRoles(new ArrayList<>());
         user.setTelephone(1L);
         user.setUsername("janedoe");
-        when(this.userRepository.findByEmailOrUserName((String) any())).thenReturn(user);
+        when(this.userRepository.findByEmailOrUsername((String) any(), (String) any())).thenReturn(user);
         UserDetails actualLoadUserByUsernameResult = this.userDetailsServiceImpl.loadUserByUsername("janedoe");
         assertEquals(1, actualLoadUserByUsernameResult.getAuthorities().size());
         assertEquals(
@@ -111,7 +104,7 @@ class UserDetailsServiceImplTest {
         assertTrue(actualLoadUserByUsernameResult.isAccountNonExpired());
         assertEquals("jane.doe@example.org", actualLoadUserByUsernameResult.getUsername());
         assertEquals("iloveyou", actualLoadUserByUsernameResult.getPassword());
-        verify(this.userRepository).findByEmailOrUserName((String) any());
+        verify(this.userRepository).findByEmailOrUsername((String) any(), (String) any());
         verify(user).getEmail();
         verify(user).getPassword();
         verify(user).getRoles();

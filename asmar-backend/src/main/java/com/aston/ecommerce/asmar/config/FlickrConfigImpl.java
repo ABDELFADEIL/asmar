@@ -1,4 +1,5 @@
-package com.aston.ecommerce.asmar.utils;
+package com.aston.ecommerce.asmar.config;
+
 import com.flickr4java.flickr.Flickr;
 import com.flickr4java.flickr.FlickrException;
 import com.flickr4java.flickr.REST;
@@ -11,7 +12,6 @@ import com.github.scribejava.core.model.OAuth1RequestToken;
 import com.github.scribejava.core.model.OAuth1Token;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,8 +28,7 @@ public class FlickrConfigImpl implements IFlickrCofig {
 
 
     // private final String sharedSecret;
-    @Autowired
-    public  Flickr flickr;
+    private Flickr flickr;
 
 
     private UploadMetaData uploadeMetaData =new UploadMetaData();
@@ -90,4 +89,7 @@ public class FlickrConfigImpl implements IFlickrCofig {
         System.out.println("Permission: " + auth.getPermission().getType());
     }
 
+    public Flickr getFlickr() {
+        return flickr;
+    }
 }

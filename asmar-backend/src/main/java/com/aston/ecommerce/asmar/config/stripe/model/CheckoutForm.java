@@ -1,4 +1,4 @@
-package com.aston.ecommerce.asmar.stripe.model;
+package com.aston.ecommerce.asmar.config.stripe.model;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;

@@ -1,10 +1,8 @@
 package com.aston.ecommerce.asmar.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Entity
 @Table(name = "command_line")

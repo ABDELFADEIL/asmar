@@ -1,8 +1,6 @@
 package com.aston.ecommerce.asmar.service;
 
 import com.aston.ecommerce.asmar.dto.AddressDTO;
-import com.aston.ecommerce.asmar.entity.Address;
-
 import java.util.List;
 
 public interface AddressService {

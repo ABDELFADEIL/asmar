@@ -1,7 +1,6 @@
 package com.aston.ecommerce.asmar.dto;
 
-import com.aston.ecommerce.asmar.entity.Product;
-import com.aston.ecommerce.asmar.entity.User;
+
 
 
 public class ProductToCartDTO {

@@ -1,6 +1,6 @@
 package com.aston.ecommerce.asmar.security;
+
 import com.aston.ecommerce.asmar.dao.UserRepository;
-import com.aston.ecommerce.asmar.entity.Role;
 import com.aston.ecommerce.asmar.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -22,7 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User u =null;
-        u=userRepository.findByEmailOrUserName(username);
+        u=userRepository.findByEmailOrUsername(username, username);
         if(u==null) throw new UsernameNotFoundException(username);
         Collection<GrantedAuthority> authorities=new ArrayList<>();
         u.getRoles().forEach(r->{

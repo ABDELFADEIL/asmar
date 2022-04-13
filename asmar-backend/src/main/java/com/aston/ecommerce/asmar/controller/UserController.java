@@ -1,7 +1,6 @@
 package com.aston.ecommerce.asmar.controller;
 
 
-import com.aston.ecommerce.asmar.dto.ProductDTO;
 import com.aston.ecommerce.asmar.dto.UserDTO;
 import com.aston.ecommerce.asmar.dto.UserForm;
 import com.aston.ecommerce.asmar.dto.UserMobileDTO;
@@ -9,13 +8,11 @@ import com.aston.ecommerce.asmar.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
