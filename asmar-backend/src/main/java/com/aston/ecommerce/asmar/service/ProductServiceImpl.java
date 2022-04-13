@@ -8,14 +8,12 @@ import com.aston.ecommerce.asmar.dto.mapper.ProductMapper;
 import com.aston.ecommerce.asmar.entity.Category;
 import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.exption.ProductExpception;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -47,12 +45,8 @@ public class ProductServiceImpl implements ProductService{
     }
 
     public List<ProductDTO> getProductByLabelOrDescription(String keyword) {
-        List<Product> products;
-              if (keyword != null) {
-                  products =  productRepository.findAllByLabelContainingOrDescriptionContainingOrderByDescription(keyword, keyword);
-                  return productMapper.toProductDtos(products);
-            }
-        products =  productRepository.findAll();
+        List<Product>
+                  products =  productRepository.findByLabelContainingOrDescriptionContainingOrderByDescription(keyword, keyword);
         return productMapper.toProductDtos(products);
         }
 
