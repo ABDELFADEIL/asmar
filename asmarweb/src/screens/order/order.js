@@ -10,6 +10,7 @@ import Address from "./address";
 import {GetAddresses} from "../../services/addressService";
 import {GET_JWT_TOKEN, userInfo} from "../../services/userService";
 import ButtonApp from "../../components/templates/ButtonApp";
+import Stripe from "./Stripe";
 
 
 const Order = () => {
@@ -133,7 +134,8 @@ const Order = () => {
                                             </div>
                                         )}
                                     </Col>
-                                    <ButtonApp title="Payer votre commande" func={checkoutOrder}/>
+                                    <Stripe title="Payer votre commande" func={checkoutOrder} total={total()}/>
+
                                 </Row>
                             }
                         </Card>

@@ -15,7 +15,7 @@ export default function HomeScreen() {
       .getNbProductDetailsByDate(nb)
       .then((res) => {
         console.log(res);
-        if (res?.data == null) {
+        if (res.data == null) {
           return
         }
         let list = [];
