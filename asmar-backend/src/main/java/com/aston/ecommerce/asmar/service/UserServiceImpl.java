@@ -12,26 +12,38 @@ import com.aston.ecommerce.asmar.utils.SendingMailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class UserServiceImpl implements UserService{
 
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private RoleRepository roleRepository;
-    @Autowired
-    private SendingMailService mailService;
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-    @Autowired
-    private UserMapper userMapper;
-    @Autowired
-    private AddressMapper addressMapper;
-    @Autowired
-    private AddressService addressService;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final SendingMailService mailService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserMapper userMapper;
+    private final AddressMapper addressMapper;
+    private final AddressService addressService;
+
+    public UserServiceImpl(
+                           UserRepository userRepository,
+                           RoleRepository roleRepository,
+                           SendingMailService mailService,
+                           BCryptPasswordEncoder bCryptPasswordEncoder,
+                           UserMapper userMapper,
+                           AddressMapper addressMapper,
+                           AddressService addressService) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.mailService = mailService;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.userMapper = userMapper;
+        this.addressMapper = addressMapper;
+        this.addressService = addressService;
+    }
 
     @Override
     public UserDTO addUser(UserForm userForm) {
@@ -103,5 +115,17 @@ public class UserServiceImpl implements UserService{
             throw new UserExpception("error de sevgarde " + e);
         }
         return userMapper.toUserDto(user);
+    }
+
+    @Override
+    public UserDTO getUserById(Long userId) {
+        User user = userRepository.getById(userId);
+        return userMapper.toUserDto(user);
+    }
+
+    @Override
+    public Long getUserId(String email){
+        User user = userRepository.findByEmailOrUserName(email);
+        return user.getId();
     }
 }

@@ -1,14 +1,22 @@
 package com.aston.ecommerce.asmar.security;
 import com.aston.ecommerce.asmar.security.config.SecurityConstants;
+import com.aston.ecommerce.asmar.service.UserService;
+import com.aston.ecommerce.asmar.service.UserServiceImpl;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -24,10 +32,12 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     private AuthenticationManager authenticationManager;
 
+
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
         super();
         this.authenticationManager = authenticationManager;
     }
+
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -64,17 +74,20 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
 
-        User springuser = (User) authResult.getPrincipal();
+        User userSpring = (User) authResult.getPrincipal();
         String jwtToken = Jwts.builder().
-                setSubject(springuser.getUsername()).
+                setSubject(userSpring.getUsername()).
+                setId("").
                 setExpiration(new Date(System.currentTimeMillis()+SecurityConstants.EXPIRATION_TIME)).
                 signWith(SignatureAlgorithm.HS512, SecurityConstants.SECRET).
-                claim("roles", springuser.getAuthorities()).compact();
+                claim("roles", userSpring.getAuthorities()).
+                compact();
         System.out.println("token builder "+jwtToken);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-       response.getWriter().write(
+
+       /*response.getWriter().write(
                 "{\"" + SecurityConstants.HEADER_STRING + "\":\"" + SecurityConstants.TOKEN_PREFIX+jwtToken + "\"}"
-        );
+        );*/
         response.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX+jwtToken);}
 }

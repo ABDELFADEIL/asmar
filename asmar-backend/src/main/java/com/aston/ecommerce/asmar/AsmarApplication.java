@@ -18,8 +18,6 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages="com.aston.ecommerce.asmar.dao")
-@EntityScan(basePackages="com.aston.ecommerce.asmar.entity")
 public class AsmarApplication implements CommandLineRunner {
 
     static Logger logger = Logger.getLogger(AsmarApplication.class);

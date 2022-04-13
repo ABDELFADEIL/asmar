@@ -8,20 +8,27 @@ import com.aston.ecommerce.asmar.entity.Address;
 import com.aston.ecommerce.asmar.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
 
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class AddressServiceImpl implements AddressService{
 
-    @Autowired
-    private AddressRepository addressRepository;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private AddressMapper addressMapper;
 
+    private final AddressRepository addressRepository;
+    private final UserRepository userRepository;
+    private final AddressMapper addressMapper;
+
+    public AddressServiceImpl(final AddressRepository addressRepository,
+                              final UserRepository userRepository,
+                              final AddressMapper addressMapper) {
+        this.addressRepository = addressRepository;
+        this.userRepository = userRepository;
+        this.addressMapper = addressMapper;
+    }
 
     @Override
     public AddressDTO addAddress(AddressDTO addressDTO) {

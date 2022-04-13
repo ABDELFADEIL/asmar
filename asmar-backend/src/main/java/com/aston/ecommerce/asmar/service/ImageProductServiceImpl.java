@@ -8,6 +8,7 @@ import com.aston.ecommerce.asmar.entity.Image;
 import com.aston.ecommerce.asmar.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,14 +17,23 @@ import java.io.InputStream;
 import java.util.List;
 
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class ImageProductServiceImpl implements ImageProductService{
 
-    @Autowired
-    private IFlickrService flickrService;
-    @Autowired
-    private ProductRepository productRepository;
-    @Autowired
-    private ImageRepository imageRepository;
+
+    private final IFlickrService flickrService;
+    private final ProductRepository productRepository;
+    private final ImageRepository imageRepository;
+
+    public ImageProductServiceImpl(
+                                   final IFlickrService flickrService,
+                                   final ProductRepository productRepository,
+                                   final ImageRepository imageRepository
+    ) {
+        this.flickrService = flickrService;
+        this.productRepository = productRepository;
+        this.imageRepository = imageRepository;
+    }
 
     @Override
     public String saveProductImage(ImageSaveDTO imageSaveDTO) throws Exception {

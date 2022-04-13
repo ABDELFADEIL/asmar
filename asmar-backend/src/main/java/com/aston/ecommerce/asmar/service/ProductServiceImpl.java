@@ -9,21 +9,31 @@ import com.aston.ecommerce.asmar.entity.Category;
 import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.exption.ProductExpception;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class ProductServiceImpl implements ProductService{
 
-    @Autowired
-    private ProductMapper productMapper;
-    @Autowired
-    private ProductRepository productRepository;
-    @Autowired
-    private CategoryRepository categoryRepository;
+    private final ProductMapper productMapper;
+    private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
+    public ProductServiceImpl(
+                              ProductMapper productMapper,
+                              ProductRepository productRepository,
+                              CategoryRepository categoryRepository) {
+        this.productMapper = productMapper;
+        this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
+    }
 
     @Override
     public ProductDetailDTO getProductById(Long id) {
@@ -39,7 +49,7 @@ public class ProductServiceImpl implements ProductService{
     public List<ProductDTO> getProductByLabelOrDescription(String keyword) {
         List<Product> products;
               if (keyword != null) {
-                  products =  productRepository.findProductsByLabelOrderByDescription(keyword);
+                  products =  productRepository.findAllByLabelContainingOrDescriptionContainingOrderByDescription(keyword, keyword);
                   return productMapper.toProductDtos(products);
             }
         products =  productRepository.findAll();
@@ -49,14 +59,15 @@ public class ProductServiceImpl implements ProductService{
     
     @Override
     public List<ProductDetailDTO> getProductsByDate(Long nb){
-        List<Product> products = productRepository.getDetailProductsByDate(nb);
-        return productMapper.toProductDetailDtos(products);
+        Page<Product> products = productRepository.findAll(
+                PageRequest.of(0, Math.toIntExact(nb), Sort.by(Sort.Direction.DESC, "creationDate")));
+        return productMapper.toProductDetailDtos(products.getContent());
         }
 
 
     @Override
     public List<ProductDTO> getProductsByCategoryId(Long categoryId){
-        List<Product> products = productRepository.getProductsByCategoryId(categoryId);
+        List<Product> products = productRepository.findAllByCategoryIdOrderByLabelAsc(categoryId);
         return productMapper.toProductDtos(products);
         }
 

@@ -19,9 +19,11 @@ import java.util.List;
 @RequestMapping("/api/addresses")
 public class AddressController {
 
-    @Autowired
-    private AddressService addressService;
+    private final AddressService addressService;
 
+    public AddressController(AddressService addressService) {
+        this.addressService = addressService;
+    }
 
     @PostMapping("/add")
     @ApiOperation(value = "Add new address")

@@ -13,6 +13,7 @@ import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 import java.math.BigDecimal;
@@ -21,27 +22,35 @@ import java.util.List;
 
 
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class CommandLineServiceImpl implements CommandLineService {
 
 
-    @Autowired
-    private CommandLineMapper commandLineMapper;
-    @Autowired
-    private CommandLineRepository commandLineRepository;
-    @Autowired
-    private ProductRepository productRepository;
-    @Autowired
-    private UserRepository userRepository;
+    private final CommandLineMapper commandLineMapper;
+    private final CommandLineRepository commandLineRepository;
+    private final ProductRepository productRepository;
+    private final UserRepository userRepository;
+
+    public CommandLineServiceImpl(
+                                  final CommandLineMapper commandLineMapper,
+                                  final CommandLineRepository commandLineRepository,
+                                  final ProductRepository productRepository,
+                                  final UserRepository userRepository) {
+        this.commandLineMapper = commandLineMapper;
+        this.commandLineRepository = commandLineRepository;
+        this.productRepository = productRepository;
+        this.userRepository = userRepository;
+    }
 
     @Override
     public List<CommandLineDTO> getCommandLineListByUserId(Long userId) {
-        List<CommandLine> commandLineList = commandLineRepository.findByUserAndOrderIsNull(userId);
+        List<CommandLine> commandLineList = commandLineRepository.findAllByUserIdAndOrderIsNull(userId);
         return commandLineMapper.toCommandLineDtos(commandLineList);
     }
 
     @Override
     public CommandLineDTO addProductToCart(ProductToCartDTO productToCartDTO) {
-        CommandLine commandLine = commandLineRepository.findByProductAndOrderIsNull(productToCartDTO.getProductId());
+        CommandLine commandLine = commandLineRepository.findByProductIdAndOrderIsNull(productToCartDTO.getProductId());
         if (commandLine == null) {
             Product product = productRepository.getById(productToCartDTO.getProductId());
             User user = userRepository.getById(productToCartDTO.getUserId());
@@ -120,7 +129,7 @@ public class CommandLineServiceImpl implements CommandLineService {
 
     @Override
     public List<CommandLineDTO> findByOrder(Long orderId) {
-        return commandLineMapper.toCommandLineDtos(commandLineRepository.findByOrder(orderId));
+        return commandLineMapper.toCommandLineDtos(commandLineRepository.findByOrderId(orderId));
     }
 
 

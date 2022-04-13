@@ -16,10 +16,16 @@ import java.util.List;
 @RequestMapping("/image")
 public class ImageProductController {
 
-   @Autowired
    private IFlickrService flickrService;
-   @Autowired
    private ImageProductService imageProductService;
+
+    public ImageProductController(
+            IFlickrService flickrService,
+            ImageProductService imageProductService
+                                 ) {
+        this.flickrService = flickrService;
+        this.imageProductService = imageProductService;
+    }
 
     @PostMapping("/save-image")
     public String saveProductImage(@ModelAttribute ImageSaveDTO imageSaveDTO) throws Exception {
