@@ -7,7 +7,7 @@ const SearchItem = ({setKeyword}) => {
 
     const handleChange = (e) => {
         setInput(e.target.value);
-        console.log(e);
+      /*  console.log(e);*/
         setKeyword(e.target.value);
     }
 
