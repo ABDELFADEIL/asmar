@@ -65,7 +65,7 @@
 .checkout {
     border: none;
     border-radius: 20px;
-    width: 80%;
+    min-width: 180px;
     margin: auto;
     height: 2rem;
 }

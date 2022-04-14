@@ -53,11 +53,19 @@
 }
 .order.checkout {
     border-radius: 20px;
-    width: 200px;
+    min-width: 190px;
+    max-width: 190px;
     margin: auto;
     height: 2rem;
 }
-
+.btn-return {
+    padding-top: 4px;
+    min-width: 190px;
+    max-width: 190px;
+}
+a, a:hover {
+    color: #003B49;
+}
 .row-btn {
     margin: 1rem !important;
 }
@@ -76,4 +84,18 @@
     padding: 1rem;
     margin-bottom: 2rem;
     margin-top: 0.5rem;
+}
+
+@media screen and (max-width: 575px){
+    .order.checkout {
+        order: 1;
+    }
+}
+@media screen and (max-width: 798px) and (min-width: 768px){
+    .order.checkout {
+        order: 1;
+    }
+    .row-btn {
+        margin-left: 0 !important;
+    }
 }

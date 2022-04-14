@@ -5,6 +5,7 @@ import { CardElement, Elements, useStripe, useElements } from '@stripe/react-str
 import ButtonApp from "../../components/templates/ButtonApp";
 import {BASE_URL} from "../../utils/constants";
 import jwt_decode from "jwt-decode";
+import {Col, Row} from "react-bootstrap";
 
 const CheckoutForm = ({title, func, total}) => {
     const stripe = useStripe();
@@ -91,7 +92,20 @@ const CheckoutForm = ({title, func, total}) => {
                 <div className="payment">
                     <CardElement id="card-element"/>
                 </div>
-                <ButtonApp title={title} func={func} type="submit" disable={!stripe || !elements} />
+                <Row className="justify-content-center flex-row">
+                        <Col lg={6} md={6} sm={12} className="order-md-2 ">
+                            <ButtonApp title={title} func={func} disable={!stripe || !elements} />
+                        </Col>
+                    <Col lg={6} md={6} sm={12} className="order-md-1">
+                        <Row className={"row-btn m-auto text-center"}>
+                            <a className={"order checkout activated btn-return"}>
+                                Précédent
+                            </a>
+                        </Row>
+
+                    </Col>
+                </Row>
+
             </form>
         </div>
 

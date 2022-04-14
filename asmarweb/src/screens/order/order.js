@@ -112,7 +112,17 @@ const Order = () => {
                                             </div>
                                         )}
                                     </Col>
-                                    <ButtonApp title="Continuer" func={setStep}/>
+                                    <Row className="justify-content-center btn-center">
+                                        <Col md={6} sm={6} className={"m-auto text-center order checkout activated btn-return"}>
+                                            <a className={"color1"}>
+                                                Précédent
+                                            </a>
+                                        </Col>
+                                        <Col md={6} sm={6}>
+                                            <ButtonApp title="Continuer" func={setStep}/>
+                                        </Col>
+                                    </Row>
+
                                 </Row>
                             :
                                 <Row className={"justify-content-center mt-2 ms-2"}>
