@@ -85,7 +85,14 @@ a, a:hover {
     margin-bottom: 2rem;
     margin-top: 0.5rem;
 }
+.order-passed-sum {
+    text-align: center;
+    margin: auto;
+    background: rgba(0, 59, 73, 0.14);
+    font-size: 12px;
+    border-radius: 4px;
 
+}
 @media screen and (max-width: 575px){
     .order.checkout {
         order: 1;

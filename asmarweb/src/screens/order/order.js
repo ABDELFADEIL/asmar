@@ -20,10 +20,8 @@ const Order = () => {
     const [step, setStep] = useState(2);
     const [ user, setUser ] = useState({});
     const [ active, setActive ] = useState(false);
-    const [addressClassName, setAddressClassName] = useState('address');
+    const [ orderPassed, setOrderPassed ] = useState(false);
 
-    useLayoutEffect(() => {
-    }, [])
 
   const getAddresses = (userId)=> {
       GetAddresses(userId)
@@ -71,6 +69,7 @@ const Order = () => {
     const checkoutOrder = ()=> {
         console.log('Payer la commande! ')
     };
+
     return (
         <div>
             <Container className="cart-container" fluid>
@@ -90,69 +89,104 @@ const Order = () => {
                         </Row>
                         <ProgressBar now={(step === 2 ? 50 : 100)} variant="success"/>
                     </div>
-                    <Col md={8} className={"mb-2"}>
-                        <Card className="order-cart p-2">
-                            {step < 3 ?
-                                <Row className={"justify-content-center mt-2 ms-2"}>
-                                    <Col className={"mb-sm-2"}>
-                                        <p className={"mb-3"}>
-                                            <span className={"fw-bold color1"}>Adresse de livraison</span>
-                                        </p>
-                                        {addresses.map((address, id) =>
-                                            <div key={id} className={`address ${address.delivery? ' active' : ''}`} onClick={toggleClass}>
-                                                <Address
-                                                    address={address}
-                                                    key={id}
-                                                    telephone={user.telephone}
-                                                    setAddresses={setAddresses}
-                                                    active={address.delivery}
-                                                    setActive={setActive}
-                                                    addressType="delivery"
-                                                />
-                                            </div>
-                                        )}
-                                    </Col>
-                                    <Row className="justify-content-center btn-center">
-                                        <Col md={6} sm={6} className={"m-auto text-center order checkout activated btn-return"}>
-                                            <a className={"color1"}>
-                                                Précédent
-                                            </a>
+                    <div>
+                    </div>
+                    {orderPassed ?
+                        <Row>
+                        <Col md={8} className={"mb-2"}>
+                            <Card className="order-cart p-2">
+                                {step < 3 ?
+                                    <Row className={"justify-content-center mt-2 ms-2"}>
+                                        <Col className={"mb-sm-2"}>
+                                            <p className={"mb-3"}>
+                                                <span className={"fw-bold color1"}>Adresse de livraison</span>
+                                            </p>
+                                            {addresses.map((address, id) =>
+                                                <div key={id} className={`address ${address.delivery? ' active' : ''}`} onClick={toggleClass}>
+                                                    <Address
+                                                        address={address}
+                                                        key={id}
+                                                        telephone={user.telephone}
+                                                        setAddresses={setAddresses}
+                                                        active={address.delivery}
+                                                        setActive={setActive}
+                                                        addressType="delivery"
+                                                    />
+                                                </div>
+                                            )}
                                         </Col>
-                                        <Col md={6} sm={6}>
-                                            <ButtonApp title="Continuer" func={setStep}/>
-                                        </Col>
+                                        <Row className="justify-content-center btn-center">
+                                            <Col md={6} sm={6} className={"m-auto text-center order checkout activated btn-return"}>
+                                                <Link to="/shopping-cart" className={"color1"}>
+                                                    Précédent
+                                                </Link>
+                                            </Col>
+                                            <Col md={6} sm={6}>
+                                                <ButtonApp title="Continuer" setStep={setStep}/>
+                                            </Col>
+                                        </Row>
+
                                     </Row>
+                                    :
+                                    <Row className={"justify-content-center mt-2 ms-2"}>
+                                        <Col className={"mb-sm-2"}>
+                                            <p className={"mb-3"}>
+                                                <span className={"fw-bold color1"}>Adresse de facturation</span>
+                                            </p>
+                                            {addresses.map((address, id) =>
+                                                <div key={id} className={`address ${address.billing? ' active' : ''}`} onClick={toggleClass}>
+                                                    <Address
+                                                        address={address}
+                                                        key={id}
+                                                        telephone={user.telephone}
+                                                        setAddresses={setAddresses}
+                                                        active={address.billing}
+                                                        setActive={setActive}
+                                                        addressType="billing"
+                                                    />
+                                                </div>
+                                            )}
+                                        </Col>
+                                        <Stripe title="Payer votre commande" setOrderPassed={setOrderPassed} orderPassed={orderPassed} setStep={setStep} checkoutOrder={checkoutOrder} total={total()}/>
 
-                                </Row>
-                            :
-                                <Row className={"justify-content-center mt-2 ms-2"}>
-                                    <Col className={"mb-sm-2"}>
-                                        <p className={"mb-3"}>
-                                            <span className={"fw-bold color1"}>Adresse de facturation</span>
-                                        </p>
-                                        {addresses.map((address, id) =>
-                                            <div key={id} className={`address ${address.billing? ' active' : ''}`} onClick={toggleClass}>
-                                                <Address
-                                                    address={address}
-                                                    key={id}
-                                                    telephone={user.telephone}
-                                                    setAddresses={setAddresses}
-                                                    active={address.billing}
-                                                    setActive={setActive}
-                                                    addressType="billing"
-                                                />
-                                            </div>
-                                        )}
+                                    </Row>
+                                }
+                            </Card>
+                        </Col>
+                        <Col md={4}>
+                            <OrderSummary total={total} commandLines={commandLines} btn={false}/>
+                        </Col>
+
+                        </Row>
+                        :
+                        <Row>
+                            <Card className="order-cart p-2 justify-content-center text-center">
+                                <p>Merci. Votre commande a été reçu</p>
+                                <Row className="justify-content-center order-passed-sum">
+                                    <Col>
+                                        <p>Numéro de commande</p>
+                                        <p>1233333333</p>
                                     </Col>
-                                    <Stripe title="Payer votre commande" func={checkoutOrder} total={total()}/>
-
+                                    <Col>
+                                        <p>Date</p>
+                                        <p>12/12/2012</p>
+                                    </Col>
+                                    <Col>
+                                        <p>Total</p>
+                                        <p>412€</p>
+                                    </Col>
+                                    <Col>
+                                        <p>Moyen de paiement</p>
+                                        <p>Carte de crédit</p>
+                                    </Col>
                                 </Row>
-                            }
-                        </Card>
-                    </Col>
-                    <Col md={4}>
-                        <OrderSummary total={total} commandLines={commandLines} btn={false}/>
-                    </Col>
+                                <Row>
+                                </Row>
+                            </Card>
+
+                        </Row>
+                    }
+
                 </Row>
             </Container>
         </div>

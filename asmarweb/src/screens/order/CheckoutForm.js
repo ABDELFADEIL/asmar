@@ -6,17 +6,26 @@ import ButtonApp from "../../components/templates/ButtonApp";
 import {BASE_URL} from "../../utils/constants";
 import jwt_decode from "jwt-decode";
 import {Col, Row} from "react-bootstrap";
+import axios from "axios";
 
-const CheckoutForm = ({title, func, total}) => {
+const CheckoutForm = ({title, orderPassed, setOrderPassed, setStep, total}) => {
     const stripe = useStripe();
     const elements = useElements();
-
     const [ message, setMessage ] = useState(false);
     const [ purchase, setPurchase ] = useState({
         email:'',
         amount: 0,
         featureRequest: ''
     });
+
+    const checkout =(id) => {
+        if (id !== null){
+            setOrderPassed(true);
+            console.log('commande passé avec succès');
+        }
+
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!stripe || !elements) {
@@ -70,14 +79,24 @@ const CheckoutForm = ({title, func, total}) => {
         }
         console.log(paymentIntent.id);
         console.log(paymentIntent.id);
+        checkout(paymentIntent.id);
     };
 
     useEffect(()=>{
-            setTimeout(function() {
-                setMessage(false)
+            let cancel = false;
+            setTimeout(function () {
+                if (cancel) return;
+                setMessage(false);
             }, 10000);
+            return () => {
+                cancel = true;
+            }
         },
         [message])
+
+    const onPrevious = ()=> {
+       setStep(2);
+    }
 
     return (
         <div>
@@ -94,11 +113,11 @@ const CheckoutForm = ({title, func, total}) => {
                 </div>
                 <Row className="justify-content-center flex-row">
                         <Col lg={6} md={6} sm={12} className="order-md-2 ">
-                            <ButtonApp title={title} func={func} disable={!stripe || !elements} />
+                            <ButtonApp title={title} setStep={setStep} disable={!stripe || !elements} />
                         </Col>
                     <Col lg={6} md={6} sm={12} className="order-md-1">
                         <Row className={"row-btn m-auto text-center"}>
-                            <a className={"order checkout activated btn-return"}>
+                            <a onClick={onPrevious} className={"order checkout activated btn-return"}>
                                 Précédent
                             </a>
                         </Row>

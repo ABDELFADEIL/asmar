@@ -2,9 +2,9 @@ import React from 'react';
 import {Row} from "react-bootstrap";
 
 
-const ButtonApp = ({title, func, disable})=> {
+const ButtonApp = ({title, setStep, disable})=> {
     const continuer = ()=> {
-        func(3);
+        setStep(3);
     }
     console.log(disable)
     return (

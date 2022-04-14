@@ -6,11 +6,11 @@ import CheckoutForm from "./CheckoutForm";
 
 const stripePromise = loadStripe(PK_STRIPE);
 
-const Stripe = ({title, func, total}) => {
+const Stripe = ({orderPassed, setOrderPassed, title, setStep, total}) => {
 
     return(
         <Elements stripe={stripePromise}>
-            <CheckoutForm  title={title} func={func} total={total}/>
+            <CheckoutForm orderPassed={orderPassed} setOrderPassed={setOrderPassed} title={title} setStep={setStep} total={total}/>
         </Elements>
     )
 }
