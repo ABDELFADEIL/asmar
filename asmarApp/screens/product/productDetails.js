@@ -16,7 +16,7 @@ const ProductDetailsScreen = (navigation) =>{
 
 
     const getProductDetailsById = () => {
-      let id = navigation?.route?.params?.idProduct??1;
+      let id = navigation.route.params.idProduct??1;
         productService
             // .getProductDetailsById(id)
             .getProductById(id)
@@ -39,7 +39,7 @@ const ProductDetailsScreen = (navigation) =>{
     }
     useEffect(() => {
         getProductDetailsById();
-    }, []);
+    }, [navigation]);
     const renderUrlImages =(noImagePrincipal) => {
         return (
             <View>

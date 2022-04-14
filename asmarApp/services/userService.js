@@ -2,8 +2,7 @@ import axios from 'axios';
 import {BASE_URL} from "../utils/constants";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const //BASE_URL = 'http://192.168.1.28:8080',
-    Login = (user) => {
+export const Login = (user) => {
         return axios.post(BASE_URL + '/login', user);
     },
     Signup = (user) => {

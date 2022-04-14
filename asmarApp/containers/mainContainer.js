@@ -57,8 +57,6 @@ const HomeStackScreen = () => (
                               options={{title: <Header title={homeName}/>}}/>
             <HomeStack.Screen name={'ProductDetailsScreen'} component={ProductDetailsScreen}
                                       />
-
-
         </HomeStack.Navigator>
     );
 
@@ -85,6 +83,8 @@ const SearchStackScreen = () => (
     })}>
         <SearchStack.Screen name={'search'} component={SearchScreen}
                             options={{title: <Header title={searchName}/>}}/>
+        <SearchStack.Screen name={'ProductDetailsScreen'} component={ProductDetailsScreen}
+        />
     </SearchStack.Navigator>
 );
 const ProfileStackScreen = () => (
