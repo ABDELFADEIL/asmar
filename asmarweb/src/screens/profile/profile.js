@@ -11,7 +11,7 @@ import ButtonModifProfile from './profileComponents/ButtonModifProfile';
 export default function ProfileScreen(navigation) {
   const JWT = GET_JWT_TOKEN();
   const [user, setUser] = useState({});
-  const [adresses, setAddresses] = useState({});
+  const [addresses, setAddresses] = useState({});
 
   let getUserInfos = async () => {
     // console.log("jwttttttttttttttt");
@@ -21,7 +21,7 @@ export default function ProfileScreen(navigation) {
     console.log("user", response);
 
   }
-  let getUserAdresses = () => {
+  let getUserAddresses = () => {
     GetAddresses(48)
       .then(response => {
         console.log("adresseeeees", response);
@@ -35,10 +35,10 @@ export default function ProfileScreen(navigation) {
 
   useEffect(() => {
     let storage = localStorage;
-    console.log("localstorrage", storage)
+    console.log("localstorage", storage)
     getUserInfos();
-    getUserAdresses();
-    // getUserAdresses();
+    getUserAddresses();
+    // getUserAddresses();
   }, []);
   //page functions
   let modifyProfile = () => {
@@ -83,7 +83,7 @@ export default function ProfileScreen(navigation) {
       </div>
       <CategoryTitle title="MOT DE PASSE" />
       <CategoryTitle title="MES ADRESSES" />
-      <ZoneInfo name="Tél" value={adresses[0].street} width="50%" />
+      <ZoneInfo name="Tél" value={addresses.length > 0 && addresses ? addresses[0].street :'' } width="50%" />
       <CategoryTitle title="MES CARTES" />
       {/* </div> */}
     </div>
