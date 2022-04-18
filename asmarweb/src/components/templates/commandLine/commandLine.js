@@ -8,7 +8,8 @@ const CommandLine = ({setCommandLines, commandLine})=> {
 
     const [ command, setCommand ] = useState(commandLine);
     const getImagePrincipal = () => {
-      return command.product.urlImages.find((img)=> img.principal == true).url;
+
+      return command.product.urlImages.find((img)=> img.principal === true).url;
     }
 
     const removeItem = () => {
@@ -37,8 +38,7 @@ const CommandLine = ({setCommandLines, commandLine})=> {
         return (
             <Card className="cart-item">
             <Row className="item">
-                <Col sm="2" lg="auto"><Image src={command.product.urlImages.length != 0 ?
-                    getImagePrincipal() : "https://m.media-amazon.com/images/I/51XgqzfXiiL._AC_.jpg"} width="72px" height="98px"/> </Col>
+                <Col sm="2" lg="auto"><Image src={getImagePrincipal()} width="68px" height="80px"/> </Col>
                 <Col sm="4" className="description">
                     <Card.Title>
                         {command.product.label}

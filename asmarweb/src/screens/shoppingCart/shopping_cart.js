@@ -1,11 +1,13 @@
 import * as React from "react";
-import { Container, Row, Col, Card} from "react-bootstrap";
+import {Container, Row, Col, Card, Button} from "react-bootstrap";
 import "./shopping_cart.css"
 import {useEffect, useState} from "react";
 import {getShoppingCartItems} from "../../services/commandLineService";
 import CommandLine from "../../components/templates/commandLine/commandLine";
 import { Link } from "react-router-dom";
 import OrderSummary from "../../components/templates/order-summary";
+import {FaShopify, FaShoppingBasket, FaShoppingCart, FaShower, FaUser} from "react-icons/fa";
+import CardProduct from "../../components/card_product/cardProduct";
 
 export default function ShoppingCartScreen(){
 
@@ -65,7 +67,9 @@ export default function ShoppingCartScreen(){
                         </Col>
                     </Row>
                 </Container>
+
             </div>
         );
 
 }
+

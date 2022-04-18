@@ -91,7 +91,7 @@ const Order = () => {
                     </div>
                     <div>
                     </div>
-                    {orderPassed ?
+                    {!orderPassed ?
                         <Row>
                         <Col md={8} className={"mb-2"}>
                             <Card className="order-cart p-2">
@@ -160,27 +160,17 @@ const Order = () => {
                         </Row>
                         :
                         <Row>
-                            <Card className="order-cart p-2 justify-content-center text-center">
-                                <p>Merci. Votre commande a été reçu</p>
-                                <Row className="justify-content-center order-passed-sum">
-                                    <Col>
-                                        <p>Numéro de commande</p>
-                                        <p>1233333333</p>
-                                    </Col>
-                                    <Col>
-                                        <p>Date</p>
-                                        <p>12/12/2012</p>
-                                    </Col>
-                                    <Col>
-                                        <p>Total</p>
-                                        <p>412€</p>
-                                    </Col>
-                                    <Col>
-                                        <p>Moyen de paiement</p>
-                                        <p>Carte de crédit</p>
-                                    </Col>
-                                </Row>
-                                <Row>
+                            <Card className="order-cart p-2 justify-content-center">
+
+                                <Row className="m-2">
+                                    <h5 className="text-success m-2">Merci. Votre commande a été reçu</h5>
+                                    <p className="m-2">Un email viens de vous être envoyer avec la confirmation</p>
+                                   {
+                                        addresses.map( (address, index)=> {
+                                            return address.delivery === true ?
+                                                <p className="m-2">{address.street  + ', ' + address.postalCode + ' ' + address.city + ' ' + address.country}</p>: <></>
+                                        })
+                                    }
                                 </Row>
                             </Card>
 

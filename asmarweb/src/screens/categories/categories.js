@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState} from 'react';
 import {productService} from '../../services/productService';
 import ProductItem from "../../components/ProductItem";
 import {useLocation} from "react-router-dom";
+import {Col, Container} from "react-bootstrap";
+import CardProduct from "../../components/card_product/cardProduct";
 
 export default function CategoriesScreen() {
 
@@ -25,12 +27,21 @@ export default function CategoriesScreen() {
     }, [location.pathname]);
      return (
 
-         <div className='row-wrapper'>
+         <Container className="">
              <Row>
-                 {products.map(product => (
-                     <ProductItem key={product.id} product={product}/>
-                 ))}
+                 <Col lg={2} md={2} sm={2} xs={2} className="ms-1" style={{ minWidth: 140}}>
+
+                 </Col>
+                 <Col>
+                     <Row className="d-flex mt-4">
+                         {products.map(product => (
+                             <CardProduct key={product.id} product={product}/>
+                         ))}
+                     </Row>
+                 </Col>
+
              </Row>
-         </div>
+
+         </Container>
      )
 };

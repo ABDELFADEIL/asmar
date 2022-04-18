@@ -30,7 +30,7 @@ const OrderSummary = ({ total, commandLines, btn }) => {
                 {btn ?
                     <Row className={"row-checkout m-auto text-center"}>
                         <Link to="/order">
-                            <button className={"checkout " + (commandLines.length == 0 ? " not-activated" : " activated")}>
+                            <button className={"checkout " + (commandLines.length === 0 ? " not-activated" : " activated")}>
                                 Passer la commande
                             </button>
                         </Link>

@@ -93,6 +93,8 @@
     height: 2px;
     border-radius: 0;
 }
+
+
 @media screen and (max-width: 767px ){
     .item-cart {
         min-height: 40vh !important;
