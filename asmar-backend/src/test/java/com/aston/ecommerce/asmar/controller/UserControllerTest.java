@@ -1,18 +1,10 @@
 package com.aston.ecommerce.asmar.controller;
 
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.when;
-
 import com.aston.ecommerce.asmar.dto.UserDTO;
 import com.aston.ecommerce.asmar.dto.UserForm;
 import com.aston.ecommerce.asmar.dto.UserMobileDTO;
 import com.aston.ecommerce.asmar.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +18,13 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.when;
 
 @ContextConfiguration(classes = {UserController.class})
 @ExtendWith(SpringExtension.class)
@@ -42,7 +41,7 @@ class UserControllerTest {
         userDTO.setBirthDate(LocalDate.ofEpochDay(1L));
         userDTO.setEmail("jane.doe@example.org");
         userDTO.setFirstName("Jane");
-        userDTO.setId(123L);
+        userDTO.setId(123);
         userDTO.setLastName("Doe");
         userDTO.setRegistrationDate(LocalDateTime.of(1, 1, 1, 1, 1));
         userDTO.setRoles(new ArrayList<>());
@@ -87,7 +86,7 @@ class UserControllerTest {
         userDTO.setBirthDate(LocalDate.ofEpochDay(1L));
         userDTO.setEmail("jane.doe@example.org");
         userDTO.setFirstName("Jane");
-        userDTO.setId(123L);
+        userDTO.setId(123);
         userDTO.setLastName("Doe");
         userDTO.setRegistrationDate(LocalDateTime.of(1, 1, 1, 1, 1));
         userDTO.setRoles(new ArrayList<>());
@@ -137,7 +136,7 @@ class UserControllerTest {
         userDTO.setBirthDate(LocalDate.ofEpochDay(1L));
         userDTO.setEmail("jane.doe@example.org");
         userDTO.setFirstName("Jane");
-        userDTO.setId(123L);
+        userDTO.setId(123);
         userDTO.setLastName("Doe");
         userDTO.setRegistrationDate(LocalDateTime.of(1, 1, 1, 1, 1));
         userDTO.setRoles(new ArrayList<>());

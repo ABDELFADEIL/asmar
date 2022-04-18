@@ -15,13 +15,13 @@ import java.util.List;
 public interface CommandLineService {
 
 
-    List<CommandLineDTO> getCommandLineListByUserId(Long userId);
-    CommandLine findById(Long id);
+    List<CommandLineDTO> getCommandLineListByUserId(Integer userId);
+    CommandLine findById(Integer id);
     CommandLineDTO updateCommandLine(CommandLineDTO commandLineDTO, User user,Product product);
-    void deleteCommandLine(Long id, UserDTO user);
+    void deleteCommandLine(Integer id, UserDTO user);
     CommandLineDTO save(CommandLine commandLine);
-    List<CommandLineDTO> findByOrder(Long orderId);
+    List<CommandLineDTO> findByOrder(Integer orderId);
     CommandLineDTO addProductToCart(ProductToCartDTO addProductToCartDTO);
-    CommandLineDTO updateCommandLineQuantity(Long id, int quantity, UserDTO user);
+    CommandLineDTO updateCommandLineQuantity(Integer id, int quantity, UserDTO user);
 }
 

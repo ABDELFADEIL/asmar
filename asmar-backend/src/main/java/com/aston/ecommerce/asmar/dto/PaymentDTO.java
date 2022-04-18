@@ -5,16 +5,16 @@ import java.time.LocalDate;
 
 public class PaymentDTO {
 
-    private Long id;
+    private Integer id;
     private String type;
     private LocalDate paymentDate;
     private String total;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

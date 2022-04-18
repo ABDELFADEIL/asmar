@@ -40,7 +40,7 @@ public class ProductController {
             @ApiResponse(code = 404, message = "product list not found"),
             @ApiResponse(code = 500, message = "Server error")})
     public List<ProductDTO> getProductsByCategoryId(
-            @PathVariable(name = "categoryId") Long categoryId){
+            @PathVariable(name = "categoryId") Integer categoryId){
              return this.productService.getProductsByCategoryId(categoryId);
     }
 
@@ -53,7 +53,7 @@ public class ProductController {
             @ApiResponse(code = 404, message = "product not found"),
             @ApiResponse(code = 500, message = "Server error")})
     public ResponseEntity<ProductDetailDTO> get(
-            @PathVariable(name = "id") Long id) {
+            @PathVariable(name = "id") Integer id) {
         ProductDetailDTO product = this.productService.getProductById(id);
         if (product == null) {
             return ResponseEntity.noContent().build();
@@ -71,7 +71,7 @@ public class ProductController {
             @ApiResponse(code = 404, message = "products not found"),
             @ApiResponse(code = 500, message = "Server error")})
     public ResponseEntity<List<ProductDetailDTO>> getProductsByDate(
-            @PathVariable Long nb) {
+            @PathVariable Integer nb) {
     	List<ProductDetailDTO> listProducts = this.productService.getProductsByDate(nb);
         if (listProducts == null) {
             return ResponseEntity.noContent().build();

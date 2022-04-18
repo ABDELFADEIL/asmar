@@ -42,13 +42,13 @@ public class AddressServiceImpl implements AddressService{
     }
 
     @Override
-    public List<AddressDTO> getAddressesByUserId(Long userId) {
+    public List<AddressDTO> getAddressesByUserId(Integer userId) {
         List<Address> addressList = addressRepository.findAddressesByUserId(userId);
         return addressMapper.toAddressDtos(addressList);
     }
 
     @Override
-    public AddressDTO updateAddressActiveAndType(Long addressId, String addressType) throws IllegalAccessException {
+    public AddressDTO updateAddressActiveAndType(Integer addressId, String addressType) throws IllegalAccessException {
         if (addressId == null){
             throw new IllegalAccessException("No address id");
         }

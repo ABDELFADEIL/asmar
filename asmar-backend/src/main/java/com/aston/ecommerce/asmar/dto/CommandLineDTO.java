@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class CommandLineDTO {
 
-    private Long id;
+    private Integer id;
     private float price;
     private  BigDecimal subTotal;
     private ProductDTO product;
@@ -12,11 +12,11 @@ public class CommandLineDTO {
     private UserDTO user;
     private int quantity;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

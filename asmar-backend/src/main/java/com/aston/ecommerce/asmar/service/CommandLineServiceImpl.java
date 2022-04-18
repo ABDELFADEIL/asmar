@@ -43,7 +43,7 @@ public class CommandLineServiceImpl implements CommandLineService {
     }
 
     @Override
-    public List<CommandLineDTO> getCommandLineListByUserId(Long userId) {
+    public List<CommandLineDTO> getCommandLineListByUserId(Integer userId) {
         List<CommandLine> commandLineList = commandLineRepository.findAllByUserIdAndOrderIsNull(userId);
         return commandLineMapper.toCommandLineDtos(commandLineList);
     }
@@ -76,7 +76,7 @@ public class CommandLineServiceImpl implements CommandLineService {
     }
 
     @Override
-    public CommandLineDTO updateCommandLineQuantity(Long id, int quantity, UserDTO user) {
+    public CommandLineDTO updateCommandLineQuantity(Integer id, int quantity, UserDTO user) {
         CommandLine commandLine = commandLineRepository.getById(id);
         if (commandLine != null) {
             if (commandLine.getUser().getId().equals(user.getId())){
@@ -110,12 +110,12 @@ public class CommandLineServiceImpl implements CommandLineService {
     }
 
     @Override
-    public CommandLine findById(Long id) {
+    public CommandLine findById(Integer id) {
         return commandLineRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void deleteCommandLine(Long id, UserDTO user) {
+    public void deleteCommandLine(Integer id, UserDTO user) {
         CommandLine commandLine = commandLineRepository.getById(id);
         if (commandLine.getUser().getId().equals(user.getId())) {
             commandLineRepository.deleteById(commandLine.getId());
@@ -128,7 +128,7 @@ public class CommandLineServiceImpl implements CommandLineService {
     }
 
     @Override
-    public List<CommandLineDTO> findByOrder(Long orderId) {
+    public List<CommandLineDTO> findByOrder(Integer orderId) {
         return commandLineMapper.toCommandLineDtos(commandLineRepository.findByOrderId(orderId));
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class UserDTO {
 
-    private Long id;
+    private Integer id;
     private String firstName;
     private String lastName;
     private String email;
@@ -18,11 +18,11 @@ public class UserDTO {
 
 
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

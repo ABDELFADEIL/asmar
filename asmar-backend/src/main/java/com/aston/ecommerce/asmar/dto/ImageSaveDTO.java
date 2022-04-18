@@ -5,10 +5,10 @@ import org.springframework.web.multipart.MultipartFile;
 public class ImageSaveDTO {
 
     private MultipartFile file;
-    private Long id;
+    private Integer id;
     private boolean principal;
 
-    public ImageSaveDTO(MultipartFile file, Long id, boolean principal) {
+    public ImageSaveDTO(MultipartFile file, Integer id, boolean principal) {
         this.file = file;
         this.id = id;
         this.principal = principal;
@@ -25,11 +25,11 @@ public class ImageSaveDTO {
         this.file = file;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

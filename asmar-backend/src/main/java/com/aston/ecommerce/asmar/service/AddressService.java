@@ -6,6 +6,6 @@ import java.util.List;
 public interface AddressService {
 
     AddressDTO addAddress(AddressDTO addressDTO);
-    List<AddressDTO> getAddressesByUserId(Long userId);
-    AddressDTO updateAddressActiveAndType(Long addressId, String addressType) throws IllegalAccessException;
+    List<AddressDTO> getAddressesByUserId(Integer userId);
+    AddressDTO updateAddressActiveAndType(Integer addressId, String addressType) throws IllegalAccessException;
 }

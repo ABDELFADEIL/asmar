@@ -45,7 +45,7 @@ public class AddressController {
             @ApiResponse(code = 204, message = "No content"),
             @ApiResponse(code = 404, message = "not found"),
             @ApiResponse(code = 500, message = "Server error")})
-    public ResponseEntity<List<AddressDTO>> getListAddresses(@RequestParam Long userId){
+    public ResponseEntity<List<AddressDTO>> getListAddresses(@RequestParam Integer userId){
         List<AddressDTO> addresses = addressService.getAddressesByUserId(userId);
         if (addresses.isEmpty()){
             return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
@@ -61,7 +61,7 @@ public class AddressController {
             @ApiResponse(code = 204, message = "No content"),
             @ApiResponse(code = 404, message = "not found"),
             @ApiResponse(code = 500, message = "Server error")})
-    public ResponseEntity<AddressDTO> updateAddressActiveAndType(@RequestParam String addressType, @PathVariable Long addressId) throws IllegalAccessException {
+    public ResponseEntity<AddressDTO> updateAddressActiveAndType(@RequestParam String addressType, @PathVariable Integer addressId) throws IllegalAccessException {
         AddressDTO address = addressService.updateAddressActiveAndType(addressId, addressType);
         if (address == null){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

@@ -43,7 +43,7 @@ public class CommandLineController {
             @ApiResponse(code = 204, message = "No content"),
             @ApiResponse(code = 404, message = "user not found"),
             @ApiResponse(code = 500, message = "Server error")})
-    public ResponseEntity<List<CommandLineDTO>> getCommandLineList(@RequestParam(name = "userId") Long userId) {
+    public ResponseEntity<List<CommandLineDTO>> getCommandLineList(@RequestParam(name = "userId") Integer userId) {
         List<CommandLineDTO> commandLineDTOList = commandLineService.getCommandLineListByUserId(userId);
         if (commandLineDTOList == null) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -76,7 +76,7 @@ public class CommandLineController {
     }
 
     @DeleteMapping("/remove/{id}")
-    public ResponseEntity<Void> deleteCommandLine(@PathVariable("id") Long id) {
+    public ResponseEntity<Void> deleteCommandLine(@PathVariable("id") Integer id) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDTO user = userService.getCurrentUser(auth.getPrincipal().toString());
         commandLineService.deleteCommandLine(id, user);
@@ -86,7 +86,7 @@ public class CommandLineController {
 
     @PutMapping("/update-quantity/{id}")
     public ResponseEntity<CommandLineDTO> updateCommandLineQuantity(
-            @PathVariable(name = "id", required = true) Long id,
+            @PathVariable(name = "id", required = true) Integer id,
             @RequestParam(name = "quantity", required = true) int quantity) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDTO user = userService.getCurrentUser(auth.getPrincipal().toString());

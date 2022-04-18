@@ -30,8 +30,8 @@ public class Product extends AbstractEntity{
     private String usage_;
     @Column(name="size")
     private String size;
-    @Column(name="disponible", nullable = false)
-    private boolean disponible;
+    @Column(name="available", nullable = false)
+    private boolean available;
     @Column(name="quantity")
     private long quantity;
     @OneToMany(mappedBy = "product")
@@ -71,9 +71,6 @@ public class Product extends AbstractEntity{
 		this.creationDate = creationDate;
 	}
 
-	public void setDisponible(boolean disponible) {
-		this.disponible = disponible;
-	}
 
 	public void setDescription(String description) {
         this.description = description;
@@ -88,12 +85,12 @@ public class Product extends AbstractEntity{
         this.size = size;
     }
 
-    public boolean isDisponible() {
-        return disponible;
+    public boolean isAvailable() {
+        return available;
     }
 
-    public void setDisponible() {
-        this.disponible = disponible;
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     public long getQuantity() {
@@ -150,7 +147,7 @@ public class Product extends AbstractEntity{
                 ", composition='" + composition + '\'' +
                 ", usage_='" + usage_ + '\'' +
                 ", size='" + size + '\'' +
-                ", disponible=" + disponible +
+                ", available=" + available +
                 ", quantity=" + quantity +
                 ", urlImages=" + urlImages +
                 ", category=" + category +

@@ -14,7 +14,7 @@ public interface UserService {
     List<UserDTO> findAll();
     UserDTO getCurrentUser(String username);
     UserDTO addUser(UserMobileDTO userMobileDTO);
-    UserDTO getUserById(Long userId);
+    UserDTO getUserById(Integer userId);
 
-    Long getUserId(String email);
+    Integer getUserId(String email);
 }

@@ -3,7 +3,7 @@ package com.aston.ecommerce.asmar.dto;
 
 public class AddressDTO {
 
-    private Long id;
+    private Integer id;
     private String fullName;
     private String street;
     private String city;
@@ -12,15 +12,15 @@ public class AddressDTO {
     private String country;
     private String addInfos;
     private boolean delivery;
-    private long userId;
+    private Integer userId;
     private boolean billing;
 
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -74,7 +74,7 @@ public class AddressDTO {
 
 
 
-    public long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
@@ -94,7 +94,7 @@ public class AddressDTO {
         this.billing = billing;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

@@ -1,13 +1,13 @@
 package com.aston.ecommerce.asmar.dto;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 class UserDTOTest {
     @Test
@@ -17,7 +17,7 @@ class UserDTOTest {
         actualUserDTO.setBirthDate(ofEpochDayResult);
         actualUserDTO.setEmail("jane.doe@example.org");
         actualUserDTO.setFirstName("Jane");
-        actualUserDTO.setId(123L);
+        actualUserDTO.setId(123);
         actualUserDTO.setLastName("Doe");
         LocalDateTime ofResult = LocalDateTime.of(1, 1, 1, 1, 1);
         actualUserDTO.setRegistrationDate(ofResult);

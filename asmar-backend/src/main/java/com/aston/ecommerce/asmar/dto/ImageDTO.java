@@ -2,15 +2,15 @@ package com.aston.ecommerce.asmar.dto;
 
 public class ImageDTO {
 
-    private Long id;
+    private Integer id;
     private String url;
     private boolean principal;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

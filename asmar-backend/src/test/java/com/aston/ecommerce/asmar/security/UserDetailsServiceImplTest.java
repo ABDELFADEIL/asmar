@@ -37,7 +37,7 @@ class UserDetailsServiceImplTest {
         user.setConnectionStatus(true);
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
-        user.setId(123L);
+        user.setId(123);
         user.setLastName("Doe");
         user.setPassword("iloveyou");
         user.setRegistrationDate(LocalDateTime.of(1, 1, 1, 1, 1));
@@ -59,7 +59,7 @@ class UserDetailsServiceImplTest {
     @Test
     void testLoadUserByUsername2() throws UsernameNotFoundException {
         Role role = new Role();
-        role.setId(123L);
+        role.setId(123);
         role.setRoleName("Role Name");
 
         ArrayList<Role> roleList = new ArrayList<>();
@@ -68,7 +68,7 @@ class UserDetailsServiceImplTest {
         when(user.getEmail()).thenReturn("jane.doe@example.org");
         when(user.getPassword()).thenReturn("iloveyou");
         when(user.getRoles()).thenReturn(roleList);
-        doNothing().when(user).setId((Long) any());
+        doNothing().when(user).setId((Integer) any());
         doNothing().when(user).setBirthDate((LocalDate) any());
         doNothing().when(user).setConnectionStatus(anyBoolean());
         doNothing().when(user).setEmail((String) any());
@@ -83,7 +83,7 @@ class UserDetailsServiceImplTest {
         user.setConnectionStatus(true);
         user.setEmail("jane.doe@example.org");
         user.setFirstName("Jane");
-        user.setId(123L);
+        user.setId(123);
         user.setLastName("Doe");
         user.setPassword("iloveyou");
         user.setRegistrationDate(LocalDateTime.of(1, 1, 1, 1, 1));
@@ -108,7 +108,7 @@ class UserDetailsServiceImplTest {
         verify(user).getEmail();
         verify(user).getPassword();
         verify(user).getRoles();
-        verify(user).setId((Long) any());
+        verify(user).setId((Integer) any());
         verify(user).setBirthDate((LocalDate) any());
         verify(user).setConnectionStatus(anyBoolean());
         verify(user).setEmail((String) any());

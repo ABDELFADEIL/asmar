@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ProductDetailDTO {
 
-    private Long id;
+    private Integer id;
     private String label;
     private float price;
     private String description;
@@ -14,15 +14,15 @@ public class ProductDetailDTO {
     private String composition;
     private String usage_;
     private String size;
-    private boolean disponible;
+    private boolean available;
     private long quantity;
     private List<ImageDTO> urlImages;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -84,12 +84,12 @@ public class ProductDetailDTO {
         this.size = size;
     }
 
-    public boolean isDisponible() {
-        return disponible;
+    public boolean isAvailable() {
+        return available;
     }
 
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     public long getQuantity() {

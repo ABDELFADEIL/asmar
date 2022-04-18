@@ -34,6 +34,9 @@ public class Order extends AbstractEntity{
     @JoinColumn(name ="payment_id")
     private Payment payment;
 
+    public Order() {
+        this.orderDate = LocalDate.now();
+    }
 
     public String getDeliveryStatus() {
         return deliveryStatus;
@@ -106,4 +109,5 @@ public class Order extends AbstractEntity{
     public void setPayment(Payment payment) {
         this.payment = payment;
     }
+
 }

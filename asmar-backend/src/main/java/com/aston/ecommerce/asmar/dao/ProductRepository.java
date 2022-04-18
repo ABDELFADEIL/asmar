@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     List<Product> findByLabelContainingOrDescriptionContainingOrderByDescription(@Param("label") String label, @Param("description") String description);
-    List<Product> findAllByCategoryIdOrderByLabelAsc(Long categoryId);
+    List<Product> findAllByCategoryIdOrderByLabelAsc(Integer categoryId);
 
 
 

@@ -34,13 +34,13 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public ProductDetailDTO getProductById(Long id) {
+    public ProductDetailDTO getProductById(Integer id) {
          Product product = productRepository.getById(id);
         return productMapper.toProductDetailDto(product);
     }
 
     @Override
-    public Product findById(Long id) {
+    public Product findById(Integer id) {
         return productRepository.findById(id).orElse(null);
     }
 
@@ -52,7 +52,7 @@ public class ProductServiceImpl implements ProductService{
 
     
     @Override
-    public List<ProductDetailDTO> getProductsByDate(Long nb){
+    public List<ProductDetailDTO> getProductsByDate(Integer nb){
         Page<Product> products = productRepository.findAll(
                 PageRequest.of(0, Math.toIntExact(nb), Sort.by(Sort.Direction.DESC, "creationDate")));
         return productMapper.toProductDetailDtos(products.getContent());
@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService{
 
 
     @Override
-    public List<ProductDTO> getProductsByCategoryId(Long categoryId){
+    public List<ProductDTO> getProductsByCategoryId(Integer categoryId){
         List<Product> products = productRepository.findAllByCategoryIdOrderByLabelAsc(categoryId);
         return productMapper.toProductDtos(products);
         }

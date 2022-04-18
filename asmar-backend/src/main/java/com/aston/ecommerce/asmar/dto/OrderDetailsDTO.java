@@ -6,7 +6,7 @@ import java.util.List;
 
 public class OrderDetailsDTO {
 
-    private Long id;
+    private Integer id;
     private String deliveryStatus;
     private LocalDate orderDate;
     private LocalDate shippingDate;
@@ -17,11 +17,11 @@ public class OrderDetailsDTO {
     private AddressDTO addressDTO;
     private PaymentDTO paymentDTO;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -5,33 +5,33 @@ package com.aston.ecommerce.asmar.dto;
 
 public class ProductToCartDTO {
 
-    private Long productId;
-    private Long userId;
+    private Integer productId;
+    private Integer userId;
     private int quantity;
 
     public ProductToCartDTO() {
     }
 
-    public ProductToCartDTO(Long productId, Long userId, int quantity) {
+    public ProductToCartDTO(Integer productId, Integer userId, int quantity) {
         this.productId = productId;
         this.userId = userId;
         this.quantity = quantity;
     }
 
 
-    public Long getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 
-    public Long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

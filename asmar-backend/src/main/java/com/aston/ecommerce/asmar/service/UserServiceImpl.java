@@ -117,13 +117,13 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserDTO getUserById(Long userId) {
+    public UserDTO getUserById(Integer userId) {
         User user = userRepository.getById(userId);
         return userMapper.toUserDto(user);
     }
 
     @Override
-    public Long getUserId(String email){
+    public Integer getUserId(String email){
         User user = userRepository.findByEmailOrUsername(email, email);
         return user.getId();
     }

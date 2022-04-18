@@ -3,14 +3,14 @@ package com.aston.ecommerce.asmar.dto;
 
 public class CategoryDTO {
 
-    private Long id;
+    private Integer id;
     private String label;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
