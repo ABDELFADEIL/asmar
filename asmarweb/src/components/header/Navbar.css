@@ -1,0 +1,129 @@
+
+.NavBarItems {
+    height: 60px;
+    color: #F4D19E;
+    background: #003B49;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+.NavBarItems li, h3{
+    color: #F4D19E !important;
+    list-style: none;
+}
+
+.nav-menu a:hover {
+    background: rgb(63, 125, 139);
+    border-radius: 3px;
+    transition: all .5s ease-out;
+
+}
+
+.NavBarItems .nav-links a, .NavBarItems a{
+    padding: .5rem .5rem;
+    list-style: none;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 15px;
+}
+.logo img{
+    background: white;
+    width: 70px;
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(10%, 25%);
+}
+
+
+.nav-menu {
+    display: grid;
+    grid-template-columns: repeat(9, auto);
+    grid-gap: 5px;
+    list-style: none;
+    text-align: center;
+    justify-content: end;
+    margin-right: 1rem;
+    width: 70vw;
+}
+.Menu-icon {
+    display: none;
+}
+
+.nav-links-mobile {
+    display: none;
+}
+
+nav .nav-menu {
+    justify-self: end;
+
+}
+
+.nav-menu {
+    z-index: 100;
+}
+
+Button:focus {
+    outline: none !important;
+    outline-offset: none !important;
+    box-shadow: none !important;
+}
+@media screen and (min-width: 961px){
+    .nav-menu a:nth-of-type(7){
+     margin-left: 60px;
+    }
+    .nav-menu a:nth-of-type(9){
+        justify-self: end;
+        margin-right: 0px;
+    }
+}
+@media screen and (max-width: 960px){
+    .NavBarItems {
+        position: relative;
+    }
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 450px;
+        position: absolute;
+        top: 60px;
+        left: -100%;
+        opacity: 1;
+        transition: all .8s ease;
+        padding: 10px;
+
+    }
+    .nav-menu.active {
+        background: #003B49;
+        left: 0;
+        opacity: 1;
+        transition: all .5ms ease;
+        z-index: 100;
+        margin: 0;
+    }
+    .nav-menu.active a {
+        margin-top: 0;
+    }
+    .nav-links, .nav-menu a {
+        text-align: center;
+        padding: .6rem;
+        width: 100%;
+        display: table;
+    }
+    .nav-menu a:hover {
+        border-radius: 0;
+        background: rgb(63, 125, 139);
+    }
+
+    .Menu-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 50%);
+        font-size: 1.5rem;
+    }
+}

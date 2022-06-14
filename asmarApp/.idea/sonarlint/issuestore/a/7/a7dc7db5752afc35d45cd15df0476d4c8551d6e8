@@ -1,0 +1,65 @@
+
+6javascript:S3317""Rename this file to "SignUpScreen"
+Mjavascript:S1128",Remove this unused import of 'AsyncStorage'.(¸ğÿÿÿÿÿÿÿ
+Qjavascript:S3863"0'@react-navigation/native' import is duplicated.(¶°ÎÒıÿÿÿÿ
+Ejavascript:S1128"$Remove this unused import of 'Link'.(¶°ÎÒıÿÿÿÿ
+?javascript:S2814"'useTheme' is already defined.(¶°ÎÒıÿÿÿÿ
+>javascript:S3863	"'react' import is duplicated.(¿óšäşÿÿÿÿ
+Jjavascript:S1128	")Remove this unused import of 'useEffect'.(¿óšäşÿÿÿÿ
+Ejavascript:S1128"$Remove this unused import of 'Icon'.(‰ÚÆôüÿÿÿÿ
+Rjavascript:S1481"6Remove the declaration of the unused 'token' variable.(ìÜ—÷
+Ojavascript:S1854"3Remove this useless assignment to variable "token".(ìÜ—÷
+Ujavascript:S1481"9Remove the declaration of the unused 'setToken' variable.(ìÜ—÷
+Rjavascript:S1854"6Remove this useless assignment to variable "setToken".(ìÜ—÷
+Wjavascript:S1481";Remove the declaration of the unused 'repassword' variable.(íßÁì
+Tjavascript:S1854"8Remove this useless assignment to variable "repassword".(íßÁì
+Zjavascript:S1481">Remove the declaration of the unused 'setRepassword' variable.(íßÁì
+Wjavascript:S1854";Remove this useless assignment to variable "setRepassword".(íßÁì
+Zjavascript:S1481"9Remove the declaration of the unused 'lastName' variable.(‘ãÑÚøÿÿÿÿ
+Wjavascript:S1854"6Remove this useless assignment to variable "lastName".(‘ãÑÚøÿÿÿÿ
+]javascript:S1481"<Remove the declaration of the unused 'setLastName' variable.(‘ãÑÚøÿÿÿÿ
+Zjavascript:S1854"9Remove this useless assignment to variable "setLastName".(‘ãÑÚøÿÿÿÿ
+Vjavascript:S1481":Remove the declaration of the unused 'firstName' variable.(¿²ÖÏ
+Sjavascript:S1854"7Remove this useless assignment to variable "firstName".(¿²ÖÏ
+Yjavascript:S1481"=Remove the declaration of the unused 'setFirstName' variable.(¿²ÖÏ
+Vjavascript:S1854":Remove this useless assignment to variable "setFirstName".(¿²ÖÏ
+[javascript:S1481":Remove the declaration of the unused 'telephone' variable.(ÏÙßşÿÿÿÿ
+Xjavascript:S1854"7Remove this useless assignment to variable "telephone".(ÏÙßşÿÿÿÿ
+^javascript:S1481"=Remove the declaration of the unused 'setTelephone' variable.(ÏÙßşÿÿÿÿ
+[javascript:S1854":Remove this useless assignment to variable "setTelephone".(ÏÙßşÿÿÿÿ
+Zjavascript:S1481"9Remove the declaration of the unused 'username' variable.(«ïÑÂûÿÿÿÿ
+Wjavascript:S1854"6Remove this useless assignment to variable "username".(«ïÑÂûÿÿÿÿ
+]javascript:S1481"<Remove the declaration of the unused 'setUsername' variable.(«ïÑÂûÿÿÿÿ
+Zjavascript:S1854"9Remove this useless assignment to variable "setUsername".(«ïÑÂûÿÿÿÿ
+[javascript:S1481":Remove the declaration of the unused 'birthDate' variable.(üÙ·úÿÿÿÿ
+Xjavascript:S1854"7Remove this useless assignment to variable "birthDate".(üÙ·úÿÿÿÿ
+^javascript:S1481"=Remove the declaration of the unused 'setBirthDate' variable.(üÙ·úÿÿÿÿ
+[javascript:S1854":Remove this useless assignment to variable "setBirthDate".(üÙ·úÿÿÿÿ
+Xjavascript:S1481"7Remove the declaration of the unused 'street' variable.(öìîˆÿÿÿÿÿ
+Ujavascript:S1854"4Remove this useless assignment to variable "street".(öìîˆÿÿÿÿÿ
+[javascript:S1481":Remove the declaration of the unused 'setStreet' variable.(öìîˆÿÿÿÿÿ
+Xjavascript:S1854"7Remove this useless assignment to variable "setStreet".(öìîˆÿÿÿÿÿ
+Qjavascript:S1481"5Remove the declaration of the unused 'city' variable.(Ò˜Ó†
+Njavascript:S1854"2Remove this useless assignment to variable "city".(Ò˜Ó†
+Tjavascript:S1481"8Remove the declaration of the unused 'setCity' variable.(Ò˜Ó†
+Qjavascript:S1854"5Remove this useless assignment to variable "setCity".(Ò˜Ó†
+Wjavascript:S1481"6Remove the declaration of the unused 'state' variable.(ï½Áüÿÿÿÿ
+Tjavascript:S1854"3Remove this useless assignment to variable "state".(ï½Áüÿÿÿÿ
+Zjavascript:S1481"9Remove the declaration of the unused 'setState' variable.(ï½Áüÿÿÿÿ
+Wjavascript:S1854"6Remove this useless assignment to variable "setState".(ï½Áüÿÿÿÿ
+Wjavascript:S1481";Remove the declaration of the unused 'postalCode' variable.(„àóÖ
+Tjavascript:S1854"8Remove this useless assignment to variable "postalCode".(„àóÖ
+Zjavascript:S1481">Remove the declaration of the unused 'SetPostalCode' variable.(„àóÖ
+Wjavascript:S1854";Remove this useless assignment to variable "SetPostalCode".(„àóÖ
+Tjavascript:S1481"8Remove the declaration of the unused 'country' variable.(½¦¦á
+Qjavascript:S1854"5Remove this useless assignment to variable "country".(½¦¦á
+Wjavascript:S1481";Remove the declaration of the unused 'setCountry' variable.(½¦¦á
+Tjavascript:S1854"8Remove this useless assignment to variable "setCountry".(½¦¦á
+Ujavascript:S1481 "9Remove the declaration of the unused 'addInfos' variable.(®¼‘²
+Rjavascript:S1854 "6Remove this useless assignment to variable "addInfos".(®¼‘²
+Xjavascript:S1481 "<Remove the declaration of the unused 'setAddInfos' variable.(®¼‘²
+Ujavascript:S1854 "9Remove this useless assignment to variable "setAddInfos".(®¼‘²
+Xjavascript:S1481!"7Remove the declaration of the unused 'active' variable.(ÀÂšùÿÿÿÿ
+Ujavascript:S1854!"4Remove this useless assignment to variable "active".(ÀÂšùÿÿÿÿ
+[javascript:S1481!":Remove the declaration of the unused 'setActive' variable.(ÀÂšùÿÿÿÿ
+Xjavascript:S1854!"7Remove this useless assignment to variable "setActive".(ÀÂšùÿÿÿÿ
