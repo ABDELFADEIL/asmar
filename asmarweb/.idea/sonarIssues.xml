@@ -638,6 +638,26 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar/asmar-backend/src/main/java/com/aston/ecommerce/asmar/entity/Address.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar/asmar-backend/src/main/java/com/aston/ecommerce/asmar/entity/Order.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar/asmar-backend/src/main/resources/application.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar/asmar-backend/src/test/java/com/aston/ecommerce/asmar/service/UserServiceImplTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../asmarApp/App.js">
           <value>
             <set />
@@ -679,6 +699,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../asmarApp/package.json">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarApp/screens/autentication/LoginScreen.js">
           <value>
             <set />
           </value>
@@ -733,7 +758,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../asmarApp/screens/shoppingCart/ShoppingCartScreen.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../asmarApp/screens/shoppingCart/shopping_cart.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarApp/services/commandLineService.js">
           <value>
             <set />
           </value>
@@ -779,6 +814,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/App.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/components/card_product/cardProduct.js">
           <value>
             <set />
           </value>
@@ -883,7 +923,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/screens/shoppingCart/ShoppingCartScreen.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/screens/shoppingCart/shopping_cart.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/services/commandLineService.js">
           <value>
             <set />
           </value>

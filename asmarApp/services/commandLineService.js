@@ -25,7 +25,6 @@ export const commandLineService = {
          },
      });
  }
-
 export const RemoveItem = async (id) => {
     const jwtToken = await AsyncStorage.getItem('jwtToken');
      return axios(

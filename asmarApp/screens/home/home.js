@@ -2,7 +2,7 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 // import {View, Text, Button, image} from "react-native";
 import { View, ScrollView, image } from "react-native";
-import LoginScreen from "../autentication/login";
+import LoginScreen from "../autentication/LoginScreen";
 import ProductScreen from "../product/productDetails";
 import { productService } from '../../services/productService';
 import ArticleMini from "../../components/templates/articleMini";

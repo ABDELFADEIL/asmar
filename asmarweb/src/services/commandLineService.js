@@ -13,9 +13,7 @@ export async function onAddProductToCart(newCommandLine){
             .catch((err) => reject(err));
     });
 }
-    export const commandLineService = {
-        onAddProductToCart
-    };
+
  export const getShoppingCartItems = (userId) => {
      return axios({
          method: 'get',
@@ -54,5 +52,9 @@ export const UpdateItemQuantity = (id, quantity) => {
         });
 }
 
-
+/*
+    export const commandLineService = {
+        onAddProductToCart
+    };
+ */
 

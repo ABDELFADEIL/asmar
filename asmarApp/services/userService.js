@@ -25,7 +25,6 @@ export const Login = (user) => {
     },
     REMOVE_JWT_TOKEN = () => {
         AsyncStorage.removeItem('jwtToken');
-
     },
      userInfo = (JWT) => {
          return axios({

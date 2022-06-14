@@ -1,10 +1,8 @@
-import React, {Component, useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
+import React, {useEffect, useState} from 'react';
 import {Button, Card, Col, Row} from "react-bootstrap";
-import {FaEye, FaShoppingCart, FaStreetView} from "react-icons/fa";
+import {FaEye} from "react-icons/fa";
 import "./cartProduct.css";
 import {Link} from "react-router-dom";
-
 
 const CardProduct = ({product, viewProduct})=> {
 

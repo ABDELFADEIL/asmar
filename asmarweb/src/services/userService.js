@@ -16,10 +16,10 @@ export const //BASE_URL = 'http://localhost:8080',
 },
     GET_JWT_TOKEN = () => {
     const jwt_token = localStorage.getItem('jwtToken');
-    const jwt_decoded = jwt_decode(jwt_token);
-        console.log("jwt_decoded");
-    console.log(jwt_decoded);
-    return localStorage.getItem('jwtToken');
+        if(!jwt_token){
+            return null;
+        }
+    return jwt_token;
   },
   GET_DECODED_JWT = (token) => {
     return jwt_decode(token)

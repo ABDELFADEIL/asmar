@@ -473,6 +473,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar/asmar-backend/src/main/java/com/aston/ecommerce/asmar/entity/Address.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../asmar_backend/asmar/asmar-backend/src/main/java/com/aston/ecommerce/asmar/entity/Order.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/App.js">
           <value>
             <set />
@@ -513,6 +523,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/screens/autentication/LoginScreen.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/screens/autentication/login.js">
           <value>
             <set />
@@ -549,6 +564,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/screens/profile/profile.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/screens/shoppingCart/ShoppingCartScreen.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/services/commandLineService.js">
           <value>
             <set />
           </value>

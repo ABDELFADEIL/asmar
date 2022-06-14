@@ -14,8 +14,8 @@ import HomeScreen from "../screens/home/home";
 import CategoriesScreen from "../screens/categories/categories";
 import ProfileScreen from "../screens/profile/profile";
 import SearchScreen from "../screens/search/search";
-import ShoppingCartScreen from "../screens/shoppingCart/shopping_cart";
-import LoginScreen from "../screens/autentication/login";
+import ShoppingCartScreen from "../screens/shoppingCart/ShoppingCartScreen";
+import LoginScreen from "../screens/autentication/LoginScreen";
 import SignUpScreen from "../screens/autentication/signUp";
 import ProductDetailsScreen from '../screens/product/productDetails';
 import {useState} from "react";
@@ -50,27 +50,21 @@ const HomeStackScreen = () => (
             //headerTitleAlign: 'center',
             //headerMode: 'screen',
             headerShown: true,
-
-
             })}>
             <HomeStack.Screen name={'home'} component={HomeScreen}
                               options={{title: <Header title={homeName}/>}}/>
-            <HomeStack.Screen name={'ProductDetailsScreen'} component={ProductDetailsScreen}
-                                      />
+            <HomeStack.Screen name={'ProductDetailsScreen'} component={ProductDetailsScreen}/>
         </HomeStack.Navigator>
     );
-
 const CategoriesStackScreen = () => (
     <CategoriesStack.Navigator screenOptions={(route, navigation) => ({
         headerStyle: {backgroundColor: '#003B49'},
-        headerTitleStyle: {color: '#F4D19E'},
-        //headerTitleAlign: 'center',
+        headerTitleStyle: {color: '#F4D19E'}, //headerTitleAlign: 'center',
         headerShown: true,
     })}>
         <CategoriesStack.Screen name={'categories'} component={CategoriesScreen}
                                 options={{title: <Header title={categoriesName}/>}}/>
-        <CategoriesStack.Screen name={'ProductDetailsScreen'} component={ProductDetailsScreen}
-                                />
+        <CategoriesStack.Screen name={'ProductDetailsScreen'} component={ProductDetailsScreen}/>
     </CategoriesStack.Navigator>
 );
 
@@ -133,28 +127,22 @@ const AuthStackScreen = () => (
 export default function MainContainer() {
     const [isLoding] = useState(false);
     const [token, setToken] = useState(GET_JWT_TOKEN());
-
     function TabsApp() {
         return (
             <Tab.Navigator
                 initialRouteName={homeName}
                 screenOptions={({navigation, route}) => ({
-                    tabBarShowLabel: true,
-                    tabBarActiveTintColor: '#F7B14C',
-                    tabBarInactiveTintColor: '#F4D19E',
+                    tabBarShowLabel: true, tabBarActiveTintColor: '#F7B14C', tabBarInactiveTintColor: '#F4D19E',
                     tabBarLabelStyle: {paddingBottom: 5, paddingTop: 5, fontSize: 10},
                     tabBarStyle: {
                         padding: 6, height: 60, backgroundColor: '#003B49',
                         borderTopEndRadius: 20, borderTopStartRadius: 20, elevation: 0,
                         margin: 0, position: 'absolute', bottom: 0,
-                        paddingBottom: 5, paddingTop: 5, fontSize: 10,
-                    },
-                    headerShown: false,
-                    //headerStyle: {backgroundColor: '#FFF'},
+                        paddingBottom: 5, paddingTop: 5, fontSize: 10, },
+                    headerShown: false, //headerStyle: {backgroundColor: '#FFF'},
                     tabBarIcon: ({focused, color, size}) => {
                         let iconName;
                         let routeName = route.name;
-
                         if (routeName === homeName) {
                             iconName = focused ? 'home' : 'home';
                         } else if (routeName === profileName) {
@@ -167,32 +155,17 @@ export default function MainContainer() {
                             iconName = focused ? 'basket' : 'basket'
                         }
                         return <Ionicons name={iconName} size={size} color={color}/>
-                    },
-
-                })}>
+                    },})}>
                 <Tab.Screen name={categoriesName} component={CategoriesStackScreen}/>
                 <Tab.Screen name={searchName} component={SearchStackScreen}/>
-                <Tab.Screen name={homeName} component={HomeStackScreen}
-                            options={{
-                                tabBarLabel: '',
-                                tabBarIcon: ({navigation, focused}) => (
+                <Tab.Screen name={homeName} component={HomeStackScreen} options={{
+                                tabBarLabel: '', tabBarIcon: ({navigation, focused}) => (
                                     <Ionicons style={{
-                                        color: focused ? '#F7B14C' : '#F4D19E',
-                                        position: 'absolute',
-                                        top: -25,
-                                        width: 50,
-                                        height: 50,
-                                        textAlign: 'center',
-                                        paddingTop: 4,
-                                        backgroundColor: '#003B49',
-                                        borderRadius: 40,
-                                        borderWidth: 4,
-                                        borderColor: '#FFF',
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                    }} name={'home'} size={30} color={'#F4D19E'}/>
-                                )
-                            }}/>
+                                        color: focused ? '#F7B14C' : '#F4D19E', position: 'absolute',
+                                        top: -25, width: 50, height: 50, textAlign: 'center',
+                                        paddingTop: 4, backgroundColor: '#003B49', borderRadius: 40,
+                                        borderWidth: 4, borderColor: '#FFF', justifyContent: 'center', alignItems: 'center',
+                                    }} name={'home'} size={30} color={'#F4D19E'}/>) }}/>
                 <Tab.Screen name={shoppingCartName} component={ShoppingCartStackScreen}/>
                 <Tab.Screen name={profileName} component={ProfileStackScreen}
                             listeners={({navigation}) => ({
@@ -226,12 +199,9 @@ export default function MainContainer() {
                     headerShown: false,
                     presentation: "modal"
                 }}
-
             >
-
                 <RootStack.Group>
                     <RootStack.Screen name="Home" component={TabsApp}/>
-
                 </RootStack.Group>
                 <RootStack.Group screenOptions={{
                     presentation: 'transparentModal',

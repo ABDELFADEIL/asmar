@@ -4,11 +4,11 @@ import Navbar from "./components/header/Navbar";
 import React, { Fragment, useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-  BrowserRouter
+    BrowserRouter as Router,
+    Route,
+    Routes,
+    Navigate,
+    BrowserRouter
 } from "react-router-dom";
 import HomeScreen from "./screens/home/home";
 import ProfileScreen from "./screens/profile/profile";
@@ -17,7 +17,7 @@ import {SearchScreen} from "./screens/search/search";
 import LoginScreen from "./screens/autentication/login";
 import SignUpScreen from "./screens/autentication/signUp";
 import CategoriesScreen from "./screens/categories/categories";
-import ShoppingCartScreen from "./screens/shoppingCart/shopping_cart";
+import ShoppingCartScreen from "./screens/shoppingCart/ShoppingCartScreen";
 import Footer from "./components/footer/Footer";
 import OrderScreen from './screens/order/order';
 
@@ -30,9 +30,8 @@ const App = () => {
                     <Navbar/>
                     <div className="Main">
                         <Routes>
-
-                            {/* <Route exact path="/" element={<HomeScreen/>}/> */}
-                            <Route path="/" element={<HomeScreen/>}/>
+                            <Route path="/home" element={<HomeScreen/>}/>
+                            <Route path="/" element={<Navigate replace to="/home" />} />
                             <Route path="/categories" element={<CategoriesScreen/>}/>
                             <Route path="/categories/:id" element={<CategoriesScreen/>}/>
                             <Route path="/search" element={<SearchScreen/>}/>
