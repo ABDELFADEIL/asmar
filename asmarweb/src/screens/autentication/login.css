@@ -1,0 +1,167 @@
+.LoginPage {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    /*position: relative;*/
+    }
+
+.LoginPage .LoginPageCart {
+    margin: 20px auto;
+    background: white;
+    text-align: center;
+    width: 500PX;
+    min-height: 630px;
+    /*position: absolute;*/
+    /*top: 50px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 3fr 2fr; */
+    grid-gap: 5px;
+    border-radius: 10px;
+    /* box-shadow: 10px 10px 40px rgba(0, 59, 73, 0.38); */
+    box-shadow: 0 4px 6px 2px rgba(0, 59, 73, 0.2), 0 4px 4px 2px rgba(0, 59, 73, 0.14), 0 5px 4px -4px rgba(0, 59, 73, 0.12);
+}
+.LoginPage .LoginPageCart .loginLogo{
+    padding-top: 10px;
+
+}
+.LoginPage .LoginPageCart .loginLogo img{
+    margin: auto;
+}
+
+.LoginPage .LoginPageCart .connHead {
+    height: 30px;
+    padding: 5px;
+    margin: 0;
+}
+.LoginPage .LoginPageCart .connHead h5{
+    padding: 10px;
+    margin: 10px;
+}
+.LoginPage .LoginPageCart .loginInput{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 100px;
+}
+.LoginPage .LoginPageCart .loginPassword, .LoginPage .LoginPageCart .loginEmail {
+    padding: 10px;
+    margin: 10px;
+
+
+   /* border-bottom: 1px solid #F4D19E;*/
+    }
+.LoginPage .LoginPageCart hr {
+    height: 1.5px !important;
+    padding: 0;
+    color: #F4D19E;
+    text-align: center;
+    margin: auto;
+    width: 75%;
+}
+.LoginPage .LoginPageCart input {
+    border: none;
+    outline: none;
+    line-height: initial;
+    align-self: end;
+    width: 70%;
+    font-size: medium;
+}
+.LoginPage .LoginPageCart svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #003B49;
+    margin-bottom: 5px;
+    width: 10%;
+ }
+.pwdForget {
+display: flex;
+width: 80%;
+margin-left: 70px;
+padding: 0px;
+    height: 40px;
+    margin-top: 0px;
+}
+
+.btnConn {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: auto;
+    width: 80%;
+    grid-column-gap: 10px;
+    margin-top: 0px;
+}
+.btnConn div {
+    border-radius: 10px;
+    height: 40px;
+    text-align: center;
+    padding: 8px;
+
+}
+.btnConn .btnSignin {
+    background: linear-gradient(#F3BD6E, #7A5F37);
+}
+.btnConn .btnSignup {
+    background: rgba(0, 59, 73, 0.5);
+}
+.btnConn .btnSignin:hover {
+    background: linear-gradient(#F3BD6E, rgb(101, 78, 46));
+    border: 1px solid #F3BD6E;
+}
+.btnConn .btnSignup:hover {
+    background: rgba(0, 59, 73, 0.81);
+    border: 1px solid #003B49;
+}
+.btnConn , .btnConn a {
+    color: #003B49;
+}
+.btnSignin, .btnConn {
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+}
+@media screen and (min-width: 540px) and (max-width: 768px ){
+    .LoginPage .LoginPageCart {
+        width: 450PX;
+        min-height: 600px;
+    }
+    .LoginPage .LoginPageCart svg {
+        width: 1.4rem;
+        height: 1.4rem;
+        color: #003B49;
+    }
+    .LoginPage .LoginPageCart input {
+        margin-left: 9px;
+        width: 70%;
+        font-size: .9rem;
+    }
+    .LoginPage .LoginPageCart hr {
+        width: 80%;
+    }
+}
+
+@media screen  and (max-width: 539px ){
+    .LoginPage .LoginPageCart {
+        width: 80vw;
+        min-height: 550px;
+    }
+
+    .LoginPage .LoginPageCart svg {
+        width: 1.2rem;
+        height: 1.2rem;
+        color: #003B49;
+    }
+    .LoginPage .LoginPageCart input {
+        margin-left: 7px;
+        width: 70%;
+        font-size: .8rem;
+    }
+    .LoginPage .LoginPageCart hr {
+        width: 80%;
+    }
+    .btnSignin a , .btnSignup a{
+        font-size: .8rem;
+    }
+    .pwdForget {
+    }
+}

@@ -1,0 +1,54 @@
+
+
+h5 ,h6 {
+    color: #003B49;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+}
+
+h4 {
+    color: #626262;
+}
+
+.imagesContainer {
+    display: flex;
+    padding: 0;
+}
+
+.images {
+    height: 550px;
+    width: 30% !important;
+    gap: 5px !important;
+}
+.images img {
+    margin-bottom: 5px;
+}
+.images img:last-of-type {
+    margin-bottom: 5px;
+}
+.imagePrincipal {
+    width: 70% !important;
+    margin-left: 5px;
+}
+li{
+    list-style-type:none;
+}
+#button:hover{
+    background-color: #003B49;
+    color:#FFFFFF;
+
+}
+#button{
+    margin-top: -5px;
+    background-color:#003B49;
+    color:#F4D19E;
+    width: 100px;
+}
+
+@media screen and (max-width: 768px ){
+
+    images {
+        height: 200px !important;
+    }
+
+}

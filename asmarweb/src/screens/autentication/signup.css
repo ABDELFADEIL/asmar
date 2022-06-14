@@ -1,0 +1,207 @@
+.SignupPage {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    /*position: relative;*/
+    }
+
+.SignupPage .SignupPageCart {
+    margin: 20px auto;
+    background: white;
+    text-align: center;
+    width: 500PX;
+    min-height: 630px;
+    border-radius: 10px;
+    /* box-shadow: 10px 10px 40px rgba(0, 59, 73, 0.38); */
+    box-shadow: 0 4px 6px 2px rgba(0, 59, 73, 0.2), 0 4px 4px 2px rgba(0, 59, 73, 0.14), 0 5px 4px -4px rgba(0, 59, 73, 0.12);
+}
+.SignupPage .SignupPageCart .loginLogo{
+    padding-top: 10px;
+
+
+}
+.SignupPage .SignupPageCart .loginLogo img{
+    margin: auto;
+}
+
+.SignupPage .SignupPageCart .connHead {
+    height: 30px;
+    padding: 5px;
+    margin: 0;
+}
+.SignupPage .SignupPageCart .connHead h5{
+    padding: 10px;
+    margin: 10px;
+}
+.SignupPage .SignupPageCart .signupInput
+{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+}
+.SignupPage .SignupPageCart .signupForm {
+    padding: 5px;
+    margin-bottom: 5px;
+   /* border-bottom: 1px solid #F4D19E;*/
+    }
+.btnLog {
+    margin-top: 20px;
+}
+.btnLog samp
+{
+    background: #003b4980;
+    border-radius: 15px;
+    padding: 10px;
+    color: white;
+}
+.btnLog a {
+    color: #003b49 !important;
+    background: #003b4963;
+    border-radius: 9px;
+}
+
+.signupForm {
+    display: grid;
+    grid-template-rows: 2fr 2fr 1fr;
+    justify-content: start;
+    justify-items: start;
+    margin-left: 10px;
+
+}
+.signupForm label {
+    text-transform: uppercase;
+    font-size: .8rem;
+}
+.signupForm input{
+    font-size: .8rem;
+}
+.signupFormGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.signupFormGroup div{
+
+}
+.SignupPage .SignupPageCart hr {
+    height: 1.5px !important;
+    padding: 0;
+    color: #F4D19E;
+    text-align: center;
+    margin: auto;
+    width: 100%;
+}
+.SignupPage .SignupPageCart input {
+    border: none;
+    outline: none;
+    line-height: initial;
+    align-self: end;
+    width: 70%;
+    font-size: medium;
+}
+.SignupPage .SignupPageCart svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #003B49;
+    margin-bottom: 5px;
+    width: 10%;
+ }
+.pwdForget {
+display: flex;
+width: 80%;
+margin-left: 70px;
+padding: 0px;
+    height: 40px;
+    margin-top: 0px;
+}
+
+.btnSend {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: auto;
+    width: 80%;
+    grid-column-gap: 10px;
+    margin-top: 0px;
+    height: 30px;
+}
+.btnSend div {
+    border-radius: 10px;
+    height: 30px;
+    text-align: center;
+    padding: 3px;
+
+}
+.btnSend .btnSignin {
+    background: linear-gradient(#F3BD6E, #7A5F37);
+}
+.btnSend .btnSignup {
+    background: rgba(0, 59, 73, 0.5);
+}
+.btnSend .btnSignin:hover {
+    background: linear-gradient(#F3BD6E, rgb(101, 78, 46));
+}
+.btnSend .btnSignup:hover {
+    background: rgba(0, 59, 73, 0.81);
+}
+.btnSend , .btnSend a {
+    color: #003B49;
+}
+.btnSignin, .btnSend {
+    cursor: pointer;
+}
+@media screen and (min-width: 540px) and (max-width: 768px ){
+    .SignupPage .SignupPageCart {
+        width: 450PX;
+        min-height: 600px;
+    }
+    .SignupPage .SignupPageCart svg {
+        width: 1.4rem;
+        height: 1.4rem;
+        color: #003B49;
+    }
+    .SignupPage .SignupPageCart input {
+        margin-left: 9px;
+        width: 70%;
+        font-size: .9rem;
+    }
+    .SignupPage .SignupPageCart hr {
+        width: 95%;
+    }
+}
+
+@media screen  and (max-width: 539px ){
+    .SignupPage .SignupPageCart {
+        width: 80vw;
+        min-height: 550px;
+        height: auto;
+    }
+
+    .SignupPage .SignupPageCart svg {
+        width: 1.2rem;
+        height: 1.2rem;
+        color: #003B49;
+    }
+    .SignupPage .SignupPageCart input {
+        margin-left: 7px;
+        width: 70%;
+        font-size: .8rem;
+    }
+    .SignupPage .SignupPageCart hr {
+        width: 98%;
+    }
+    .btnSignin a , .btnSignup a{
+        font-size: .8rem;
+    }
+    .SignupPage .SignupPageCart .signupForm {
+        padding: 3px;
+        margin-bottom: 3px;
+    }
+    .signupForm {
+        align-items: start;
+        text-align: start;
+    }
+    .signupForm label {
+        text-transform: uppercase;
+        font-size: .75rem;
+    }
+}
