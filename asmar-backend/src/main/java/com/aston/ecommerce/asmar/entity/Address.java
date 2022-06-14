@@ -14,13 +14,8 @@ public class Address extends AbstractEntity{
     @Column(name="full_name", nullable = false)
     private String fullName;
     @Column(name="street", nullable = false)
-    @NotNull
-    @NotEmpty
-    // 12 rue de Paris
     private String street;
     @Column(name="city", nullable = false)
-    @NotNull
-    @NotEmpty
     private String city;
     @Column(name="state", nullable = false)
     private String state;
@@ -28,9 +23,9 @@ public class Address extends AbstractEntity{
     private String postalCode;
     @Column(name="country", nullable = false)
     private String country;
-    @Column(name="add_infos")
+    @Column(name="add_infos", nullable = true)
     private String addInfos;
-    @Column(name="active")
+    @Column(name="delivery")
     private boolean delivery;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)

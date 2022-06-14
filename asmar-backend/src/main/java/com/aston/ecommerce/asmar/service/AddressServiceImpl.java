@@ -31,12 +31,13 @@ public class AddressServiceImpl implements AddressService{
 
     @Override
     public AddressDTO addAddress(AddressDTO addressDTO) {
-        Address address = addressMapper.toAddress(addressDTO);
+
         User user = userRepository.getById(addressDTO.getUserId());
-        address.setUser(user);
         if (addressDTO.getFullName() == null){
             addressDTO.setFullName(user.getFirstName() + " " + user.getLastName());
         }
+        Address address = addressMapper.toAddress(addressDTO);
+        address.setUser(user);
         address = addressRepository.save(address);
         return addressMapper.toAddressDto(address);
     }

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -47,9 +48,10 @@ public class UserServiceImpl implements IUserService {
         String password=userForm.getPassword();
         String repassword=userForm.getRepassword();
         if(!(repassword.equals(password))) throw new UserExpception(repassword+ " Mot de passe n'est pas confirmé");
-        String username = userForm.getUsername();
-        User user= userRepository.findByEmailOrUsername(username, username);
-        if(user !=null) throw new UserExpception(userForm.getUsername() +" existe déjà");
+        String email = userForm.getEmail();
+        if (Objects.equals(null, userForm.getEmail())) throw new UserExpception("L'email ou username est requis");
+        User user= userRepository.findByEmailOrUsername(email, email);
+        if(user !=null) throw new UserExpception(userForm.getEmail() +" existe déjà");
 
         user = userMapper.toUser(userForm);
         user.setPassword(bCryptPasswordEncoder.encode(password));

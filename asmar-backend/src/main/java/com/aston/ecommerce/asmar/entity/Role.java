@@ -12,6 +12,13 @@ public class Role extends AbstractEntity{
     @Column(name="role_name", nullable = false)
     private String roleName;
 
+    public Role() {
+    }
+
+    public Role(String roleName) {
+        this.roleName = roleName;
+    }
+
     public String getRoleName() {
         return roleName;
     }
