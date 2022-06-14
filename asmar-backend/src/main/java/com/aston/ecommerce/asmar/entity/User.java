@@ -4,6 +4,7 @@ package com.aston.ecommerce.asmar.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,20 +14,15 @@ import java.util.List;
 @Table(name = "user")
 public class User extends AbstractEntity {
 
-
     @Column(name="first_name", nullable = false)
     private String firstName;
-
     @Column(name="last_name")
     private String lastName;
-
-    @Column(name="email", nullable = false, unique = true)
+    @Email @Column(name="email", nullable = false, unique = true)
     private String email;
-
     @Column(name="password", nullable = false)
     @JsonProperty(access = JsonProperty.Access.READ_WRITE)
     private String password;
-
     @Column(name="username", nullable = true, unique = true)
     private String username;
     @Column(name="birth_date", nullable = true)
@@ -34,9 +30,7 @@ public class User extends AbstractEntity {
     private LocalDate birthDate;
     @Column(name="registration_date")
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-    //                    "15-03-2022 11:40:00"
     private LocalDateTime registrationDate;
-
     @Column(name="connection_status", nullable = false)
     private boolean connectionStatus;
     @Column(name = "telephone")

@@ -12,8 +12,7 @@ import com.aston.ecommerce.asmar.entity.User;
 import java.util.List;
 
 
-public interface CommandLineService {
-
+public interface ICommandLineService {
 
     List<CommandLineDTO> getCommandLineListByUserId(Integer userId);
     CommandLine findById(Integer id);

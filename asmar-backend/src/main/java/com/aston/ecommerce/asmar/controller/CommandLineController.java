@@ -6,9 +6,9 @@ import com.aston.ecommerce.asmar.dto.ProductToCartDTO;
 import com.aston.ecommerce.asmar.dto.UserDTO;
 import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.entity.User;
-import com.aston.ecommerce.asmar.service.CommandLineService;
-import com.aston.ecommerce.asmar.service.ProductService;
-import com.aston.ecommerce.asmar.service.UserService;
+import com.aston.ecommerce.asmar.service.ICommandLineService;
+import com.aston.ecommerce.asmar.service.IProductService;
+import com.aston.ecommerce.asmar.service.IUserService;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,21 +23,18 @@ import java.util.List;
 @RequestMapping("/api/commandLine")
 public class CommandLineController {
 
-
-    private final CommandLineService commandLineService;
-
-    private final ProductService productService;
-    private final UserService userService;
-
-    public CommandLineController(CommandLineService commandLineService, UserService userService, ProductService productService, UserService userService1) {
+    private final ICommandLineService commandLineService;
+    private final IProductService productService;
+    private final IUserService userService;
+    public CommandLineController(ICommandLineService commandLineService, IUserService userService,
+                                 IProductService productService, IUserService userService1) {
         this.commandLineService = commandLineService;
         this.productService = productService;
         this.userService = userService;
     }
-
     /*get commands of current user */
     @GetMapping("/shopping-cart")
-    @ApiOperation(value = "Get commands of current user")
+    @ApiOperation(value = "Get commandLines (shopping card) of current user")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Return commands of current user"),
             @ApiResponse(code = 204, message = "No content"),
@@ -47,7 +44,6 @@ public class CommandLineController {
         List<CommandLineDTO> commandLineDTOList = commandLineService.getCommandLineListByUserId(userId);
         if (commandLineDTOList == null) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-
         }
         return ResponseEntity.ok(commandLineDTOList);
     }
@@ -56,12 +52,9 @@ public class CommandLineController {
     public ResponseEntity<CommandLineDTO> addProductToCart(
            @RequestBody ProductToCartDTO productToCartDTO
     ) {
-
         CommandLineDTO commandLineDTO = commandLineService.addProductToCart(productToCartDTO);
-
         return new ResponseEntity<>(commandLineDTO, HttpStatus.CREATED);
     }
-
     @PutMapping("/update/{id}")
     public ResponseEntity<CommandLineDTO> updateCommandLine(
             @Valid @RequestBody  CommandLineDTO commandLineDTO,

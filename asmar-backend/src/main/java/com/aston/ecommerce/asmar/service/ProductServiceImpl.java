@@ -18,7 +18,7 @@ import java.util.List;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements IProductService {
 
     private final ProductMapper productMapper;
     private final ProductRepository productRepository;

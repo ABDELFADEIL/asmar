@@ -18,21 +18,16 @@ public class Address extends AbstractEntity{
     @NotEmpty
     // 12 rue de Paris
     private String street;
-
     @Column(name="city", nullable = false)
     @NotNull
     @NotEmpty
     private String city;
-
     @Column(name="state", nullable = false)
     private String state;
-
     @Column(name="postal_code", nullable = false)
     private String postalCode;
-
     @Column(name="country", nullable = false)
     private String country;
-
     @Column(name="add_infos")
     private String addInfos;
     @Column(name="active")

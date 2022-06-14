@@ -3,7 +3,7 @@ package com.aston.ecommerce.asmar.controller;
 import com.aston.ecommerce.asmar.dto.UserDTO;
 import com.aston.ecommerce.asmar.dto.UserForm;
 import com.aston.ecommerce.asmar.dto.UserMobileDTO;
-import com.aston.ecommerce.asmar.service.UserService;
+import com.aston.ecommerce.asmar.service.IUserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,7 +33,7 @@ class UserControllerTest {
     private UserController userController;
 
     @MockBean
-    private UserService userService;
+    private IUserService userService;
 
     @Test
     void testAddUser() throws Exception {

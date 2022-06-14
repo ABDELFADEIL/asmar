@@ -30,7 +30,7 @@ public class Order extends AbstractEntity{
     @ManyToOne
     @JoinColumn(name ="address_id", nullable = false)
     private Address address;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name ="payment_id")
     private Payment payment;
 

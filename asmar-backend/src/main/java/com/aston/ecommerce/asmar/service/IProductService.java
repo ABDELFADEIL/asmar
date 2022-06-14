@@ -6,7 +6,7 @@ import com.aston.ecommerce.asmar.entity.Product;
 
 import java.util.List;
 
-public interface ProductService {
+public interface IProductService {
 
     List<ProductDTO> getProductByLabelOrDescription(String keyword);
     ProductDetailDTO getProductById(Integer id);

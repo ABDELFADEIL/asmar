@@ -4,7 +4,7 @@ package com.aston.ecommerce.asmar.controller;
 import com.aston.ecommerce.asmar.dao.ProductRepository;
 import com.aston.ecommerce.asmar.dto.ProductDTO;
 import com.aston.ecommerce.asmar.dto.ProductDetailDTO;
-import com.aston.ecommerce.asmar.service.ProductService;
+import com.aston.ecommerce.asmar.service.IProductService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -18,18 +18,15 @@ import java.util.List;
 public class ProductController {
 
 
-    private final ProductService productService;
+    private final IProductService productService;
 
     private final ProductRepository productRepository;
 
 
-    public ProductController(ProductService productService, ProductRepository productRepository) {
+    public ProductController(IProductService productService, ProductRepository productRepository) {
         this.productService = productService;
         this.productRepository = productRepository;
     }
-
-
-
 
     /* get product list by category */
     @GetMapping("/category/{categoryId}")

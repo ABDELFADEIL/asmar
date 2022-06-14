@@ -7,7 +7,7 @@ import com.aston.ecommerce.asmar.dto.UserUpdatePassword;
 
 import java.util.List;
 
-public interface UserService {
+public interface IUserService {
 
     UserDTO addUser(UserForm userForm);
     UserDTO updatePassword(UserUpdatePassword userUpdatePassword) throws Exception;

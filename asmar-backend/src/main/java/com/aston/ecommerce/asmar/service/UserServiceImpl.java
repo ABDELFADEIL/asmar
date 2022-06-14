@@ -17,7 +17,7 @@ import java.util.List;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements IUserService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -26,7 +26,6 @@ public class UserServiceImpl implements UserService{
     private final UserMapper userMapper;
     private final AddressMapper addressMapper;
     private final AddressService addressService;
-
     public UserServiceImpl(
                            UserRepository userRepository,
                            RoleRepository roleRepository,
@@ -43,7 +42,6 @@ public class UserServiceImpl implements UserService{
         this.addressMapper = addressMapper;
         this.addressService = addressService;
     }
-
     @Override
     public UserDTO addUser(UserForm userForm) {
         String password=userForm.getPassword();

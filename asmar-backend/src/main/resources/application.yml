@@ -40,6 +40,8 @@ server:
   port: 8080
   ssl:
     enabled: false
+  #servlet:
+    #context-path: /asmar
 
 email:
   exp: dadeil.dev1@gmail.com
@@ -49,3 +51,7 @@ stripe:
     key: 'sk_test_51KlsxnEzx1vEWKzbmR6PijX57tXhcK2rRWscyLPPOqs1lN6DsysQl0Q87TnqMpXvP2dVjH6eycJ8yJZE4UpaATZH00uYobnIpl'
   public:
     key: 'pk_test_51KlsxnEzx1vEWKzbQpgfVN30WvEb43IqUajNmJ2A7ZfYfOiqSoBcXhdHUfSX89gFSxxc5KB95TMC5k5z9IScdBEX00k8eKDmA3'
+
+springdoc:
+  api-docs:
+    path: /api-docs

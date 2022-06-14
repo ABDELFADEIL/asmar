@@ -4,7 +4,7 @@ package com.aston.ecommerce.asmar.controller;
 import com.aston.ecommerce.asmar.dto.UserDTO;
 import com.aston.ecommerce.asmar.dto.UserForm;
 import com.aston.ecommerce.asmar.dto.UserMobileDTO;
-import com.aston.ecommerce.asmar.service.UserService;
+import com.aston.ecommerce.asmar.service.IUserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -19,9 +19,9 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
 
-    private final UserService userService;
+    private final IUserService userService;
 
-    public UserController(UserService userService) {
+    public UserController(IUserService userService) {
         this.userService = userService;
     }
 

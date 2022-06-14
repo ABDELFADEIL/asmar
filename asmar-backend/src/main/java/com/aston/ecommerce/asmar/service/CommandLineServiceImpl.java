@@ -11,7 +11,6 @@ import com.aston.ecommerce.asmar.dto.mapper.CommandLineMapper;
 import com.aston.ecommerce.asmar.entity.CommandLine;
 import com.aston.ecommerce.asmar.entity.Product;
 import com.aston.ecommerce.asmar.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,14 +22,12 @@ import java.util.List;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
-public class CommandLineServiceImpl implements CommandLineService {
-
+public class CommandLineServiceImpl implements ICommandLineService {
 
     private final CommandLineMapper commandLineMapper;
     private final CommandLineRepository commandLineRepository;
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
-
     public CommandLineServiceImpl(
                                   final CommandLineMapper commandLineMapper,
                                   final CommandLineRepository commandLineRepository,
@@ -41,13 +38,11 @@ public class CommandLineServiceImpl implements CommandLineService {
         this.productRepository = productRepository;
         this.userRepository = userRepository;
     }
-
     @Override
     public List<CommandLineDTO> getCommandLineListByUserId(Integer userId) {
         List<CommandLine> commandLineList = commandLineRepository.findAllByUserIdAndOrderIsNull(userId);
         return commandLineMapper.toCommandLineDtos(commandLineList);
     }
-
     @Override
     public CommandLineDTO addProductToCart(ProductToCartDTO productToCartDTO) {
         CommandLine commandLine = commandLineRepository.findByProductIdAndOrderIsNull(productToCartDTO.getProductId());
