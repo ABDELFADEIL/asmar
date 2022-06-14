@@ -106,14 +106,14 @@ let teste = (val)=> {
       <Button
         title="Login"
         onPress={() =>
-          // navigation.push(LoginName)
-          navigation.push("ProductDetailsScreen")
+           navigation.push(LoginName, {name: 'home'})
+          //navigation.push("ProductDetailsScreen")
         }
       />
       <Button
         title="SignUp"
         onPress={() =>
-          navigation.push(SignUpName)
+          navigation.push(SignUpName, {name: 'home'})
         }
       />
       <Button

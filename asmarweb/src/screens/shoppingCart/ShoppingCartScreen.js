@@ -18,6 +18,7 @@ export default function ShoppingCartScreen(){
         const jwt = GET_JWT_TOKEN();
         userInfo(jwt).then(res => {
             setUser(res.data);
+            console.log(res.data);
             getShoppingCartItems(res.data.id).then(response => {
                 setCommandLines(response.data)
                 console.log(response);
@@ -28,9 +29,7 @@ export default function ShoppingCartScreen(){
         })
     }
     useEffect(() => {
-        if (user){
         getShoppingCart();
-        }
     }, []);
     const getTotal = () => {
         let total = 0;

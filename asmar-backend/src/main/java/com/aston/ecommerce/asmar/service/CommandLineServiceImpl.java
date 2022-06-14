@@ -72,7 +72,7 @@ public class CommandLineServiceImpl implements ICommandLineService {
 
     @Override
     public CommandLineDTO updateCommandLineQuantity(Integer id, int quantity, UserDTO user) {
-        CommandLine commandLine = commandLineRepository.getById(id);
+        CommandLine commandLine = commandLineRepository.findById(id).get();
         if (commandLine != null) {
             if (commandLine.getUser().getId().equals(user.getId())){
                 int newQuantity = commandLine.getQuantity() + quantity;

@@ -26,12 +26,15 @@ export default function LoginScreen({route, navigation}) {
         }
         Login({'email': email.value, 'password': password.value})
             .then(response=> {
-                console.log(response.status);
-                const headers = response.headers;
-                console.log(response.data.Authorization);
-                SET_JWT_TOKEN(response.data.Authorization);
+                //console.log(response);
+                console.log(response.headers.authorization);
+                SET_JWT_TOKEN(response.headers.authorization);
                 if (response.status === 200) {
-                    navigation.navigate(route.params.name);
+                    const path = route.params.name;
+                    if (path == null || path === 'undefined'){
+                        navigation.navigate('home');
+                    }
+                    navigation.navigate(path);
                 }
             })
             .catch(error=> console.log(error));

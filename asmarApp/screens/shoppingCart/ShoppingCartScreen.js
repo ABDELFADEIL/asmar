@@ -15,29 +15,32 @@ export default function ShoppingCartScreen(navigation) {
     const [token, setToken] = useState(GET_JWT_TOKEN());
     const [commandLines, setCommandLines] = useState([]);
 
-    function getShoppingCart(id) {
-        console.log('id of user : ', id)
-        getShoppingCartItems(id).then(res => {
+    function getShoppingCart() {
+        console.log("start shopping cart");
+        getShoppingCartItems().then(res => {
             console.log(res.status);
             setCommandLines(res.data)
             console.log(res.data);
         }).catch(error => console.log(error));
     }
     useEffect(() => {
-        getShoppingCart(34)
+        getShoppingCart()
     }, []);
     const total = () => {
         let total = 0;
-        commandLines.map((commandLine)=> {
-            total = total + commandLine.price;
-        });
+        if (commandLines.length !== 0){
+            commandLines.map((commandLine)=> {
+                total = total + commandLine.price;
+            });
+        }
+
         return total;
     }
     return (
         <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView}>
             <View style={{alignItems: 'center'}}>
-                {commandLines.length == 0 ?
+                {commandLines.length === 0 ?
                     <View style={styles.emptyCart}>
                         <Text style={styles.emptyCartTextHead}>Votre panier est vide !</Text>
                         <Text style={styles.emptyCartText}>Ajouter des nouveaux articles à votre panier</Text>

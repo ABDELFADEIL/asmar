@@ -11,7 +11,5 @@ T
 $src/screens/autentication/signup.css,5\0\503d458f7870eca24df59704a61b26fcd5968765
 N
 src/screens/product/product.js,4\2\42a892331ffd72402f4dcbb2677d5d65f1a8a6b7
-F
-src/utils/constants.js,7\b\7b96eb7a8f02e0511edf9001063dd0258f6f40d2
 S
 #src/screens/autentication/signUp.js,f\e\fe559863361e2c08874b880e52eaa6825ceebe21

@@ -17,7 +17,9 @@ export const Login = (user) => {
     },
     GET_JWT_TOKEN = async () => {
         try {
-            const jwtToken = await AsyncStorage.getItem('jwtToken')
+            const jwtToken = await AsyncStorage.getItem('jwtToken');
+            console.log("jwtToken");
+            console.log(jwtToken);
             return jwtToken != null ? jwtToken : null;
         } catch(e) {
             console.log(e);

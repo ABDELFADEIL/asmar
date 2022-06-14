@@ -40,8 +40,10 @@ public class CommandLineController {
             @ApiResponse(code = 204, message = "No content"),
             @ApiResponse(code = 404, message = "user not found"),
             @ApiResponse(code = 500, message = "Server error")})
-    public ResponseEntity<List<CommandLineDTO>> getCommandLineList(@RequestParam(name = "userId") Integer userId) {
-        List<CommandLineDTO> commandLineDTOList = commandLineService.getCommandLineListByUserId(userId);
+    public ResponseEntity<List<CommandLineDTO>> getCommandLineList() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDTO user = userService.getCurrentUser(auth.getPrincipal().toString());
+        List<CommandLineDTO> commandLineDTOList = commandLineService.getCommandLineListByUserId(user.getId());
         if (commandLineDTOList == null) {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

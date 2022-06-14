@@ -7,9 +7,10 @@ export default function ProfileScreen({navigation}) {
 
     const JWT = async ()=> {
         const jwt = await GET_JWT_TOKEN();
-        console.log(jwt)
+        console.log(jwt);
+        return jwt;
     }
-    JWT()
+    JWT().then(r => console.log(r))
     return(
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center"}}>
             <Text style={{ fontSize: 26, fontWeight: "bold"}}>Profile Screen</Text>

@@ -23,7 +23,7 @@ const CommandLine = ({setCommandLines, commandLine}) => {
         console.log(command.id);
         RemoveItem(command.id).then(res => {
             console.log(res);
-            getShoppingCartItems(34).then(res => {
+            getShoppingCartItems().then(res => {
                 setCommandLines(res.data);
             }).catch(error => {
                 console.log(error)
@@ -37,7 +37,7 @@ const CommandLine = ({setCommandLines, commandLine}) => {
             if (command.quantity + quantity > 0) {
                 setCommand(res.data);
             }
-            getShoppingCartItems(34).then(res => {
+            getShoppingCartItems().then(res => {
                 setCommandLines(res.data);
             }).catch(error => {
                 console.log(error)

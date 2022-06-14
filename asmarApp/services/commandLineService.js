@@ -4,9 +4,11 @@ import {GET_JWT_TOKEN} from "./userService";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export async function onAddProductToCart(newCommandLine){
+    let jwtToken;
+    GET_JWT_TOKEN().then(res=> jwtToken = res);
     return new Promise((resolve, reject) => {
         axios
-            .post(`${BASE_URL}/api/commandLine/add`, newCommandLine)
+            .post(`${BASE_URL}/api/commandLine/add`, newCommandLine, {headers: jwtToken})
             .then((response) => {
                 resolve(response);
             })
@@ -16,17 +18,21 @@ export async function onAddProductToCart(newCommandLine){
 export const commandLineService = {
         onAddProductToCart
     };
- export const getShoppingCartItems = (userId) => {
+ export const getShoppingCartItems = async () => {
+     const jwtToken = await GET_JWT_TOKEN();
+     console.log('getShoppingCartItems ' + jwtToken);
+     console.log(jwtToken);
      return axios({
          method: 'get',
-         url: BASE_URL + '/api/commandLine/shopping-cart?userId='+ userId,
+         url: BASE_URL + '/api/commandLine/shopping-cart',
          headers: {
-             'Content-Type': 'application/json'
+             'Content-Type': 'application/json',
+             'Authorization': jwtToken
          },
      });
  }
 export const RemoveItem = async (id) => {
-    const jwtToken = await AsyncStorage.getItem('jwtToken');
+    const jwtToken = await GET_JWT_TOKEN();
      return axios(
      {
          method: 'delete',
@@ -40,9 +46,7 @@ export const RemoveItem = async (id) => {
  }
 
 export const UpdateItemQuantity = async (id, quantity) => {
-    const jwtToken = await AsyncStorage.getItem('jwtToken');
-    console.log("jwt token ****** ");
-    console.log(jwtToken)
+    const jwtToken = await GET_JWT_TOKEN();
     return axios(
         {
             method: 'put',

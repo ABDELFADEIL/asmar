@@ -100,8 +100,8 @@ public class UserServiceImpl implements IUserService {
         String password=userMobileDTO.getPassword();
         String repassword=userMobileDTO.getConfirmPassword();
         if(!(repassword.equals(password))) throw new UserExpception(repassword+ " Mot de passe n'est pas confirmé");
-        String username = userMobileDTO.getUsername();
-        User user= userRepository.findByEmailOrUsername(username, username);
+        String email = userMobileDTO.getEmail();
+        User user= userRepository.findByEmailOrUsername(email, email);
         if(user !=null) throw new UserExpception(userMobileDTO.getUsername() +" existe déjà");
 
         user = userMapper.toUser(userMobileDTO);
