@@ -86,7 +86,6 @@ public class UserController {
         UserDTO userDTO = userService.getCurrentUser(auth.getPrincipal().toString());
         if (userDTO == null) {
             return new ResponseEntity<>(userDTO, HttpStatus.NOT_FOUND);
-
         }
         return ResponseEntity.ok(userDTO);
     }

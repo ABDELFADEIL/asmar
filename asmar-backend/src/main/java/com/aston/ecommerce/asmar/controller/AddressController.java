@@ -1,12 +1,18 @@
 package com.aston.ecommerce.asmar.controller;
 
 import com.aston.ecommerce.asmar.dto.AddressDTO;
+import com.aston.ecommerce.asmar.dto.UserDTO;
+import com.aston.ecommerce.asmar.entity.User;
 import com.aston.ecommerce.asmar.service.AddressService;
+import com.aston.ecommerce.asmar.service.IUserService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +22,10 @@ import java.util.List;
 public class AddressController {
 
     private final AddressService addressService;
-
-    public AddressController(AddressService addressService) {
+    private final IUserService userService;
+    public AddressController(AddressService addressService, IUserService userService) {
         this.addressService = addressService;
+        this.userService = userService;
     }
 
     @PostMapping("/add")
@@ -45,10 +52,12 @@ public class AddressController {
             @ApiResponse(code = 204, message = "No content"),
             @ApiResponse(code = 404, message = "not found"),
             @ApiResponse(code = 500, message = "Server error")})
-    public ResponseEntity<List<AddressDTO>> getListAddresses(@RequestParam Integer userId){
-        List<AddressDTO> addresses = addressService.getAddressesByUserId(userId);
+    public ResponseEntity<List<AddressDTO>> getListAddresses(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDTO userDTO = userService.getCurrentUser(auth.getPrincipal().toString());
+        List<AddressDTO> addresses = addressService.getAddressesByUserId(userDTO.getId());
         if (addresses.isEmpty()){
-            return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new ArrayList<>(), HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(addresses, HttpStatus.OK);
     }

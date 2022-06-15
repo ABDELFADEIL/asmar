@@ -40,8 +40,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                .permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/products/**").permitAll();
         http.authorizeRequests().antMatchers("/contract", "/contract/**").hasAuthority("ADMIN");
-        http.authorizeRequests().antMatchers("/contract", "/contract/**","/api/users/user").hasAnyAuthority("CUSTOMER", "ADMIN");
-        http.authorizeRequests().antMatchers("/account", "/contract/**", "/client/**").hasAuthority( "ADMIN");
+        http.authorizeRequests().antMatchers("/contract", "/contract/**","/api/users/user", "/api/addresses/**").hasAnyAuthority("CUSTOMER", "ADMIN");
+        // /api/commandLine
+        http.authorizeRequests().antMatchers("/api/commandLine", "/api/commandLine/**").hasAuthority("CUSTOMER");
+        http.authorizeRequests().antMatchers("/account", "/contract/**", "/client/**", "/api/orders/**").hasAuthority( "ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(new JWTAuthenticationFilter(authenticationManager()));
         http.addFilterBefore(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -95,7 +95,7 @@ public class CommandLineServiceImpl implements ICommandLineService {
     }
 
     @Override
-     public CommandLineDTO updateCommandLine( CommandLineDTO commandLineDTO,User user,Product product) {
+     public CommandLineDTO updateCommandLine( CommandLineDTO commandLineDTO,UserDTO user,Product product) {
 
         CommandLine commandLine = commandLineRepository.getById(commandLineDTO.getId());
         commandLine.setQuantity(commandLineDTO.getQuantity());

@@ -16,7 +16,7 @@ public interface ICommandLineService {
 
     List<CommandLineDTO> getCommandLineListByUserId(Integer userId);
     CommandLine findById(Integer id);
-    CommandLineDTO updateCommandLine(CommandLineDTO commandLineDTO, User user,Product product);
+    CommandLineDTO updateCommandLine(CommandLineDTO commandLineDTO, UserDTO user,Product product);
     void deleteCommandLine(Integer id, UserDTO user);
     CommandLineDTO save(CommandLine commandLine);
     List<CommandLineDTO> findByOrder(Integer orderId);

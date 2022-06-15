@@ -49,13 +49,8 @@ export default function ProductScreen() {
     getProductDetailsById();
   }, []);
 
-  const addProductToCart = async () => {
-    const JWT = GET_JWT_TOKEN();
-    console.log(JWT);
-    const response = await userInfo(JWT);
-    console.log(response);
+  const addProductToCart = () => {
     let commandLine = {
-      userId: response.data.id,
       productId: productDetails.id,
       quantity: selectedQty
     }

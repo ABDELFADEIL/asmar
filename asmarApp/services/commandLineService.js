@@ -8,7 +8,7 @@ export async function onAddProductToCart(newCommandLine){
     GET_JWT_TOKEN().then(res=> jwtToken = res);
     return new Promise((resolve, reject) => {
         axios
-            .post(`${BASE_URL}/api/commandLine/add`, newCommandLine, {headers: jwtToken})
+            .post(`${BASE_URL}/api/commandLine/add`, newCommandLine, {headers: {'Authorization': jwtToken}})
             .then((response) => {
                 resolve(response);
             })

@@ -20,12 +20,8 @@ public class ProductController {
 
     private final IProductService productService;
 
-    private final ProductRepository productRepository;
-
-
-    public ProductController(IProductService productService, ProductRepository productRepository) {
+    public ProductController(IProductService productService) {
         this.productService = productService;
-        this.productRepository = productRepository;
     }
 
     /* get product list by category */

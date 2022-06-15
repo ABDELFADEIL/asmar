@@ -3,7 +3,7 @@ import { Dimensions, Animated, View, Text, Pressable, StyleSheet, Image, TextInp
 import {Link, useTheme} from '@react-navigation/native';
 import { useCardAnimation } from '@react-navigation/stack';
 import Logo from "../../assets/asmar_logo.png"
-import {GET_JWT_TOKEN, Login, SET_JWT_TOKEN} from "../../services/userService";
+import {GET_JWT_TOKEN, Login, REMOVE_JWT_TOKEN, SET_JWT_TOKEN} from "../../services/userService";
 import { emailValidator } from '../helpers/emailValidator'
 import { passwordValidator } from '../helpers/passwordValidator'
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -28,8 +28,9 @@ export default function LoginScreen({route, navigation}) {
             .then(response=> {
                 //console.log(response);
                 console.log(response.headers.authorization);
-                SET_JWT_TOKEN(response.headers.authorization);
                 if (response.status === 200) {
+                    REMOVE_JWT_TOKEN();
+                    SET_JWT_TOKEN(response.headers.authorization);
                     const path = route.params.name;
                     if (path == null || path === 'undefined'){
                         navigation.navigate('home');

@@ -473,7 +473,32 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../asmar-backend/database/asmar_create-db.sql">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmar-backend/src/main/java/com/aston/ecommerce/asmar/controller/AddressController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../asmar-backend/src/main/java/com/aston/ecommerce/asmar/controller/CommandLineController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmar-backend/src/main/java/com/aston/ecommerce/asmar/controller/ImageProductController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmar-backend/src/main/java/com/aston/ecommerce/asmar/controller/ProductController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmar-backend/src/main/java/com/aston/ecommerce/asmar/controller/UserController.java">
           <value>
             <set />
           </value>
@@ -498,7 +523,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../asmar-backend/src/main/java/com/aston/ecommerce/asmar/service/ICommandLineService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../asmar-backend/src/main/java/com/aston/ecommerce/asmar/service/UserServiceImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmar-backend/src/main/resources/application.yml">
           <value>
             <set />
           </value>
@@ -754,6 +789,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../asmarweb/src/screens/shoppingCart/shopping_cart.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarweb/src/services/addressService.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../asmarweb/src/services/commandLineService.js">
           <value>
             <set />
           </value>

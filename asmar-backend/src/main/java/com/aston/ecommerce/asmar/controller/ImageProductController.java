@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/image")
 public class ImageProductController {
 
-   private IFlickrService flickrService;
-   private ImageProductService imageProductService;
+   private final IFlickrService flickrService;
+   private final ImageProductService imageProductService;
 
     public ImageProductController(
             IFlickrService flickrService,

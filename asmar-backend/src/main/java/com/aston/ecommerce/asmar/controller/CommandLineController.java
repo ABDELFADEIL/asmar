@@ -27,7 +27,7 @@ public class CommandLineController {
     private final IProductService productService;
     private final IUserService userService;
     public CommandLineController(ICommandLineService commandLineService, IUserService userService,
-                                 IProductService productService, IUserService userService1) {
+                                 IProductService productService) {
         this.commandLineService = commandLineService;
         this.productService = productService;
         this.userService = userService;
@@ -54,6 +54,9 @@ public class CommandLineController {
     public ResponseEntity<CommandLineDTO> addProductToCart(
            @RequestBody ProductToCartDTO productToCartDTO
     ) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDTO user = userService.getCurrentUser(auth.getPrincipal().toString());
+        productToCartDTO.setUserId(user.getId());
         CommandLineDTO commandLineDTO = commandLineService.addProductToCart(productToCartDTO);
         return new ResponseEntity<>(commandLineDTO, HttpStatus.CREATED);
     }
@@ -62,7 +65,7 @@ public class CommandLineController {
             @Valid @RequestBody  CommandLineDTO commandLineDTO,
            /* @RequestParam("id")  Long id,
             @RequestParam ("quantity") int quantity,*/
-            @AuthenticationPrincipal User user
+            @AuthenticationPrincipal UserDTO user
     ){
         Product product = productService.findById(commandLineDTO.getProduct().getId());
 

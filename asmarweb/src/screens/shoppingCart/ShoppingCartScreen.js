@@ -14,8 +14,10 @@ export default function ShoppingCartScreen(){
     const [ user, setUser] = useState();
     let navigate = useNavigate();
 
-    function getShoppingCart() {
-        const jwt = GET_JWT_TOKEN();
+    async function getShoppingCart() {
+        const jwt = await GET_JWT_TOKEN();
+        console.log('shop ')
+        console.log(jwt)
         userInfo(jwt).then(res => {
             setUser(res.data);
             console.log(res.data);
@@ -23,7 +25,7 @@ export default function ShoppingCartScreen(){
                 setCommandLines(response.data)
                 console.log(response);
             }).catch(error => console.log(error));
-        }).catch(error=>{
+        }).catch(error => {
             console.log(error);
             navigate('/login');
         })

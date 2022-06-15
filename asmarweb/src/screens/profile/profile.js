@@ -22,7 +22,7 @@ export default function ProfileScreen(navigation) {
 
   }
   let getUserAddresses = () => {
-    GetAddresses(48)
+    GetAddresses()
       .then(response => {
         console.log("adresseeeees", response);
         setAddresses(response.data);

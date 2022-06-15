@@ -28,7 +28,9 @@ export const //BASE_URL = 'http://localhost:8080',
     localStorage.removeItem('jwtToken');
 
   },
-  userInfo = (JWT) => {
+  userInfo = async (JWT) => {
+    console.log('user infos ');
+    console.log(JWT);
     return axios({
       method: 'get',
       url: BASE_URL + '/api/users/user',

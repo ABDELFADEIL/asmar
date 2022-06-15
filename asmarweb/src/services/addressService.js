@@ -3,11 +3,11 @@ import {BASE_URL} from "../utils/constants";
 import {GET_JWT_TOKEN} from "./userService";
 
 
-export const GetAddresses = (userId) => {
+export const GetAddresses = () => {
     const JWT =  GET_JWT_TOKEN();
     return axios({
         method: 'get',
-        url: BASE_URL + '/api/addresses/user-addresses?userId='+ userId,
+        url: BASE_URL + '/api/addresses/user-addresses',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': JWT
